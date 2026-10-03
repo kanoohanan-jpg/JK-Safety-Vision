@@ -1,0 +1,72 @@
+const hero = document.querySelector(".hero");
+const heroContent = document.querySelector(".hero-content");
+const heroTitle = document.querySelector(".hero h1");
+const heroLabel = document.querySelector(".hero-label");
+const heroText = document.querySelector(".hero-description");
+const heroExtra = document.querySelector(".hero-extra");
+
+function rocketScroll() {
+
+    if (!hero) return;
+
+    const scrollY = window.scrollY;
+    const heroHeight = hero.offsetHeight;
+
+    // Hero ke andar scroll progress
+    const progress = Math.min(scrollY / (heroHeight * 0.85), 1);
+
+    // Rocket launch effect
+    const rocketY = progress * -500;
+    const rocketScale = 1 + progress * 0.65;
+    const rocketRotate = progress * -8;
+
+    if (heroContent) {
+        heroContent.style.transform =
+            `translate3d(0, ${rocketY}px, 0)
+             scale(${rocketScale})
+             rotateX(${rocketRotate}deg)`;
+
+        heroContent.style.opacity =
+            1 - progress * 1.25;
+    }
+
+    // Main title shoots slightly sideways
+    if (heroTitle) {
+        heroTitle.style.transform =
+            `translate3d(${progress * 180}px, ${progress * -650}px, 0)
+             scale(${1 + progress * 0.9})
+             rotateX(${progress * 12}deg)
+             rotateZ(${progress * 3}deg)`;
+    }
+
+    // Small label flies opposite direction
+    if (heroLabel) {
+        heroLabel.style.transform =
+            `translate3d(${progress * -220}px, ${progress * -350}px, 0)
+             scale(${1 + progress * 0.3})`;
+    }
+
+    // Description moves down and away
+    if (heroText) {
+        heroText.style.transform =
+            `translate3d(${progress * 120}px, ${progress * 220}px, 0)
+             scale(${1 - progress * 0.2})`;
+    }
+
+    // Service tags fly downward
+    if (heroExtra) {
+        heroExtra.style.transform =
+            `translate3d(${progress * -100}px, ${progress * 300}px, 0)
+             rotateX(${progress * -15}deg)`;
+    }
+
+    // Hero itself gives a slight zoom
+    hero.style.backgroundSize =
+        `${100 + progress * 35}% ${100 + progress * 35}%`;
+}
+
+window.addEventListener("scroll", rocketScroll, {
+    passive: true
+});
+
+rocketScroll();

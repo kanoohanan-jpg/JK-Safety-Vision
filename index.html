@@ -1,0 +1,892 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JK Safety Vision | Security Store</title>
+  <meta name="description" content="Shop CCTV cameras, DVR, NVR, networking and security products at JK Safety Vision.">
+  <style>
+    :root { --bg:#f5f3ef; --white:#fff; --ink:#25241f; --muted:#77736b; --line:#e5e0d7; --gold:#ad895b; --gold-dark:#876743; --dark:#292822; --soft:#eee9e0; --sale:#a34e3d; --shadow:0 8px 25px rgba(38,34,27,.07); --radius:16px; }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { margin:0; background:var(--bg); color:var(--ink); font-family:Arial,Helvetica,sans-serif; }
+    a { color:inherit; text-decoration:none; }
+    button, input { font:inherit; }
+    button { cursor:pointer; }
+    .container { width:min(1280px, calc(100% - 34px)); margin:auto; }
+
+    /* TOP STRIP */
+    .top-strip { background:var(--dark); color:#f5f0e7; padding:9px 0; font-size:11px; letter-spacing:.35px; }
+    .top-strip-inner { display:flex; justify-content:space-between; gap:12px; flex-wrap:wrap; }
+    .top-strip span { opacity:.9; }
+
+    /* STORE HEADER */
+    .store-header { position:sticky; top:0; z-index:100; background:rgba(255,255,255,.96); border-bottom:1px solid var(--line); backdrop-filter:blur(14px); }
+    .header-main { min-height:82px; display:grid; grid-template-columns:225px minmax(200px,1fr) auto; align-items:center; gap:25px; }
+    .brand { display:flex; align-items:center; gap:11px; min-width:0; }
+    .brand-mark { width:45px; height:45px; flex:0 0 45px; display:grid; place-items:center; border-radius:13px; background:var(--dark); color:#e7c99e; font-weight:900; font-size:18px; letter-spacing:-1px; }
+    .brand-name { font-size:16px; font-weight:900; line-height:1.1; letter-spacing:.3px; }
+    .brand-sub { display:block; margin-top:5px; color:var(--muted); font-size:9px; font-weight:700; letter-spacing:1.5px; }
+    .search-wrap { display:flex; min-width:0; height:46px; border:1px solid var(--line); border-radius:12px; background:#f8f7f4; overflow:hidden; }
+    .search-wrap:focus-within { border-color:var(--gold); box-shadow:0 0 0 3px rgba(173,137,91,.12); }
+    .search-wrap input { width:100%; min-width:0; padding:0 15px; border:0; outline:0; background:transparent; color:var(--ink); font-size:13px; }
+    .search-wrap button { width:54px; flex:0 0 54px; border:0; background:var(--gold); color:white; font-size:19px; }
+    .header-actions { display:flex; align-items:center; gap:18px; }
+    .header-action { position:relative; display:flex; align-items:center; gap:7px; border:0; background:transparent; color:var(--ink); font-size:12px; font-weight:700; white-space:nowrap; }
+    .action-icon { font-size:21px; }
+    .cart-count { position:absolute; top:-9px; left:13px; min-width:17px; height:17px; display:grid; place-items:center; padding:0 4px; border-radius:50px; background:var(--sale); color:white; font-size:10px; }
+
+    /* CATEGORY NAV */
+    .category-nav { background:var(--white); border-top:1px solid #f0ede7; }
+    .category-nav-inner { display:flex; justify-content:space-between; gap:12px; overflow-x:auto; scrollbar-width:none; padding:13px 0; }
+    .category-nav-inner::-webkit-scrollbar { display:none; }
+    .category-nav a { flex:0 0 auto; color:#4b4943; font-size:12px; font-weight:700; transition:color .2s; }
+    .category-nav a:hover { color:var(--gold-dark); }
+
+    /* HERO */
+    .hero { display:grid; grid-template-columns:1.3fr .7fr; min-height:365px; margin:24px auto; overflow:hidden; border-radius:22px; background:linear-gradient(115deg,#292822 0%,#494238 58%,#786348 100%); color:white; box-shadow:var(--shadow); }
+    .hero-copy { display:flex; flex-direction:column; justify-content:center; align-items:flex-start; padding:48px clamp(24px,5vw,65px); }
+    .hero-tag { padding:8px 12px; border:1px solid rgba(231,201,158,.45); border-radius:999px; color:#e7c99e; font-size:10px; font-weight:800; letter-spacing:1.6px; text-transform:uppercase; }
+    .hero h1 { max-width:650px; margin:19px 0 13px; font-size:clamp(35px,5vw,60px); line-height:1.02; letter-spacing:-2px; }
+    .hero p { max-width:510px; margin:0 0 25px; color:#e1ddd5; font-size:14px; line-height:1.7; }
+    .hero-buttons { display:flex; flex-wrap:wrap; gap:11px; }
+    .btn { display:inline-flex; align-items:center; justify-content:center; min-height:45px; padding:0 19px; border:1px solid var(--gold); border-radius:10px; background:var(--gold); color:white; font-size:12px; font-weight:800; transition:.2s; }
+    .btn:hover { background:var(--gold-dark); border-color:var(--gold-dark); transform:translateY(-2px); }
+    .btn-outline { border-color:rgba(255,255,255,.35); background:transparent; color:white; }
+    .btn-outline:hover { background:rgba(255,255,255,.1); border-color:white; }
+    .hero-visual { position:relative; display:flex; align-items:center; justify-content:center; min-width:0; padding:20px; background:radial-gradient(circle at 55% 50%,rgba(235,210,171,.24),transparent 60%); }
+    .hero-visual img { width:90%; max-height:300px; object-fit:contain; filter:drop-shadow(0 22px 16px rgba(0,0,0,.3)); }
+    .hero-bubble { position:absolute; right:9%; bottom:15%; padding:12px 16px; border:1px solid rgba(255,255,255,.2); border-radius:12px; background:rgba(255,255,255,.12); backdrop-filter:blur(10px); color:white; font-size:11px; font-weight:700; }
+
+    /* SERVICE PROMISES */
+    .benefits { display:grid; grid-template-columns:repeat(4,1fr); gap:12px; margin:0 auto 34px; }
+    .benefit { display:flex; align-items:center; gap:12px; padding:17px; border:1px solid var(--line); border-radius:13px; background:white; }
+    .benefit-icon { width:39px; height:39px; flex:0 0 39px; display:grid; place-items:center; border-radius:11px; background:var(--soft); font-size:19px; }
+    .benefit strong { display:block; font-size:12px; }
+    .benefit small { display:block; margin-top:4px; color:var(--muted); font-size:10px; }
+
+    /* SECTION */
+    .section { margin:38px auto; }
+    .section-head { display:flex; justify-content:space-between; align-items:end; gap:15px; margin-bottom:17px; }
+    .section-kicker { display:block; margin-bottom:7px; color:var(--gold-dark); font-size:10px; font-weight:900; letter-spacing:1.7px; text-transform:uppercase; }
+    .section-head h2 { margin:0; font-size:clamp(23px,3vw,31px); letter-spacing:-.8px; }
+    .section-head p { margin:7px 0 0; color:var(--muted); font-size:12px; line-height:1.5; }
+    .text-link { flex:0 0 auto; color:var(--gold-dark); font-size:12px; font-weight:800; }
+
+    /* CATEGORY TILES */
+    .category-grid { display:grid; grid-template-columns:repeat(6,1fr); gap:13px; }
+    .category-tile { display:flex; flex-direction:column; align-items:center; padding:17px 10px 15px; border:1px solid var(--line); border-radius:15px; background:white; text-align:center; transition:.2s; }
+    .category-tile:hover { transform:translateY(-4px); border-color:#c9b18f; box-shadow:var(--shadow); }
+    .category-art { width:100%; height:105px; display:grid; place-items:center; margin-bottom:10px; border-radius:11px; background:#f1eee8; }
+    .category-art img { width:90%; height:90%; object-fit:contain; }
+    .category-tile strong { font-size:12px; }
+    .category-tile small { margin-top:5px; color:var(--muted); font-size:10px; }
+
+    /* PRODUCT GRID */
+    .product-toolbar { display:flex; align-items:center; justify-content:space-between; gap:12px; margin-bottom:15px; }
+    .filter-pills { display:flex; gap:8px; flex-wrap:wrap; }
+    .filter-btn { padding:8px 13px; border:1px solid var(--line); border-radius:999px; background:white; color:var(--muted); font-size:11px; font-weight:700; }
+    .filter-btn.active, .filter-btn:hover { background:var(--dark); border-color:var(--dark); color:white; }
+    .sort-select { min-height:36px; padding:0 10px; border:1px solid var(--line); border-radius:9px; background:white; color:var(--ink); font-size:11px; }
+    .product-grid { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:15px; }
+    .product-card { position:relative; min-width:0; padding:12px; border:1px solid var(--line); border-radius:15px; background:white; transition:.2s; }
+    .product-card:hover { transform:translateY(-4px); box-shadow:var(--shadow); }
+    .product-image { position:relative; display:grid; place-items:center; height:175px; margin-bottom:12px; border-radius:11px; background:#f2f0eb; overflow:hidden; }
+    .product-image img { width:100%; height:100%; padding:8px; object-fit:contain; }
+    .discount-badge { position:absolute; top:9px; left:9px; padding:5px 7px; border-radius:5px; background:var(--sale); color:white; font-size:9px; font-weight:800; }
+    .wish-btn { position:absolute; top:7px; right:8px; width:29px; height:29px; border:0; border-radius:50%; background:rgba(255,255,255,.9); color:#706b62; font-size:17px; }
+    .wish-btn.active { color:var(--sale); }
+    .product-brand { color:var(--gold-dark); font-size:9px; font-weight:900; letter-spacing:1px; text-transform:uppercase; }
+    .product-card h3 { min-height:37px; margin:7px 0 5px; font-size:13px; line-height:1.4; }
+    .rating { margin-bottom:9px; color:#9b784a; font-size:10px; }
+    .rating span { color:var(--muted); }
+    .price-row { display:flex; align-items:baseline; flex-wrap:wrap; gap:6px; }
+    .current-price { font-size:16px; font-weight:900; }
+    .old-price { color:#99948b; font-size:10px; text-decoration:line-through; }
+    .product-note { margin-top:5px; color:var(--muted); font-size:9px; }
+    .product-actions { display:flex; gap:7px; margin-top:12px; }
+    .add-cart { flex:1; min-height:36px; border:1px solid var(--dark); border-radius:8px; background:var(--dark); color:white; font-size:10px; font-weight:800; }
+    .add-cart:hover { background:var(--gold-dark); border-color:var(--gold-dark); }
+    .quick-order { width:38px; border:1px solid var(--line); border-radius:8px; background:white; color:var(--ink); font-size:15px; }
+    .quick-order:hover { border-color:var(--gold); }
+
+    /* PROMO STRIP */
+    .promo { display:grid; grid-template-columns:1fr auto; align-items:center; gap:20px; margin:38px auto; padding:28px 34px; border-radius:18px; background:var(--soft); border:1px solid #e1d8ca; }
+    .promo h2 { margin:0 0 7px; font-size:clamp(21px,3vw,29px); }
+    .promo p { margin:0; color:var(--muted); font-size:12px; line-height:1.6; }
+    .promo .btn { white-space:nowrap; }
+
+    /* BRAND STRIP */
+    .brand-grid { display:grid; grid-template-columns:repeat(5,1fr); gap:12px; }
+    .brand-tile { display:grid; place-items:center; min-height:78px; padding:12px; border:1px solid var(--line); border-radius:12px; background:white; color:#514d45; font-size:15px; font-weight:900; letter-spacing:.5px; }
+
+    /* BOTTOM STORE INFO */
+    .store-info { display:grid; grid-template-columns:repeat(3,1fr); gap:14px; margin:38px auto; }
+    .info-card { padding:21px; border:1px solid var(--line); border-radius:14px; background:white; }
+    .info-card .info-icon { font-size:23px; }
+    .info-card h3 { margin:11px 0 7px; font-size:14px; }
+    .info-card p { margin:0; color:var(--muted); font-size:11px; line-height:1.6; }
+
+    /* FOOTER */
+    .footer { margin-top:45px; padding:42px 0 18px; background:var(--dark); color:#f5f0e7; }
+    .footer-grid { display:grid; grid-template-columns:1.4fr 1fr 1fr 1fr; gap:30px; padding-bottom:30px; }
+    .footer h3 { margin:0 0 14px; font-size:13px; }
+    .footer p, .footer a { color:#c9c3b8; font-size:11px; line-height:1.8; }
+    .footer a { display:block; margin:5px 0; }
+    .footer a:hover { color:#e7c99e; }
+    .footer-brand { color:#e7c99e; font-size:18px; font-weight:900; }
+    .footer-bottom { padding-top:17px; border-top:1px solid rgba(255,255,255,.13); color:#aaa397; font-size:10px; text-align:center; }
+
+    .toast { position:fixed; right:18px; bottom:18px; z-index:200; max-width:calc(100% - 36px); padding:13px 17px; border-radius:10px; background:var(--dark); color:white; font-size:12px; box-shadow:var(--shadow); opacity:0; pointer-events:none; transform:translateY(12px); transition:.25s; }
+    .toast.show { opacity:1; transform:translateY(0); }
+
+    /* BRAND BAR */
+    .brand-bar { background:#fff; border-bottom:1px solid var(--line); }
+    .brand-bar-inner { display:flex; align-items:center; gap:14px; padding:11px 0; overflow-x:auto; scrollbar-width:none; }
+    .brand-bar-inner::-webkit-scrollbar { display:none; }
+    .brand-bar-label { flex:0 0 auto; color:var(--gold-dark); font-size:10px; font-weight:900; letter-spacing:1.6px; }
+    #brandPills { display:flex; gap:8px; flex:0 0 auto; }
+    #brandPills .filter-btn { white-space:nowrap; }
+    .brand-tile { cursor:pointer; transition:.2s; }
+    .brand-tile:hover { border-color:#c9b18f; box-shadow:var(--shadow); transform:translateY(-3px); }
+
+    /* FLIPKART-STYLE ADDITIONS (same colours) */
+    .cat-strip { display:flex; gap:6px; overflow-x:auto; scrollbar-width:none; margin:16px auto 0; padding:14px 10px; background:#fff; border:1px solid var(--line); border-radius:16px; }
+    .cat-strip::-webkit-scrollbar { display:none; }
+    .cat-item { flex:1 0 92px; display:flex; flex-direction:column; align-items:center; gap:7px; padding:4px; background:none; border:0; color:var(--ink); font-size:11px; font-weight:700; text-align:center; }
+    .cat-item .cat-circle { width:68px; height:68px; display:grid; place-items:center; border-radius:50%; background:#f1eee8; border:1px solid var(--line); overflow:hidden; transition:.2s; }
+    .cat-item:hover .cat-circle { border-color:var(--gold); transform:translateY(-3px); box-shadow:var(--shadow); }
+    .cat-item img { width:82%; height:82%; object-fit:contain; }
+    .hero-dots { display:flex; gap:7px; margin-top:22px; }
+    .hero-dots button { width:9px; height:9px; padding:0; border:0; border-radius:9px; background:rgba(255,255,255,.35); transition:.3s; }
+    .hero-dots button.active { width:26px; background:#e7c99e; }
+    .h-row { display:flex; gap:13px; overflow-x:auto; scroll-snap-type:x proximity; padding:3px 2px 12px; scrollbar-width:thin; }
+    .h-row .product-card { flex:0 0 205px; scroll-snap-align:start; }
+    .row-box { padding:20px 20px 8px; background:#fff; border:1px solid var(--line); border-radius:16px; }
+    .rating-badge { display:inline-flex; align-items:center; padding:2px 7px; border-radius:5px; background:var(--gold-dark); color:#fff; font-size:10px; font-weight:800; margin-right:5px; }
+    .sort-group { display:flex; gap:8px; flex-wrap:wrap; }
+
+    @media (max-width:1000px) {
+      .header-main { grid-template-columns:190px 1fr auto; gap:13px; }
+      .header-action span:not(.action-icon):not(.cart-count) { display:none; }
+      .category-grid { grid-template-columns:repeat(3,1fr); }
+      .benefits { grid-template-columns:repeat(2,1fr); }
+      .product-grid { grid-template-columns:repeat(3,minmax(0,1fr)); }
+    }
+    @media (max-width:650px) {
+      .container { width:calc(100% - 22px); }
+      .top-strip-inner { justify-content:center; text-align:center; }
+      .header-main { grid-template-columns:1fr auto; gap:10px; padding:11px 0; }
+      .brand-mark { width:39px; height:39px; flex-basis:39px; }
+      .brand-name { font-size:13px; }
+      .header-actions { gap:12px; }
+      .header-action { padding:5px; }
+      .action-icon { font-size:20px; }
+      .search-wrap { grid-column:1 / -1; grid-row:2; height:42px; }
+      .category-nav-inner { justify-content:flex-start; gap:20px; }
+      .hero { grid-template-columns:1fr; margin:14px auto 20px; }
+      .hero-copy { padding:29px 23px 10px; }
+      .hero h1 { font-size:39px; }
+      .hero-visual { min-height:185px; }
+      .hero-visual img { max-height:190px; width:75%; }
+      .hero-bubble { bottom:9%; right:5%; }
+      .benefits { gap:8px; margin-bottom:25px; }
+      .benefit { padding:11px 9px; gap:8px; }
+      .benefit-icon { width:32px; height:32px; flex-basis:32px; font-size:16px; }
+      .benefit strong { font-size:10px; }
+      .benefit small { font-size:9px; }
+      .section { margin:29px auto; }
+      .category-grid { grid-template-columns:repeat(3,1fr); gap:8px; }
+      .category-tile { padding:10px 6px; }
+      .category-art { height:80px; }
+      .category-tile strong { font-size:10px; }
+      .category-tile small { font-size:9px; }
+      .product-grid { grid-template-columns:repeat(2,minmax(0,1fr)); gap:9px; }
+      .product-card { padding:8px; }
+      .product-image { height:130px; }
+      .product-card h3 { font-size:11px; }
+      .current-price { font-size:14px; }
+      .product-toolbar { align-items:flex-start; flex-direction:column; }
+      .h-row .product-card { flex-basis:158px; }
+      .row-box { padding:14px 12px 4px; }
+      .cat-item { flex-basis:78px; font-size:10px; }
+      .cat-item .cat-circle { width:58px; height:58px; }
+      .sort-group { width:100%; }
+      .sort-group .sort-select { flex:1; }
+      .sort-select { width:100%; }
+      .promo { grid-template-columns:1fr; padding:22px; }
+      .promo .btn { justify-self:start; }
+      .brand-grid { grid-template-columns:repeat(2,1fr); }
+      .store-info { grid-template-columns:1fr; }
+      .footer-grid { grid-template-columns:1fr 1fr; gap:23px; }
+    }
+    @media (max-width:360px) {
+      .product-image { height:110px; }
+      .product-actions { flex-direction:column; }
+      .quick-order { width:100%; min-height:32px; }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="top-strip">
+    <div class="container top-strip-inner">
+      <span>JK SAFETY VISION — Your Security Shopping Store</span>
+      <span>Product Inquiry · Installation Support · Customer Assistance</span>
+    </div>
+  </div>
+
+  <header class="store-header">
+    <div class="container header-main">
+      <a class="brand" href="index.html" aria-label="JK Safety Vision Home">
+        <span class="brand-mark">JK</span>
+        <span>
+          <span class="brand-name">JK SAFETY VISION</span>
+          <span class="brand-sub">SECURITY STORE</span>
+        </span>
+      </a>
+
+      <form class="search-wrap" id="searchForm">
+        <input id="searchInput" type="search" placeholder="Search for cameras, DVR, NVR, accessories..." aria-label="Search products">
+        <button type="submit" aria-label="Search">⌕</button>
+      </form>
+
+      <div class="header-actions">
+        <a class="header-action" href="#featured">
+          <span class="action-icon">♡</span><span>Wishlist</span>
+        </a>
+        <a class="header-action" href="order.html">
+          <span class="action-icon">🛒</span>
+          <span>Cart</span>
+          <span class="cart-count" id="cartCount">0</span>
+        </a>
+      </div>
+    </div>
+
+    <nav class="category-nav">
+      <div class="container category-nav-inner">
+        <a href="#categories">All Categories</a>
+        <a href="#featured" data-filter-link="Cameras">CCTV Cameras</a>
+        <a href="#featured" data-filter-link="Recording">DVR / NVR</a>
+        <a href="#featured" data-filter-link="Networking">Networking</a>
+        <a href="#featured" data-filter-link="Accessories">Accessories</a>
+        <a href="#featured" data-filter-link="Storage">Hard Disks</a>
+        <a href="#featured" data-filter-link="Alarm &amp; Access">Alarm &amp; Access</a>
+        <a href="services.html">Installation Services</a>
+        <a href="contact.html">Contact Us</a>
+      </div>
+    </nav>
+  </header>
+
+  <section class="brand-bar" aria-label="Shop by brand">
+    <div class="container brand-bar-inner">
+      <span class="brand-bar-label">SHOP BY BRAND</span>
+      <div id="brandPills">
+        <button class="filter-btn active" type="button" data-brand="All">All Brands</button>
+        <button class="filter-btn" type="button" data-brand="CP PLUS">CP PLUS</button>
+        <button class="filter-btn" type="button" data-brand="HIKVISION">HIKVISION</button>
+        <button class="filter-btn" type="button" data-brand="AMCOM">AMCOM</button>
+        <button class="filter-btn" type="button" data-brand="PRAMA">PRAMA</button>
+      </div>
+    </div>
+  </section>
+
+  <main>
+    <div class="container">
+      <div class="cat-strip" id="catStrip" aria-label="Shop by product type"></div>
+
+      <section class="hero">
+        <div class="hero-copy">
+          <span class="hero-tag" id="heroTag">Smart Security Shopping</span>
+          <h1 id="heroTitle">Protect what matters. Shop with confidence.</h1>
+          <p id="heroText">Explore security cameras, recording systems and networking products for homes, offices and businesses — all in one place.</p>
+          <div class="hero-buttons">
+            <a class="btn" href="#featured">Shop Products&nbsp; →</a>
+            <a class="btn btn-outline" href="services.html">Explore Services</a>
+          </div>
+          <div class="hero-dots" id="heroDots"></div>
+        </div>
+        <div class="hero-visual">
+          <img id="heroProductImage" alt="Security camera">
+          <div class="hero-bubble">Security solutions for every space</div>
+        </div>
+      </section>
+
+      <section class="benefits" aria-label="Store benefits">
+        <div class="benefit">
+          <span class="benefit-icon">🛡️</span>
+          <div><strong>Security Products</strong><small>Solutions for every space</small></div>
+        </div>
+        <div class="benefit">
+          <span class="benefit-icon">🧰</span>
+          <div><strong>Installation Support</strong><small>Help with your setup</small></div>
+        </div>
+        <div class="benefit">
+          <span class="benefit-icon">💬</span>
+          <div><strong>Easy Inquiry</strong><small>Ask before you order</small></div>
+        </div>
+        <div class="benefit">
+          <span class="benefit-icon">📍</span>
+          <div><strong>Local Assistance</strong><small>Serving Srinagar & Kashmir</small></div>
+        </div>
+      </section>
+
+      <section class="section" id="categories">
+        <div class="section-head">
+          <div>
+            <span class="section-kicker">Browse Store</span>
+            <h2>Shop by Category</h2>
+            <p>Find the security equipment you need.</p>
+          </div>
+          <a class="text-link" href="#featured">View products →</a>
+        </div>
+
+        <div class="category-grid">
+          <a class="category-tile" href="#featured" data-category-link="Cameras">
+            <div class="category-art"><img data-art="dome" alt="Dome camera"></div>
+            <strong>CCTV Cameras</strong><small>Indoor & outdoor</small>
+          </a>
+          <a class="category-tile" href="#featured" data-category-link="Recording">
+            <div class="category-art"><img data-art="recorder" alt="DVR recorder"></div>
+            <strong>DVR / NVR</strong><small>Recording systems</small>
+          </a>
+          <a class="category-tile" href="#featured" data-category-link="Networking">
+            <div class="category-art"><img data-art="switch" alt="Network switch"></div>
+            <strong>Networking</strong><small>Switches & connectivity</small>
+          </a>
+          <a class="category-tile" href="#featured" data-category-link="Accessories">
+            <div class="category-art"><img data-art="accessory" alt="Security accessory"></div>
+            <strong>Accessories</strong><small>Parts & essentials</small>
+          </a>
+          <a class="category-tile" href="services.html">
+            <div class="category-art"><img data-art="bullet" alt="Camera installation"></div>
+            <strong>Installation</strong><small>Professional services</small>
+          </a>
+          <a class="category-tile" href="contact.html">
+            <div class="category-art"><span style="font-size:43px">💬</span></div>
+            <strong>Need Help?</strong><small>Talk to our team</small>
+          </a>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="row-box">
+          <div class="section-head">
+            <div><span class="section-kicker">Top Offers</span><h2>Deals of the Day</h2></div>
+            <a class="text-link" href="#featured" data-filter-link="All">View all →</a>
+          </div>
+          <div class="h-row" id="rowDeals"></div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="row-box">
+          <div class="section-head">
+            <div><span class="section-kicker">CCTV Range</span><h2>Best of Surveillance Cameras</h2></div>
+            <a class="text-link" href="#featured" data-filter-link="Cameras">View all →</a>
+          </div>
+          <div class="h-row" id="rowCameras"></div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="row-box">
+          <div class="section-head">
+            <div><span class="section-kicker">Record & Store</span><h2>DVR, NVR &amp; Hard Disks</h2></div>
+            <a class="text-link" href="#featured" data-filter-link="Recording">View all →</a>
+          </div>
+          <div class="h-row" id="rowRecording"></div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="row-box">
+          <div class="section-head">
+            <div><span class="section-kicker">Complete Your Setup</span><h2>Cables, Accessories &amp; Alarms</h2></div>
+            <a class="text-link" href="#featured" data-filter-link="Accessories">View all →</a>
+          </div>
+          <div class="h-row" id="rowAccess"></div>
+        </div>
+      </section>
+
+      <section class="section" id="featured">
+        <div class="section-head">
+          <div>
+            <span class="section-kicker">Store Collection</span>
+            <h2 id="featuredTitle">All Surveillance Products</h2>
+            <p>Explore popular security and surveillance essentials.</p>
+          </div>
+          <a class="text-link" href="order.html">Open order page →</a>
+        </div>
+
+        <div class="product-toolbar">
+          <div class="filter-pills" id="filterPills">
+            <button class="filter-btn active" data-filter="All">All Products</button>
+            <button class="filter-btn" data-filter="Cameras">Cameras</button>
+            <button class="filter-btn" data-filter="Recording">DVR / NVR</button>
+            <button class="filter-btn" data-filter="Networking">Networking</button>
+            <button class="filter-btn" data-filter="Accessories">Accessories</button>
+            <button class="filter-btn" data-filter="Storage">Hard Disks</button>
+            <button class="filter-btn" data-filter="Alarm &amp; Access">Alarm &amp; Access</button>
+          </div>
+          <div class="sort-group">
+          <select class="sort-select" id="priceSelect" aria-label="Filter by price">
+            <option value="all">Price: All</option>
+            <option value="u2">Under ₹2,000</option>
+            <option value="m">₹2,000 – ₹5,000</option>
+            <option value="o5">Above ₹5,000</option>
+          </select>
+          <select class="sort-select" id="ratingSelect" aria-label="Filter by rating">
+            <option value="0">Rating: All</option>
+            <option value="4">4★ &amp; above</option>
+            <option value="4.5">4.5★ &amp; above</option>
+          </select>
+          <select class="sort-select" id="sortSelect" aria-label="Sort products">
+            <option value="featured">Sort: Featured</option>
+            <option value="low">Price: Low to High</option>
+            <option value="high">Price: High to Low</option>
+            <option value="name">Name: A to Z</option>
+          </select>
+          </div>
+        </div>
+
+        <div class="product-grid" id="productGrid"></div>
+      </section>
+
+      <section class="promo">
+        <div>
+          <span class="section-kicker">Need a complete setup?</span>
+          <h2>Build your security system with our team.</h2>
+          <p>Tell us about your home, shop or office. We can help you understand the products and installation requirements.</p>
+        </div>
+        <a class="btn" href="contact.html">Request Assistance →</a>
+      </section>
+
+      <section class="section">
+        <div class="section-head">
+          <div>
+            <span class="section-kicker">Our Brands</span>
+            <h2>Technology We Work With</h2>
+            <p>Ask us about product availability and compatible systems.</p>
+          </div>
+        </div>
+        <div class="brand-grid">
+          <a class="brand-tile" href="#featured" data-brand-link="HIKVISION">HIKVISION</a>
+          <a class="brand-tile" href="#featured" data-brand-link="CP PLUS">CP PLUS</a>
+          <a class="brand-tile" href="#featured" data-brand-link="PRAMA">PRAMA</a>
+          <a class="brand-tile" href="#featured" data-brand-link="AMCOM">AMCOM</a>
+          <a class="brand-tile" href="#featured" data-brand-link="All">ALL BRANDS</a>
+        </div>
+      </section>
+
+      <section class="store-info">
+        <div class="info-card">
+          <span class="info-icon">🔍</span>
+          <h3>Choose the Right Product</h3>
+          <p>Not sure which camera or recorder you need? Share your requirements before ordering.</p>
+        </div>
+        <div class="info-card">
+          <span class="info-icon">🛠️</span>
+          <h3>Installation & Setup</h3>
+          <p>Ask about installation, wiring, networking and system integration support.</p>
+        </div>
+        <div class="info-card">
+          <span class="info-icon">🤝</span>
+          <h3>Personal Assistance</h3>
+          <p>Contact our team for product details, quotations and order-related questions.</p>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <div class="footer-brand">JK SAFETY VISION</div>
+          <p>Your security shopping destination for surveillance, networking and integrated security solutions.</p>
+        </div>
+        <div>
+          <h3>Shop</h3>
+          <a href="#categories">All Categories</a>
+          <a href="#featured">Featured Products</a>
+          <a href="order.html">Order Inquiry</a>
+        </div>
+        <div>
+          <h3>Company</h3>
+          <a href="about.html">About Us</a>
+          <a href="services.html">Our Services</a>
+          <a href="industries.html">Industries</a>
+          <a href="brands.html">Brands</a>
+        </div>
+        <div>
+          <h3>Get in Touch</h3>
+          <a href="contact.html">Contact Us</a>
+          <a href="solutions.html">Solutions</a>
+          <a href="order.html">Place an Inquiry</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        ©️ <span id="year"></span> JK Safety Vision. All rights reserved.
+        <br>Product prices and availability are subject to confirmation.
+      </div>
+    </div>
+  </footer>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script>
+    /* REAL PRODUCT PHOTOS: put these files in an "images" folder next to index.html
+       images/dome.jpg, images/bullet.jpg, images/recorder.jpg, images/switch.jpg, images/accessory.jpg
+       If a photo is missing, the built-in illustration is shown automatically. */
+    const IMAGE_FOLDER = "images/";
+    const IMAGE_EXT = ".jpg";
+
+    function svgArt(type) {
+      const art = {
+        dome: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 300">
+          <defs><linearGradient id="m" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#faf9f6"/><stop offset=".55" stop-color="#bcb9b1"/><stop offset="1" stop-color="#77746e"/></linearGradient><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#51565a"/><stop offset="1" stop-color="#151719"/></linearGradient></defs>
+          <ellipse cx="210" cy="255" rx="125" ry="16" fill="#000" opacity=".1"/><path d="M105 105Q105 77 137 77H283Q315 77 315 105V132H105Z" fill="url(#m)" stroke="#77746e" stroke-width="4"/><path d="M90 132Q210 110 330 132L309 185Q210 220 111 185Z" fill="#d8d5ce" stroke="#77746e" stroke-width="4"/><path d="M112 164Q210 128 308 164Q300 238 210 245Q120 238 112 164Z" fill="url(#g)" stroke="#77746e" stroke-width="5"/><ellipse cx="210" cy="182" rx="40" ry="27" fill="#292e32" stroke="#a9a69f" stroke-width="5"/><circle cx="210" cy="182" r="17" fill="#121719"/><circle cx="204" cy="176" r="6" fill="#9caeb1" opacity=".7"/></svg>`,
+        bullet: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 300">
+          <defs><linearGradient id="b" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#faf9f6"/><stop offset=".55" stop-color="#bcb9b1"/><stop offset="1" stop-color="#77746e"/></linearGradient></defs>
+          <ellipse cx="210" cy="250" rx="130" ry="15" fill="#000" opacity=".1"/><path d="M100 110L145 75H285Q315 75 325 105V170Q315 195 285 195H145L100 160Z" fill="url(#b)" stroke="#77746e" stroke-width="5"/><path d="M325 105L365 118V153L325 170Z" fill="#4a4c4d" stroke="#77746e" stroke-width="4"/><ellipse cx="355" cy="135" rx="18" ry="27" fill="#161a1c"/><circle cx="358" cy="135" r="12" fill="#52666c"/><path d="M150 195L145 220H190L202 193" fill="#a9a69f" stroke="#77746e" stroke-width="4"/><path d="M145 220L130 235H220L202 220" fill="#77746e"/></svg>`,
+        recorder: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 300">
+          <defs><linearGradient id="r" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#555653"/><stop offset="1" stop-color="#222321"/></linearGradient></defs>
+          <ellipse cx="210" cy="245" rx="145" ry="17" fill="#000" opacity=".12"/><path d="M65 105Q65 95 80 95H340Q355 95 355 110V207Q355 220 340 220H80Q65 220 65 207Z" fill="url(#r)" stroke="#151615" stroke-width="5"/><circle cx="105" cy="160" r="9" fill="#b4a17e"/><circle cx="138" cy="160" r="5" fill="#7d9a83"/><rect x="175" y="145" width="105" height="28" rx="4" fill="#171918" stroke="#777" stroke-width="2"/><text x="227" y="164" font-size="13" fill="#c9c5bb" text-anchor="middle" font-family="Arial">RECORDER</text><path d="M95 220V230M325 220V230" stroke="#333" stroke-width="8"/></svg>`,
+        switch: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 300">
+          <ellipse cx="210" cy="245" rx="135" ry="16" fill="#000" opacity=".1"/><path d="M80 100H330L350 125V205H100L80 185Z" fill="#d1cec7" stroke="#77746e" stroke-width="5"/><path d="M100 115H330V190H100Z" fill="#373a39"/><g fill="#c8c5bd"><rect x="120" y="137" width="20" height="22" rx="3"/><rect x="150" y="137" width="20" height="22" rx="3"/><rect x="180" y="137" width="20" height="22" rx="3"/><rect x="210" y="137" width="20" height="22" rx="3"/><rect x="240" y="137" width="20" height="22" rx="3"/><rect x="270" y="137" width="20" height="22" rx="3"/></g><g fill="#8fa18c"><circle cx="130" cy="174" r="4"/><circle cx="160" cy="174" r="4"/><circle cx="190" cy="174" r="4"/><circle cx="220" cy="174" r="4"/><circle cx="250" cy="174" r="4"/><circle cx="280" cy="174" r="4"/></g></svg>`,
+        ptz: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 300"><ellipse cx="210" cy="258" rx="110" ry="14" fill="#000" opacity=".1"/><rect x="165" y="40" width="90" height="26" rx="7" fill="#d5d1c8" stroke="#77746e" stroke-width="4"/><rect x="195" y="66" width="30" height="42" fill="#bcb9b1" stroke="#77746e" stroke-width="4"/><circle cx="210" cy="170" r="64" fill="#d8d5ce" stroke="#77746e" stroke-width="5"/><path d="M158 176Q210 118 262 176Q252 228 210 232Q168 228 158 176Z" fill="#23272a" stroke="#77746e" stroke-width="4"/><circle cx="210" cy="188" r="21" fill="#0f1315"/><circle cx="204" cy="182" r="6" fill="#9caeb1" opacity=".7"/></svg>`,
+        wifi: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 300"><ellipse cx="210" cy="250" rx="100" ry="13" fill="#000" opacity=".1"/><path d="M175 215H245L255 235H165Z" fill="#a9a69f" stroke="#77746e" stroke-width="4"/><rect x="195" y="190" width="30" height="28" fill="#bcb9b1" stroke="#77746e" stroke-width="4"/><circle cx="210" cy="140" r="62" fill="#f4f2ec" stroke="#77746e" stroke-width="5"/><circle cx="210" cy="140" r="40" fill="#23272a" stroke="#a9a69f" stroke-width="5"/><circle cx="210" cy="140" r="19" fill="#0f1315"/><circle cx="203" cy="133" r="6" fill="#9caeb1" opacity=".7"/><path d="M300 90Q325 110 300 130M315 75Q350 110 315 145" fill="none" stroke="#876743" stroke-width="5" stroke-linecap="round"/></svg>`,
+        ip: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 300"><ellipse cx="210" cy="250" rx="125" ry="14" fill="#000" opacity=".1"/><rect x="90" y="95" width="190" height="100" rx="50" fill="#f0eee8" stroke="#77746e" stroke-width="5"/><rect x="270" y="105" width="45" height="80" rx="10" fill="#4a4c4d" stroke="#77746e" stroke-width="4"/><circle cx="315" cy="145" r="26" fill="#161a1c"/><circle cx="318" cy="145" r="12" fill="#52666c"/><path d="M150 195V225H110M150 225H190" stroke="#77746e" stroke-width="6" fill="none"/><text x="160" y="150" font-size="14" fill="#77746e" font-family="Arial" font-weight="700">IP</text></svg>`,
+        hdd: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 300"><ellipse cx="210" cy="250" rx="125" ry="14" fill="#000" opacity=".1"/><rect x="95" y="70" width="230" height="165" rx="14" fill="#9a9791" stroke="#5b5953" stroke-width="5"/><rect x="108" y="84" width="204" height="137" rx="9" fill="#c9c5bb"/><circle cx="195" cy="152" r="48" fill="#e7e4dc" stroke="#77746e" stroke-width="4"/><circle cx="195" cy="152" r="10" fill="#77746e"/><path d="M265 88L235 140" stroke="#5b5953" stroke-width="8" stroke-linecap="round"/><rect x="108" y="205" width="95" height="14" rx="3" fill="#876743"/></svg>`,
+        cable: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 300"><ellipse cx="210" cy="250" rx="125" ry="14" fill="#000" opacity=".1"/><ellipse cx="210" cy="170" rx="110" ry="62" fill="none" stroke="#2b2b29" stroke-width="22"/><ellipse cx="210" cy="170" rx="86" ry="44" fill="none" stroke="#3a3a37" stroke-width="18"/><ellipse cx="210" cy="170" rx="62" ry="28" fill="none" stroke="#2b2b29" stroke-width="14"/><ellipse cx="210" cy="170" rx="110" ry="62" fill="none" stroke="#876743" stroke-width="3" opacity=".6"/><rect x="300" y="75" width="60" height="18" rx="4" fill="#c9c5bb" stroke="#77746e" stroke-width="3"/><path d="M300 84Q270 90 292 130" stroke="#2b2b29" stroke-width="10" fill="none"/></svg>`,
+        alarm: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 300"><ellipse cx="210" cy="252" rx="110" ry="13" fill="#000" opacity=".1"/><rect x="140" y="80" width="140" height="160" rx="18" fill="#f0eee8" stroke="#77746e" stroke-width="5"/><circle cx="210" cy="135" r="34" fill="#a34e3d" stroke="#77746e" stroke-width="4"/><circle cx="210" cy="135" r="14" fill="#f5d6cd"/><rect x="170" y="190" width="80" height="12" rx="3" fill="#c9c5bb"/><rect x="170" y="212" width="50" height="10" rx="3" fill="#c9c5bb"/><path d="M95 110Q80 135 95 160M65 95Q40 135 65 175M325 110Q340 135 325 160M355 95Q380 135 355 175" fill="none" stroke="#876743" stroke-width="5" stroke-linecap="round"/></svg>`,
+        accessory: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 300">
+          <ellipse cx="210" cy="245" rx="130" ry="16" fill="#000" opacity=".1"/><rect x="120" y="70" width="180" height="150" rx="18" fill="#d5d1c8" stroke="#77746e" stroke-width="5"/><rect x="140" y="90" width="140" height="110" rx="12" fill="#353735"/><circle cx="210" cy="145" r="35" fill="#77746e"/><circle cx="210" cy="145" r="22" fill="#202321"/><circle cx="203" cy="138" r="7" fill="#d9d8d2" opacity=".6"/></svg>`
+      };
+      return "data:image/svg+xml;charset=UTF-8," + encodeURIComponent(art[type] || art.accessory);
+    }
+
+    // Real photo path (falls back to illustration if the file is missing)
+    function productImage(type) {
+      return IMAGE_FOLDER + type + IMAGE_EXT;
+    }
+    function imageFallback(img, type) {
+      if (!img.dataset.step) {
+        img.dataset.step = "1";
+        img.src = productImage(type);   // try generic photo (e.g. images/dome.jpg)
+      } else {
+        img.onerror = null;
+        img.src = svgArt(type);         // last fallback: drawing
+      }
+    }
+    function setImage(img, type) {
+      img.onerror = function () { imageFallback(img, type); };
+      img.src = productImage(type);
+    }
+
+    const products = [
+      {id:1, name:"Dome CCTV Camera", brand:"Security Camera", make:"Generic", category:"Cameras", image:"dome", price:1800, old:2200, discount:"18% OFF", rating:"4.5"},
+      {id:2, name:"Bullet CCTV Camera", brand:"Outdoor Surveillance", make:"Generic", category:"Cameras", image:"bullet", price:2200, old:2700, discount:"19% OFF", rating:"4.6"},
+      {id:3, name:"4 Channel DVR", brand:"Video Recorder", make:"Generic", category:"Recording", image:"recorder", price:4200, old:4800, discount:"12% OFF", rating:"4.4"},
+      {id:4, name:"8 Channel DVR", brand:"Video Recorder", make:"Generic", category:"Recording", image:"recorder", price:6500, old:7400, discount:"12% OFF", rating:"4.5"},
+      {id:5, name:"16 Channel NVR", brand:"Network Recorder", make:"Generic", category:"Recording", image:"recorder", price:12500, old:14000, discount:"11% OFF", rating:"4.6"},
+      {id:6, name:"PoE Network Switch", brand:"Networking", make:"Generic", category:"Networking", image:"switch", price:3800, old:4500, discount:"15% OFF", rating:"4.3"},
+      {id:7, name:"CCTV Power Supply", brand:"Power Accessory", make:"Generic", category:"Accessories", image:"accessory", price:650, old:800, discount:"19% OFF", rating:"4.2"},
+      {id:8, name:"Camera Junction Box", brand:"Mounting Accessory", make:"Generic", category:"Accessories", image:"accessory", price:350, old:450, discount:"22% OFF", rating:"4.4"},
+      {id:9,  name:"CP Plus Dome Camera",   brand:"CP PLUS",   make:"CP PLUS",   category:"Cameras", image:"dome",   photo:"cpplus-dome",   price:1900, old:2300, discount:"17% OFF", rating:"4.5"},
+      {id:10, name:"CP Plus Bullet Camera", brand:"CP PLUS",   make:"CP PLUS",   category:"Cameras", image:"bullet", photo:"cpplus-bullet", price:2400, old:2900, discount:"17% OFF", rating:"4.6"},
+      {id:11, name:"Hikvision Dome Camera",   brand:"HIKVISION", make:"HIKVISION", category:"Cameras", image:"dome",   photo:"hikvision-dome",   price:2100, old:2600, discount:"19% OFF", rating:"4.6"},
+      {id:12, name:"Hikvision Bullet Camera", brand:"HIKVISION", make:"HIKVISION", category:"Cameras", image:"bullet", photo:"hikvision-bullet", price:2600, old:3200, discount:"19% OFF", rating:"4.7"},
+      {id:13, name:"Amcom Dome Camera",   brand:"AMCOM", make:"AMCOM", category:"Cameras", image:"dome",   photo:"amcom-dome",   price:1600, old:2000, discount:"20% OFF", rating:"4.3"},
+      {id:14, name:"Amcom Bullet Camera", brand:"AMCOM", make:"AMCOM", category:"Cameras", image:"bullet", photo:"amcom-bullet", price:2000, old:2500, discount:"20% OFF", rating:"4.4"},
+      {id:15, name:"Prama Dome Camera",   brand:"PRAMA", make:"PRAMA", category:"Cameras", image:"dome",   photo:"prama-dome",   price:1700, old:2100, discount:"19% OFF", rating:"4.4"},
+      {id:16, name:"Prama Bullet Camera", brand:"PRAMA", make:"PRAMA", category:"Cameras", image:"bullet", photo:"prama-bullet", price:2200, old:2700, discount:"19% OFF", rating:"4.5"},
+      {id:17, name:"CP Plus PTZ Camera",       brand:"CP PLUS",   make:"CP PLUS",   category:"Cameras", image:"ptz",  photo:"cpplus-ptz",     price:8500, old:10500, discount:"19% OFF", rating:"4.5"},
+      {id:18, name:"Hikvision PTZ Camera",     brand:"HIKVISION", make:"HIKVISION", category:"Cameras", image:"ptz",  photo:"hikvision-ptz",  price:9800, old:12000, discount:"18% OFF", rating:"4.7"},
+      {id:19, name:"CP Plus Wi-Fi Smart Camera", brand:"CP PLUS", make:"CP PLUS",   category:"Cameras", image:"wifi", photo:"cpplus-wifi",    price:2600, old:3200, discount:"19% OFF", rating:"4.4"},
+      {id:20, name:"Hikvision Wi-Fi Camera",   brand:"HIKVISION", make:"HIKVISION", category:"Cameras", image:"wifi", photo:"hikvision-wifi", price:2900, old:3500, discount:"17% OFF", rating:"4.6"},
+      {id:21, name:"Amcom 2MP IP Camera",      brand:"AMCOM",     make:"AMCOM",     category:"Cameras", image:"ip",   photo:"amcom-ip",       price:3200, old:3900, discount:"18% OFF", rating:"4.3"},
+      {id:22, name:"Hikvision 4MP IP Camera",  brand:"HIKVISION", make:"HIKVISION", category:"Cameras", image:"ip",   photo:"hikvision-ip",   price:4200, old:5100, discount:"18% OFF", rating:"4.7"},
+      {id:23, name:"CP Plus 8 Channel DVR",    brand:"CP PLUS",   make:"CP PLUS",   category:"Recording", image:"recorder", photo:"cpplus-dvr",   price:6800, old:7900, discount:"14% OFF", rating:"4.5"},
+      {id:24, name:"Hikvision 8 Channel NVR",  brand:"HIKVISION", make:"HIKVISION", category:"Recording", image:"recorder", photo:"hikvision-nvr", price:9800, old:11500, discount:"15% OFF", rating:"4.6"},
+      {id:25, name:"Surveillance Hard Disk 1TB", brand:"Storage", make:"Generic",   category:"Storage", image:"hdd",  price:3600, old:4200, discount:"14% OFF", rating:"4.5"},
+      {id:26, name:"Surveillance Hard Disk 2TB", brand:"Storage", make:"Generic",   category:"Storage", image:"hdd",  price:5200, old:6100, discount:"15% OFF", rating:"4.6"},
+      {id:27, name:"3+1 CCTV Cable (90 m)",    brand:"Cabling",   make:"Generic",   category:"Accessories", image:"cable", price:1400, old:1700, discount:"18% OFF", rating:"4.4"},
+      {id:28, name:"BNC & DC Connector Pack",  brand:"Connectors", make:"Generic",  category:"Accessories", image:"accessory", price:250, old:320, discount:"22% OFF", rating:"4.2"},
+      {id:29, name:"Wireless Alarm System",    brand:"Alarm",     make:"Generic",   category:"Alarm & Access", image:"alarm", price:2800, old:3400, discount:"18% OFF", rating:"4.3"},
+      {id:30, name:"Biometric Access Control", brand:"Access Control", make:"Generic", category:"Alarm & Access", image:"alarm", price:5400, old:6500, discount:"17% OFF", rating:"4.4"}
+    ];
+
+    let activeFilter = "All";
+    let activeBrand = "All";
+    let activeType = "All";
+    let searchTerm = "";
+    let cart = [];
+    let wishlist = [];
+
+    try {
+      cart = JSON.parse(localStorage.getItem("jkSV_cart")) || [];
+    } catch (error) {
+      cart = [];
+    }
+
+    try {
+      wishlist = JSON.parse(localStorage.getItem("jkSV_wishlist")) || [];
+    } catch (error) {
+      wishlist = [];
+    }
+
+    function updateCartCount() {
+      const count = cart.reduce((total, item) => total + Number(item.quantity || 0), 0);
+      document.getElementById("cartCount").textContent = count;
+    }
+
+    function saveCart() {
+      try {
+        localStorage.setItem("jkSV_cart", JSON.stringify(cart));
+      } catch (error) {}
+      updateCartCount();
+    }
+
+    function saveWishlist() {
+      try {
+        localStorage.setItem("jkSV_wishlist", JSON.stringify(wishlist));
+      } catch (error) {}
+    }
+
+    const formatPrice = value => "₹" + value.toLocaleString("en-IN");
+
+    document.querySelectorAll("[data-art]").forEach(img => setImage(img, img.dataset.art));
+    setImage(document.getElementById("heroProductImage"), "bullet");
+    document.getElementById("year").textContent = new Date().getFullYear();
+    updateCartCount();
+
+    function showToast(message) {
+      const toast = document.getElementById("toast");
+      toast.textContent = message;
+      toast.classList.add("show");
+      clearTimeout(showToast.timer);
+      showToast.timer = setTimeout(() => toast.classList.remove("show"), 2200);
+    }
+
+    function cardHTML(p) {
+      const liked = wishlist.includes(p.id);
+      return `
+        <article class="product-card">
+          <div class="product-image">
+            <span class="discount-badge">${p.discount}</span>
+            <button class="wish-btn${liked ? " active" : ""}" type="button" aria-label="Add to wishlist" data-wish="${p.id}">${liked ? "♥️" : "♡"}</button>
+            <img src="${productImage(p.photo || p.image)}" alt="${p.name}" loading="lazy" onerror="imageFallback(this,'${p.image}')">
+          </div>
+          <div class="product-brand">${p.make !== "Generic" ? p.make : p.brand}</div>
+          <h3>${p.name}</h3>
+          <div class="rating"><span class="rating-badge">${p.rating} ★</span></div>
+          <div class="price-row">
+            <span class="current-price">${formatPrice(p.price)}</span>
+            <span class="old-price">${formatPrice(p.old)}</span>
+          </div>
+          <div class="product-note">Indicative price · Confirm before order</div>
+          <div class="product-actions">
+            <button class="add-cart" type="button" data-add="${p.id}">ADD TO CART</button>
+            <button class="quick-order" type="button" data-order="${p.id}" aria-label="View product details">↗️</button>
+          </div>
+        </article>`;
+    }
+
+    function renderRows() {
+      const rows = {
+        rowDeals: products.filter(p => parseInt(p.discount) >= 19),
+        rowCameras: products.filter(p => p.category === "Cameras"),
+        rowRecording: products.filter(p => p.category === "Recording" || p.category === "Storage"),
+        rowAccess: products.filter(p => p.category === "Accessories" || p.category === "Alarm & Access")
+      };
+      Object.keys(rows).forEach(id => {
+        document.getElementById(id).innerHTML = rows[id].map(cardHTML).join("");
+      });
+    }
+
+    const catTiles = [
+      ["Dome Cameras","dome","Cameras","dome"],["Bullet Cameras","bullet","Cameras","bullet"],["PTZ Cameras","ptz","Cameras","ptz"],
+      ["Wi-Fi Cameras","wifi","Cameras","wifi"],["IP Cameras","ip","Cameras","ip"],["DVR / NVR","recorder","Recording","All"],
+      ["Hard Disks","hdd","Storage","All"],["Networking","switch","Networking","All"],["Cables","cable","Accessories","All"],
+      ["Alarm & Access","alarm","Alarm & Access","All"]
+    ];
+    document.getElementById("catStrip").innerHTML = catTiles.map(t =>
+      `<button class="cat-item" type="button" data-cat="${t[2]}" data-type="${t[3]}" data-label="${t[0]}"><span class="cat-circle"><img data-art="${t[1]}" alt="${t[0]}"></span>${t[0]}</button>`
+    ).join("");
+    document.querySelectorAll("#catStrip [data-art]").forEach(img => setImage(img, img.dataset.art));
+    document.getElementById("catStrip").addEventListener("click", event => {
+      const b = event.target.closest("[data-cat]");
+      if (b) { setFilter(b.dataset.cat, b.dataset.type, b.dataset.type !== "All" ? b.dataset.label : ""); document.getElementById("featured").scrollIntoView({behavior:"smooth"}); }
+    });
+
+    function renderProducts() {
+      const sort = document.getElementById("sortSelect").value;
+      let list = products.filter(p => {
+        const categoryMatch = activeFilter === "All" || p.category === activeFilter;
+        const brandMatch = activeBrand === "All" || p.make === activeBrand;
+        const typeMatch = activeType === "All" || p.image === activeType;
+        const searchMatch = (p.name + " " + p.brand + " " + p.make + " " + p.category).toLowerCase().includes(searchTerm);
+        const price = document.getElementById("priceSelect").value;
+        const priceMatch = price === "all" || (price === "u2" && p.price < 2000) || (price === "m" && p.price >= 2000 && p.price <= 5000) || (price === "o5" && p.price > 5000);
+        const ratingMatch = Number(p.rating) >= Number(document.getElementById("ratingSelect").value);
+        return categoryMatch && brandMatch && typeMatch && priceMatch && ratingMatch && searchMatch;
+      });
+
+      if (sort === "low") list.sort((a,b) => a.price - b.price);
+      if (sort === "high") list.sort((a,b) => b.price - a.price);
+      if (sort === "name") list.sort((a,b) => a.name.localeCompare(b.name));
+
+      const grid = document.getElementById("productGrid");
+      if (!list.length) {
+        grid.innerHTML = '<div style="grid-column:1/-1;padding:35px;text-align:center;color:#77736b;background:#fff;border:1px dashed #e5e0d7;border-radius:14px">No products found. Try another search, brand or category.</div>';
+        return;
+      }
+
+      grid.innerHTML = list.map(cardHTML).join("");
+    }
+
+    function setFilter(filter, type, label) {
+      activeFilter = filter;
+      activeType = type || "All";
+      document.getElementById("featuredTitle").textContent = label || "All Surveillance Products";
+      document.querySelectorAll("[data-filter]").forEach(btn => {
+        btn.classList.toggle("active", btn.dataset.filter === filter);
+      });
+      renderProducts();
+    }
+
+    function setBrand(brand) {
+      activeBrand = brand;
+      document.querySelectorAll("[data-brand]").forEach(btn => {
+        btn.classList.toggle("active", btn.dataset.brand === brand);
+      });
+      renderProducts();
+    }
+
+    document.getElementById("brandPills").addEventListener("click", event => {
+      const button = event.target.closest("[data-brand]");
+      if (button) {
+        setBrand(button.dataset.brand);
+        document.getElementById("featured").scrollIntoView({behavior:"smooth"});
+      }
+    });
+
+    document.querySelectorAll("[data-brand-link]").forEach(link => {
+      link.addEventListener("click", () => setBrand(link.dataset.brandLink));
+    });
+
+    document.getElementById("filterPills").addEventListener("click", event => {
+      const button = event.target.closest("[data-filter]");
+      if (button) setFilter(button.dataset.filter);
+    });
+
+    document.querySelectorAll("[data-category-link], [data-filter-link]").forEach(link => {
+      link.addEventListener("click", () => {
+        const category = link.dataset.categoryLink || link.dataset.filterLink;
+        if (category) setFilter(category);
+      });
+    });
+
+    document.addEventListener("click", event => {
+      const add = event.target.closest("[data-add]");
+      const order = event.target.closest("[data-order]");
+      const wish = event.target.closest("[data-wish]");
+
+      if (add) {
+        const product = products.find(p => p.id === Number(add.dataset.add));
+
+        if (product) {
+          const existingItem = cart.find(item => Number(item.id) === product.id);
+
+          if (existingItem) {
+            existingItem.quantity = Number(existingItem.quantity || 0) + 1;
+          } else {
+            cart.push({
+              id: product.id,
+              name: product.name,
+              price: product.price,
+              image: product.image,
+              quantity: 1
+            });
+          }
+
+          saveCart();
+          showToast(product.name + " added to cart!");
+        }
+      }
+
+      if (order) {
+        const product = products.find(p => p.id === Number(order.dataset.order));
+
+        if (product) {
+          try {
+            localStorage.setItem("jksv_selected_product", JSON.stringify(product));
+          } catch (error) {}
+          window.location.href = "product.html?id=" + product.id;
+        }
+      }
+
+      if (wish) {
+        const id = Number(wish.dataset.wish);
+        const index = wishlist.indexOf(id);
+
+        if (index > -1) {
+          wishlist.splice(index, 1);
+        } else {
+          wishlist.push(id);
+        }
+
+        const liked = wishlist.includes(id);
+        wish.classList.toggle("active", liked);
+        wish.textContent = liked ? "♥️" : "♡";
+        saveWishlist();
+        showToast(liked ? "Added to wishlist" : "Removed from wishlist");
+      }
+    });
+
+    document.getElementById("searchForm").addEventListener("submit", event => {
+      event.preventDefault();
+      searchTerm = document.getElementById("searchInput").value.trim().toLowerCase();
+      renderProducts();
+      document.getElementById("featured").scrollIntoView({behavior:"smooth"});
+    });
+
+    document.getElementById("searchInput").addEventListener("input", event => {
+      searchTerm = event.target.value.trim().toLowerCase();
+      renderProducts();
+    });
+
+    document.getElementById("sortSelect").addEventListener("change", renderProducts);
+    document.getElementById("priceSelect").addEventListener("change", renderProducts);
+    document.getElementById("ratingSelect").addEventListener("change", renderProducts);
+
+    const heroSlides = [
+      {tag:"Smart Security Shopping", title:"Protect what matters. Shop with confidence.", text:"Explore security cameras, recording systems and networking products for homes, offices and businesses — all in one place.", img:"bullet"},
+      {tag:"CP PLUS · HIKVISION · AMCOM · PRAMA", title:"Shop top CCTV brands in one store.", text:"Dome, bullet, PTZ, Wi-Fi and IP cameras from the brands you trust.", img:"dome"},
+      {tag:"Complete Surveillance Setup", title:"Cameras, DVR, storage and cables.", text:"Everything you need for a full CCTV installation — ask our team for the right combination.", img:"recorder"}
+    ];
+    let heroIndex = 0, heroTimer;
+    function showHero(i) {
+      heroIndex = i;
+      const sl = heroSlides[i];
+      document.getElementById("heroTag").textContent = sl.tag;
+      document.getElementById("heroTitle").textContent = sl.title;
+      document.getElementById("heroText").textContent = sl.text;
+      setImage(document.getElementById("heroProductImage"), sl.img);
+      document.querySelectorAll("#heroDots button").forEach((d, n) => d.classList.toggle("active", n === i));
+    }
+    document.getElementById("heroDots").innerHTML = heroSlides.map((_, i) => `<button type="button" aria-label="Slide ${i + 1}" data-slide="${i}"></button>`).join("");
+    document.getElementById("heroDots").addEventListener("click", event => {
+      const d = event.target.closest("[data-slide]");
+      if (d) { showHero(Number(d.dataset.slide)); clearInterval(heroTimer); heroTimer = setInterval(() => showHero((heroIndex + 1) % heroSlides.length), 5000); }
+    });
+    heroTimer = setInterval(() => showHero((heroIndex + 1) % heroSlides.length), 5000);
+    showHero(0);
+
+    renderRows();
+    renderProducts();
+  </script>
+</body>
+</html>

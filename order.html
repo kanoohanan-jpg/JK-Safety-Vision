@@ -1,0 +1,1047 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Order Products | JK Safety Vision</title>
+
+  <style>
+    :root {
+      --page: #f3f1ed;
+      --surface: #ffffff;
+      --surface-soft: #eae7e1;
+      --ink: #292824;
+      --muted: #77736b;
+      --line: #dedbd4;
+      --accent: #a8875d;
+      --accent-dark: #806342;
+      --dark: #292824;
+      --radius: 18px;
+      --shadow: 0 12px 35px rgba(45, 40, 32, .08);
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      background: var(--page);
+      color: var(--ink);
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    button, input, select, textarea { font: inherit; }
+
+    button { cursor: pointer; }
+
+    .page {
+      width: min(1200px, calc(100% - 36px));
+      margin: auto;
+      padding: 30px 0 55px;
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: 1.15fr .85fr;
+      align-items: center;
+      gap: 28px;
+      min-height: 310px;
+      padding: 42px;
+      border: 1px solid var(--line);
+      border-radius: 26px;
+      background: linear-gradient(135deg, #fff 0%, #eeeae3 100%);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    .eyebrow {
+      color: var(--accent-dark);
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    .hero h1 {
+      max-width: 620px;
+      margin: 14px 0;
+      font-size: clamp(34px, 5vw, 58px);
+      line-height: 1.04;
+      letter-spacing: -1.8px;
+    }
+
+    .hero p {
+      max-width: 570px;
+      color: var(--muted);
+      line-height: 1.7;
+      margin: 0 0 24px;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .btn {
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 44px;
+      padding: 0 19px;
+      border: 1px solid var(--dark);
+      border-radius: 999px;
+      background: var(--dark);
+      color: #fff;
+      font-weight: 700;
+      text-decoration: none;
+      transition: .2s ease;
+    }
+
+    .btn:hover {
+      background: var(--accent-dark);
+      border-color: var(--accent-dark);
+      transform: translateY(-2px);
+    }
+
+    .btn.secondary {
+      background: transparent;
+      color: var(--dark);
+      border-color: var(--line);
+    }
+
+    .btn.secondary:hover {
+      background: var(--surface-soft);
+      border-color: var(--accent);
+    }
+
+    .hero-art {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      min-height: 220px;
+    }
+
+    .hero-art img {
+      width: 49%;
+      max-height: 230px;
+      object-fit: contain;
+      filter: drop-shadow(0 15px 12px rgba(0,0,0,.12));
+    }
+
+    .section-heading {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      gap: 18px;
+      margin: 42px 0 20px;
+    }
+
+    .section-heading h2 {
+      margin: 0 0 7px;
+      font-size: clamp(25px, 3vw, 34px);
+      letter-spacing: -.8px;
+    }
+
+    .section-heading p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+
+    .catalog-tools {
+      display: grid;
+      grid-template-columns: 1fr 210px;
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+
+    .field {
+      width: 100%;
+      min-height: 46px;
+      padding: 11px 14px;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      background: var(--surface);
+      color: var(--ink);
+      outline: none;
+    }
+
+    .field:focus {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px rgba(168,135,93,.13);
+    }
+
+    .category-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 9px;
+      margin-bottom: 22px;
+    }
+
+    .category-btn {
+      padding: 9px 15px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: var(--surface);
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .category-btn.active,
+    .category-btn:hover {
+      background: var(--dark);
+      border-color: var(--dark);
+      color: #fff;
+    }
+
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 17px;
+    }
+
+    .product-card {
+      display: flex;
+      flex-direction: column;
+      min-width: 0;
+      padding: 14px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--surface);
+      box-shadow: 0 5px 18px rgba(45,40,32,.045);
+      transition: .2s ease;
+    }
+
+    .product-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow);
+    }
+
+    .product-image {
+      display: grid;
+      place-items: center;
+      height: 175px;
+      margin-bottom: 14px;
+      border-radius: 13px;
+      background: #f0eee9;
+      overflow: hidden;
+    }
+
+    .product-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      padding: 8px;
+    }
+
+    .product-category {
+      color: var(--accent-dark);
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    .product-card h3 {
+      margin: 8px 0;
+      font-size: 17px;
+      line-height: 1.3;
+    }
+
+    .product-description {
+      min-height: 40px;
+      margin: 0 0 12px;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.5;
+    }
+
+    .product-bottom {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      margin-top: auto;
+    }
+
+    .price {
+      font-size: 17px;
+      font-weight: 800;
+    }
+
+    .price small {
+      display: block;
+      margin-top: 3px;
+      color: var(--muted);
+      font-size: 10px;
+      font-weight: 400;
+    }
+
+    .add-btn {
+      min-height: 38px;
+      padding: 0 13px;
+      border: 0;
+      border-radius: 999px;
+      background: var(--accent);
+      color: #fff;
+      font-size: 12px;
+      font-weight: 800;
+    }
+
+    .add-btn:hover { background: var(--accent-dark); }
+
+    .empty-state {
+      grid-column: 1 / -1;
+      padding: 35px;
+      border: 1px dashed var(--line);
+      border-radius: var(--radius);
+      color: var(--muted);
+      text-align: center;
+    }
+
+    .order-layout {
+      display: grid;
+      grid-template-columns: 1.05fr .95fr;
+      align-items: start;
+      gap: 18px;
+      margin-top: 42px;
+    }
+
+    .panel {
+      padding: 24px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--surface);
+      box-shadow: 0 5px 18px rgba(45,40,32,.045);
+    }
+
+    .panel h2 {
+      margin: 0 0 7px;
+      font-size: 24px;
+    }
+
+    .panel-intro {
+      margin: 0 0 20px;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.5;
+    }
+
+    .cart-empty {
+      padding: 25px 12px;
+      border: 1px dashed var(--line);
+      border-radius: 13px;
+      color: var(--muted);
+      text-align: center;
+      line-height: 1.6;
+    }
+
+    .cart-item {
+      display: grid;
+      grid-template-columns: 62px 1fr auto;
+      align-items: center;
+      gap: 12px;
+      padding: 13px 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .cart-item:last-child { border-bottom: 0; }
+
+    .cart-item img {
+      width: 62px;
+      height: 62px;
+      padding: 4px;
+      border-radius: 10px;
+      background: #f0eee9;
+      object-fit: contain;
+    }
+
+    .cart-item h4 {
+      margin: 0 0 5px;
+      font-size: 14px;
+    }
+
+    .cart-item .unit-price {
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .quantity {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 8px;
+    }
+
+    .quantity button {
+      width: 27px;
+      height: 27px;
+      border: 1px solid var(--line);
+      border-radius: 50%;
+      background: #fff;
+      color: var(--ink);
+      font-weight: 800;
+    }
+
+    .quantity button:hover { border-color: var(--accent); }
+
+    .quantity span {
+      min-width: 15px;
+      text-align: center;
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .remove-btn {
+      padding: 5px;
+      border: 0;
+      background: transparent;
+      color: #9a5548;
+      font-size: 12px;
+    }
+
+    .cart-summary {
+      margin-top: 15px;
+      padding-top: 14px;
+      border-top: 1px solid var(--line);
+    }
+
+    .summary-row {
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      margin: 9px 0;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .summary-row.total {
+      margin-top: 14px;
+      padding-top: 13px;
+      border-top: 1px solid var(--line);
+      color: var(--ink);
+      font-size: 19px;
+      font-weight: 800;
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    .form-group { margin-bottom: 13px; }
+
+    .form-group.full { grid-column: 1 / -1; }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 7px;
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    textarea.field {
+      min-height: 95px;
+      resize: vertical;
+    }
+
+    .form-actions {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-top: 7px;
+    }
+
+    .form-actions .btn {
+      width: 100%;
+      border-radius: 12px;
+    }
+
+    .form-note {
+      margin: 13px 0 0;
+      color: var(--muted);
+      font-size: 11px;
+      line-height: 1.5;
+    }
+
+    .trust-strip {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin-top: 20px;
+    }
+
+    .trust-item {
+      padding: 16px;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      background: rgba(255,255,255,.65);
+      text-align: center;
+    }
+
+    .trust-item strong {
+      display: block;
+      margin-bottom: 5px;
+      font-size: 13px;
+    }
+
+    .trust-item span {
+      color: var(--muted);
+      font-size: 11px;
+    }
+
+    footer {
+      padding: 28px 10px 0;
+      color: var(--muted);
+      text-align: center;
+      font-size: 12px;
+      line-height: 1.7;
+    }
+
+    @media (max-width: 950px) {
+      .product-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+      .hero { padding: 30px; }
+    }
+
+    @media (max-width: 700px) {
+      .page { width: min(100% - 24px, 560px); padding-top: 12px; }
+      .hero { grid-template-columns: 1fr; padding: 25px 21px; gap: 8px; }
+      .hero-art { min-height: 150px; }
+      .hero-art img { max-height: 165px; }
+      .section-heading { align-items: start; flex-direction: column; }
+      .catalog-tools { grid-template-columns: 1fr; }
+      .product-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 11px; }
+      .product-card { padding: 10px; }
+      .product-image { height: 135px; }
+      .product-card h3 { font-size: 15px; }
+      .product-description { font-size: 12px; }
+      .price { font-size: 15px; }
+      .add-btn { padding: 0 10px; }
+      .order-layout { grid-template-columns: 1fr; margin-top: 30px; }
+      .panel { padding: 18px; }
+      .trust-strip { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 380px) {
+      .product-bottom { align-items: start; flex-direction: column; }
+      .add-btn { width: 100%; }
+      .form-grid { grid-template-columns: 1fr; }
+      .form-group.full { grid-column: auto; }
+      .form-actions { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+
+<body>
+  <main class="page">
+
+    <section class="hero">
+      <div>
+        <div class="eyebrow">JK Safety Vision · Order Desk</div>
+        <h1>Security solutions, made simple.</h1>
+        <p>
+          Explore CCTV cameras, recording systems and networking products.
+          Add items to your cart and send us your order inquiry.
+        </p>
+        <div class="hero-actions">
+          <a class="btn" href="#products">Explore Products</a>
+          <a class="btn secondary" href="#order">Place an Inquiry</a>
+        </div>
+      </div>
+
+      <div class="hero-art">
+        <img id="heroCamera" alt="CCTV camera illustration">
+        <img id="heroRecorder" alt="DVR recorder illustration">
+      </div>
+    </section>
+
+    <section id="products">
+      <div class="section-heading">
+        <div>
+          <h2>Explore Our Products</h2>
+          <p>Choose your products and add them to your order cart.</p>
+        </div>
+      </div>
+
+      <div class="catalog-tools">
+        <input class="field" id="searchInput" type="search"
+          placeholder="Search cameras, DVR, NVR, accessories...">
+        <select class="field" id="sortSelect" aria-label="Sort products">
+          <option value="default">Sort: Featured</option>
+          <option value="low">Price: Low to High</option>
+          <option value="high">Price: High to Low</option>
+          <option value="name">Name: A to Z</option>
+        </select>
+      </div>
+
+      <div class="category-list" id="categoryList">
+        <button class="category-btn active" data-category="All">All Products</button>
+        <button class="category-btn" data-category="Cameras">Cameras</button>
+        <button class="category-btn" data-category="Recording">DVR / NVR</button>
+        <button class="category-btn" data-category="Networking">Networking</button>
+        <button class="category-btn" data-category="Accessories">Accessories</button>
+      </div>
+
+      <div class="product-grid" id="productGrid"></div>
+    </section>
+
+    <section class="order-layout" id="order">
+      <div class="panel">
+        <h2>Your Cart <span id="cartCount">(0)</span></h2>
+        <p class="panel-intro">Review your selected products and quantities.</p>
+
+        <div id="cartItems">
+          <div class="cart-empty">Your cart is empty.<br>Explore products and add items to begin.</div>
+        </div>
+
+        <div class="cart-summary">
+          <div class="summary-row">
+            <span>Subtotal</span>
+            <strong id="subtotal">₹0</strong>
+          </div>
+          <div class="summary-row">
+            <span>GST (18%)</span>
+            <strong id="gst">₹0</strong>
+          </div>
+          <div class="summary-row total">
+            <span>Estimated Total</span>
+            <strong id="total">₹0</strong>
+          </div>
+          <p class="form-note">Final price, availability and GST will be confirmed by our team.</p>
+        </div>
+      </div>
+
+      <div class="panel">
+        <h2>Order Inquiry</h2>
+        <p class="panel-intro">Share your details. Our team can contact you to confirm the order.</p>
+
+        <form id="orderForm">
+          <div class="form-grid">
+            <div class="form-group">
+              <label for="customerName">Full Name *</label>
+              <input class="field" id="customerName" name="name" required
+                placeholder="Your name">
+            </div>
+
+            <div class="form-group">
+              <label for="customerPhone">Phone Number *</label>
+              <input class="field" id="customerPhone" name="phone" type="tel"
+                required pattern="[0-9+\-\s]{7,18}" placeholder="Your phone number">
+            </div>
+
+            <div class="form-group full">
+              <label for="customerEmail">Email Address</label>
+              <input class="field" id="customerEmail" name="email" type="email"
+                placeholder="Your email (optional)">
+            </div>
+
+            <div class="form-group full">
+              <label for="customerAddress">Location / Address</label>
+              <input class="field" id="customerAddress" name="address"
+                placeholder="Your city or delivery location">
+            </div>
+
+            <div class="form-group full">
+              <label for="customerMessage">Additional Requirements</label>
+              <textarea class="field" id="customerMessage" name="message"
+                placeholder="Tell us about your requirements..."></textarea>
+            </div>
+          </div>
+
+          <div class="form-actions">
+            <button class="btn" type="button" id="whatsappBtn">Send on WhatsApp</button>
+            <button class="btn secondary" type="button" id="emailBtn">Send by Email</button>
+          </div>
+
+          <p class="form-note">
+            WhatsApp opens a message for you to send. Email opens your email app.
+            No order is submitted until you send the message.
+          </p>
+        </form>
+      </div>
+    </section>
+
+    <section class="trust-strip" aria-label="Order information">
+      <div class="trust-item">
+        <strong>Product Inquiry</strong>
+        <span>Ask about availability and pricing</span>
+      </div>
+      <div class="trust-item">
+        <strong>Order Assistance</strong>
+        <span>Share your project requirements</span>
+      </div>
+      <div class="trust-item">
+        <strong>Customer Support</strong>
+        <span>Our team can help you choose</span>
+      </div>
+    </section>
+
+    <footer>
+      © <span id="year"></span> JK Safety Vision. All rights reserved.
+      <br>Product prices shown are indicative and subject to confirmation.
+    </footer>
+
+  </main>
+
+  <script>
+    // Self-contained product illustrations. No external image links required.
+    function productImage(type) {
+      const drawings = {
+        dome: `
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 300">
+            <defs>
+              <linearGradient id="metal" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0" stop-color="#f9f8f5"/>
+                <stop offset=".55" stop-color="#b9b6af"/>
+                <stop offset="1" stop-color="#77746e"/>
+              </linearGradient>
+              <linearGradient id="glass" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0" stop-color="#51565a"/>
+                <stop offset="1" stop-color="#151719"/>
+              </linearGradient>
+            </defs>
+            <ellipse cx="210" cy="255" rx="125" ry="16" fill="#000" opacity=".10"/>
+            <path d="M105 105 Q105 77 137 77 H283 Q315 77 315 105 V132 H105Z" fill="url(#metal)" stroke="#77746e" stroke-width="4"/>
+            <path d="M90 132 Q210 110 330 132 L309 185 Q210 220 111 185Z" fill="#d8d5ce" stroke="#77746e" stroke-width="4"/>
+            <path d="M112 164 Q210 128 308 164 Q300 238 210 245 Q120 238 112 164Z" fill="url(#glass)" stroke="#77746e" stroke-width="5"/>
+            <ellipse cx="210" cy="182" rx="40" ry="27" fill="#292e32" stroke="#a9a69f" stroke-width="5"/>
+            <circle cx="210" cy="182" r="17" fill="#121719"/>
+            <circle cx="204" cy="176" r="6" fill="#9caeb1" opacity=".7"/>
+            <path d="M140 148 Q210 125 280 148" fill="none" stroke="#fff" stroke-width="5" opacity=".35"/>
+          </svg>`,
+        bullet: `
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 300">
+            <defs>
+              <linearGradient id="body" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0" stop-color="#faf9f6"/>
+                <stop offset=".55" stop-color="#bcb9b1"/>
+                <stop offset="1" stop-color="#77746e"/>
+              </linearGradient>
+            </defs>
+            <ellipse cx="210" cy="250" rx="130" ry="15" fill="#000" opacity=".10"/>
+            <path d="M100 110 L145 75 L285 75 Q315 75 325 105 L325 170 Q315 195 285 195 H145 L100 160Z" fill="url(#body)" stroke="#77746e" stroke-width="5"/>
+            <path d="M325 105 L365 118 V153 L325 170Z" fill="#4a4c4d" stroke="#77746e" stroke-width="4"/>
+            <ellipse cx="355" cy="135" rx="18" ry="27" fill="#161a1c"/>
+            <circle cx="358" cy="135" r="12" fill="#52666c"/>
+            <circle cx="354" cy="130" r="4" fill="#dce5e5" opacity=".8"/>
+            <path d="M150 195 L145 220 L190 220 L202 193" fill="#a9a69f" stroke="#77746e" stroke-width="4"/>
+            <path d="M145 220 L130 235 H220 L202 220" fill="#77746e"/>
+            <path d="M130 105 Q210 88 295 103" fill="none" stroke="#fff" stroke-width="6" opacity=".4"/>
+          </svg>`,
+        recorder: `
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 300">
+            <defs>
+              <linearGradient id="box" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0" stop-color="#555653"/>
+                <stop offset="1" stop-color="#222321"/>
+              </linearGradient>
+            </defs>
+            <ellipse cx="210" cy="245" rx="145" ry="17" fill="#000" opacity=".12"/>
+            <path d="M65 105 Q65 95 80 95 H340 Q355 95 355 110 V207 Q355 220 340 220 H80 Q65 220 65 207Z" fill="url(#box)" stroke="#151615" stroke-width="5"/>
+            <path d="M80 110 H340" stroke="#777" stroke-width="2"/>
+            <circle cx="105" cy="160" r="9" fill="#b4a17e"/>
+            <circle cx="138" cy="160" r="5" fill="#7d9a83"/>
+            <rect x="175" y="145" width="105" height="28" rx="4" fill="#171918" stroke="#777" stroke-width="2"/>
+            <text x="227" y="164" font-size="13" fill="#c9c5bb" text-anchor="middle" font-family="Arial">RECORDER</text>
+            <path d="M95 220 V230 M325 220 V230" stroke="#333" stroke-width="8"/>
+          </svg>`,
+        switch: `
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 300">
+            <ellipse cx="210" cy="245" rx="135" ry="16" fill="#000" opacity=".10"/>
+            <path d="M80 100 L330 100 L350 125 L350 205 L100 205 L80 185Z" fill="#d1cec7" stroke="#77746e" stroke-width="5"/>
+            <path d="M100 115 H330 V190 H100Z" fill="#373a39"/>
+            <g fill="#c8c5bd">
+              <rect x="120" y="137" width="20" height="22" rx="3"/>
+              <rect x="150" y="137" width="20" height="22" rx="3"/>
+              <rect x="180" y="137" width="20" height="22" rx="3"/>
+              <rect x="210" y="137" width="20" height="22" rx="3"/>
+              <rect x="240" y="137" width="20" height="22" rx="3"/>
+              <rect x="270" y="137" width="20" height="22" rx="3"/>
+            </g>
+            <g fill="#8fa18c">
+              <circle cx="130" cy="174" r="4"/><circle cx="160" cy="174" r="4"/>
+              <circle cx="190" cy="174" r="4"/><circle cx="220" cy="174" r="4"/>
+              <circle cx="250" cy="174" r="4"/><circle cx="280" cy="174" r="4"/>
+            </g>
+            <path d="M110 205 V220 H320 V205" fill="#aaa69e" stroke="#77746e" stroke-width="3"/>
+          </svg>`,
+        accessory: `
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 300">
+            <ellipse cx="210" cy="245" rx="130" ry="16" fill="#000" opacity=".10"/>
+            <rect x="120" y="70" width="180" height="150" rx="18" fill="#d5d1c8" stroke="#77746e" stroke-width="5"/>
+            <rect x="140" y="90" width="140" height="110" rx="12" fill="#353735"/>
+            <circle cx="210" cy="145" r="35" fill="#77746e"/>
+            <circle cx="210" cy="145" r="22" fill="#202321"/>
+            <circle cx="203" cy="138" r="7" fill="#d9d8d2" opacity=".6"/>
+            <path d="M145 220 V232 M275 220 V232" stroke="#77746e" stroke-width="8"/>
+          </svg>`
+      };
+
+      const svg = drawings[type] || drawings.accessory;
+      return "data:image/svg+xml;charset=UTF-8," + encodeURIComponent(svg);
+    }
+
+    const products = [
+      {
+        id: 1, name: "Dome CCTV Camera", category: "Cameras",
+        description: "Indoor surveillance camera for homes and offices.",
+        price: 1800, image: "dome"
+      },
+      {
+        id: 2, name: "Bullet CCTV Camera", category: "Cameras",
+        description: "Outdoor camera design for perimeter monitoring.",
+        price: 2200, image: "bullet"
+      },
+      {
+        id: 3, name: "4 Channel DVR", category: "Recording",
+        description: "Digital video recorder for compatible CCTV systems.",
+        price: 4200, image: "recorder"
+      },
+      {
+        id: 4, name: "8 Channel DVR", category: "Recording",
+        description: "Recording solution for small and medium installations.",
+        price: 6500, image: "recorder"
+      },
+      {
+        id: 5, name: "16 Channel NVR", category: "Recording",
+        description: "Network video recording for IP camera systems.",
+        price: 12500, image: "recorder"
+      },
+      {
+        id: 6, name: "PoE Network Switch", category: "Networking",
+        description: "Network connectivity for compatible PoE devices.",
+        price: 3800, image: "switch"
+      },
+      {
+        id: 7, name: "CCTV Power Supply", category: "Accessories",
+        description: "Power accessory for compatible CCTV installations.",
+        price: 650, image: "accessory"
+      },
+      {
+        id: 8, name: "Camera Junction Box", category: "Accessories",
+        description: "Protective mounting accessory for camera wiring.",
+        price: 350, image: "accessory"
+      }
+    ];
+
+    const cart = {};
+    let activeCategory = "All";
+
+    const money = amount => "₹" + Number(amount).toLocaleString("en-IN");
+
+    function renderProducts() {
+      const search = document.getElementById("searchInput").value.trim().toLowerCase();
+      const sort = document.getElementById("sortSelect").value;
+
+      let visible = products.filter(product => {
+        const matchesCategory = activeCategory === "All" || product.category === activeCategory;
+        const matchesSearch = (
+          product.name + " " + product.category + " " + product.description
+        ).toLowerCase().includes(search);
+
+        return matchesCategory && matchesSearch;
+      });
+
+      if (sort === "low") visible.sort((a, b) => a.price - b.price);
+      if (sort === "high") visible.sort((a, b) => b.price - a.price);
+      if (sort === "name") visible.sort((a, b) => a.name.localeCompare(b.name));
+
+      const grid = document.getElementById("productGrid");
+
+      if (!visible.length) {
+        grid.innerHTML = '<div class="empty-state">No products found. Try another search or category.</div>';
+        return;
+      }
+
+      grid.innerHTML = visible.map(product => `
+        <article class="product-card">
+          <div class="product-image">
+            <img src="${productImage(product.image)}" alt="${product.name}">
+          </div>
+          <div class="product-category">${product.category}</div>
+          <h3>${product.name}</h3>
+          <p class="product-description">${product.description}</p>
+          <div class="product-bottom">
+            <div class="price">
+              ${money(product.price)}
+              <small>Indicative price</small>
+            </div>
+            <button class="add-btn" type="button" data-add="${product.id}">+ Add</button>
+          </div>
+        </article>
+      `).join("");
+    }
+
+    function addToCart(id) {
+      cart[id] = (cart[id] || 0) + 1;
+      renderCart();
+    }
+
+    function changeQuantity(id, change) {
+      if (!cart[id]) return;
+      cart[id] += change;
+      if (cart[id] <= 0) delete cart[id];
+      renderCart();
+    }
+
+    function renderCart() {
+      const cartItems = document.getElementById("cartItems");
+      const ids = Object.keys(cart).map(Number);
+      const count = ids.reduce((sum, id) => sum + cart[id], 0);
+
+      document.getElementById("cartCount").textContent = `(${count})`;
+
+      if (!ids.length) {
+        cartItems.innerHTML = '<div class="cart-empty">Your cart is empty.<br>Explore products and add items to begin.</div>';
+      } else {
+        cartItems.innerHTML = ids.map(id => {
+          const product = products.find(item => item.id === id);
+          const quantity = cart[id];
+
+          return `
+            <div class="cart-item">
+              <img src="${productImage(product.image)}" alt="${product.name}">
+              <div>
+                <h4>${product.name}</h4>
+                <div class="unit-price">${money(product.price)} each</div>
+                <div class="quantity">
+                  <button type="button" aria-label="Decrease quantity" data-change="${id}" data-step="-1">−</button>
+                  <span>${quantity}</span>
+                  <button type="button" aria-label="Increase quantity" data-change="${id}" data-step="1">+</button>
+                </div>
+              </div>
+              <div style="text-align:right">
+                <strong>${money(product.price * quantity)}</strong><br>
+                <button class="remove-btn" type="button" data-remove="${id}">Remove</button>
+              </div>
+            </div>
+          `;
+        }).join("");
+      }
+
+      const subtotal = ids.reduce((sum, id) => {
+        const product = products.find(item => item.id === id);
+        return sum + product.price * cart[id];
+      }, 0);
+
+      const gst = Math.round(subtotal * 0.18);
+
+      document.getElementById("subtotal").textContent = money(subtotal);
+      document.getElementById("gst").textContent = money(gst);
+      document.getElementById("total").textContent = money(subtotal + gst);
+    }
+
+    function getOrderMessage() {
+      const form = document.getElementById("orderForm");
+
+      if (!form.reportValidity()) return null;
+
+      const ids = Object.keys(cart).map(Number);
+      if (!ids.length) {
+        alert("Please add at least one product to your cart.");
+        return null;
+      }
+
+      const name = document.getElementById("customerName").value.trim();
+      const phone = document.getElementById("customerPhone").value.trim();
+      const email = document.getElementById("customerEmail").value.trim();
+      const address = document.getElementById("customerAddress").value.trim();
+      const note = document.getElementById("customerMessage").value.trim();
+
+      const lines = ids.map(id => {
+        const product = products.find(item => item.id === id);
+        return `• ${product.name} x ${cart[id]} = ${money(product.price * cart[id])}`;
+      });
+
+      const subtotal = ids.reduce((sum, id) => {
+        const product = products.find(item => item.id === id);
+        return sum + product.price * cart[id];
+      }, 0);
+
+      const gst = Math.round(subtotal * 0.18);
+
+      return [
+        "JK SAFETY VISION — ORDER INQUIRY",
+        "",
+        `Name: ${name}`,
+        `Phone: ${phone}`,
+        `Email: ${email || "Not provided"}`,
+        `Location: ${address || "Not provided"}`,
+        "",
+        "Products:",
+        ...lines,
+        "",
+        `Subtotal: ${money(subtotal)}`,
+        `Estimated GST (18%): ${money(gst)}`,
+        `Estimated Total: ${money(subtotal + gst)}`,
+        "",
+        `Additional Requirements: ${note || "None"}`,
+        "",
+        "Please confirm availability and final pricing."
+      ].join("\n");
+    }
+
+    document.getElementById("productGrid").addEventListener("click", event => {
+      const button = event.target.closest("[data-add]");
+      if (button) addToCart(Number(button.dataset.add));
+    });
+
+    document.getElementById("cartItems").addEventListener("click", event => {
+      const changeButton = event.target.closest("[data-change]");
+      const removeButton = event.target.closest("[data-remove]");
+
+      if (changeButton) {
+        changeQuantity(Number(changeButton.dataset.change), Number(changeButton.dataset.step));
+      }
+
+      if (removeButton) {
+        delete cart[Number(removeButton.dataset.remove)];
+        renderCart();
+      }
+    });
+
+    document.getElementById("categoryList").addEventListener("click", event => {
+      const button = event.target.closest("[data-category]");
+      if (!button) return;
+
+      activeCategory = button.dataset.category;
+
+      document.querySelectorAll(".category-btn").forEach(item => {
+        item.classList.toggle("active", item === button);
+      });
+
+      renderProducts();
+    });
+
+    document.getElementById("searchInput").addEventListener("input", renderProducts);
+    document.getElementById("sortSelect").addEventListener("change", renderProducts);
+
+    document.getElementById("whatsappBtn").addEventListener("click", () => {
+      const message = getOrderMessage();
+      if (!message) return;
+
+      window.open("https://wa.me/?text=" + encodeURIComponent(message), "_blank");
+    });
+
+    document.getElementById("emailBtn").addEventListener("click", () => {
+      const message = getOrderMessage();
+      if (!message) return;
+
+      const subject = encodeURIComponent("Order Inquiry - JK Safety Vision");
+      window.location.href = "mailto:?subject=" + subject + "&body=" + encodeURIComponent(message);
+    });
+
+    document.getElementById("heroCamera").src = productImage("bullet");
+    document.getElementById("heroRecorder").src = productImage("recorder");
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    renderProducts();
+    renderCart();
+  </script>
+</body>
+</html>

@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="style.css">
+<title>Contact | JK Safety Vision</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:Arial, Helvetica, sans-serif;
+    background:#ffffff;
+    color:#111111;
+    line-height:1.7;
+}
+
+a{
+    text-decoration:none;
+    color:inherit;
+}
+
+/* ================= NAVBAR ================= */
+
+.navbar{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:76px;
+    padding:0 6%;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    background:rgba(255,255,255,.82);
+    border-bottom:1px solid rgba(17,17,17,.08);
+    backdrop-filter:blur(18px);
+    -webkit-backdrop-filter:blur(18px);
+    box-shadow:0 8px 30px rgba(0,0,0,.07);
+    z-index:1000;
+}
+
+.nav-logo{
+    font-size:22px;
+    font-weight:800;
+    letter-spacing:1px;
+    color:#111111;
+}
+
+.nav-logo span{
+    color:#c99a20;
+    font-size:13px;
+    margin-left:5px;
+    letter-spacing:2px;
+}
+
+.nav-links{
+    display:flex;
+    gap:30px;
+}
+
+.nav-links a{
+    font-size:14px;
+    font-weight:600;
+    color:rgba(17,17,17,.78);
+    transition:.3s ease;
+}
+
+.nav-links a:hover,
+.nav-links a.active{
+    color:#b8860b;
+}
+
+/* ================= HERO ================= */
+
+.hero{
+    min-height:72vh;
+    padding:160px 8% 100px;
+    display:flex;
+    align-items:center;
+    position:relative;
+    overflow:hidden;
+
+    background:
+        radial-gradient(
+            circle at 82% 25%,
+            rgba(201,154,32,.10),
+            transparent 30%
+        ),
+        radial-gradient(
+            circle at 15% 75%,
+            rgba(201,154,32,.055),
+            transparent 35%
+        ),
+        #ffffff;
+}
+
+.hero::after{
+    content:"";
+    position:absolute;
+    width:600px;
+    height:600px;
+    border:1px solid rgba(201,154,32,.14);
+    border-radius:50%;
+    right:-260px;
+    top:80px;
+}
+
+.hero-content{
+    max-width:850px;
+    position:relative;
+    z-index:2;
+}
+
+.label{
+    color:#b8860b;
+    font-size:12px;
+    font-weight:700;
+    letter-spacing:4px;
+    text-transform:uppercase;
+    margin-bottom:20px;
+}
+
+.hero h1{
+    font-size:clamp(48px,7vw,88px);
+    line-height:1;
+    font-weight:800;
+    margin-bottom:28px;
+    color:#111111;
+}
+
+.hero h1 span{
+    color:#c99a20;
+}
+
+.hero p{
+    max-width:720px;
+    color:rgba(17,17,17,.65);
+    font-size:18px;
+    line-height:1.8;
+}
+
+/* ================= CONTACT ================= */
+
+.contact-section{
+    padding:100px 8%;
+    background:#f8f8f6;
+}
+
+.contact-grid{
+    max-width:1150px;
+    margin:auto;
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:60px;
+    align-items:start;
+}
+
+.contact-info h2{
+    font-size:clamp(36px,5vw,58px);
+    line-height:1.08;
+    margin-bottom:22px;
+    color:#111111;
+}
+
+.contact-info h2 span{
+    color:#c99a20;
+}
+
+.contact-info > p{
+    color:rgba(17,17,17,.65);
+    line-height:1.9;
+    margin-bottom:35px;
+}
+
+.contact-item{
+    padding:22px 0;
+    border-top:1px solid rgba(17,17,17,.10);
+}
+
+.contact-item:last-child{
+    border-bottom:1px solid rgba(17,17,17,.10);
+}
+
+.contact-label{
+    display:block;
+    color:#b8860b;
+    font-size:10px;
+    font-weight:700;
+    letter-spacing:2px;
+    margin-bottom:7px;
+}
+
+.contact-item a,
+.contact-item strong{
+    font-size:18px;
+    font-weight:500;
+    color:#111111;
+}
+
+.contact-item a:hover{
+    color:#b8860b;
+}
+
+/* ================= CONTACT PANEL ================= */
+
+.contact-panel{
+    padding:42px;
+    border:1px solid rgba(201,154,32,.30);
+    background:#ffffff;
+    box-shadow:0 15px 40px rgba(0,0,0,.06);
+}
+
+.contact-panel .label{
+    margin-bottom:12px;
+}
+
+.contact-panel h3{
+    font-size:32px;
+    line-height:1.2;
+    margin-bottom:18px;
+    color:#111111;
+}
+
+.contact-panel p{
+    color:rgba(17,17,17,.65);
+    font-size:15px;
+    line-height:1.8;
+    margin-bottom:28px;
+}
+
+.contact-button{
+    display:inline-block;
+    padding:15px 30px;
+    background:#c99a20;
+    color:#ffffff;
+    font-weight:800;
+    transition:.3s ease;
+}
+
+.contact-button:hover{
+    transform:translateY(-3px);
+    background:#b8860b;
+    box-shadow:0 12px 30px rgba(201,154,32,.22);
+}
+
+/* ================= FOOTER ================= */
+
+footer{
+    padding:45px 8%;
+    background:#050b14;
+    border-top:1px solid rgba(201,154,32,.22);
+}
+
+.footer-grid{
+    display:grid;
+    grid-template-columns:1.5fr 1fr 1fr;
+    gap:50px;
+}
+
+.footer-brand h3{
+    font-size:22px;
+    margin-bottom:12px;
+    color:#ffffff;
+}
+
+.footer-brand h3 span{
+    color:#c99a20;
+}
+
+.footer p,
+.footer a{
+    color:rgba(255,255,255,.60);
+    font-size:13px;
+}
+
+.footer-column h4{
+    margin-bottom:15px;
+    font-size:14px;
+    color:#ffffff;
+}
+
+.footer-column a{
+    display:block;
+    margin-bottom:8px;
+    transition:.3s;
+}
+
+.footer-column a:hover{
+    color:#c99a20;
+}
+
+.footer-bottom{
+    margin-top:35px;
+    padding-top:20px;
+    border-top:1px solid rgba(255,255,255,.08);
+    text-align:center;
+    color:rgba(255,255,255,.42);
+    font-size:11px;
+}
+
+/* ================= RESPONSIVE ================= */
+
+@media(max-width:800px){
+
+    .navbar{
+        padding:0 5%;
+    }
+
+    .nav-links{
+        display:none;
+    }
+
+    .hero{
+        padding:140px 7% 80px;
+    }
+
+    .contact-section{
+        padding:75px 7%;
+    }
+
+    .contact-grid{
+        grid-template-columns:1fr;
+        gap:45px;
+    }
+
+    .contact-panel{
+        padding:30px 25px;
+    }
+
+    .footer-grid{
+        grid-template-columns:1fr;
+        gap:30px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- ================= NAVBAR ================= -->
+
+<header class="navbar">
+
+    <div class="nav-logo">
+        JK <span>SAFETY VISION</span>
+    </div>
+
+    <nav class="nav-links">
+
+        <a href="index.html">Home</a>
+
+        <a href="services.html">Services</a>
+
+        <a href="solutions.html">Solutions</a>
+
+        <a href="industries.html">Industries</a>
+
+        <a href="brands.html">Brands</a>
+
+        <a href="about.html">About</a>
+
+        <a href="contact.html" class="active">Contact</a>
+
+    </nav>
+
+</header>
+
+
+<!-- ================= HERO ================= -->
+
+<section class="hero">
+
+    <div class="hero-content">
+
+        <div class="label">
+            JK Safety Vision
+        </div>
+
+        <h1>
+            Let's Talk About
+            <span>Your Security.</span>
+        </h1>
+
+        <p>
+            Have a security requirement, project, technology
+            requirement or simply need guidance? Connect with
+            JK Safety Vision and let's discuss the right approach
+            for your environment.
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- ================= CONTACT ================= -->
+
+<section class="contact-section">
+
+    <div class="contact-grid">
+
+        <div class="contact-info">
+
+            <div class="label">
+                Get In Touch
+            </div>
+
+            <h2>
+                Start a Conversation
+                <span>With Our Team.</span>
+            </h2>
+
+            <p>
+                Tell us what you are looking for. Whether it is
+                surveillance, access control, networking,
+                fire & alarm, infrastructure or an integrated
+                security requirement, we can discuss your needs.
+            </p>
+
+
+            <div class="contact-item">
+
+                <span class="contact-label">
+                    PHONE
+                </span>
+
+                <a href="tel:+919858351143">
+                    +91 98583 51143
+                </a>
+
+            </div>
+
+
+            <div class="contact-item">
+
+                <span class="contact-label">
+                    EMAIL
+                </span>
+
+                <a href="mailto:info@jksafetyvision.com">
+                    info@jksafetyvision.com
+                </a>
+
+            </div>
+
+
+            <div class="contact-item">
+
+                <span class="contact-label">
+                    LOCATION
+                </span>
+
+                <strong>
+                    Jammu & Kashmir, India
+                </strong>
+
+            </div>
+
+        </div>
+
+
+        <div class="contact-panel">
+
+            <div class="label">
+                Project Inquiry
+            </div>
+
+            <h3>
+                Have a Requirement?
+            </h3>
+
+            <p>
+                Contact our team with your project details,
+                required technology, site requirements or
+                product needs. We can discuss the next step
+                with you directly.
+            </p>
+
+            <a href="tel:+919858351143" class="contact-button">
+                Call Our Team
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= FOOTER ================= -->
+
+<footer>
+
+    <div class="footer-grid">
+
+        <div class="footer-brand">
+
+            <h3>
+                JK <span>SAFETY VISION</span>
+            </h3>
+
+            <p>
+                Security technology, infrastructure and
+                integrated solutions for modern environments.
+            </p>
+
+        </div>
+
+
+        <div class="footer-column">
+
+            <h4>Explore</h4>
+
+            <a href="index.html">Home</a>
+            <a href="services.html">Services</a>
+            <a href="solutions.html">Solutions</a>
+            <a href="industries.html">Industries</a>
+
+        </div>
+
+
+        <div class="footer-column">
+
+            <h4>Company</h4>
+
+            <a href="brands.html">Brands</a>
+            <a href="about.html">About</a>
+            <a href="contact.html">Contact</a>
+
+        </div>
+
+    </div>
+
+
+    <div class="footer-bottom">
+        ©️ 2026 JK Safety Vision. All Rights Reserved.
+    </div>
+
+</footer>
+
+</body>
+</html>
