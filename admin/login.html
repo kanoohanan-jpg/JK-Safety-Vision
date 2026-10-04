@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admin Login | JK Safety Vision</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Segoe UI", Arial, sans-serif;
+}
+
+body {
+    min-height: 100vh;
+    background: #f7f4ed;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    color: #17212b;
+}
+
+.login-wrapper {
+    width: 100%;
+    max-width: 1000px;
+    min-height: 580px;
+    background: #fff;
+    border-radius: 22px;
+    overflow: hidden;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    box-shadow: 0 25px 70px rgba(30, 35, 40, 0.12);
+}
+
+.login-brand {
+    background: linear-gradient(145deg, #222b35, #111820);
+    color: white;
+    padding: 55px 45px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+    overflow: hidden;
+}
+
+.login-brand::before {
+    content: "";
+    position: absolute;
+    width: 350px;
+    height: 350px;
+    border: 1px solid rgba(201,154,53,.25);
+    border-radius: 50%;
+    right: -150px;
+    bottom: -100px;
+}
+
+.logo {
+    color: #e5c477;
+    font-size: 25px;
+    font-weight: 800;
+    letter-spacing: 1px;
+}
+
+.brand-content {
+    position: relative;
+    z-index: 1;
+}
+
+.brand-content h1 {
+    font-size: 38px;
+    line-height: 1.25;
+    margin-bottom: 20px;
+}
+
+.brand-content h1 span {
+    color: #e5c477;
+}
+
+.brand-content p {
+    color: #c3c9ce;
+    line-height: 1.8;
+    font-size: 15px;
+}
+
+.brand-footer {
+    color: #929da6;
+    font-size: 12px;
+}
+
+.login-form-area {
+    padding: 65px 55px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.admin-label {
+    color: #ad812c;
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 2px;
+    margin-bottom: 12px;
+}
+
+.login-form-area h2 {
+    font-size: 32px;
+    margin-bottom: 10px;
+}
+
+.subtitle {
+    color: #78818a;
+    font-size: 14px;
+    margin-bottom: 35px;
+    line-height: 1.6;
+}
+
+.form-group {
+    margin-bottom: 22px;
+}
+
+label {
+    display: block;
+    font-size: 13px;
+    font-weight: 700;
+    margin-bottom: 9px;
+}
+
+input {
+    width: 100%;
+    padding: 15px;
+    border: 1px solid #e3e0d9;
+    border-radius: 10px;
+    background: #fcfbf8;
+    font-size: 14px;
+    outline: none;
+    transition: .3s;
+}
+
+input:focus {
+    border-color: #c99a35;
+    box-shadow: 0 0 0 3px rgba(201,154,53,.12);
+}
+
+.login-btn {
+    width: 100%;
+    padding: 16px;
+    border: none;
+    border-radius: 10px;
+    background: #c99a35;
+    color: white;
+    font-size: 15px;
+    font-weight: 700;
+    cursor: pointer;
+    margin-top: 8px;
+    transition: .3s;
+}
+
+.login-btn:hover {
+    background: #a77b24;
+    transform: translateY(-2px);
+}
+
+.security-note {
+    margin-top: 25px;
+    text-align: center;
+    font-size: 12px;
+    color: #89919a;
+}
+
+@media(max-width: 750px) {
+    .login-wrapper {
+        grid-template-columns: 1fr;
+    }
+
+    .login-brand {
+        min-height: 250px;
+        padding: 30px;
+    }
+
+    .brand-content h1 {
+        font-size: 27px;
+        margin-top: 40px;
+    }
+
+    .brand-footer {
+        margin-top: 35px;
+    }
+
+    .login-form-area {
+        padding: 40px 28px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="login-wrapper">
+
+    <div class="login-brand">
+        <div class="logo">JK SAFETY VISION</div>
+
+        <div class="brand-content">
+            <h1>Business<br><span>Control Center</span></h1>
+            <p>
+                Manage your products, inventory, customer orders
+                and website from one secure dashboard.
+            </p>
+        </div>
+
+        <div class="brand-footer">
+            © 2026 JK Safety Vision. All rights reserved.
+        </div>
+    </div>
+
+    <div class="login-form-area">
+
+        <div class="admin-label">ADMINISTRATION</div>
+
+        <h2>Welcome Back</h2>
+
+        <p class="subtitle">
+            Sign in to access your management dashboard.
+        </p>
+
+        <form id="loginForm">
+
+            <div class="form-group">
+                <label for="email">Admin Email</label>
+                <input
+                    type="email"
+                    id="email"
+                    placeholder="Enter admin email"
+                    required
+                >
+            </div>
+
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input
+                    type="password"
+                    id="password"
+                    placeholder="Enter your password"
+                    required
+                >
+            </div>
+
+            <button type="submit" class="login-btn">
+                Sign In to Dashboard →
+            </button>
+
+        </form>
+
+        <div class="security-note">
+            🔒 Authorized administrators only
+        </div>
+
+    </div>
+
+</div>
+
+<script>
+document.getElementById("loginForm").addEventListener("submit", function(e) {
+    e.preventDefault();
+    alert("Admin login will be activated after backend integration.");
+});
+</script>
+
+</body>
+</html>
