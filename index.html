@@ -1117,6 +1117,21 @@ body{overflow-x:hidden}
     right:auto;
   }
 }
+/* camera5 (photo background wali image) - soft round fade */
+.hero > .hero-visual img[src$="camera5.jpeg"]{
+  object-fit:contain !important;
+  -webkit-mask-image:radial-gradient(ellipse 70% 52% at 50% 40%,#000 42%,transparent 100%);
+  mask-image:radial-gradient(ellipse 70% 52% at 50% 40%,#000 42%,transparent 100%);
+  -webkit-mask-composite:source-over;
+  mask-composite:add;
+}
+
+@media(max-width:768px){
+  .hero > .hero-visual img[src$="camera5.jpeg"]{
+    -webkit-mask-image:radial-gradient(ellipse 75% 55% at 50% 42%,#000 42%,transparent 100%);
+    mask-image:radial-gradient(ellipse 75% 55% at 50% 42%,#000 42%,transparent 100%);
+  }
+}
 </style>
 </head>
 
