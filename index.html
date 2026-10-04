@@ -1096,6 +1096,27 @@ body{overflow-x:hidden}
     right:auto;
   }
 }
+/* HERO IMAGE - poori image dikhao, crop mat karo */
+.hero > .hero-visual{
+  width:38% !important;
+  top:6%;
+  bottom:6%;
+  right:4%;
+}
+.hero > .hero-visual img{
+  object-fit:contain !important;
+  object-position:center !important;
+}
+
+@media(max-width:768px){
+  .hero > .hero-visual{
+    width:100% !important;
+    height:220px;
+    top:auto;
+    bottom:auto;
+    right:auto;
+  }
+}
 </style>
 </head>
 
