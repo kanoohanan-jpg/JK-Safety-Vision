@@ -1876,3 +1876,13 @@ body {
     object-position: center;
   }
 }
+/* HERO CAMERA — FIX IMAGE VISIBILITY ONLY */
+#heroProductImage {
+  opacity: 1 !important;
+  visibility: visible !important;
+  filter: none !important;
+  mix-blend-mode: multiply !important;
+  object-fit: contain !important;
+  object-position: center !important;
+  background: transparent !important;
+}
