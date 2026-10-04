@@ -1162,6 +1162,87 @@ body{overflow-x:hidden}
   object-position: center !important;
   opacity: 1 !important;
 }
+/* =====================================
+   HERO SECTION — LAYOUT FIX
+   ===================================== */
+
+.hero{
+  display: grid !important;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) !important;
+  align-items: center !important;
+  gap: 24px !important;
+  min-height: 480px !important;
+  height: auto !important;
+  padding: 48px 5% !important;
+  overflow: hidden !important;
+  position: relative !important;
+  box-sizing: border-box !important;
+}
+
+.hero-copy{
+  position: relative !important;
+  z-index: 2 !important;
+  width: 100% !important;
+  max-width: 620px !important;
+  min-width: 0 !important;
+}
+
+.hero-visual{
+  position: relative !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 100% !important;
+  height: 100% !important;
+  min-height: 360px !important;
+  min-width: 0 !important;
+  overflow: hidden !important;
+  background: transparent !important;
+}
+
+.hero-visual img#heroProductImage{
+  display: block !important;
+  width: 100% !important;
+  height: 100% !important;
+  max-width: 560px !important;
+  max-height: 420px !important;
+  object-fit: contain !important;
+  object-position: center !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+  -webkit-mask-image: none !important;
+  mask-image: none !important;
+  mix-blend-mode: normal !important;
+}
+
+/* Keep the hero content above decorative layers */
+.hero-copy,
+.hero-visual{
+  z-index: 1 !important;
+}
+
+/* Mobile layout */
+@media (max-width: 768px){
+  .hero{
+    grid-template-columns: 1fr !important;
+    min-height: auto !important;
+    padding: 32px 20px !important;
+    gap: 12px !important;
+  }
+
+  .hero-copy{
+    max-width: 100% !important;
+  }
+
+  .hero-visual{
+    min-height: 260px !important;
+    height: 280px !important;
+  }
+
+  .hero-visual img#heroProductImage{
+    max-height: 280px !important;
+  }
+}
 </style>
 </head>
 
