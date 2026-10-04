@@ -1529,3 +1529,241 @@ body{overflow-x:hidden}
 
 <body>
 <div class="top-strip">
+  {id:4,name:"8 Channel DVR",brand:"Video Recorder",make:"Generic",category:"Recording",image:"recorder",price:6500,old:7400,discount:"12% OFF",rating:"4.5"},
+{id:5,name:"16 Channel NVR",brand:"Network Recorder",make:"Generic",category:"Recording",image:"recorder",price:12500,old:14000,discount:"11% OFF",rating:"4.6"},
+{id:6,name:"PoE Network Switch",brand:"Networking",make:"Generic",category:"Networking",image:"switch",price:3800,old:4500,discount:"15% OFF",rating:"4.3"},
+{id:7,name:"CCTV Power Supply",brand:"Power Accessory",make:"Generic",category:"Accessories",image:"accessory",price:650,old:800,discount:"19% OFF",rating:"4.2"},
+{id:8,name:"Camera Junction Box",brand:"Mounting Accessory",make:"Generic",category:"Accessories",image:"accessory",price:350,old:450,discount:"22% OFF",rating:"4.4"},
+{id:9,name:"CP Plus Dome Camera",brand:"CP PLUS",make:"CP PLUS",category:"Cameras",image:"dome",photo:"cpplus-dome",price:1900,old:2300,discount:"17% OFF",rating:"4.5"},
+{id:10,name:"CP Plus Bullet Camera",brand:"CP PLUS",make:"CP PLUS",category:"Cameras",image:"bullet",photo:"cpplus-bullet",price:2400,old:2900,discount:"17% OFF",rating:"4.6"},
+{id:11,name:"Hikvision Dome Camera",brand:"HIKVISION",make:"HIKVISION",category:"Cameras",image:"dome",photo:"hikvision-dome",price:2100,old:2600,discount:"19% OFF",rating:"4.6"},
+{id:12,name:"Hikvision Bullet Camera",brand:"HIKVISION",make:"HIKVISION",category:"Cameras",image:"bullet",photo:"hikvision-bullet",price:2600,old:3200,discount:"19% OFF",rating:"4.7"},
+{id:13,name:"Amcom Dome Camera",brand:"AMCOM",make:"AMCOM",category:"Cameras",image:"dome",photo:"amcom-dome",price:1600,old:2000,discount:"20% OFF",rating:"4.3"},
+{id:14,name:"Amcom Bullet Camera",brand:"AMCOM",make:"AMCOM",category:"Cameras",image:"bullet",photo:"amcom-bullet",price:2000,old:2500,discount:"20% OFF",rating:"4.4"},
+{id:15,name:"Prama Dome Camera",brand:"PRAMA",make:"PRAMA",category:"Cameras",image:"dome",photo:"prama-dome",price:1700,old:2100,discount:"19% OFF",rating:"4.4"},
+{id:16,name:"Prama Bullet Camera",brand:"PRAMA",make:"PRAMA",category:"Cameras",image:"bullet",photo:"prama-bullet",price:2200,old:2700,discount:"19% OFF",rating:"4.5"},
+{id:17,name:"CP Plus PTZ Camera",brand:"CP PLUS",make:"CP PLUS",category:"Cameras",image:"ptz",photo:"cpplus-ptz",price:8500,old:10500,discount:"19% OFF",rating:"4.5"},
+{id:18,name:"Hikvision PTZ Camera",brand:"HIKVISION",make:"HIKVISION",category:"Cameras",image:"ptz",photo:"hikvision-ptz",price:9800,old:12000,discount:"18% OFF",rating:"4.7"},
+{id:19,name:"CP Plus Wi-Fi Smart Camera",brand:"CP PLUS",make:"CP PLUS",category:"Cameras",image:"wifi",photo:"cpplus-wifi",price:2600,old:3200,discount:"19% OFF",rating:"4.4"},
+{id:20,name:"Hikvision Wi-Fi Camera",brand:"HIKVISION",make:"HIKVISION",category:"Cameras",image:"wifi",photo:"hikvision-wifi",price:2900,old:3500,discount:"17% OFF",rating:"4.6"},
+{id:21,name:"Amcom 2MP IP Camera",brand:"AMCOM",make:"AMCOM",category:"Cameras",image:"ip",photo:"amcom-ip",price:3200,old:3900,discount:"18% OFF",rating:"4.3"},
+{id:22,name:"Hikvision 4MP IP Camera",brand:"HIKVISION",make:"HIKVISION",category:"Cameras",image:"ip",photo:"hikvision-ip",price:4200,old:5100,discount:"18% OFF",rating:"4.7"},
+{id:23,name:"CP Plus 8 Channel DVR",brand:"CP PLUS",make:"CP PLUS",category:"Recording",image:"recorder",photo:"cpplus-dvr",price:6800,old:7900,discount:"14% OFF",rating:"4.5"},
+{id:24,name:"Hikvision 8 Channel NVR",brand:"HIKVISION",make:"HIKVISION",category:"Recording",image:"recorder",photo:"hikvision-nvr",price:9800,old:11500,discount:"15% OFF",rating:"4.6"},
+{id:25,name:"Surveillance Hard Disk 1TB",brand:"Storage",make:"Generic",category:"Storage",image:"hdd",price:3600,old:4200,discount:"14% OFF",rating:"4.5"},
+{id:26,name:"Surveillance Hard Disk 2TB",brand:"Storage",make:"Generic",category:"Storage",image:"hdd",price:5200,old:6100,discount:"15% OFF",rating:"4.6"},
+{id:27,name:"3+1 CCTV Cable (90 m)",brand:"Cabling",make:"Generic",category:"Accessories",image:"cable",price:1400,old:1700,discount:"18% OFF",rating:"4.4"},
+{id:28,name:"BNC & DC Connector Pack",brand:"Connectors",make:"Generic",category:"Accessories",image:"accessory",price:250,old:320,discount:"22% OFF",rating:"4.2"},
+{id:29,name:"Wireless Alarm System",brand:"Alarm",make:"Generic",category:"Alarm & Access",image:"alarm",price:2800,old:3400,discount:"18% OFF",rating:"4.3"},
+{id:30,name:"Biometric Access Control",brand:"Access Control",make:"Generic",category:"Alarm & Access",image:"alarm",price:5400,old:6500,discount:"17% OFF",rating:"4.4"}
+];
+
+let activeFilter="All",activeBrand="All",activeType="All",searchTerm="";
+let cart=[],wishlist=[];
+try{cart=JSON.parse(localStorage.getItem("jkSV_cart"))||[]}catch(e){cart=[]}
+try{wishlist=JSON.parse(localStorage.getItem("jkSV_wishlist"))||[]}catch(e){wishlist=[]}
+
+const formatPrice=value=>"₹"+Number(value).toLocaleString("en-IN");
+
+function updateCartCount(){
+ const count=cart.reduce((total,item)=>total+Number(item.quantity||0),0);
+ document.getElementById("cartCount").textContent=count;
+}
+function saveCart(){
+ try{localStorage.setItem("jkSV_cart",JSON.stringify(cart))}catch(e){}
+ updateCartCount();
+}
+function saveWishlist(){
+ try{localStorage.setItem("jkSV_wishlist",JSON.stringify(wishlist))}catch(e){}
+}
+function showToast(message){
+ const toast=document.getElementById("toast");
+ toast.textContent=message;toast.classList.add("show");
+ clearTimeout(showToast.timer);
+ showToast.timer=setTimeout(()=>toast.classList.remove("show"),2200);
+}
+function cardHTML(p){
+ const liked=wishlist.includes(p.id);
+ return `<article class="product-card">
+ <div class="product-image">
+ <span class="discount-badge">${p.discount}</span>
+ <button class="wish-btn${liked?" active":""}" type="button" aria-label="Add to wishlist" data-wish="${p.id}">${liked?"♥️":"♡"}</button>
+ <img src="${productImage(p.photo||p.image)}" alt="${p.name}" loading="lazy" onerror="imageFallback(this,'${p.image}')">
+ </div>
+ <div class="product-brand">${p.make!=="Generic"?p.make:p.brand}</div>
+ <h3>${p.name}</h3>
+ <div class="rating"><span class="rating-badge">${p.rating} ★</span></div>
+ <div class="price-row"><span class="current-price">${formatPrice(p.price)}</span><span class="old-price">${formatPrice(p.old)}</span></div>
+ <div class="product-note">Indicative price · Confirm before order</div>
+ <div class="product-actions">
+ <button class="add-cart" type="button" data-add="${p.id}">ADD TO CART</button>
+ <button class="quick-order" type="button" data-order="${p.id}" aria-label="View product details">↗️</button>
+ </div></article>`;
+}
+function renderRows(){
+ const rows={
+  rowDeals:products.filter(p=>parseInt(p.discount)>=19),
+  rowCameras:products.filter(p=>p.category==="Cameras"),
+  rowRecording:products.filter(p=>p.category==="Recording"||p.category==="Storage"),
+  rowAccess:products.filter(p=>p.category==="Accessories"||p.category==="Alarm & Access")
+ };
+ Object.keys(rows).forEach(id=>document.getElementById(id).innerHTML=rows[id].map(cardHTML).join(""));
+}
+const catTiles=[
+ ["Dome Cameras","dome","Cameras","dome"],["Bullet Cameras","bullet","Cameras","bullet"],
+ ["PTZ Cameras","ptz","Cameras","ptz"],["Wi-Fi Cameras","wifi","Cameras","wifi"],
+ ["IP Cameras","ip","Cameras","ip"],["DVR / NVR","recorder","Recording","All"],
+ ["Hard Disks","hdd","Storage","All"],["Networking","switch","Networking","All"],
+ ["Cables","cable","Accessories","All"],["Alarm & Access","alarm","Alarm & Access","All"]
+];
+document.getElementById("catStrip").innerHTML=catTiles.map(t=>
+ `<button class="cat-item" type="button" data-cat="${t[2]}" data-type="${t[3]}" data-label="${t[0]}"><span class="cat-circle"><img data-art="${t[1]}" alt="${t[0]}"></span>${t[0]}</button>`
+).join("");
+
+document.querySelectorAll("[data-art]").forEach(img=>setImage(img,img.dataset.art));
+const heroCamera = document.getElementById("heroProductImage");
+heroCamera.onerror = null;
+heroCamera.src = "./images/camera1.jpeg";
+heroCamera.alt = "CP PLUS Bullet Security Camera";
+document.getElementById("year").textContent=new Date().getFullYear();
+updateCartCount();
+
+function renderProducts(){
+ const sort=document.getElementById("sortSelect").value;
+ let list=products.filter(p=>{
+  const categoryMatch=activeFilter==="All"||p.category===activeFilter;
+  const brandMatch=activeBrand==="All"||p.make===activeBrand;
+  const typeMatch=activeType==="All"||p.image===activeType;
+  const searchMatch=(p.name+" "+p.brand+" "+p.make+" "+p.category).toLowerCase().includes(searchTerm);
+  const price=document.getElementById("priceSelect").value;
+  const priceMatch=price==="all"||(price==="u2"&&p.price<2000)||(price==="m"&&p.price>=2000&&p.price<=5000)||(price==="o5"&&p.price>5000);
+  const ratingMatch=Number(p.rating)>=Number(document.getElementById("ratingSelect").value);
+  return categoryMatch&&brandMatch&&typeMatch&&priceMatch&&ratingMatch&&searchMatch;
+ });
+ if(sort==="low")list.sort((a,b)=>a.price-b.price);
+ if(sort==="high")list.sort((a,b)=>b.price-a.price);
+ if(sort==="name")list.sort((a,b)=>a.name.localeCompare(b.name));
+ const grid=document.getElementById("productGrid");
+ grid.innerHTML=list.length?list.map(cardHTML).join(""):'<div class="no-products">No products found. Try another search, brand or category.</div>';
+}
+function setFilter(filter,type,label){
+ activeFilter=filter;activeType=type||"All";
+ document.getElementById("featuredTitle").textContent=label||"All Surveillance Products";
+ document.querySelectorAll("[data-filter]").forEach(btn=>btn.classList.toggle("active",btn.dataset.filter===filter));
+ renderProducts();
+}
+function setBrand(brand){
+ activeBrand=brand;
+ document.querySelectorAll("[data-brand]").forEach(btn=>btn.classList.toggle("active",btn.dataset.brand===brand));
+ renderProducts();
+}
+
+document.getElementById("catStrip").addEventListener("click",event=>{
+ const b=event.target.closest("[data-cat]");
+ if(b){setFilter(b.dataset.cat,b.dataset.type,b.dataset.type!=="All"?b.dataset.label:"");document.getElementById("featured").scrollIntoView({behavior:"smooth"})}
+});
+document.getElementById("brandPills").addEventListener("click",event=>{
+ const b=event.target.closest("[data-brand]");
+ if(b){setBrand(b.dataset.brand);document.getElementById("featured").scrollIntoView({behavior:"smooth"})}
+});
+document.getElementById("filterPills").addEventListener("click",event=>{
+ const b=event.target.closest("[data-filter]");if(b)setFilter(b.dataset.filter);
+});
+document.querySelectorAll("[data-brand-link]").forEach(link=>{
+ link.addEventListener("click",()=>setBrand(link.dataset.brandLink));
+});
+document.querySelectorAll("[data-category-link],[data-filter-link]").forEach(link=>{
+ link.addEventListener("click",()=>{
+  const category=link.dataset.categoryLink||link.dataset.filterLink;
+  if(category)setFilter(category);
+ });
+});
+
+document.addEventListener("click",event=>{
+ const add=event.target.closest("[data-add]");
+ const order=event.target.closest("[data-order]");
+ const wish=event.target.closest("[data-wish]");
+ if(add){
+  const p=products.find(item=>item.id===Number(add.dataset.add));
+  if(p){
+   const existing=cart.find(item=>Number(item.id)===p.id);
+   if(existing)existing.quantity=Number(existing.quantity||0)+1;
+   else cart.push({id:p.id,name:p.name,price:p.price,image:p.image,quantity:1});
+   saveCart();showToast(p.name+" added to cart!");
+  }
+ }
+ if(order){
+  const p=products.find(item=>item.id===Number(order.dataset.order));
+  if(p){
+   try{localStorage.setItem("jksv_selected_product",JSON.stringify(p))}catch(e){}
+   window.location.href="product.html?id="+p.id;
+  }
+ }
+ if(wish){
+  const id=Number(wish.dataset.wish),index=wishlist.indexOf(id);
+  if(index>-1)wishlist.splice(index,1);else wishlist.push(id);
+  const liked=wishlist.includes(id);
+  wish.classList.toggle("active",liked);wish.textContent=liked?"♥️":"♡";
+  saveWishlist();showToast(liked?"Added to wishlist":"Removed from wishlist");
+ }
+});
+
+document.getElementById("searchForm").addEventListener("submit",event=>{
+ event.preventDefault();
+ searchTerm=document.getElementById("searchInput").value.trim().toLowerCase();
+ renderProducts();document.getElementById("featured").scrollIntoView({behavior:"smooth"});
+});
+document.getElementById("searchInput").addEventListener("input",event=>{
+ searchTerm=event.target.value.trim().toLowerCase();renderProducts();
+});
+["sortSelect","priceSelect","ratingSelect"].forEach(id=>{
+ document.getElementById(id).addEventListener("change",renderProducts);
+});
+
+/* HERO SLIDER */
+const heroSlides=[
+  {tag:"Smart Security Shopping",title:"Protect what matters. Shop with confidence.",text:"Explore high quality security cameras, recording systems and accessories from trusted global brands.",img:"camera1.jpeg"},
+  {tag:"CP PLUS · HIKVISION · PRAMA · AMCOM",title:"Shop top CCTV brands in one store.",text:"Dome, bullet, PTZ, Wi-Fi and IP cameras.",img:"camera2.jpeg"},
+  {tag:"Complete Surveillance Setup",title:"Cameras, DVR, storage and cables.",text:"Everything you need for a full CCTV installation.",img:"camera3.jpeg"},
+  {tag:"Smart Monitoring",title:"Stay connected to what matters.",text:"Explore modern surveillance and monitoring solutions.",img:"camera4.jpeg"},
+  {tag:"Security for Every Space",title:"A safer space starts here.",text:"Discover practical security solutions for your home and business.",img:"camera5.jpeg"}
+];
+let heroIndex=0,heroTimer;
+function showHero(i){
+ heroIndex=i;const slide=heroSlides[i];
+ document.querySelector(".hero-visual").dataset.slide=String(i);
+ document.getElementById("heroTag").textContent=slide.tag;
+ document.getElementById("heroTitle").innerHTML=slide.title.replace(/\.$/,'<span class="hero-dot">.</span>');
+ document.getElementById("heroText").textContent=slide.text;
+ setImage(document.getElementById("heroProductImage"),slide.img);
+ document.querySelectorAll("#heroDots button").forEach((dot,n)=>dot.classList.toggle("active",n===i));
+}
+document.getElementById("heroDots").innerHTML=heroSlides.map((_,i)=>`<button type="button" aria-label="Slide ${i+1}" data-slide="${i}"></button>`).join("");
+document.getElementById("heroDots").addEventListener("click",event=>{
+ const dot=event.target.closest("[data-slide]");
+ if(dot){showHero(Number(dot.dataset.slide));clearInterval(heroTimer);heroTimer=setInterval(()=>showHero((heroIndex+1)%heroSlides.length),5000)}
+});
+heroTimer=setInterval(()=>showHero((heroIndex+1)%heroSlides.length),5000);
+showHero(0);
+
+/* CONTACT POPUP: only the Home page Contact Us link opens popup */
+const popup=document.getElementById("contactPopup");
+const closeButton=document.getElementById("contactClose");
+function openContactPopup(event){
+ event.preventDefault();popup.classList.add("show");popup.setAttribute("aria-hidden","false");
+}
+function closeContactPopup(){
+ popup.classList.remove("show");popup.setAttribute("aria-hidden","true");
+}
+document.querySelectorAll('a[href="contact.html"]').forEach(link=>{
+ link.addEventListener("click",openContactPopup);
+});
+closeButton.addEventListener("click",closeContactPopup);
+popup.addEventListener("click",event=>{if(event.target===popup)closeContactPopup()});
+document.addEventListener("keydown",event=>{if(event.key==="Escape")closeContactPopup()});
+
+renderRows();
+renderProducts();
+</script>
+</body>
+</html>
