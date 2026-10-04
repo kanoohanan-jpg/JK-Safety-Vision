@@ -996,6 +996,40 @@ body{overflow-x:hidden}
     mask-image:linear-gradient(to bottom,transparent 0,#000 25%);
   }
 }
+/* HERO IMAGE BACKGROUND FIX - blend image into banner */
+.hero > .hero-visual{
+  mix-blend-mode:multiply;   /* white image background hero mein ghul jayega */
+  background:none !important;
+}
+.hero > .hero-visual img{
+  mix-blend-mode:normal !important;
+  background:none !important;
+  object-fit:contain;
+  object-position:center;
+  -webkit-mask-image:
+    linear-gradient(to right,transparent 0,#000 26%),
+    linear-gradient(to bottom,transparent 0,#000 12%,#000 88%,transparent 100%);
+  -webkit-mask-composite:source-in;
+  mask-image:
+    linear-gradient(to right,transparent 0,#000 26%),
+    linear-gradient(to bottom,transparent 0,#000 12%,#000 88%,transparent 100%);
+  mask-composite:intersect;
+}
+
+/* gold corner ab image ke peeche rahega, product ke upar nahi */
+.hero::after{
+  z-index:0 !important;
+  clip-path:polygon(90% 0,100% 0,100% 100%,94% 100%,100% 62%,100% 10%) !important;
+}
+
+@media(max-width:768px){
+  .hero > .hero-visual img{
+    -webkit-mask-image:linear-gradient(to bottom,transparent 0,#000 22%,#000 90%,transparent 100%);
+    mask-image:linear-gradient(to bottom,transparent 0,#000 22%,#000 90%,transparent 100%);
+    -webkit-mask-composite:source-over;
+    mask-composite:add;
+  }
+}
 </style>
 </head>
 
