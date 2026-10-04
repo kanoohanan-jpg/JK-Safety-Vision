@@ -952,33 +952,44 @@
   const popup = document.getElementById("contactPopup");
   const closeButton = document.getElementById("contactClose");
 
-  function openPopup(event) {
+  function openContactPopup(event) {
     event.preventDefault();
     popup.classList.add("show");
     popup.setAttribute("aria-hidden", "false");
   }
 
-  function closePopup() {
+  function closeContactPopup() {
     popup.classList.remove("show");
     popup.setAttribute("aria-hidden", "true");
   }
 
-  // Deleted standalone pages now open the contact popup.
-  document.querySelectorAll('a[href="services.html"], a[href="contact.html"], a[href="about.html"], a[href="solutions.html"]')
-    .forEach(link => {
-      link.href = "#";
-      link.dataset.contactOpen = "true";
-      link.addEventListener("click", openPopup);
-    });
+  document.addEventListener("click", function(event) {
+    const link = event.target.closest("a");
+    if (!link) return;
 
-  closeButton.addEventListener("click", closePopup);
+    const href = (link.getAttribute("href") || "").toLowerCase();
+    const deletedPages = [
+      "services.html",
+      "contact.html",
+      "about.html",
+      "solutions.html",
+      "industries.html",
+      "brands.html"
+    ];
 
-  popup.addEventListener("click", event => {
-    if (event.target === popup) closePopup();
+    if (deletedPages.some(page => href.endsWith(page))) {
+      openContactPopup(event);
+    }
   });
 
-  document.addEventListener("keydown", event => {
-    if (event.key === "Escape") closePopup();
+  closeButton.addEventListener("click", closeContactPopup);
+
+  popup.addEventListener("click", function(event) {
+    if (event.target === popup) closeContactPopup();
+  });
+
+  document.addEventListener("keydown", function(event) {
+    if (event.key === "Escape") closeContactPopup();
   });
 })();
 </script>
