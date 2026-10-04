@@ -1416,3 +1416,145 @@ body {
         ),
         linear-gradient(135deg, #f5f1e8, #eee8dc);
 }
+/* =========================================
+   JK SAFETY VISION — BLUSH GOLD GLASS
+   Light theme override
+   ========================================= */
+
+:root {
+    --gold: #d6ad55;
+    --gold-light: #e8c978;
+    --gold-dark: #a87927;
+    --soft: #fff0ed;
+    --line: #f0d9d2;
+
+    --glass-white: rgba(255, 255, 255, .62);
+    --glass-border: rgba(255, 255, 255, .88);
+    --shadow: 0 14px 35px rgba(190, 130, 115, .12);
+}
+
+/* Overall light blush background */
+body {
+    background-color: #fff7f5;
+    background-image:
+        radial-gradient(ellipse at 12% 12%, rgba(255, 220, 215, .55), transparent 38%),
+        radial-gradient(ellipse at 88% 65%, rgba(255, 235, 210, .55), transparent 40%),
+        linear-gradient(135deg, #fff7f5, #fffaf0);
+}
+
+/* All main sections */
+.services,
+.industries,
+.about,
+.corporate-bottom {
+    background-color: #fff7f5;
+    background-image:
+        radial-gradient(circle at 15% 20%, rgba(255,255,255,.85), transparent 42%),
+        linear-gradient(135deg, #fff7f5, #fffaf0);
+}
+
+.solutions,
+.why-us {
+    background-color: #fce8e2;
+    background-image:
+        radial-gradient(circle at 85% 20%, rgba(255,255,255,.8), transparent 42%),
+        linear-gradient(135deg, #fff0ed, #fce8e2);
+}
+
+/* Navbar glass */
+.navbar {
+    background: rgba(255, 247, 245, .78);
+    border-bottom: 1px solid rgba(214, 173, 85, .25);
+    box-shadow: 0 8px 30px rgba(190, 130, 115, .10);
+}
+
+/* Glass cards */
+.service-card,
+.industry-card,
+.why-card,
+.solution-item {
+    background: rgba(255, 255, 255, .62);
+    border-color: rgba(214, 173, 85, .24);
+    box-shadow:
+        0 10px 28px rgba(190, 130, 115, .09),
+        inset 0 1px 0 rgba(255,255,255,.95);
+}
+
+.service-card:hover,
+.industry-card:hover,
+.why-card:hover,
+.solution-item:hover {
+    background: rgba(255, 255, 255, .82);
+    border-color: rgba(214, 173, 85, .55);
+    box-shadow: 0 15px 35px rgba(190, 130, 115, .15);
+}
+
+/* Gold details */
+.service-card,
+.why-card {
+    border-top-color: #d6ad55;
+}
+
+.industry-card {
+    border-bottom-color: #d6ad55;
+}
+
+/* Contact — soft champagne, not dark */
+.contact {
+    background:
+        radial-gradient(circle at 15% 20%, rgba(255,255,255,.55), transparent 38%),
+        linear-gradient(135deg, #f7dfbd, #fce8e2);
+}
+
+/* Contact cards */
+.contact-item {
+    background: rgba(255,255,255,.72);
+    border-color: rgba(214,173,85,.28);
+}
+
+/* Popup surfaces */
+.service-modal-box,
+.contact-popup-box {
+    background: rgba(255, 250, 247, .97);
+    border-color: rgba(214,173,85,.45);
+}
+
+.modal-item-card,
+.contact-popup-item {
+    background: #fff0ed;
+    border-color: #f0d9d2;
+}
+
+/* Corporate bottom */
+.corporate-bottom {
+    background-color: #fff7f5;
+}
+
+/* Footer — light blush glass */
+.footer {
+    background: linear-gradient(135deg, #fce8e2, #fff4e6);
+    color: var(--ink);
+    border-top: 1px solid rgba(214,173,85,.25);
+}
+
+.footer p,
+.footer-copy {
+    color: #756767;
+}
+
+.footer-logo span {
+    color: #a87927;
+}
+
+/* Soft gold buttons */
+.contact-action a,
+.contact-popup-call {
+    background: linear-gradient(135deg, #e8c978, #d6ad55);
+    color: #332817;
+}
+
+.contact-action a:hover,
+.contact-popup-call:hover {
+    background: #c99a35;
+    color: #fff;
+}
