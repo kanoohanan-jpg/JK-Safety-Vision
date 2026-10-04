@@ -888,5 +888,99 @@
     renderProducts();
   </script>
   <!-- Auto-push test -->
+   <!-- CONTACT POPUP: add this just before </body>, after the existing <script> -->
+<style>
+  .contact-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 500;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 18px;
+    background: rgba(25,23,20,.65);
+    backdrop-filter: blur(5px);
+  }
+  .contact-overlay.show { display: flex; }
+  .contact-popup {
+    position: relative;
+    width: min(420px,100%);
+    padding: 30px 24px;
+    border: 1px solid var(--line);
+    border-radius: 18px;
+    background: var(--bg);
+    box-shadow: 0 20px 60px rgba(0,0,0,.25);
+    text-align: center;
+  }
+  .contact-popup h2 { margin: 0 0 8px; color: var(--ink); font-size: 23px; }
+  .contact-popup p { margin: 0 0 22px; color: var(--muted); font-size: 13px; line-height: 1.6; }
+  .contact-popup .contact-name { margin-bottom: 20px; color: var(--gold-dark); font-size: 13px; font-weight: 800; }
+  .contact-popup-actions { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  .contact-popup-actions a {
+    display: flex; align-items: center; justify-content: center;
+    min-height: 46px; padding: 10px; border-radius: 9px;
+    color: white; font-size: 12px; font-weight: 800;
+  }
+  .contact-call { background: var(--dark); }
+  .contact-whatsapp { background: #218b57; }
+  .contact-close {
+    position: absolute; top: 10px; right: 12px; width: 32px; height: 32px;
+    border: 0; border-radius: 50%; background: var(--soft);
+    color: var(--ink); font-size: 20px;
+  }
+  @media(max-width:380px) {
+    .contact-popup-actions { grid-template-columns: 1fr; }
+  }
+</style>
+
+<div class="contact-overlay" id="contactPopup" aria-hidden="true">
+  <div class="contact-popup" role="dialog" aria-modal="true" aria-labelledby="contactPopupTitle">
+    <button class="contact-close" id="contactClose" type="button" aria-label="Close">×</button>
+    <span class="section-kicker">JK Safety Vision</span>
+    <h2 id="contactPopupTitle">How can we help you?</h2>
+    <p>Product details, quotation, installation ya order assistance ke liye humse contact karein.</p>
+    <div class="contact-name">Amir Nisar · 98583 51143</div>
+    <div class="contact-popup-actions">
+      <a class="contact-call" href="tel:+919858351143">☎ Call Now</a>
+      <a class="contact-whatsapp" href="https://wa.me/919858351143" target="_blank" rel="noopener">WhatsApp</a>
+    </div>
+  </div>
+</div>
+
+<script>
+(() => {
+  const popup = document.getElementById("contactPopup");
+  const closeButton = document.getElementById("contactClose");
+
+  function openPopup(event) {
+    event.preventDefault();
+    popup.classList.add("show");
+    popup.setAttribute("aria-hidden", "false");
+  }
+
+  function closePopup() {
+    popup.classList.remove("show");
+    popup.setAttribute("aria-hidden", "true");
+  }
+
+  // Deleted standalone pages now open the contact popup.
+  document.querySelectorAll('a[href="services.html"], a[href="contact.html"], a[href="about.html"], a[href="solutions.html"]')
+    .forEach(link => {
+      link.href = "#";
+      link.dataset.contactOpen = "true";
+      link.addEventListener("click", openPopup);
+    });
+
+  closeButton.addEventListener("click", closePopup);
+
+  popup.addEventListener("click", event => {
+    if (event.target === popup) closePopup();
+  });
+
+  document.addEventListener("keydown", event => {
+    if (event.key === "Escape") closePopup();
+  });
+})();
+</script>
 </body>
 </html>
