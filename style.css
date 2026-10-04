@@ -1845,3 +1845,34 @@ body {
     height:320px;
   }
 }
+/* HERO CAMERA — SAFE ALIGNMENT & BLENDING FIX */
+.hero-visual {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+#heroProductImage {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center;
+  margin: 0;
+  background: transparent;
+  mix-blend-mode: multiply;
+}
+
+/* Mobile: keep the camera centered */
+@media (max-width: 768px) {
+  .hero-visual {
+    justify-content: center;
+    align-items: center;
+  }
+
+  #heroProductImage {
+    object-fit: contain;
+    object-position: center;
+  }
+}
