@@ -1,6 +1,6 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-
+from backend.database import initialize_database
 app = FastAPI(
     title="JK Safety Vision API",
     description="Backend system for JK Safety Vision",
