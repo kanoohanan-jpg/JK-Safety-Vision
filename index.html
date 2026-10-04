@@ -956,6 +956,16 @@ body{overflow-x:hidden}
   .benefits .benefit small{font-size:10px !important}
   .benefits .benefit::before{display:none !important}
 }
+/* HERO IMAGE SIZE FIX */
+.hero{min-height:440px !important}
+.hero > .hero-copy{min-height:440px;max-width:54%}
+.hero > .hero-visual{width:48%}
+
+@media(max-width:768px){
+  .hero{min-height:0 !important}
+  .hero > .hero-copy{max-width:100%;min-height:0}
+  .hero > .hero-visual{width:100%;height:210px}
+}
 </style>
 </head>
 
