@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="Product details from JK Safety Vision - CCTV, recorders, networking and accessories.">
 <title>Product Details | JK Safety Vision</title>
+
 <style>
 :root{--gold:#c99a35;--gold-light:#e5c477;--gold-dark:#9e7421;--ink:#17212b;--muted:#65717d;--white:#ffffff;--soft:#f7f8fa;--line:#e8e9eb;--dark:#101923;--shadow:0 18px 45px rgba(20,30,40,.09);--glass-white:rgba(255,252,245,.68);--glass-border:rgba(255,255,255,.8);--glass-blur:blur(18px) saturate(160%)}
 *{box-sizing:border-box;margin:0;padding:0}
@@ -74,8 +75,8 @@ footer p{color:rgba(255,255,255,.65);font-size:11px;margin-top:9px}
 @media(prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
 </style>
 </head>
-<body>
 
+<body>
 <header>
   <a class="logo" href="index.html">JK SAFETY <span>VISION</span></a>
   <div class="header-right">
@@ -149,136 +150,185 @@ footer p{color:rgba(255,255,255,.65);font-size:11px;margin-top:9px}
 
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
-<script src="products.js?v=2"></script>
+<script src="products.js?v=3"></script>
 <script>
 (function(){
 "use strict";
 
 const CART_KEY = "jkSV_cart";
 const MAX_QTY = 99;
-const products = window.PRODUCTS || [];
+const products = Array.isArray(window.PRODUCTS) ? window.PRODUCTS : [];
 const $ = id => document.getElementById(id);
 
 const productId = new URLSearchParams(window.location.search).get("id");
+
 const product = window.getJKSVProductById
   ? window.getJKSVProductById(productId)
   : products.find(item => String(item.id) === String(productId));
 
-const money = v => "₹" + Number(v).toLocaleString("en-IN");
-const stars = r => {
-  const n = Math.max(0, Math.min(5, Math.round(Number(r))));
+const money = value => "₹" + Number(value || 0).toLocaleString("en-IN");
+
+const stars = rating => {
+  const n = Math.max(0, Math.min(5, Math.round(Number(rating) || 0)));
   return "★".repeat(n) + "☆".repeat(5 - n);
 };
 
 function readCart(){
   try{
-    const d = JSON.parse(localStorage.getItem(CART_KEY));
-    return Array.isArray(d) ? d : [];
-  }catch(e){ return []; }
+    const data = JSON.parse(localStorage.getItem(CART_KEY));
+    return Array.isArray(data) ? data : [];
+  }catch(error){
+    return [];
+  }
 }
+
 function writeCart(cart){
-  try{ localStorage.setItem(CART_KEY, JSON.stringify(cart)); return true; }
-  catch(e){ return false; }
+  try{
+    localStorage.setItem(CART_KEY, JSON.stringify(cart));
+    return true;
+  }catch(error){
+    return false;
+  }
 }
+
 function updateCartCount(){
-  $("cartCount").textContent = readCart().reduce((s, i) => s + (Number(i.quantity) || 0), 0);
+  $("cartCount").textContent = readCart().reduce(
+    (sum, item) => sum + (Number(item.quantity) || 0), 0
+  );
 }
 
 let toastTimer;
-function showToast(msg){
-  const t = $("toast");
-  t.textContent = msg;
-  t.classList.add("show");
+
+function showToast(message){
+  const toast = $("toast");
+  toast.textContent = message;
+  toast.classList.add("show");
   clearTimeout(toastTimer);
-  toastTimer = setTimeout(() => t.classList.remove("show"), 2600);
+  toastTimer = setTimeout(() => toast.classList.remove("show"), 2600);
 }
 
 function addSpec(grid, label, value){
   const item = document.createElement("div");
   item.className = "spec-item";
-  const s = document.createElement("strong");
-  s.textContent = label;
-  const v = document.createElement("span");
-  v.textContent = value;
-  item.append(s, v);
+
+  const title = document.createElement("strong");
+  title.textContent = label;
+
+  const detail = document.createElement("span");
+  detail.textContent = value;
+
+  item.append(title, detail);
   grid.appendChild(item);
 }
 
 function renderProduct(){
-  const maker = product.make && product.make !== "Generic" ? product.make : product.brand;
+  const maker = product.make && product.make !== "Generic"
+    ? product.make
+    : product.brand;
 
   document.title = product.name + " | JK Safety Vision";
   $("productName").textContent = product.name;
-  $("productBrand").textContent = maker;
-  $("productCategory").textContent = product.category;
+  $("productBrand").textContent = maker || "";
+  $("productCategory").textContent = product.category || "Security Product";
 
   const rating = $("productRating");
   rating.textContent = stars(product.rating) + " ";
-  const note = document.createElement("span");
-  note.textContent = product.rating + " / 5 (sample listing)";
-  rating.appendChild(note);
+
+  const ratingNote = document.createElement("span");
+  ratingNote.textContent = (Number(product.rating) || 0) + " / 5 (sample listing)";
+  rating.appendChild(ratingNote);
 
   const price = $("productPrice");
   price.textContent = money(product.price);
-  if(product.old > product.price){
-    const old = document.createElement("span");
-    old.className = "old-price";
-    old.textContent = money(product.old);
-    price.appendChild(old);
 
-    const badge = document.createElement("span");
-    badge.className = "discount";
-    badge.textContent = Math.round((1 - product.price / product.old) * 100) + "% OFF";
-    price.appendChild(badge);
+  if(Number(product.old) > Number(product.price)){
+    const oldPrice = document.createElement("span");
+    oldPrice.className = "old-price";
+    oldPrice.textContent = money(product.old);
+    price.appendChild(oldPrice);
+
+    const discount = document.createElement("span");
+    discount.className = "discount";
+    discount.textContent = Math.round(
+      (1 - Number(product.price) / Number(product.old)) * 100
+    ) + "% OFF";
+    price.appendChild(discount);
   }
 
-  const img = $("productImage");
-  img.alt = product.name;
-  const tries = [];
-  if(product.photo) tries.push("images/" + product.photo + ".jpg");
-  tries.push("images/" + product.image + ".jpg");
-  let step = 0;
-  img.onerror = function(){
-    step++;
-    if(step < tries.length){
-      img.src = tries[step];
-    }else{
-      img.onerror = null;
-      img.src = "data:image/svg+xml;utf8," + encodeURIComponent(
-        '<svg xmlns="http://www.w3.org/2000/svg" width="400" height="300" viewBox="0 0 400 300"><rect width="400" height="300" fill="#f7f8fa"/><text x="200" y="155" text-anchor="middle" font-family="Arial" font-size="16" font-weight="700" fill="#9e7421">Image not available</text></svg>'
-      );
+  const image = $("productImage");
+  image.alt = product.name;
+
+  const imageNames = [];
+  if(product.photo) imageNames.push(product.photo);
+  if(product.image && product.image !== product.photo) imageNames.push(product.image);
+
+  let imageIndex = 0;
+
+  image.onerror = function(){
+    imageIndex++;
+
+    if(imageIndex < imageNames.length){
+      image.src = "images/" + imageNames[imageIndex] + ".jpg";
+      return;
     }
+
+    image.onerror = null;
+    image.src = "data:image/svg+xml;utf8," + encodeURIComponent(
+      '<svg xmlns="http://www.w3.org/2000/svg" width="400" height="300" viewBox="0 0 400 300"><rect width="400" height="300" fill="#f7f8fa"/><text x="200" y="155" text-anchor="middle" font-family="Arial" font-size="16" font-weight="700" fill="#9e7421">Image not available</text></svg>'
+    );
   };
-  img.src = tries[0];
+
+  if(imageNames.length){
+    image.src = "images/" + imageNames[0] + ".jpg";
+  }else{
+    image.onerror();
+  }
 
   const grid = $("specifications");
   grid.textContent = "";
+
   addSpec(grid, "PRODUCT", product.name);
-  addSpec(grid, "CATEGORY", product.category);
-  addSpec(grid, "BRAND / TYPE", maker);
+  addSpec(grid, "CATEGORY", product.category || "Not specified");
+  addSpec(grid, "BRAND / TYPE", maker || "To be confirmed");
   addSpec(grid, "LISTED PRICE", money(product.price));
-  addSpec(grid, "RATING", product.rating + " / 5 (sample listing)");
-  addSpec(grid, "TECHNICAL DETAILS", "Confirm exact model specifications with our team.");
+  addSpec(grid, "RATING", (Number(product.rating) || 0) + " / 5 (sample listing)");
+
+  if(product.specs && typeof product.specs === "object"){
+    Object.entries(product.specs).forEach(([label, value]) => {
+      addSpec(grid, label, String(value));
+    });
+  }else{
+    addSpec(grid, "TECHNICAL DETAILS", "Confirm exact model specifications with our team.");
+  }
 }
 
 function renderNotFound(){
   document.title = "Product not found | JK Safety Vision";
+
   const box = document.createElement("div");
   box.className = "not-found";
-  const h = document.createElement("h2");
-  h.textContent = "Product not found.";
-  const a = document.createElement("a");
-  a.href = "index.html";
-  a.textContent = "Return to Home";
-  box.append(h, a);
+
+  const heading = document.createElement("h2");
+  heading.textContent = "Product not found.";
+
+  const message = document.createElement("p");
+  message.textContent = "This product may have been moved or is unavailable.";
+
+  const link = document.createElement("a");
+  link.href = "index.html";
+  link.textContent = "Return to Home";
+
+  box.append(heading, message, link);
   $("productLayout").replaceChildren(box);
+
   $("specSection").style.display = "none";
   $("reviewSection").style.display = "none";
 }
 
 let quantity = 1;
-function setQuantity(v){
-  quantity = Math.max(1, Math.min(MAX_QTY, v));
+
+function setQuantity(value){
+  quantity = Math.max(1, Math.min(MAX_QTY, Number(value) || 1));
   $("qtyValue").textContent = quantity;
 }
 
@@ -286,13 +336,26 @@ function addSelectedProduct(goToCart){
   if(!product) return;
 
   const cart = readCart();
-  const existing = cart.find(i => String(i.id) === String(product.id)
+
+  // FIX: Compare IDs as strings so number/text IDs both work.
+  const existing = cart.find(item =>
+    String(item.id) === String(product.id)
+  );
 
   if(existing){
-    existing.quantity = Math.min(MAX_QTY, (Number(existing.quantity) || 0) + quantity);
+    existing.quantity = Math.min(
+      MAX_QTY,
+      (Number(existing.quantity) || 0) + quantity
+    );
     existing.price = product.price;
   }else{
-    cart.push({id:product.id, name:product.name, price:product.price, image:product.image, quantity:quantity});
+    cart.push({
+      id: product.id,
+      name: product.name,
+      price: product.price,
+      image: product.image || product.photo || "",
+      quantity: quantity
+    });
   }
 
   if(!writeCart(cart)){
@@ -316,6 +379,7 @@ updateCartCount();
 if(product){
   renderProduct();
   setQuantity(1);
+
   $("qtyMinus").addEventListener("click", () => setQuantity(quantity - 1));
   $("qtyPlus").addEventListener("click", () => setQuantity(quantity + 1));
   $("addToCart").addEventListener("click", () => addSelectedProduct(false));
@@ -324,16 +388,19 @@ if(product){
   renderNotFound();
 }
 
-window.addEventListener("storage", e => { if(e.key === CART_KEY) updateCartCount(); });
-window.addEventListener("pageshow", e => {
-  if(e.persisted){
+window.addEventListener("storage", event => {
+  if(event.key === CART_KEY) updateCartCount();
+});
+
+window.addEventListener("pageshow", event => {
+  if(event.persisted){
     updateCartCount();
-    $("buyNow").disabled = false;
-    $("addToCart").disabled = false;
+    if($("buyNow")) $("buyNow").disabled = false;
+    if($("addToCart")) $("addToCart").disabled = false;
   }
 });
+
 })();
 </script>
-
 </body>
 </html>
