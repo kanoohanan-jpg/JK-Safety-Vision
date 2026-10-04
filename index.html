@@ -1152,6 +1152,48 @@ body{overflow-x:hidden}
   -webkit-mask-composite:source-over !important;
   mask-composite:add !important;
 }
+/* ===== HERO CAMERA IMAGE: SEAMLESS BLENDING ONLY ===== */
+.hero > .hero-visual{
+  display:flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+  overflow:visible !important;
+}
+
+.hero > .hero-visual img{
+  width:100% !important;
+  height:100% !important;
+  max-width:100% !important;
+  max-height:100% !important;
+  object-fit:contain !important;
+  object-position:center !important;
+
+  /* White image background ko hero background ke saath blend karega */
+  mix-blend-mode:multiply !important;
+
+  /* Image ke edges ko softly fade karega */
+  -webkit-mask-image:radial-gradient(
+    ellipse 88% 82% at 50% 50%,
+    #000 65%,
+    transparent 100%
+  ) !important;
+  mask-image:radial-gradient(
+    ellipse 88% 82% at 50% 50%,
+    #000 65%,
+    transparent 100%
+  ) !important;
+
+  filter:none !important;
+}
+
+/* Mobile par bhi image blending same rahegi */
+@media(max-width:768px){
+  .hero > .hero-visual img{
+    width:100% !important;
+    height:100% !important;
+    object-fit:contain !important;
+  }
+}
 </style>
 </head>
 
