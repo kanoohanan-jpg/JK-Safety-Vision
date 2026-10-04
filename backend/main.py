@@ -1,4 +1,5 @@
 from fastapi import FastAPI
+app.include_router(uploads_router)
 from fastapi.middleware.cors import CORSMiddleware
 from backend.database import initialize_database
 app = FastAPI(
