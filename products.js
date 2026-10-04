@@ -1,125 +1,45 @@
 /* JK Safety Vision — Shared Product Catalogue
-   Product IDs are matched flexibly with homepage product IDs.
+   IDs match the 30 products in index.html.
+   Specifications and prices are indicative; confirm exact model before sale.
 */
 
 window.PRODUCTS = [
-  {
-    id: "11",
-    name: "Hikvision 2MP Dome Camera",
-    brand: "Hikvision",
-    make: "Hikvision",
-    category: "Dome Camera",
-    price: 1850,
-    old: 2200,
-    rating: 4.5,
-    photo: "hikvision-2mp-dome",
-    image: "hikvision-2mp-dome",
-    description: "2MP indoor dome surveillance camera. Confirm exact model and specifications before ordering.",
-    specs: {
-      Resolution: "2MP",
-      Type: "Indoor Dome",
-      Brand: "Hikvision"
-    }
-  },
-  {
-    id: "cp-plus-2mp-bullet",
-    name: "CP PLUS 2MP Bullet Camera",
-    brand: "CP PLUS",
-    make: "CP PLUS",
-    category: "Bullet Camera",
-    price: 1650,
-    old: 2000,
-    rating: 4.4,
-    photo: "cp-plus-2mp-bullet",
-    image: "cp-plus-2mp-bullet",
-    description: "2MP bullet-style surveillance camera. Confirm exact model and specifications before ordering.",
-    specs: {
-      Resolution: "2MP",
-      Type: "Bullet",
-      Brand: "CP PLUS"
-    }
-  },
-  {
-    id: "hikvision-4ch-dvr",
-    name: "Hikvision 4 Channel DVR",
-    brand: "Hikvision",
-    make: "Hikvision",
-    category: "DVR",
-    price: 4500,
-    old: 5200,
-    rating: 4.5,
-    photo: "hikvision-4ch-dvr",
-    image: "hikvision-4ch-dvr",
-    description: "4-channel DVR recorder. Confirm compatibility and exact model before ordering.",
-    specs: {
-      Channels: "4",
-      Type: "DVR Recorder",
-      Brand: "Hikvision"
-    }
-  },
-  {
-    id: "cp-plus-8ch-dvr",
-    name: "CP PLUS 8 Channel DVR",
-    brand: "CP PLUS",
-    make: "CP PLUS",
-    category: "DVR",
-    price: 6500,
-    old: 7500,
-    rating: 4.4,
-    photo: "cp-plus-8ch-dvr",
-    image: "cp-plus-8ch-dvr",
-    description: "8-channel DVR recorder. Confirm compatibility and exact model before ordering.",
-    specs: {
-      Channels: "8",
-      Type: "DVR Recorder",
-      Brand: "CP PLUS"
-    }
-  }
+  {id:"1",name:"Dome CCTV Camera",brand:"Security Camera",make:"Generic",category:"Cameras",image:"dome",photo:"dome",price:1800,old:2200,rating:4.5,description:"Indoor dome-style CCTV camera. Confirm exact model and specifications before ordering.",specs:{Type:"Dome CCTV Camera",Brand:"Generic",Resolution:"To be confirmed"}},
+  {id:"2",name:"Bullet CCTV Camera",brand:"Outdoor Surveillance",make:"Generic",category:"Cameras",image:"bullet",photo:"bullet",price:2200,old:2700,rating:4.6,description:"Bullet-style CCTV camera for outdoor surveillance. Confirm weather rating and exact model before ordering.",specs:{Type:"Bullet CCTV Camera",Brand:"Generic",Resolution:"To be confirmed"}},
+  {id:"3",name:"4 Channel DVR",brand:"Video Recorder",make:"Generic",category:"Recording",image:"recorder",photo:"recorder",price:4200,old:4800,rating:4.4,description:"4-channel DVR recorder. Confirm camera compatibility and exact model before ordering.",specs:{Channels:"4",Type:"DVR Recorder",Brand:"Generic"}},
+  {id:"4",name:"8 Channel DVR",brand:"Video Recorder",make:"Generic",category:"Recording",image:"recorder",photo:"recorder",price:6500,old:7400,rating:4.5,description:"8-channel DVR recorder. Confirm camera compatibility and exact model before ordering.",specs:{Channels:"8",Type:"DVR Recorder",Brand:"Generic"}},
+  {id:"5",name:"16 Channel NVR",brand:"Network Recorder",make:"Generic",category:"Recording",image:"recorder",photo:"recorder",price:12500,old:14000,rating:4.6,description:"16-channel NVR recorder. Confirm IP camera compatibility and exact model before ordering.",specs:{Channels:"16",Type:"NVR Recorder",Brand:"Generic"}},
+  {id:"6",name:"PoE Network Switch",brand:"Networking",make:"Generic",category:"Networking",image:"switch",photo:"switch",price:3800,old:4500,rating:4.3,description:"PoE network switch for compatible network devices. Confirm port count and power budget before ordering.",specs:{Type:"PoE Network Switch",Brand:"Generic",Ports:"To be confirmed"}},
+  {id:"7",name:"CCTV Power Supply",brand:"Power Accessory",make:"Generic",category:"Accessories",image:"accessory",photo:"accessory",price:650,old:800,rating:4.2,description:"Power supply accessory for CCTV installations. Confirm voltage and output rating before ordering.",specs:{Type:"CCTV Power Supply",Brand:"Generic",Output:"To be confirmed"}},
+  {id:"8",name:"Camera Junction Box",brand:"Mounting Accessory",make:"Generic",category:"Accessories",image:"accessory",photo:"accessory",price:350,old:450,rating:4.4,description:"Junction box for camera mounting and cable protection. Confirm size and compatibility before ordering.",specs:{Type:"Camera Junction Box",Brand:"Generic",Compatibility:"To be confirmed"}},
+  {id:"9",name:"CP Plus Dome Camera",brand:"CP PLUS",make:"CP PLUS",category:"Cameras",image:"dome",photo:"cpplus-dome",price:1900,old:2300,rating:4.5,description:"CP PLUS dome-style CCTV camera. Confirm exact model, resolution and specifications before ordering.",specs:{Type:"Dome Camera",Brand:"CP PLUS",Resolution:"To be confirmed"}},
+  {id:"10",name:"CP Plus Bullet Camera",brand:"CP PLUS",make:"CP PLUS",category:"Cameras",image:"bullet",photo:"cpplus-bullet",price:2400,old:2900,rating:4.6,description:"CP PLUS bullet-style CCTV camera. Confirm exact model, resolution and specifications before ordering.",specs:{Type:"Bullet Camera",Brand:"CP PLUS",Resolution:"To be confirmed"}},
+  {id:"11",name:"Hikvision Dome Camera",brand:"HIKVISION",make:"HIKVISION",category:"Cameras",image:"dome",photo:"hikvision-dome",price:2100,old:2600,rating:4.6,description:"Hikvision dome-style CCTV camera. Confirm exact model, resolution and specifications before ordering.",specs:{Type:"Dome Camera",Brand:"HIKVISION",Resolution:"To be confirmed"}},
+  {id:"12",name:"Hikvision Bullet Camera",brand:"HIKVISION",make:"HIKVISION",category:"Cameras",image:"bullet",photo:"hikvision-bullet",price:2600,old:3200,rating:4.7,description:"Hikvision bullet-style CCTV camera. Confirm exact model, resolution and specifications before ordering.",specs:{Type:"Bullet Camera",Brand:"HIKVISION",Resolution:"To be confirmed"}},
+  {id:"13",name:"Amcom Dome Camera",brand:"AMCOM",make:"AMCOM",category:"Cameras",image:"dome",photo:"amcom-dome",price:1600,old:2000,rating:4.3,description:"AMCOM dome-style CCTV camera. Confirm exact model, resolution and specifications before ordering.",specs:{Type:"Dome Camera",Brand:"AMCOM",Resolution:"To be confirmed"}},
+  {id:"14",name:"Amcom Bullet Camera",brand:"AMCOM",make:"AMCOM",category:"Cameras",image:"bullet",photo:"amcom-bullet",price:2000,old:2500,rating:4.4,description:"AMCOM bullet-style CCTV camera. Confirm exact model, resolution and specifications before ordering.",specs:{Type:"Bullet Camera",Brand:"AMCOM",Resolution:"To be confirmed"}},
+  {id:"15",name:"Prama Dome Camera",brand:"PRAMA",make:"PRAMA",category:"Cameras",image:"dome",photo:"prama-dome",price:1700,old:2100,rating:4.4,description:"PRAMA dome-style CCTV camera. Confirm exact model, resolution and specifications before ordering.",specs:{Type:"Dome Camera",Brand:"PRAMA",Resolution:"To be confirmed"}},
+  {id:"16",name:"Prama Bullet Camera",brand:"PRAMA",make:"PRAMA",category:"Cameras",image:"bullet",photo:"prama-bullet",price:2200,old:2700,rating:4.5,description:"PRAMA bullet-style CCTV camera. Confirm exact model, resolution and specifications before ordering.",specs:{Type:"Bullet Camera",Brand:"PRAMA",Resolution:"To be confirmed"}},
+  {id:"17",name:"CP Plus PTZ Camera",brand:"CP PLUS",make:"CP PLUS",category:"Cameras",image:"ptz",photo:"cpplus-ptz",price:8500,old:10500,rating:4.5,description:"CP PLUS PTZ camera. Confirm optical zoom, resolution and exact model before ordering.",specs:{Type:"PTZ Camera",Brand:"CP PLUS",Resolution:"To be confirmed",Zoom:"To be confirmed"}},
+  {id:"18",name:"Hikvision PTZ Camera",brand:"HIKVISION",make:"HIKVISION",category:"Cameras",image:"ptz",photo:"hikvision-ptz",price:9800,old:12000,rating:4.7,description:"Hikvision PTZ camera. Confirm optical zoom, resolution and exact model before ordering.",specs:{Type:"PTZ Camera",Brand:"HIKVISION",Resolution:"To be confirmed",Zoom:"To be confirmed"}},
+  {id:"19",name:"CP Plus Wi-Fi Smart Camera",brand:"CP PLUS",make:"CP PLUS",category:"Cameras",image:"wifi",photo:"cpplus-wifi",price:2600,old:3200,rating:4.4,description:"CP PLUS Wi-Fi smart camera. Confirm resolution, app support and exact model before ordering.",specs:{Type:"Wi-Fi Camera",Brand:"CP PLUS",Resolution:"To be confirmed"}},
+  {id:"20",name:"Hikvision Wi-Fi Camera",brand:"HIKVISION",make:"HIKVISION",category:"Cameras",image:"wifi",photo:"hikvision-wifi",price:2900,old:3500,rating:4.6,description:"Hikvision Wi-Fi camera. Confirm resolution, app support and exact model before ordering.",specs:{Type:"Wi-Fi Camera",Brand:"HIKVISION",Resolution:"To be confirmed"}},
+  {id:"21",name:"Amcom 2MP IP Camera",brand:"AMCOM",make:"AMCOM",category:"Cameras",image:"ip",photo:"amcom-ip",price:3200,old:3900,rating:4.3,description:"AMCOM 2MP IP camera. Confirm exact model and compatibility before ordering.",specs:{Type:"IP Camera",Brand:"AMCOM",Resolution:"2MP"}},
+  {id:"22",name:"Hikvision 4MP IP Camera",brand:"HIKVISION",make:"HIKVISION",category:"Cameras",image:"ip",photo:"hikvision-ip",price:4200,old:5100,rating:4.7,description:"Hikvision 4MP IP camera. Confirm exact model and compatibility before ordering.",specs:{Type:"IP Camera",Brand:"HIKVISION",Resolution:"4MP"}},
+  {id:"23",name:"CP Plus 8 Channel DVR",brand:"CP PLUS",make:"CP PLUS",category:"Recording",image:"recorder",photo:"cpplus-dvr",price:6800,old:7900,rating:4.5,description:"CP PLUS 8-channel DVR recorder. Confirm supported camera formats and exact model before ordering.",specs:{Channels:"8",Type:"DVR Recorder",Brand:"CP PLUS"}},
+  {id:"24",name:"Hikvision 8 Channel NVR",brand:"HIKVISION",make:"HIKVISION",category:"Recording",image:"recorder",photo:"hikvision-nvr",price:9800,old:11500,rating:4.6,description:"Hikvision 8-channel NVR recorder. Confirm IP camera compatibility and exact model before ordering.",specs:{Channels:"8",Type:"NVR Recorder",Brand:"HIKVISION"}},
+  {id:"25",name:"Surveillance Hard Disk 1TB",brand:"Storage",make:"Generic",category:"Storage",image:"hdd",photo:"hdd",price:3600,old:4200,rating:4.5,description:"1TB surveillance hard disk. Confirm recorder compatibility and exact model before ordering.",specs:{Capacity:"1TB",Type:"Surveillance Hard Disk",Brand:"To be confirmed"}},
+  {id:"26",name:"Surveillance Hard Disk 2TB",brand:"Storage",make:"Generic",category:"Storage",image:"hdd",photo:"hdd",price:5200,old:6100,rating:4.6,description:"2TB surveillance hard disk. Confirm recorder compatibility and exact model before ordering.",specs:{Capacity:"2TB",Type:"Surveillance Hard Disk",Brand:"To be confirmed"}},
+  {id:"27",name:"3+1 CCTV Cable (90 m)",brand:"Cabling",make:"Generic",category:"Accessories",image:"cable",photo:"cable",price:1400,old:1700,rating:4.4,description:"3+1 CCTV cable, 90-metre pack. Confirm conductor and cable specifications before ordering.",specs:{Type:"3+1 CCTV Cable",Length:"90 m",Brand:"To be confirmed"}},
+  {id:"28",name:"BNC & DC Connector Pack",brand:"Connectors",make:"Generic",category:"Accessories",image:"accessory",photo:"accessory",price:250,old:320,rating:4.2,description:"BNC and DC connector pack for compatible CCTV installations. Confirm pack quantity before ordering.",specs:{Type:"BNC & DC Connectors",Brand:"Generic",Quantity:"To be confirmed"}},
+  {id:"29",name:"Wireless Alarm System",brand:"Alarm",make:"Generic",category:"Alarm & Access",image:"alarm",photo:"alarm",price:2800,old:3400,rating:4.3,description:"Wireless alarm system. Confirm included sensors, connectivity and exact model before ordering.",specs:{Type:"Wireless Alarm System",Brand:"To be confirmed"}},
+  {id:"30",name:"Biometric Access Control",brand:"Access Control",make:"Generic",category:"Alarm & Access",image:"alarm",photo:"alarm",price:5400,old:6500,rating:4.4,description:"Biometric access control system. Confirm supported credentials, capacity and exact model before ordering.",specs:{Type:"Biometric Access Control",Brand:"To be confirmed"}}
 ];
 
-/* Flexible product lookup for product.html */
+/* Find a product using the ID passed from the homepage */
 window.getJKSVProductById = function (requestedId) {
-  const products = Array.isArray(window.PRODUCTS) ? window.PRODUCTS : [];
-
-  const normalize = function (value) {
-    return String(value ?? "")
-      .trim()
-      .toLowerCase()
-      .replace(/[^a-z0-9]/g, "");
-  };
-
-  const wanted = normalize(requestedId);
-
-  if (!wanted) return null;
-
-  // First: exact ID match
-  let product = products.find(function (item) {
-    return normalize(item.id) === wanted;
-  });
-
-  if (product) return product;
-
-  // Next: match by product name, photo, or image identifier
-  product = products.find(function (item) {
-    return [
-      item.name,
-      item.photo,
-      item.image
-    ].some(function (value) {
-      return normalize(value) === wanted;
-    });
-  });
-
-  if (product) return product;
-
-  // Last: support numeric homepage IDs matching the catalogue order
-  if (/^\d+$/.test(String(requestedId).trim())) {
-    const numericId = Number(requestedId);
-
-    product = products.find(function (item, index) {
-      return Number(item.id) === numericId || index + 1 === numericId;
-    });
-  }
-
-  return product || null;
+  const wanted = String(requestedId ?? "").trim();
+  return window.PRODUCTS.find(function (product) {
+    return String(product.id) === wanted;
+  }) || null;
 };
