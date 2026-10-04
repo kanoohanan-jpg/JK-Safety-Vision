@@ -2,7 +2,7 @@
 
 window.PRODUCTS = [
   {
-    id: "hikvision-2mp-dome",
+    id: "11",
     name: "Hikvision 2MP Dome Camera",
     brand: "Hikvision",
     make: "Hikvision",
