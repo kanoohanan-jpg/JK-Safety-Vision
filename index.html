@@ -916,8 +916,10 @@ function imageFallback(img,type){
  else img.onerror=null;
 }
 function setImage(img,type){
- img.onerror=()=>imageFallback(img,type);
- img.src=productImage(type);
+  img.onerror=()=>imageFallback(img,type);
+  img.src=type.startsWith("camera") 
+    ? "images/"+type 
+    : productImage(type);
 }
 
 const products=[
