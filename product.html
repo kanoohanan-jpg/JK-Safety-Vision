@@ -286,7 +286,7 @@ function addSelectedProduct(goToCart){
   if(!product) return;
 
   const cart = readCart();
-  const existing = cart.find(i => Number(i.id) === product.id);
+  const existing = cart.find(i => String(i.id) === String(product.id)
 
   if(existing){
     existing.quantity = Math.min(MAX_QTY, (Number(existing.quantity) || 0) + quantity);
