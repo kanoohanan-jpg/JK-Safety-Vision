@@ -160,7 +160,7 @@ const products = window.PRODUCTS || [];
 const $ = id => document.getElementById(id);
 
 const productId = new URLSearchParams(window.location.search).get("id");
-const product = products.find(item => item.id === productId);
+const product = products.find(item => String(item.id) === String(productId));
 
 const money = v => "₹" + Number(v).toLocaleString("en-IN");
 const stars = r => {
