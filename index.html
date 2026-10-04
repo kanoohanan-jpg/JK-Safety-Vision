@@ -1132,6 +1132,26 @@ body{overflow-x:hidden}
     mask-image:radial-gradient(ellipse 75% 55% at 50% 42%,#000 42%,transparent 100%);
   }
 }
+/* image ka dabba = image ka asli size, taaki fade photo ke kinaaron par lage */
+.hero > .hero-visual{
+  display:flex !important;
+  align-items:center;
+  justify-content:center;
+}
+.hero > .hero-visual img{
+  width:auto !important;
+  height:auto !important;
+  max-width:100% !important;
+  max-height:100% !important;
+}
+
+/* camera5: photo ke kinaare gol fade */
+.hero > .hero-visual img[src*="camera5"]{
+  -webkit-mask-image:radial-gradient(ellipse at 50% 45%,#000 38%,transparent 70%) !important;
+  mask-image:radial-gradient(ellipse at 50% 45%,#000 38%,transparent 70%) !important;
+  -webkit-mask-composite:source-over !important;
+  mask-composite:add !important;
+}
 </style>
 </head>
 
