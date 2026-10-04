@@ -45,3 +45,48 @@ def get_products():
         "status": "success",
         "products": products
     }
+from pydantic import BaseModel
+
+class ProductCreate(BaseModel):
+    name: str
+    model: str = ""
+    brand: str = ""
+    category: str = ""
+    description: str = ""
+    cost_price: float = 0
+    selling_price: float = 0
+    discount_price: float = 0
+    stock: int = 0
+
+
+@app.post("/api/products")
+def create_product(product: ProductCreate):
+    from backend.database import get_connection
+
+    connection = get_connection()
+    cursor = connection.cursor()
+
+    cursor.execute(
+        """
+        INSERT INTO products
+        (name, model, brand, category, description,
+         cost_price, selling_price, discount_price, stock)
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
+        """,
+        (
+            product.name, product.model, product.brand,
+            product.category, product.description,
+            product.cost_price, product.selling_price,
+            product.discount_price, product.stock
+        )
+    )
+
+    connection.commit()
+    product_id = cursor.lastrowid
+    connection.close()
+
+    return {
+        "status": "success",
+        "message": "Product created successfully",
+        "product_id": product_id
+    }
