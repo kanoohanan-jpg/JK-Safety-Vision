@@ -1152,7 +1152,16 @@ body{overflow-x:hidden}
   -webkit-mask-composite:source-over !important;
   mask-composite:add !important;
 }
-
+/* FIX: 5th hero slide blank/faded na dikhe */
+.hero > .hero-visual img[src*="camera5"]{
+  -webkit-mask-image: none !important;
+  mask-image: none !important;
+  -webkit-mask-composite: initial !important;
+  mask-composite: initial !important;
+  object-fit: contain !important;
+  object-position: center !important;
+  opacity: 1 !important;
+}
 </style>
 </head>
 
