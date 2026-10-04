@@ -3,6 +3,7 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from backend.database import initialize_database
 from backend.uploads import router as uploads_router
+from backend.uploads import router as uploads_router
 app = FastAPI(
     title="JK Safety Vision API",
     description="Backend system for JK Safety Vision",
