@@ -882,6 +882,80 @@ body{background:var(--bg);color:var(--ink)}
     );
   }
 }
+
+/* =========================================
+   NEW HERO BANNER + FEATURES STRIP (matches reference image)
+========================================= */
+body{overflow-x:hidden}
+.hero{display:block !important;position:relative;isolation:isolate;overflow:hidden;
+  width:100vw;margin:22px 0 0 calc(50% - 50vw) !important;min-height:520px;
+  border:0 !important;border-radius:0 !important;box-shadow:none !important;
+  background:linear-gradient(110deg,#fbfaf8 0%,#f4f3f0 45%,#e8ecef 80%,#dde3e8 100%) !important}
+.hero::before{display:block !important;content:"";position:absolute;inset:0;z-index:0;pointer-events:none;
+  background:
+    linear-gradient(135deg,transparent 0 50%,rgba(255,255,255,.55) 50% 62%,transparent 62%),
+    linear-gradient(45deg,transparent 0 3%,rgba(255,255,255,.6) 3% 9%,transparent 9%)}
+.hero::after{display:block !important;content:"";position:absolute;inset:0;z-index:2;pointer-events:none;
+  background:linear-gradient(135deg,#d9a840,#b8791a);
+  clip-path:polygon(88% 0,100% 0,100% 100%,92% 100%,100% 54%,100% 12%)}
+.hero > .hero-visual{position:absolute;top:0;right:0;bottom:0;width:62%;height:auto;min-height:0;
+  padding:0;border-radius:0;z-index:1;display:block;background:none}
+.hero > .hero-visual img{width:100%;height:100%;object-fit:cover;object-position:right center;
+  border-radius:0;mix-blend-mode:multiply;filter:none;
+  -webkit-mask-image:linear-gradient(to right,transparent 0,#000 32%);
+  mask-image:linear-gradient(to right,transparent 0,#000 32%)}
+.hero > .hero-copy{position:relative;z-index:3;max-width:58%;min-height:520px;
+  align-items:flex-start;justify-content:center;
+  padding:70px 0 70px max(22px,calc((100vw - 1280px)/2))}
+.hero-tag{border:0 !important;background:none !important;padding:0 !important;display:flex;align-items:center;gap:12px;
+  color:#b8791a !important;font-size:12px !important;letter-spacing:3px !important}
+.hero-tag::before{content:"";width:30px;height:2px;background:#b8791a}
+.hero h1{color:#0b1530 !important;font-weight:800;font-size:clamp(36px,5vw,68px) !important;
+  letter-spacing:-2px !important;line-height:1.04 !important;max-width:640px}
+.hero h1 .hero-dot{color:#b8791a}
+.hero p{color:#7b8290 !important;font-size:clamp(14px,1.5vw,18px) !important;max-width:560px !important;line-height:1.6 !important}
+.hero-buttons .btn{min-height:52px;padding:0 28px;border-radius:8px;font-size:15px;
+  background:linear-gradient(180deg,#b8791a,#9f6610);border-color:#a96d12;color:#fff}
+.hero-buttons .btn:hover{background:#8f5a0d;border-color:#8f5a0d}
+.hero-buttons .btn.btn-outline{background:transparent;border-color:#b8791a;color:#a96d12}
+.hero-buttons .btn.btn-outline:hover{background:#b8791a;color:#fff}
+.hero-dots button{background:#cfd3da !important}
+.hero-dots button.active{background:#b8791a !important}
+
+.benefits{width:100vw;margin:0 0 34px calc(50% - 50vw) !important;gap:0 !important;
+  background:#fffdfa;border:0;border-bottom:1px solid #eee8de;border-radius:0;box-shadow:none;
+  padding:26px max(22px,calc((100vw - 1280px)/2))}
+.benefits .benefit{border:0 !important;border-radius:0 !important;box-shadow:none !important;
+  background:transparent !important;padding:6px 24px !important;gap:16px !important;position:relative}
+.benefits .benefit:first-child{padding-left:0 !important}
+.benefits .benefit + .benefit::before{content:"";position:absolute;left:0;top:12%;height:76%;width:1px;background:#ece7df}
+.benefits .benefit-icon{width:58px !important;height:58px !important;flex:0 0 58px !important;
+  border-radius:50% !important;background:#fbf0dd !important}
+.benefits .benefit-icon svg{width:26px;height:26px;stroke:#b8791a;fill:none;stroke-width:1.8;
+  stroke-linecap:round;stroke-linejoin:round}
+.benefits .benefit strong{font-size:15px !important;color:#0b1530}
+.benefits .benefit small{font-size:12.5px !important;color:#7b8290;margin-top:3px !important}
+
+@media(max-width:1000px){
+  .benefits{grid-template-columns:repeat(2,1fr) !important;row-gap:6px}
+  .benefits .benefit:nth-child(3)::before{display:none}
+  .benefits .benefit:nth-child(3){padding-left:0 !important}
+}
+@media(max-width:768px){
+  .hero{display:flex !important;flex-direction:column;min-height:0}
+  .hero > .hero-copy{order:1;max-width:100%;min-height:0;padding:34px 22px 8px}
+  .hero > .hero-visual{position:relative;order:2;width:100%;height:270px}
+  .hero > .hero-visual img{-webkit-mask-image:linear-gradient(to bottom,transparent 0,#000 28%);
+    mask-image:linear-gradient(to bottom,transparent 0,#000 28%);object-position:center}
+  .hero::after{clip-path:polygon(90% 100%,100% 100%,100% 70%)}
+  .benefits{padding:12px 12px}
+  .benefits .benefit{padding:8px 6px !important;gap:10px !important}
+  .benefits .benefit-icon{width:42px !important;height:42px !important;flex-basis:42px !important}
+  .benefits .benefit-icon svg{width:20px;height:20px}
+  .benefits .benefit strong{font-size:12px !important}
+  .benefits .benefit small{font-size:10px !important}
+  .benefits .benefit::before{display:none !important}
+}
 </style>
 </head>
 
@@ -948,7 +1022,7 @@ body{background:var(--bg);color:var(--ink)}
   <section class="hero">
     <div class="hero-copy">
       <span class="hero-tag" id="heroTag">Smart Security Shopping</span>
-      <h1 id="heroTitle">Protect what matters. Shop with confidence.</h1>
+      <h1 id="heroTitle">Protect what matters. Shop with confidence<span class="hero-dot">.</span></h1>
       <p id="heroText">Explore security cameras, recording systems and networking products for homes, offices and businesses — all in one place.</p>
       <div class="hero-buttons">
         <a class="btn" href="#featured">Shop Products&nbsp; →</a>
@@ -963,10 +1037,10 @@ body{background:var(--bg);color:var(--ink)}
   </section>
 
   <section class="benefits" aria-label="Store benefits">
-    <div class="benefit"><span class="benefit-icon">🛡️</span><div><strong>Security Products</strong><small>Solutions for every space</small></div></div>
-    <div class="benefit"><span class="benefit-icon">🧰</span><div><strong>Installation Support</strong><small>Help with your setup</small></div></div>
-    <div class="benefit"><span class="benefit-icon">💬</span><div><strong>Easy Inquiry</strong><small>Ask before you order</small></div></div>
-    <div class="benefit"><span class="benefit-icon">📍</span><div><strong>Local Assistance</strong><small>Serving Srinagar & Kashmir</small></div></div>
+    <div class="benefit"><span class="benefit-icon"><svg viewBox="0 0 24 24"><path d="M12 3l7 3v5c0 4.5-3 8.2-7 10-4-1.8-7-5.5-7-10V6l7-3z"/><path d="M9 12l2 2 4-4"/></svg></span><div><strong>Trusted Brands</strong><small>Original &amp; Genuine Products</small></div></div>
+    <div class="benefit"><span class="benefit-icon"><svg viewBox="0 0 24 24"><path d="M2 6h11v10H2z"/><path d="M13 9h4l3 3v4h-7"/><circle cx="6.5" cy="17.5" r="1.8"/><circle cx="16.5" cy="17.5" r="1.8"/></svg></span><div><strong>Fast Delivery</strong><small>Across Kashmir &amp; India</small></div></div>
+    <div class="benefit"><span class="benefit-icon"><svg viewBox="0 0 24 24"><path d="M4 14v-2a8 8 0 0116 0v2"/><rect x="3" y="14" width="4" height="6" rx="1.5"/><rect x="17" y="14" width="4" height="6" rx="1.5"/><path d="M19 20c0 1.5-2 2-5 2"/></svg></span><div><strong>Expert Support</strong><small>Pre &amp; Post Sales Assistance</small></div></div>
+    <div class="benefit"><span class="benefit-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9l2.1 2.1M17 17l2.1 2.1M4.9 19.1L7 17M17 7l2.1-2.1"/></svg></span><div><strong>Installation Services</strong><small>Professional Setup</small></div></div>
   </section>
 
   <section class="section" id="categories">
@@ -1068,7 +1142,7 @@ body{background:var(--bg);color:var(--ink)}
       <div><h3>Company</h3><a href="about.html">About Us</a><a href="services.html">Our Services</a></div>
       <div><h3>Get in Touch</h3><a href="contact.html">Contact Us</a><a href="solutions.html">Solutions</a><a href="order.html">Place an Inquiry</a></div>
     </div>
-    <div class="footer-bottom">© <span id="year"></span> JK Safety Vision. All rights reserved.<br>Product prices and availability are subject to confirmation.</div>
+    <div class="footer-bottom">©️ <span id="year"></span> JK Safety Vision. All rights reserved.<br>Product prices and availability are subject to confirmation.</div>
   </div>
 </footer>
 
@@ -1322,7 +1396,7 @@ const heroSlides=[
   {
     tag:"Smart Security Shopping",
     title:"Protect what matters. Shop with confidence.",
-    text:"Explore security cameras, recording systems and accessories.",
+    text:"Explore high quality security cameras, recording systems and accessories from trusted global brands.",
     img:"camera1.jpeg"
   },
   {
@@ -1354,7 +1428,7 @@ let heroIndex=0,heroTimer;
 function showHero(i){
  heroIndex=i;const slide=heroSlides[i];
  document.getElementById("heroTag").textContent=slide.tag;
- document.getElementById("heroTitle").textContent=slide.title;
+ document.getElementById("heroTitle").innerHTML=slide.title.replace(/\.$/,'<span class="hero-dot">.</span>');
  document.getElementById("heroText").textContent=slide.text;
  setImage(document.getElementById("heroProductImage"),slide.img);
  document.querySelectorAll("#heroDots button").forEach((dot,n)=>dot.classList.toggle("active",n===i));
