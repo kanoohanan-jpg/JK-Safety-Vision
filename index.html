@@ -861,3 +861,432 @@ body{background:var(--bg);color:var(--ink)}
     height:100%;
   }
 }
+width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+
+  /* White image background ko blend karne mein help */
+  mix-blend-mode: multiply;
+
+  /* Image ke edges ko hero background mein fade karega */
+  -webkit-mask-image: radial-gradient(
+    ellipse 86% 82% at 52% 50%,
+    #000 55%,
+    rgba(0, 0, 0, 0.92) 70%,
+    transparent 100%
+  );
+  mask-image: radial-gradient(
+    ellipse 86% 82% at 52% 50%,
+    #000 55%,
+    rgba(0, 0, 0, 0.92) 70%,
+    transparent 100%
+  );
+}
+
+@media (max-width: 768px) {
+  .hero-visual {
+    height: 300px;
+  }
+
+  .hero-visual img {
+    -webkit-mask-image: radial-gradient(
+      ellipse 90% 86% at 50% 50%,
+      #000 65%,
+      transparent 100%
+    );
+    mask-image: radial-gradient(
+      ellipse 90% 86% at 50% 50%,
+      #000 65%,
+      transparent 100%
+    );
+  }
+}
+
+/* =========================================
+   NEW HERO BANNER + FEATURES STRIP (matches reference image)
+========================================= */
+body{overflow-x:hidden}
+.hero{display:block !important;position:relative;isolation:isolate;overflow:hidden;
+  width:100vw;margin:22px 0 0 calc(50% - 50vw) !important;min-height:520px;
+  border:0 !important;border-radius:0 !important;box-shadow:none !important;
+  background:linear-gradient(110deg,#fbfaf8 0%,#f4f3f0 45%,#e8ecef 80%,#dde3e8 100%) !important}
+.hero::before{display:block !important;content:"";position:absolute;inset:0;z-index:0;pointer-events:none;
+  background:
+    linear-gradient(135deg,transparent 0 50%,rgba(255,255,255,.55) 50% 62%,transparent 62%),
+    linear-gradient(45deg,transparent 0 3%,rgba(255,255,255,.6) 3% 9%,transparent 9%)}
+.hero::after{display:block !important;content:"";position:absolute;inset:0;z-index:2;pointer-events:none;
+  background:linear-gradient(135deg,#d9a840,#b8791a);
+  clip-path:polygon(88% 0,100% 0,100% 100%,92% 100%,100% 54%,100% 12%)}
+.hero > .hero-visual{position:absolute;top:0;right:0;bottom:0;width:62%;height:auto;min-height:0;
+  padding:0;border-radius:0;z-index:1;display:block;background:none}
+.hero > .hero-visual img{width:100%;height:100%;object-fit:cover;object-position:right center;
+  border-radius:0;mix-blend-mode:multiply;filter:none;
+  -webkit-mask-image:linear-gradient(to right,transparent 0,#000 32%);
+  mask-image:linear-gradient(to right,transparent 0,#000 32%)}
+.hero > .hero-copy{position:relative;z-index:3;max-width:58%;min-height:520px;
+  align-items:flex-start;justify-content:center;
+  padding:70px 0 70px max(22px,calc((100vw - 1280px)/2))}
+.hero-tag{border:0 !important;background:none !important;padding:0 !important;display:flex;align-items:center;gap:12px;
+  color:#b8791a !important;font-size:12px !important;letter-spacing:3px !important}
+.hero-tag::before{content:"";width:30px;height:2px;background:#b8791a}
+.hero h1{color:#0b1530 !important;font-weight:800;font-size:clamp(36px,5vw,68px) !important;
+  letter-spacing:-2px !important;line-height:1.04 !important;max-width:640px}
+.hero h1 .hero-dot{color:#b8791a}
+.hero p{color:#7b8290 !important;font-size:clamp(14px,1.5vw,18px) !important;max-width:560px !important;line-height:1.6 !important}
+.hero-buttons .btn{min-height:52px;padding:0 28px;border-radius:8px;font-size:15px;
+  background:linear-gradient(180deg,#b8791a,#9f6610);border-color:#a96d12;color:#fff}
+.hero-buttons .btn:hover{background:#8f5a0d;border-color:#8f5a0d}
+.hero-buttons .btn.btn-outline{background:transparent;border-color:#b8791a;color:#a96d12}
+.hero-buttons .btn.btn-outline:hover{background:#b8791a;color:#fff}
+.hero-dots button{background:#cfd3da !important}
+.hero-dots button.active{background:#b8791a !important}
+
+.benefits{width:100vw;margin:0 0 34px calc(50% - 50vw) !important;gap:0 !important;
+  background:#fffdfa;border:0;border-bottom:1px solid #eee8de;border-radius:0;box-shadow:none;
+  padding:26px max(22px,calc((100vw - 1280px)/2))}
+.benefits .benefit{border:0 !important;border-radius:0 !important;box-shadow:none !important;
+  background:transparent !important;padding:6px 24px !important;gap:16px !important;position:relative}
+.benefits .benefit:first-child{padding-left:0 !important}
+.benefits .benefit + .benefit::before{content:"";position:absolute;left:0;top:12%;height:76%;width:1px;background:#ece7df}
+.benefits .benefit-icon{width:58px !important;height:58px !important;flex:0 0 58px !important;
+  border-radius:50% !important;background:#fbf0dd !important}
+.benefits .benefit-icon svg{width:26px;height:26px;stroke:#b8791a;fill:none;stroke-width:1.8;
+  stroke-linecap:round;stroke-linejoin:round}
+.benefits .benefit strong{font-size:15px !important;color:#0b1530}
+.benefits .benefit small{font-size:12.5px !important;color:#7b8290;margin-top:3px !important}
+
+@media(max-width:1000px){
+  .benefits{grid-template-columns:repeat(2,1fr) !important;row-gap:6px}
+  .benefits .benefit:nth-child(3)::before{display:none}
+  .benefits .benefit:nth-child(3){padding-left:0 !important}
+}
+@media(max-width:768px){
+  .hero{display:flex !important;flex-direction:column;min-height:0}
+  .hero > .hero-copy{order:1;max-width:100%;min-height:0;padding:34px 22px 8px}
+  .hero > .hero-visual{position:relative;order:2;width:100%;height:270px}
+  .hero > .hero-visual img{-webkit-mask-image:linear-gradient(to bottom,transparent 0,#000 28%);
+    mask-image:linear-gradient(to bottom,transparent 0,#000 28%);object-position:center}
+  .hero::after{clip-path:polygon(90% 100%,100% 100%,100% 70%)}
+  .benefits{padding:12px 12px}
+  .benefits .benefit{padding:8px 6px !important;gap:10px !important}
+  .benefits .benefit-icon{width:42px !important;height:42px !important;flex-basis:42px !important}
+  .benefits .benefit-icon svg{width:20px;height:20px}
+  .benefits .benefit strong{font-size:12px !important}
+  .benefits .benefit small{font-size:10px !important}
+  .benefits .benefit::before{display:none !important}
+}
+
+/* HERO IMAGE SIZE FIX */
+.hero{min-height:440px !important}
+.hero > .hero-copy{min-height:440px;max-width:54%}
+.hero > .hero-visual{width:48%}
+
+@media(max-width:768px){
+  .hero{min-height:0 !important}
+  .hero > .hero-copy{max-width:100%;min-height:0}
+  .hero > .hero-visual{width:100%;height:210px}
+}
+
+/* HERO FINAL FIX */
+.hero::after{inset:0 !important;width:100% !important;height:100% !important}
+
+.hero{min-height:460px !important}
+.hero > .hero-copy{min-height:460px;max-width:52%}
+.hero h1{font-size:clamp(34px,4.2vw,58px) !important;max-width:720px}
+
+.hero > .hero-visual{width:50%}
+.hero > .hero-visual img{
+  object-fit:contain;
+  object-position:center right;
+  -webkit-mask-image:
+    linear-gradient(to right,transparent 0,#000 28%),
+    linear-gradient(to bottom,transparent 0,#000 12%,#000 88%,transparent 100%);
+  -webkit-mask-composite:source-in;
+  mask-image:
+    linear-gradient(to right,transparent 0,#000 28%),
+    linear-gradient(to bottom,transparent 0,#000 12%,#000 88%,transparent 100%);
+  mask-composite:intersect;
+}
+
+@media(max-width:768px){
+  .hero{min-height:0 !important}
+  .hero > .hero-copy{max-width:100%;min-height:0}
+  .hero > .hero-visual{width:100%;height:230px}
+  .hero > .hero-visual img{
+    -webkit-mask-image:linear-gradient(to bottom,transparent 0,#000 25%);
+    mask-image:linear-gradient(to bottom,transparent 0,#000 25%);
+  }
+}
+
+/* HERO IMAGE BACKGROUND FIX - blend image into banner */
+.hero > .hero-visual{
+  mix-blend-mode:multiply;
+  background:none !important;
+}
+.hero > .hero-visual img{
+  mix-blend-mode:normal !important;
+  background:none !important;
+  object-fit:contain;
+  object-position:center;
+  -webkit-mask-image:
+    linear-gradient(to right,transparent 0,#000 26%),
+    linear-gradient(to bottom,transparent 0,#000 12%,#000 88%,transparent 100%);
+  -webkit-mask-composite:source-in;
+  mask-image:
+    linear-gradient(to right,transparent 0,#000 26%),
+    linear-gradient(to bottom,transparent 0,#000 12%,#000 88%,transparent 100%);
+  mask-composite:intersect;
+}
+
+/* gold corner ab image ke peeche rahega, product ke upar nahi */
+.hero::after{
+  z-index:0 !important;
+  clip-path:polygon(90% 0,100% 0,100% 100%,94% 100%,100% 62%,100% 10%) !important;
+}
+
+@media(max-width:768px){
+  .hero > .hero-visual img{
+    -webkit-mask-image:linear-gradient(to bottom,transparent 0,#000 22%,#000 90%,transparent 100%);
+    mask-image:linear-gradient(to bottom,transparent 0,#000 22%,#000 90%,transparent 100%);
+    -webkit-mask-composite:source-over;
+    mask-composite:add;
+  }
+}
+
+/* HERO IMAGE - soft feathered edges (works for photo + white background images) */
+.hero > .hero-visual{
+  mix-blend-mode:normal !important;
+  background:none !important;
+  width:52%;
+}
+.hero > .hero-visual img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  object-position:center;
+  mix-blend-mode:multiply !important;
+  background:none !important;
+  -webkit-mask-image:
+    linear-gradient(to right,transparent 0,rgba(0,0,0,.35) 14%,#000 42%),
+    linear-gradient(to bottom,transparent 0,#000 14%,#000 86%,transparent 100%);
+  -webkit-mask-composite:source-in;
+  mask-image:
+    linear-gradient(to right,transparent 0,rgba(0,0,0,.35) 14%,#000 42%),
+    linear-gradient(to bottom,transparent 0,#000 14%,#000 86%,transparent 100%);
+  mask-composite:intersect;
+}
+
+@media(max-width:768px){
+  .hero > .hero-visual{width:100%;height:240px}
+  .hero > .hero-visual img{
+    -webkit-mask-image:linear-gradient(to bottom,transparent 0,#000 30%,#000 88%,transparent 100%);
+    mask-image:linear-gradient(to bottom,transparent 0,#000 30%,#000 88%,transparent 100%);
+    -webkit-mask-composite:source-over;
+    mask-composite:add;
+  }
+}
+
+/* HERO IMAGE SIZE - chhota */
+.hero > .hero-visual{
+  width:42% !important;
+  top:6%;
+  bottom:6%;
+  right:3%;
+}
+
+@media(max-width:768px){
+  .hero > .hero-visual{
+    width:100% !important;
+    height:200px;
+    top:auto;
+    bottom:auto;
+    right:auto;
+  }
+}
+
+/* HERO IMAGE SIZE - aur chhota */
+.hero > .hero-visual{
+  width:34% !important;
+  top:12%;
+  bottom:12%;
+  right:5%;
+}
+
+@media(max-width:768px){
+  .hero > .hero-visual{
+    width:100% !important;
+    height:170px;
+    top:auto;
+    bottom:auto;
+    right:auto;
+  }
+}
+
+/* HERO IMAGE - poori image dikhao, crop mat karo */
+.hero > .hero-visual{
+  width:38% !important;
+  top:6%;
+  bottom:6%;
+  right:4%;
+}
+.hero > .hero-visual img{
+  object-fit:contain !important;
+  object-position:center !important;
+}
+
+@media(max-width:768px){
+  .hero > .hero-visual{
+    width:100% !important;
+    height:220px;
+    top:auto;
+    bottom:auto;
+    right:auto;
+  }
+}
+
+/* camera5 (photo background wali image) - soft round fade */
+.hero > .hero-visual img[src$="camera5.jpeg"]{
+  object-fit:contain !important;
+  -webkit-mask-image:radial-gradient(ellipse 70% 52% at 50% 40%,#000 42%,transparent 100%);
+  mask-image:radial-gradient(ellipse 70% 52% at 50% 40%,#000 42%,transparent 100%);
+  -webkit-mask-composite:source-over;
+  mask-composite:add;
+}
+
+@media(max-width:768px){
+  .hero > .hero-visual img[src$="camera5.jpeg"]{
+    -webkit-mask-image:radial-gradient(ellipse 75% 55% at 50% 42%,#000 42%,transparent 100%);
+    mask-image:radial-gradient(ellipse 75% 55% at 50% 42%,#000 42%,transparent 100%);
+  }
+}
+
+/* image ka dabba = image ka asli size, taaki fade photo ke kinaaron par lage */
+.hero > .hero-visual{
+  display:flex !important;
+  align-items:center;
+  justify-content:center;
+}
+.hero > .hero-visual img{
+  width:auto !important;
+  height:auto !important;
+  max-width:100% !important;
+  max-height:100% !important;
+}
+
+/* camera5: photo ke kinaare gol fade */
+.hero > .hero-visual img[src*="camera5"]{
+  -webkit-mask-image:radial-gradient(ellipse at 50% 45%,#000 38%,transparent 70%) !important;
+  mask-image:radial-gradient(ellipse at 50% 45%,#000 38%,transparent 70%) !important;
+  -webkit-mask-composite:source-over !important;
+  mask-composite:add !important;
+}
+
+
+/* =====================================================
+   HERO SLIDER — CLEAN WHITE CAMERA STAGE
+   Only hero visuals are overridden here.
+===================================================== */
+.hero{
+  position:relative !important;
+  isolation:isolate;
+}
+.hero > .hero-copy{
+  position:relative !important;
+  z-index:3 !important;
+}
+.hero > .hero-visual{
+  position:absolute !important;
+  top:0 !important;
+  right:0 !important;
+  bottom:0 !important;
+  width:48% !important;
+  height:auto !important;
+  min-height:0 !important;
+  padding:24px !important;
+  display:flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+  overflow:hidden !important;
+  border:0 !important;
+  border-radius:0 !important;
+  background-color:#fff !important;
+  background-image:
+    radial-gradient(ellipse at 50% 45%,rgba(255,255,255,.98) 0 28%,rgba(248,249,250,.92) 65%,rgba(235,239,242,.85) 100%),
+    repeating-linear-gradient(135deg,rgba(125,140,150,.035) 0 1px,transparent 1px 9px) !important;
+  z-index:1 !important;
+}
+.hero > .hero-visual::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  background:
+    radial-gradient(circle at 18% 22%,rgba(255,255,255,.95) 0 2px,transparent 3px),
+    radial-gradient(circle at 78% 72%,rgba(185,196,204,.16) 0 1px,transparent 2px),
+    linear-gradient(145deg,rgba(255,255,255,.55),transparent 48%,rgba(215,222,227,.18));
+  background-size:34px 34px,26px 26px,100% 100%;
+  z-index:0;
+}
+.hero > .hero-visual img{
+  position:relative !important;
+  z-index:1 !important;
+  display:block !important;
+  width:100% !important;
+  height:100% !important;
+  max-width:100% !important;
+  max-height:100% !important;
+  object-fit:contain !important;
+  object-position:center !important;
+  padding:0 !important;
+  border:0 !important;
+  border-radius:0 !important;
+  background:transparent !important;
+  box-shadow:none !important;
+  filter:drop-shadow(0 18px 18px rgba(35,48,58,.16)) !important;
+  mix-blend-mode:multiply !important;
+  -webkit-mask-image:none !important;
+  mask-image:none !important;
+}
+/* Five subtle white textures, one per slide */
+.hero > .hero-visual[data-slide="0"]{
+  background-image:radial-gradient(ellipse at 50% 45%,#fff 0 30%,#f4f6f7 100%),repeating-linear-gradient(135deg,rgba(125,140,150,.035) 0 1px,transparent 1px 9px) !important;
+}
+.hero > .hero-visual[data-slide="1"]{
+  background-image:radial-gradient(ellipse at 58% 42%,#fff 0 26%,#f1f4f6 100%),linear-gradient(90deg,transparent 49.8%,rgba(180,190,198,.10) 50%,transparent 50.2%),linear-gradient(0deg,transparent 49.8%,rgba(180,190,198,.10) 50%,transparent 50.2%) !important;
+  background-size:auto,32px 32px,32px 32px !important;
+}
+.hero > .hero-visual[data-slide="2"]{
+  background-image:radial-gradient(ellipse at 50% 50%,#fff 0 25%,#f5f6f7 100%),repeating-linear-gradient(0deg,rgba(130,145,155,.045) 0 1px,transparent 1px 12px) !important;
+}
+.hero > .hero-visual[data-slide="3"]{
+  background-image:radial-gradient(ellipse at 55% 45%,#fff 0 28%,#f0f3f5 100%),repeating-linear-gradient(45deg,rgba(130,145,155,.04) 0 1px,transparent 1px 13px) !important;
+}
+.hero > .hero-visual[data-slide="4"]{
+  background-image:radial-gradient(ellipse at 48% 45%,#fff 0 30%,#f2f4f5 100%),radial-gradient(circle,rgba(130,145,155,.10) 1px,transparent 1.5px) !important;
+  background-size:auto,18px 18px !important;
+}
+@media(max-width:768px){
+  .hero{display:flex !important;flex-direction:column !important;min-height:0 !important}
+  .hero > .hero-copy{order:1 !important;max-width:100% !important;min-height:0 !important;padding:34px 22px 8px !important}
+  .hero > .hero-visual{
+    position:relative !important;
+    order:2 !important;
+    inset:auto !important;
+    width:100% !important;
+    height:245px !important;
+    min-height:0 !important;
+    padding:12px 18px !important;
+  }
+  .hero > .hero-visual img{width:100% !important;height:100% !important;object-fit:contain !important}
+  .hero::after{z-index:0 !important}
+}
+
+</style>
+</head>
+
+<body>
+<div class="top-strip">
