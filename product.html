@@ -73,6 +73,46 @@ footer p{color:rgba(255,255,255,.65);font-size:11px;margin-top:9px}
 @media(max-width:750px){header{padding:15px 6%}.logo{font-size:18px}.header-right{gap:12px}.container{width:88%;margin:28px auto 50px}.product-layout{grid-template-columns:1fr;gap:25px}.product-photo{min-height:300px;padding:22px}.product-photo img{max-height:260px}.product-info{padding:0}h1{font-size:32px}.details-section{padding:23px;margin-top:30px}.spec-grid{grid-template-columns:1fr}}
 @media(max-width:380px){.actions{flex-direction:column}.action-btn{width:100%}}
 @media(prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+/* WHITE + BLUE + YELLOW THEME */
+:root{
+  --gold:#0756a5;
+  --gold-light:#ffd21f;
+  --gold-dark:#0756a5;
+  --ink:#17212b;
+  --muted:#65717d;
+  --white:#fff;
+  --soft:#f5f8fc;
+  --line:#dce6f0;
+  --dark:#07376b;
+  --shadow:0 18px 45px rgba(7,55,107,.09);
+  --glass-white:rgba(255,255,255,.9);
+  --glass-border:rgba(220,230,240,.9);
+  --glass-blur:blur(18px) saturate(160%);
+}
+body{
+  background:radial-gradient(circle at 10% 10%,rgba(255,210,31,.10),transparent 28%),linear-gradient(135deg,#f8fbff,#edf4fc);
+  background-attachment:fixed;
+}
+header{background:rgba(255,255,255,.92);border-bottom:3px solid #ffd21f}
+.logo span{color:#0756a5}
+.header-link,.cart-link,.back-link{color:#0756a5}
+.cart-count{background:#0756a5}
+.product-photo,.details-section,.not-found{background:rgba(255,255,255,.94);border-color:#dce6f0}
+.photo-label,.discount{background:rgba(255,210,31,.18);color:#0756a5;border-color:rgba(255,210,31,.65)}
+.stock{color:#27834b}
+.qty-box{background:#fff;border-color:#c8dcef}
+.qty-box button{color:#0756a5}
+.qty-box button:hover{background:#eaf4ff}
+.add-btn{background:#0756a5;border-color:#0756a5}
+.add-btn:hover{background:#07376b}
+.buy-btn{background:#07376b;border-color:#07376b}
+.buy-btn:hover{background:#0756a5}
+.spec-item{background:#f8fbff;border-color:#dce6f0}
+.spec-item strong,.rating,.price,.section-kicker{color:#0756a5}
+.trust-row{border-top-color:#dce6f0}
+footer{background:#07376b;border-top:4px solid #ffd21f}
+.footer-logo span{color:#ffd21f}
+.toast{background:#07376b;border-left-color:#ffd21f}
 </style>
 </head>
 
