@@ -1,4 +1,6 @@
-/* JK Safety Vision — Shared Product Catalogue */
+/* JK Safety Vision — Shared Product Catalogue
+   Product IDs are matched flexibly with homepage product IDs.
+*/
 
 window.PRODUCTS = [
   {
@@ -74,3 +76,50 @@ window.PRODUCTS = [
     }
   }
 ];
+
+/* Flexible product lookup for product.html */
+window.getJKSVProductById = function (requestedId) {
+  const products = Array.isArray(window.PRODUCTS) ? window.PRODUCTS : [];
+
+  const normalize = function (value) {
+    return String(value ?? "")
+      .trim()
+      .toLowerCase()
+      .replace(/[^a-z0-9]/g, "");
+  };
+
+  const wanted = normalize(requestedId);
+
+  if (!wanted) return null;
+
+  // First: exact ID match
+  let product = products.find(function (item) {
+    return normalize(item.id) === wanted;
+  });
+
+  if (product) return product;
+
+  // Next: match by product name, photo, or image identifier
+  product = products.find(function (item) {
+    return [
+      item.name,
+      item.photo,
+      item.image
+    ].some(function (value) {
+      return normalize(value) === wanted;
+    });
+  });
+
+  if (product) return product;
+
+  // Last: support numeric homepage IDs matching the catalogue order
+  if (/^\d+$/.test(String(requestedId).trim())) {
+    const numericId = Number(requestedId);
+
+    product = products.find(function (item, index) {
+      return Number(item.id) === numericId || index + 1 === numericId;
+    });
+  }
+
+  return product || null;
+};
