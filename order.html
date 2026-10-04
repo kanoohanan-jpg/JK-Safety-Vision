@@ -5,135 +5,87 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="Review your cart and submit an order inquiry to JK Safety Vision.">
 <title>Checkout | JK Safety Vision</title>
-
 <style>
 :root{
-  --gold:#c99a35;
-  --gold-light:#e5c477;
-  --gold-dark:#9e7421;
-  --ink:#17212b;
-  --muted:#65717d;
-  --dark:#101923;
-  --line:rgba(158,116,33,.2);
-  --glass:rgba(255,252,245,.78);
-  --shadow:0 18px 45px rgba(20,30,40,.09);
+  --blue:#0756a5;--blue-dark:#07376b;--blue-light:#eaf4ff;
+  --yellow:#ffd21f;--ink:#17212b;--muted:#65717d;
+  --line:#dce6f0;--shadow:0 12px 35px rgba(10,48,88,.09);
 }
 *{box-sizing:border-box;margin:0;padding:0}
-body{
-  font-family:Arial,Helvetica,sans-serif;
-  color:var(--ink);
-  background:
-    radial-gradient(circle at 18% 22%,rgba(255,255,255,.9) 0 2px,transparent 3px),
-    repeating-linear-gradient(135deg,rgba(150,130,95,.075) 0,rgba(150,130,95,.075) 1px,transparent 1px,transparent 4px),
-    linear-gradient(135deg,#f8f5ee,#eee8dc);
-  background-attachment:fixed;
-  min-height:100vh;
-  line-height:1.6;
-}
+body{font-family:Arial,Helvetica,sans-serif;color:var(--ink);background:#f5f8fc;min-height:100vh;line-height:1.6}
 a{color:inherit;text-decoration:none}
 button,input,textarea,select{font:inherit}
 button{cursor:pointer}
-header{
-  min-height:78px;padding:15px 7%;
-  display:flex;justify-content:space-between;align-items:center;gap:15px;
-  background:rgba(248,245,238,.85);
-  border-bottom:1px solid white;
-  box-shadow:0 8px 35px rgba(0,0,0,.06);
-  backdrop-filter:blur(20px);
-}
-.logo{font-size:21px;font-weight:900;letter-spacing:1px;color:var(--ink)}
-.logo span{color:var(--gold-dark)}
-.header-link{font-size:12px;font-weight:800;color:var(--gold-dark)}
+header{min-height:78px;padding:15px 7%;display:flex;justify-content:space-between;align-items:center;gap:15px;background:#fff;border-bottom:3px solid var(--yellow);box-shadow:0 5px 22px rgba(0,0,0,.06)}
+.logo{font-size:21px;font-weight:900;letter-spacing:1px;color:var(--blue-dark)}
+.logo span{color:var(--blue)}
+.header-link{font-size:12px;font-weight:900;color:var(--blue);padding:10px 15px;border:1px solid #c9ddf1;border-radius:6px}
+.header-link:hover{background:var(--blue-light)}
 .container{width:min(1200px,90%);margin:38px auto 70px}
 .page-heading{margin-bottom:28px}
-.kicker{font-size:10px;letter-spacing:3px;font-weight:800;color:var(--gold-dark)}
-h1{font-size:clamp(30px,4vw,42px);line-height:1.15;margin:7px 0;color:var(--ink)}
+.kicker{font-size:10px;letter-spacing:3px;font-weight:900;color:var(--blue)}
+h1{font-size:clamp(30px,4vw,42px);line-height:1.15;margin:7px 0;color:var(--blue-dark)}
 .page-heading p{color:var(--muted);font-size:14px}
 .checkout-grid{display:grid;grid-template-columns:minmax(0,1.45fr) minmax(300px,.75fr);gap:25px;align-items:start}
-.panel{
-  background:var(--glass);border:1px solid rgba(255,255,255,.85);
-  border-radius:17px;padding:25px;margin-bottom:22px;
-  box-shadow:var(--shadow),inset 0 1px 0 #fff;
-  backdrop-filter:blur(16px);
-}
-.panel h2{font-size:21px;margin-bottom:5px}
+.panel{background:#fff;border:1px solid var(--line);border-radius:13px;padding:25px;margin-bottom:22px;box-shadow:var(--shadow)}
+.panel h2{font-size:21px;margin-bottom:5px;color:var(--blue-dark)}
 .panel-subtitle{font-size:12px;color:var(--muted);margin-bottom:20px}
-.cart-item{
-  display:grid;grid-template-columns:95px minmax(0,1fr) auto;
-  gap:17px;align-items:center;padding:17px 0;
-  border-bottom:1px solid var(--line);
-}
+.cart-item{display:grid;grid-template-columns:95px minmax(0,1fr) auto;gap:17px;align-items:center;padding:17px 0;border-bottom:1px solid var(--line)}
 .cart-item:first-of-type{padding-top:5px}
 .cart-item:last-child{border-bottom:0;padding-bottom:0}
-.item-image{
-  width:95px;height:85px;object-fit:contain;padding:8px;
-  background:rgba(255,255,255,.72);border:1px solid var(--line);border-radius:10px;
-}
+.item-image{width:95px;height:85px;object-fit:contain;padding:8px;background:#f7faff;border:1px solid var(--line);border-radius:9px}
 .item-name{font-size:14px;font-weight:800;line-height:1.35}
 .item-meta{font-size:11px;color:var(--muted);margin-top:5px}
-.item-price{font-size:14px;font-weight:900;color:var(--gold-dark);margin-top:7px}
+.item-price{font-size:14px;font-weight:900;color:var(--blue);margin-top:7px}
 .item-controls{display:flex;align-items:center;gap:7px;margin-top:10px;flex-wrap:wrap}
-.qty-control{display:inline-flex;align-items:center;border:1px solid var(--line);border-radius:6px;overflow:hidden;background:#fff}
-.qty-control button{width:30px;height:30px;border:0;background:transparent;color:var(--gold-dark);font-weight:900}
-.qty-control button:hover{background:rgba(201,154,53,.13)}
+.qty-control{display:inline-flex;align-items:center;border:1px solid #cbdced;border-radius:6px;overflow:hidden;background:#fff}
+.qty-control button{width:30px;height:30px;border:0;background:var(--blue-light);color:var(--blue);font-weight:900}
+.qty-control button:hover{background:#d6eaff}
 .qty-control span{min-width:34px;text-align:center;font-size:12px;font-weight:800}
-.remove-btn{border:0;background:transparent;color:#a34d43;font-size:11px;font-weight:800;padding:5px}
-.line-total{font-size:13px;font-weight:900;white-space:nowrap}
+.remove-btn{border:0;background:transparent;color:#c0392b;font-size:11px;font-weight:800;padding:5px}
+.line-total{font-size:13px;font-weight:900;white-space:nowrap;color:var(--blue-dark)}
 .empty-cart{text-align:center;padding:35px 15px;color:var(--muted)}
-.empty-cart strong{display:block;color:var(--ink);font-size:19px;margin-bottom:8px}
-.gold-link{display:inline-block;margin-top:15px;color:var(--gold-dark);font-size:12px;font-weight:900}
+.empty-cart strong{display:block;color:var(--blue-dark);font-size:19px;margin-bottom:8px}
+.gold-link{display:inline-block;margin-top:15px;color:var(--blue);font-size:12px;font-weight:900}
 .form-grid{display:grid;grid-template-columns:1fr 1fr;gap:15px}
 .field{display:flex;flex-direction:column;gap:6px}
 .field.full{grid-column:1/-1}
-.field label{font-size:11px;font-weight:800;color:var(--ink)}
-.field input,.field textarea,.field select{
-  width:100%;border:1px solid rgba(158,116,33,.25);
-  background:rgba(255,255,255,.75);border-radius:7px;
-  padding:12px 13px;color:var(--ink);outline:none;font-size:13px;
-}
-.field input:focus,.field textarea:focus,.field select:focus{border-color:var(--gold-dark);box-shadow:0 0 0 3px rgba(201,154,53,.12)}
+.field label{font-size:11px;font-weight:800;color:var(--blue-dark)}
+.field input,.field textarea,.field select{width:100%;border:1px solid #d2deea;background:#fbfdff;border-radius:7px;padding:12px 13px;color:var(--ink);outline:none;font-size:13px}
+.field input:focus,.field textarea:focus,.field select:focus{border-color:var(--blue);box-shadow:0 0 0 3px rgba(7,86,165,.10)}
 .field textarea{min-height:85px;resize:vertical}
-.payment-option{
-  display:flex;gap:12px;align-items:flex-start;padding:14px;
-  border:1px solid var(--line);border-radius:9px;background:rgba(255,255,255,.55);
-  margin-top:10px;cursor:pointer;
-}
-.payment-option input{margin-top:4px;accent-color:var(--gold-dark)}
-.payment-option strong{display:block;font-size:13px}
+.payment-option{display:flex;gap:12px;align-items:flex-start;padding:14px;border:1px solid var(--line);border-radius:9px;background:#fbfdff;margin-top:10px;cursor:pointer}
+.payment-option:has(input:checked){border-color:var(--blue);background:var(--blue-light)}
+.payment-option input{margin-top:4px;accent-color:var(--blue)}
+.payment-option strong{display:block;font-size:13px;color:var(--blue-dark)}
 .payment-option small{display:block;color:var(--muted);font-size:11px;margin-top:3px}
-.demo-note{font-size:11px;color:var(--muted);margin-top:13px;padding:11px;background:rgba(201,154,53,.09);border-radius:7px}
+.demo-note{font-size:11px;color:#5e4c00;margin-top:13px;padding:11px;background:#fff8d9;border:1px solid #f3df86;border-radius:7px}
 .summary-row{display:flex;justify-content:space-between;gap:15px;font-size:13px;padding:9px 0;color:var(--muted)}
 .summary-row strong{color:var(--ink);white-space:nowrap}
-.summary-total{border-top:1px solid var(--line);margin-top:10px;padding-top:17px;font-size:17px;font-weight:900;color:var(--ink)}
-.summary-total strong{font-size:22px;color:var(--gold-dark)}
-.checkout-btn{
-  width:100%;border:0;border-radius:6px;background:var(--gold-dark);color:#fff;
-  padding:15px;font-size:12px;font-weight:900;letter-spacing:.6px;margin-top:18px;
-  transition:.2s;
-}
-.checkout-btn:hover{background:var(--gold);transform:translateY(-2px)}
+.summary-total{border-top:1px solid var(--line);margin-top:10px;padding-top:17px;font-size:17px;font-weight:900;color:var(--blue-dark)}
+.summary-total strong{font-size:22px;color:var(--blue)}
+.checkout-btn{width:100%;border:0;border-radius:6px;background:var(--yellow);color:var(--blue-dark);padding:15px;font-size:12px;font-weight:900;letter-spacing:.6px;margin-top:18px;transition:.2s}
+.checkout-btn:hover{background:#e6b900;transform:translateY(-2px)}
 .checkout-btn:disabled{opacity:.5;cursor:not-allowed;transform:none}
 .secure-note{text-align:center;font-size:10px;color:var(--muted);margin-top:12px}
-.status-message{display:none;padding:18px;margin-top:18px;border-radius:9px;background:rgba(82,118,77,.1);border:1px solid rgba(82,118,77,.25);color:#365c32;font-size:13px}
+.status-message{display:none;padding:18px;margin-top:18px;border-radius:9px;background:#edf8ed;border:1px solid #c9e5c7;color:#285d2b;font-size:13px;overflow-wrap:anywhere}
 .status-message.show{display:block}
-footer{background:var(--dark);color:#fff;text-align:center;padding:32px 7%}
+footer{background:var(--blue-dark);color:#fff;text-align:center;padding:32px 7%;border-top:4px solid var(--yellow)}
 .footer-logo{font-size:18px;font-weight:900;letter-spacing:1px}
-.footer-logo span{color:var(--gold-light)}
-footer p{font-size:11px;color:rgba(255,255,255,.65);margin-top:8px}
+.footer-logo span{color:var(--yellow)}
+footer p{font-size:11px;color:rgba(255,255,255,.75);margin-top:8px}
 @media(max-width:850px){.checkout-grid{grid-template-columns:1fr}}
 @media(max-width:560px){
-  header{padding:14px 5%}.logo{font-size:17px}
-  .container{width:92%;margin:25px auto 45px}
-  .panel{padding:18px}
+  header{padding:14px 5%;min-height:68px}.logo{font-size:16px}
+  .header-link{font-size:10px;padding:8px}
+  .container{width:92%;margin:25px auto 45px}.panel{padding:18px}
   .cart-item{grid-template-columns:70px minmax(0,1fr);gap:12px}
   .item-image{width:70px;height:70px}
   .line-total{grid-column:2;text-align:left}
-  .form-grid{grid-template-columns:1fr}
-  .field.full{grid-column:auto}
+  .form-grid{grid-template-columns:1fr}.field.full{grid-column:auto}
 }
 </style>
 </head>
-
 <body>
 <header>
   <a class="logo" href="index.html">JK SAFETY <span>VISION</span></a>
@@ -159,74 +111,25 @@ footer p{font-size:11px;color:rgba(255,255,255,.65);margin-top:8px}
         <section class="panel">
           <h2>Shipping Details</h2>
           <p class="panel-subtitle">Please provide your details for order confirmation.</p>
-
           <div class="form-grid">
-            <div class="field">
-              <label for="customerName">Full Name *</label>
-              <input id="customerName" name="customerName" type="text" autocomplete="name" required>
-            </div>
-            <div class="field">
-              <label for="mobile">Mobile Number *</label>
-              <input id="mobile" name="mobile" type="tel" autocomplete="tel" required>
-            </div>
-            <div class="field full">
-              <label for="email">Email Address</label>
-              <input id="email" name="email" type="email" autocomplete="email">
-            </div>
-            <div class="field full">
-              <label for="address">Full Address *</label>
-              <textarea id="address" name="address" autocomplete="street-address" required></textarea>
-            </div>
-            <div class="field">
-              <label for="city">City *</label>
-              <input id="city" name="city" type="text" autocomplete="address-level2" required>
-            </div>
-            <div class="field">
-              <label for="state">State *</label>
-              <input id="state" name="state" type="text" autocomplete="address-level1" required>
-            </div>
-            <div class="field">
-              <label for="pincode">PIN Code *</label>
-              <input id="pincode" name="pincode" type="text" inputmode="numeric" autocomplete="postal-code" required>
-            </div>
-            <div class="field">
-              <label for="notes">Order Notes (Optional)</label>
-              <input id="notes" name="notes" type="text" placeholder="Any special instructions">
-            </div>
+            <div class="field"><label for="customerName">Full Name *</label><input id="customerName" name="customerName" type="text" autocomplete="name" required></div>
+            <div class="field"><label for="mobile">Mobile Number *</label><input id="mobile" name="mobile" type="tel" autocomplete="tel" required></div>
+            <div class="field full"><label for="email">Email Address</label><input id="email" name="email" type="email" autocomplete="email"></div>
+            <div class="field full"><label for="address">Full Address *</label><textarea id="address" name="address" autocomplete="street-address" required></textarea></div>
+            <div class="field"><label for="city">City *</label><input id="city" name="city" type="text" autocomplete="address-level2" required></div>
+            <div class="field"><label for="state">State *</label><input id="state" name="state" type="text" autocomplete="address-level1" required></div>
+            <div class="field"><label for="pincode">PIN Code *</label><input id="pincode" name="pincode" type="text" inputmode="numeric" autocomplete="postal-code" required></div>
+            <div class="field"><label for="notes">Order Notes (Optional)</label><input id="notes" name="notes" type="text" placeholder="Any special instructions"></div>
           </div>
         </section>
 
         <section class="panel">
           <h2>Payment Method</h2>
           <p class="panel-subtitle">Demo selection only. No payment will be collected on this page.</p>
-
-          <label class="payment-option">
-            <input type="radio" name="payment" value="Cash on Delivery (to be confirmed)" checked>
-            <span>
-              <strong>Cash on Delivery</strong>
-              <small>Temporary demo option. Availability will be confirmed by our team.</small>
-            </span>
-          </label>
-
-          <label class="payment-option">
-            <input type="radio" name="payment" value="Online Payment (demo only)">
-            <span>
-              <strong>Online Payment (Demo)</strong>
-              <small>Placeholder only. No real payment gateway is connected.</small>
-            </span>
-          </label>
-
-          <label class="payment-option">
-            <input type="radio" name="payment" value="Payment to be discussed">
-            <span>
-              <strong>Discuss Payment with Team</strong>
-              <small>Our team can confirm payment arrangements with you.</small>
-            </span>
-          </label>
-
-          <div class="demo-note">
-            <strong>Demo checkout:</strong> This page does not process payments, create a shipping label, or dispatch products. Your order is an inquiry until confirmed by JK Safety Vision.
-          </div>
+          <label class="payment-option"><input type="radio" name="payment" value="Cash on Delivery (to be confirmed)" checked><span><strong>Cash on Delivery</strong><small>Availability will be confirmed by our team.</small></span></label>
+          <label class="payment-option"><input type="radio" name="payment" value="Online Payment (demo only)"><span><strong>Online Payment (Demo)</strong><small>No real payment gateway is connected.</small></span></label>
+          <label class="payment-option"><input type="radio" name="payment" value="Payment to be discussed"><span><strong>Discuss Payment with Team</strong><small>Our team can confirm payment arrangements with you.</small></span></label>
+          <div class="demo-note"><strong>Demo checkout:</strong> This page does not process payments, create a shipping label, or dispatch products. Your order is an inquiry until confirmed by JK Safety Vision.</div>
         </section>
 
         <section class="panel">
@@ -264,218 +167,169 @@ footer p{font-size:11px;color:rgba(255,255,255,.65);margin-top:8px}
 <script>
 (function(){
 "use strict";
-
-const CART_KEY = "jkSV_cart";
-const $ = id => document.getElementById(id);
-const money = value => "₹" + Number(value || 0).toLocaleString("en-IN");
+const CART_KEY="jkSV_cart";
+const $=id=>document.getElementById(id);
+const money=value=>"₹"+Number(value||0).toLocaleString("en-IN");
 
 function readCart(){
   try{
-    const value = JSON.parse(localStorage.getItem(CART_KEY));
-    return Array.isArray(value) ? value : [];
-  }catch(error){
-    return [];
-  }
+    const value=JSON.parse(localStorage.getItem(CART_KEY));
+    return Array.isArray(value)?value:[];
+  }catch(error){return [];}
 }
-
 function saveCart(cart){
-  try{
-    localStorage.setItem(CART_KEY, JSON.stringify(cart));
-    return true;
-  }catch(error){
-    alert("Cart could not be saved in this browser.");
-    return false;
-  }
+  try{localStorage.setItem(CART_KEY,JSON.stringify(cart));return true;}
+  catch(error){alert("Cart could not be saved in this browser.");return false;}
 }
-
 function getProduct(id){
-  const list = Array.isArray(window.PRODUCTS) ? window.PRODUCTS : [];
-  if(typeof window.getJKSVProductById === "function"){
-    const found = window.getJKSVProductById(id);
-    if(found) return found;
+  const list=Array.isArray(window.PRODUCTS)?window.PRODUCTS:[];
+  if(typeof window.getJKSVProductById==="function"){
+    const found=window.getJKSVProductById(id);
+    if(found)return found;
   }
-  return list.find(product => String(product.id) === String(id));
+  return list.find(product=>String(product.id)===String(id));
 }
-
 function productDetails(item){
-  const product = getProduct(item.id);
+  const product=getProduct(item.id);
   return {
-    name: item.name || (product && product.name) || ("Product #" + item.id),
-    price: Number(item.price ?? (product && product.price) ?? 0),
-    image: item.image || (product && (product.image || product.photo)) || "",
-    category: item.category || (product && product.category) || ""
+    name:item.name||(product&&product.name)||("Product #"+item.id),
+    price:Number(item.price??(product&&product.price)??0),
+    image:item.image||(product&&(product.image||product.photo))||"",
+    category:item.category||(product&&product.category)||""
   };
 }
-
 function imagePath(value){
-  if(!value) return "";
-  if(/^https?:\/\//i.test(value) || value.startsWith("data:") || value.startsWith("/")) return value;
-  if(value.startsWith("images/")) return value;
-  return "images/" + value;
+  if(!value)return "";
+  if(/^https?:\/\//i.test(value)||value.startsWith("data:")||value.startsWith("/"))return value;
+  if(value.startsWith("images/"))return value;
+  return "images/"+value;
 }
-
 function fallbackImage(){
-  return "data:image/svg+xml;charset=UTF-8," + encodeURIComponent(
-    '<svg xmlns="http://www.w3.org/2000/svg" width="300" height="220"><rect width="100%" height="100%" fill="#f7f3e9"/><text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" font-family="Arial" font-size="15" fill="#9e7421">Product image</text></svg>'
+  return "data:image/svg+xml;charset=UTF-8,"+encodeURIComponent(
+    '<svg xmlns="http://www.w3.org/2000/svg" width="300" height="220"><rect width="100%" height="100%" fill="#eaf4ff"/><text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" font-family="Arial" font-size="15" fill="#0756a5">Product image</text></svg>'
   );
 }
-
 function cartQuantity(cart){
-  return cart.reduce((sum,item) => sum + Math.max(0, Number(item.quantity) || 0), 0);
+  return cart.reduce((sum,item)=>sum+Math.max(0,Number(item.quantity)||0),0);
 }
-
+function updateSummary(cart){
+  const subtotal=cart.reduce((sum,item)=>{
+    const details=productDetails(item);
+    return sum+details.price*Math.max(0,Number(item.quantity)||0);
+  },0);
+  $("subtotal").textContent=money(subtotal);
+  $("grandTotal").textContent=money(subtotal);
+}
 function renderCart(){
-  const cart = readCart();
-  const container = $("cartItems");
-  container.textContent = "";
+  const cart=readCart();
+  const container=$("cartItems");
+  container.textContent="";
+  $("itemCount").textContent="("+cartQuantity(cart)+")";
+  $("summaryItems").textContent=cartQuantity(cart);
 
-  $("itemCount").textContent = "(" + cartQuantity(cart) + ")";
-  $("summaryItems").textContent = cartQuantity(cart);
-
-  if(cart.length === 0){
-    const empty = document.createElement("div");
-    empty.className = "empty-cart";
-    empty.innerHTML = '<strong>Your cart is empty</strong><p>Add products to your cart to see them here.</p><a class="gold-link" href="index.html">EXPLORE PRODUCTS →</a>';
+  if(cart.length===0){
+    const empty=document.createElement("div");
+    empty.className="empty-cart";
+    empty.innerHTML='<strong>Your cart is empty</strong><p>Add products to your cart to see them here.</p><a class="gold-link" href="index.html">EXPLORE PRODUCTS →</a>';
     container.appendChild(empty);
     updateSummary([]);
-    $("placeOrderBtn").disabled = true;
+    $("placeOrderBtn").disabled=true;
     return;
   }
+  $("placeOrderBtn").disabled=false;
 
-  $("placeOrderBtn").disabled = false;
+  cart.forEach((item,index)=>{
+    const details=productDetails(item);
+    const quantity=Math.max(0,Number(item.quantity)||0);
+    const row=document.createElement("article");
+    row.className="cart-item";
 
-  cart.forEach((item,index) => {
-    const details = productDetails(item);
-    const quantity = Math.max(0, Number(item.quantity) || 0);
-    const row = document.createElement("article");
-    row.className = "cart-item";
+    const img=document.createElement("img");
+    img.className="item-image";
+    img.alt=details.name;
+    img.src=imagePath(details.image)||fallbackImage();
+    img.onerror=()=>{img.onerror=null;img.src=fallbackImage();};
 
-    const img = document.createElement("img");
-    img.className = "item-image";
-    img.alt = details.name;
-    img.src = imagePath(details.image) || fallbackImage();
-    img.onerror = () => { img.onerror = null; img.src = fallbackImage(); };
+    const info=document.createElement("div");
+    const name=document.createElement("div");
+    name.className="item-name";name.textContent=details.name;
+    const meta=document.createElement("div");
+    meta.className="item-meta";meta.textContent=details.category||"JK Safety Vision product";
+    const price=document.createElement("div");
+    price.className="item-price";price.textContent=money(details.price)+" each";
 
-    const info = document.createElement("div");
-    const name = document.createElement("div");
-    name.className = "item-name";
-    name.textContent = details.name;
+    const controls=document.createElement("div");
+    controls.className="item-controls";
+    const qty=document.createElement("div");qty.className="qty-control";
 
-    const meta = document.createElement("div");
-    meta.className = "item-meta";
-    meta.textContent = details.category || "JK Safety Vision product";
-
-    const price = document.createElement("div");
-    price.className = "item-price";
-    price.textContent = money(details.price) + " each";
-
-    const controls = document.createElement("div");
-    controls.className = "item-controls";
-
-    const qty = document.createElement("div");
-    qty.className = "qty-control";
-
-    const minus = document.createElement("button");
-    minus.type = "button";
-    minus.textContent = "−";
+    const minus=document.createElement("button");
+    minus.type="button";minus.textContent="−";
     minus.setAttribute("aria-label","Decrease quantity");
-    minus.addEventListener("click", () => changeQuantity(index,-1));
+    minus.addEventListener("click",()=>changeQuantity(index,-1));
 
-    const qtyValue = document.createElement("span");
-    qtyValue.textContent = quantity;
+    const qtyValue=document.createElement("span");qtyValue.textContent=quantity;
 
-    const plus = document.createElement("button");
-    plus.type = "button";
-    plus.textContent = "+";
+    const plus=document.createElement("button");
+    plus.type="button";plus.textContent="+";
     plus.setAttribute("aria-label","Increase quantity");
-    plus.addEventListener("click", () => changeQuantity(index,1));
-
+    plus.addEventListener("click",()=>changeQuantity(index,1));
     qty.append(minus,qtyValue,plus);
 
-    const remove = document.createElement("button");
-    remove.type = "button";
-    remove.className = "remove-btn";
-    remove.textContent = "REMOVE";
-    remove.addEventListener("click", () => removeItem(index));
+    const remove=document.createElement("button");
+    remove.type="button";remove.className="remove-btn";remove.textContent="REMOVE";
+    remove.addEventListener("click",()=>removeItem(index));
 
     controls.append(qty,remove);
     info.append(name,meta,price,controls);
 
-    const lineTotal = document.createElement("div");
-    lineTotal.className = "line-total";
-    lineTotal.textContent = money(details.price * quantity);
-
+    const lineTotal=document.createElement("div");
+    lineTotal.className="line-total";
+    lineTotal.textContent=money(details.price*quantity);
     row.append(img,info,lineTotal);
     container.appendChild(row);
   });
-
   updateSummary(cart);
 }
-
 function changeQuantity(index,change){
-  const cart = readCart();
-  if(!cart[index]) return;
-
-  const next = (Number(cart[index].quantity) || 0) + change;
-  if(next <= 0){
-    cart.splice(index,1);
-  }else{
-    cart[index].quantity = next;
-  }
-  if(saveCart(cart)) renderCart();
+  const cart=readCart();
+  if(!cart[index])return;
+  const next=(Number(cart[index].quantity)||0)+change;
+  if(next<=0)cart.splice(index,1);
+  else cart[index].quantity=next;
+  if(saveCart(cart))renderCart();
 }
-
 function removeItem(index){
-  const cart = readCart();
-  cart.splice(index,1);
-  if(saveCart(cart)) renderCart();
+  const cart=readCart();cart.splice(index,1);
+  if(saveCart(cart))renderCart();
 }
-
-function updateSummary(cart){
-  const subtotal = cart.reduce((sum,item) => {
-    const details = productDetails(item);
-    return sum + details.price * Math.max(0,Number(item.quantity) || 0);
-  },0);
-
-  $("subtotal").textContent = money(subtotal);
-  $("grandTotal").textContent = money(subtotal);
-}
-
 function submitOrder(event){
   event.preventDefault();
-
-  const cart = readCart();
+  const cart=readCart();
   if(!cart.length){
-    $("orderStatus").textContent = "Your cart is empty. Please add products first.";
-    $("orderStatus").classList.add("show");
-    return;
+    $("orderStatus").textContent="Your cart is empty. Please add products first.";
+    $("orderStatus").classList.add("show");return;
   }
-
-  const form = $("checkoutForm");
-  if(!form.reportValidity()) return;
-
-  const data = new FormData(form);
-  const orderNumber = "JKSV-" + Date.now().toString().slice(-8);
-  const lines = cart.map(item => {
-    const details = productDetails(item);
-    const qty = Math.max(0,Number(item.quantity) || 0);
-    return details.name + " — Qty: " + qty + " — " + money(details.price * qty);
+  const form=$("checkoutForm");
+  if(!form.reportValidity())return;
+  const data=new FormData(form);
+  const orderNumber="JKSV-"+Date.now().toString().slice(-8);
+  const lines=cart.map(item=>{
+    const details=productDetails(item);
+    const qty=Math.max(0,Number(item.quantity)||0);
+    return details.name+" — Qty: "+qty+" — "+money(details.price*qty);
   });
-
-  const subtotal = cart.reduce((sum,item) => {
-    const details = productDetails(item);
-    return sum + details.price * Math.max(0,Number(item.quantity) || 0);
+  const subtotal=cart.reduce((sum,item)=>{
+    const details=productDetails(item);
+    return sum+details.price*Math.max(0,Number(item.quantity)||0);
   },0);
-
-  const payment = data.get("payment");
-  const summary =
+  const summary=
 `JK SAFETY VISION — DEMO ORDER INQUIRY
 Order reference: ${orderNumber}
 
 CUSTOMER
 Name: ${data.get("customerName")}
 Mobile: ${data.get("mobile")}
-Email: ${data.get("email") || "Not provided"}
+Email: ${data.get("email")||"Not provided"}
 Address: ${data.get("address")}
 City: ${data.get("city")}
 State: ${data.get("state")}
@@ -487,48 +341,39 @@ ${lines.join("\n")}
 Subtotal: ${money(subtotal)}
 Delivery: To be confirmed
 Estimated total: ${money(subtotal)}
-Payment selection: ${payment}
-Notes: ${data.get("notes") || "None"}
+Payment selection: ${data.get("payment")}
+Notes: ${data.get("notes")||"None"}
 
 DEMO ONLY — No payment has been processed and no shipment has been booked.`;
 
-  $("orderStatus").textContent =
-    "Demo order inquiry created! Reference: " + orderNumber +
-    ". No payment was taken and no shipment was booked. Your cart has been kept.";
+  $("orderStatus").textContent="Demo order inquiry created! Reference: "+orderNumber+". No payment was taken and no shipment was booked. Your cart has been kept.";
   $("orderStatus").classList.add("show");
 
-  let copyButton = $("copyOrderButton");
+  let copyButton=$("copyOrderButton");
   if(!copyButton){
-    copyButton = document.createElement("button");
-    copyButton.id = "copyOrderButton";
-    copyButton.type = "button";
-    copyButton.className = "checkout-btn";
-    copyButton.textContent = "COPY ORDER SUMMARY";
-    copyButton.style.marginTop = "12px";
+    copyButton=document.createElement("button");
+    copyButton.id="copyOrderButton";copyButton.type="button";
+    copyButton.className="checkout-btn";copyButton.textContent="COPY ORDER SUMMARY";
+    copyButton.style.marginTop="12px";
     $("orderStatus").appendChild(document.createElement("br"));
     $("orderStatus").appendChild(copyButton);
   }
-  copyButton.onclick = async function(){
+  copyButton.onclick=async function(){
     try{
       await navigator.clipboard.writeText(summary);
-      copyButton.textContent = "SUMMARY COPIED";
+      copyButton.textContent="SUMMARY COPIED";
     }catch(error){
-      const area = document.createElement("textarea");
-      area.value = summary;
-      document.body.appendChild(area);
-      area.select();
-      document.execCommand("copy");
-      area.remove();
-      copyButton.textContent = "SUMMARY COPIED";
+      const area=document.createElement("textarea");
+      area.value=summary;document.body.appendChild(area);
+      area.select();document.execCommand("copy");area.remove();
+      copyButton.textContent="SUMMARY COPIED";
     }
   };
 }
-
 $("checkoutForm").addEventListener("submit",submitOrder);
-window.addEventListener("storage",event => {
-  if(event.key === CART_KEY) renderCart();
+window.addEventListener("storage",event=>{
+  if(event.key===CART_KEY)renderCart();
 });
-
 renderCart();
 })();
 </script>
