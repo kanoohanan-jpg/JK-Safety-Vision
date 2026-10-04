@@ -1152,7 +1152,31 @@ body{overflow-x:hidden}
   -webkit-mask-composite:source-over !important;
   mask-composite:add !important;
 }
+/* Hero Section Container */
+.hero-section {
+  position: relative;
+  background-color: #0f172a; /* Aapke theme ke hisaab se dark background */
+  overflow: hidden;
+}
 
+/* Camera Image Styling with Background Blend */
+.hero-section .camera-image {
+  position: relative;
+  z-index: 2;
+  mix-blend-mode: luminosity; /* Ya 'screen' / 'overlay' try kar sakte hain background ke tone ke mutabiq */
+  opacity: 0.95;
+  filter: contrast(1.05) brightness(0.95);
+}
+
+/* Background Gradient Fade (Edges Blend karne ke liye) */
+.hero-section::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at center, transparent 30%, rgba(15, 23, 42, 0.85) 80%);
+  z-index: 3;
+  pointer-events: none;
+}
 </style>
 </head>
 
