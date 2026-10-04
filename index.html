@@ -1152,7 +1152,91 @@ body{overflow-x:hidden}
   -webkit-mask-composite:source-over !important;
   mask-composite:add !important;
 }
+/* ===== HERO CAMERA IMAGE BLENDING ===== */
 
+.hero{
+  background:
+    radial-gradient(
+      ellipse at 78% 48%,
+      rgba(255,255,255,.88) 0%,
+      rgba(255,255,255,.30) 28%,
+      transparent 54%
+    ),
+    radial-gradient(
+      ellipse at 92% 8%,
+      rgba(218,171,79,.20) 0%,
+      transparent 34%
+    ),
+    linear-gradient(
+      112deg,
+      #f8f8f6 0%,
+      #eef1f2 48%,
+      #e1e7eb 100%
+    ) !important;
+}
+
+.hero > .hero-visual{
+  background: transparent !important;
+  mix-blend-mode: normal !important;
+  overflow: hidden !important;
+}
+
+.hero > .hero-visual img{
+  object-fit: contain !important;
+  object-position: center right !important;
+  mix-blend-mode: multiply !important;
+  background: transparent !important;
+  filter: drop-shadow(0 20px 22px rgba(25,38,52,.13)) !important;
+
+  -webkit-mask-image: radial-gradient(
+    ellipse 92% 88% at 54% 50%,
+    #000 58%,
+    rgba(0,0,0,.92) 72%,
+    transparent 100%
+  ) !important;
+
+  mask-image: radial-gradient(
+    ellipse 92% 88% at 54% 50%,
+    #000 58%,
+    rgba(0,0,0,.92) 72%,
+    transparent 100%
+  ) !important;
+}
+
+@media(max-width:768px){
+  .hero{
+    background:
+      radial-gradient(
+        ellipse at 50% 82%,
+        rgba(255,255,255,.9) 0%,
+        rgba(255,255,255,.25) 42%,
+        transparent 70%
+      ),
+      linear-gradient(
+        160deg,
+        #f8f8f6 0%,
+        #edf1f3 100%
+      ) !important;
+  }
+
+  .hero > .hero-visual img{
+    object-position: center !important;
+
+    -webkit-mask-image: radial-gradient(
+      ellipse 94% 90% at 50% 50%,
+      #000 62%,
+      rgba(0,0,0,.9) 78%,
+      transparent 100%
+    ) !important;
+
+    mask-image: radial-gradient(
+      ellipse 94% 90% at 50% 50%,
+      #000 62%,
+      rgba(0,0,0,.9) 78%,
+      transparent 100%
+    ) !important;
+  }
+}
 </style>
 </head>
 
