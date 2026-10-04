@@ -159,7 +159,7 @@ const MAX_QTY = 99;
 const products = window.PRODUCTS || [];
 const $ = id => document.getElementById(id);
 
-const productId = parseInt(new URLSearchParams(window.location.search).get("id"), 10);
+const productId = new URLSearchParams(window.location.search).get("id");
 const product = products.find(item => item.id === productId);
 
 const money = v => "₹" + Number(v).toLocaleString("en-IN");
