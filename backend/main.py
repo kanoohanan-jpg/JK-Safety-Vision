@@ -10,6 +10,7 @@ app = FastAPI(
     version="1.0.0"
 )
 initialize_database()
+app.include_router(uploads_router)
 # Website connection
 app.add_middleware(
     CORSMiddleware,
