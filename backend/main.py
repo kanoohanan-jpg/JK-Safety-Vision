@@ -30,3 +30,18 @@ def health():
         "backend": "FastAPI",
         "project": "JK Safety Vision"
     }
+@app.get("/api/products")
+def get_products():
+    from backend.database import get_connection
+
+    connection = get_connection()
+    cursor = connection.cursor()
+
+    cursor.execute("SELECT * FROM products ORDER BY id DESC")
+    products = [dict(row) for row in cursor.fetchall()]
+
+    connection.close()
+    return {
+        "status": "success",
+        "products": products
+    }
