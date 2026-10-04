@@ -681,6 +681,44 @@ body{background:var(--bg);color:var(--ink)}
 /* Small yellow accents */
 .benefit-icon{color:#172337}
 .product-note{color:#70757d}
+/* HERO IMAGE — large full visual */
+.hero{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  align-items:center;
+  gap:40px;
+}
+
+.hero-visual{
+  width:100%;
+  height:100%;
+  min-height:420px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  overflow:hidden;
+  border-radius:18px;
+}
+
+.hero-visual img{
+  width:100%;
+  height:420px;
+  object-fit:cover;
+  display:block;
+  border-radius:18px;
+}
+
+@media(max-width:768px){
+  .hero{
+    grid-template-columns:1fr;
+  }
+  .hero-visual{
+    min-height:280px;
+  }
+  .hero-visual img{
+    height:280px;
+  }
+}
 </style>
 </head>
 
