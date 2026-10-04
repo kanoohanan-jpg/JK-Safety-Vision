@@ -1558,3 +1558,204 @@ body {
     background: #c99a35;
     color: #fff;
 }
+/* =========================================
+   JK SAFETY VISION — BLUE YELLOW WHITE THEME
+   Final colour override
+   ========================================= */
+
+:root {
+    --gold: #f7c600;
+    --gold-light: #ffda33;
+    --gold-dark: #1769aa;
+    --ink: #17212b;
+    --muted: #65717d;
+    --white: #ffffff;
+    --soft: #f4f8fc;
+    --line: #dce6f0;
+    --dark: #0b3d75;
+    --shadow: 0 12px 32px rgba(15, 65, 115, .10);
+
+    --glass-white: rgba(255, 255, 255, .82);
+    --glass-border: rgba(255, 255, 255, .95);
+}
+
+/* Main background */
+body {
+    background: #ffffff;
+    color: var(--ink);
+}
+
+/* Section backgrounds */
+.services,
+.industries,
+.about,
+.corporate-bottom {
+    background: #ffffff;
+}
+
+.solutions,
+.why-us {
+    background: #f2f7fc;
+}
+
+/* Navbar */
+.navbar {
+    background: rgba(255, 255, 255, .94);
+    border-bottom: 2px solid #f7c600;
+    box-shadow: 0 5px 22px rgba(15, 65, 115, .10);
+}
+
+.nav-logo span,
+.nav-links a:hover {
+    color: #1769aa;
+}
+
+/* Headings and labels */
+.section-label,
+.about-label,
+.section-heading h2 span,
+.about-content h2 span,
+.service-card > span,
+.industry-card > span,
+.why-card > strong,
+.solution-item > strong {
+    color: #1769aa;
+}
+
+/* Glass cards */
+.service-card,
+.industry-card,
+.why-card,
+.solution-item {
+    background: rgba(255, 255, 255, .88);
+    border-color: #dce6f0;
+    box-shadow: 0 8px 28px rgba(15, 65, 115, .08);
+}
+
+.service-card,
+.why-card {
+    border-top-color: #f7c600;
+}
+
+.industry-card {
+    border-bottom-color: #f7c600;
+}
+
+.service-card:hover,
+.industry-card:hover,
+.why-card:hover,
+.solution-item:hover {
+    background: #ffffff;
+    border-color: #f7c600;
+    box-shadow: 0 14px 32px rgba(15, 65, 115, .14);
+}
+
+/* Links and action buttons */
+.service-open-btn {
+    color: #1769aa;
+    border-bottom-color: #f7c600;
+}
+
+.service-open-btn:hover {
+    color: #0b3d75;
+}
+
+/* Hero yellow highlights */
+.brand-line,
+.hero-slide-number,
+.hero-brand-mark strong,
+.hero-slide-content h1 span,
+.hero-slide-line,
+.hero-progress span,
+.hero-slide-count i,
+.scroll-line {
+    background-color: #f7c600;
+}
+
+.hero-slide-number,
+.hero-brand-mark strong,
+.hero-slide-content h1 span,
+.hero-slide-count i {
+    color: #ffda33;
+}
+
+/* Contact section */
+.contact {
+    background: linear-gradient(135deg, #0b4f91, #1769aa);
+    color: #ffffff;
+}
+
+.contact .section-label,
+.contact-heading h2,
+.contact-heading p {
+    color: #ffffff;
+}
+
+.contact-heading h2 span {
+    color: #ffda33;
+}
+
+.contact-item {
+    background: rgba(255, 255, 255, .96);
+    border-color: #f7c600;
+}
+
+/* Contact buttons */
+.contact-action a,
+.contact-popup-call {
+    background: #f7c600;
+    color: #17212b;
+}
+
+.contact-action a:hover,
+.contact-popup-call:hover {
+    background: #ffda33;
+    color: #17212b;
+}
+
+/* Popups */
+.service-modal-box,
+.contact-popup-box {
+    background: #ffffff;
+    border-color: #f7c600;
+}
+
+.service-modal-label,
+.contact-popup-label,
+.contact-popup-box h2 span {
+    color: #1769aa;
+}
+
+.service-modal-close:hover {
+    background: #f7c600;
+    color: #17212b;
+}
+
+.modal-item-card,
+.contact-popup-item {
+    background: #f2f7fc;
+    border-color: #dce6f0;
+}
+
+/* Corporate section */
+.corporate-logo,
+.corporate-column h3,
+.corporate-contact h3,
+.corporate-contact a {
+    color: #1769aa;
+}
+
+/* Footer */
+.footer {
+    background: #0b3d75;
+    color: #ffffff;
+}
+
+.footer-logo span {
+    color: #ffda33;
+}
+
+.footer p,
+.footer-copy {
+    color: rgba(255, 255, 255, .75);
+}
