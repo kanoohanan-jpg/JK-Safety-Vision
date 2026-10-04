@@ -6,7 +6,7 @@ app = FastAPI(
     description="Backend system for JK Safety Vision",
     version="1.0.0"
 )
-
+initialize_database()
 # Website connection
 app.add_middleware(
     CORSMiddleware,
