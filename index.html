@@ -1013,7 +1013,10 @@ document.getElementById("catStrip").innerHTML=catTiles.map(t=>
 ).join("");
 
 document.querySelectorAll("[data-art]").forEach(img=>setImage(img,img.dataset.art));
-setImage(document.getElementById("heroProductImage"),"bullet");
+const heroCamera = document.getElementById("heroProductImage");
+heroCamera.onerror = null;
+heroCamera.src = "images/camera1.jpeg";
+heroCamera.alt = "CP PLUS Bullet Security Camera";
 document.getElementById("year").textContent=new Date().getFullYear();
 updateCartCount();
 
