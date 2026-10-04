@@ -758,6 +758,58 @@ body{background:var(--bg);color:var(--ink)}
 .hero-bubble{
   display:none !important;
 }
+/* HERO BACKGROUND — reference image style */
+.hero{
+  position:relative;
+  overflow:hidden;
+  isolation:isolate;
+  background:
+    linear-gradient(115deg,
+      #f8f6f2 0%,
+      #f4f2ef 48%,
+      #e9edf0 76%,
+      #dce2e7 100%);
+}
+
+/* Soft geometric background shapes */
+.hero::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  z-index:-1;
+  pointer-events:none;
+  background:
+    linear-gradient(135deg,
+      transparent 0 62%,
+      rgba(255,255,255,.42) 62% 73%,
+      transparent 73%),
+    linear-gradient(135deg,
+      transparent 0 82%,
+      rgba(201,154,53,.18) 82% 100%);
+}
+
+/* Gold accent on the right */
+.hero::after{
+  content:"";
+  position:absolute;
+  top:0;
+  right:0;
+  width:13%;
+  height:100%;
+  z-index:-1;
+  pointer-events:none;
+  background:linear-gradient(
+    135deg,
+    transparent 0 48%,
+    rgba(201,154,53,.72) 48% 100%
+  );
+}
+
+/* Keep hero content above background */
+.hero > *{
+  position:relative;
+  z-index:1;
+}
 </style>
 </head>
 
