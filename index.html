@@ -1,7 +1,246 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
+<meta char<div class="container top-strip-inner">
+    <span>JK SAFETY VISION — Your Security Shopping Store</span>
+    <span>Product Inquiry · Installation Support · Customer Assistance</span>
+  </div>
+</div>
+
+<header class="store-header">
+  <div class="container header-main">
+    <a class="brand" href="index.html" aria-label="JK Safety Vision Home">
+      <span class="brand-mark">JK</span>
+      <span>
+        <span class="brand-name">JK SAFETY VISION</span>
+        <span class="brand-sub">SECURITY STORE</span>
+      </span>
+    </a>
+    <form class="search-wrap" id="searchForm">
+      <input id="searchInput" type="search" placeholder="Search for cameras, DVR, NVR, accessories..." aria-label="Search products">
+      <button type="submit" aria-label="Search">⌕</button>
+    </form>
+    <div class="header-actions">
+      <a class="header-action" href="#featured"><span class="action-icon">♡</span><span>Wishlist</span></a>
+      <a class="header-action" href="order.html">
+        <span class="action-icon">🛒</span><span>Cart</span><span class="cart-count" id="cartCount">0</span>
+      </a>
+    </div>
+  </div>
+  <nav class="category-nav">
+    <div class="container category-nav-inner">
+      <a href="#categories">All Categories</a>
+      <a href="#featured" data-filter-link="Cameras">CCTV Cameras</a>
+      <a href="#featured" data-filter-link="Recording">DVR / NVR</a>
+      <a href="#featured" data-filter-link="Networking">Networking</a>
+      <a href="#featured" data-filter-link="Accessories">Accessories</a>
+      <a href="#featured" data-filter-link="Storage">Hard Disks</a>
+      <a href="#featured" data-filter-link="Alarm &amp; Access">Alarm &amp; Access</a>
+      <a href="services.html">Installation Services</a>
+      <a href="contact.html">Contact Us</a>
+    </div>
+  </nav>
+</header>
+
+<section class="brand-bar" aria-label="Shop by brand">
+  <div class="container brand-bar-inner">
+    <span class="brand-bar-label">SHOP BY BRAND</span>
+    <div id="brandPills">
+      <button class="filter-btn active" type="button" data-brand="All">All Brands</button>
+      <button class="filter-btn" type="button" data-brand="CP PLUS">CP PLUS</button>
+      <button class="filter-btn" type="button" data-brand="HIKVISION">HIKVISION</button>
+      <button class="filter-btn" type="button" data-brand="AMCOM">AMCOM</button>
+      <button class="filter-btn" type="button" data-brand="PRAMA">PRAMA</button>
+    </div>
+  </div>
+</section>
+
+<main>
+<div class="container">
+  <div class="cat-strip" id="catStrip" aria-label="Shop by product type"></div>
+
+  <section class="hero">
+    <div class="hero-copy">
+      <span class="hero-tag" id="heroTag">Smart Security Shopping</span>
+      <h1 id="heroTitle">Protect what matters. Shop with confidence<span class="hero-dot">.</span></h1>
+      <p id="heroText">Explore security cameras, recording systems and networking products for homes, offices and businesses — all in one place.</p>
+      <div class="hero-buttons">
+        <a class="btn" href="#featured">Shop Products&nbsp; →</a>
+        <a class="btn btn-outline" href="services.html">Explore Services</a>
+      </div>
+      <div class="hero-dots" id="heroDots"></div>
+    </div>
+    <div class="hero-visual">
+      <img id="heroProductImage" src="images/camera1.jpeg" alt="CP PLUS Security Camera">
+    </div>
+  </section>
+
+  <section class="benefits" aria-label="Store benefits">
+    <div class="benefit"><span class="benefit-icon"><svg viewBox="0 0 24 24"><path d="M12 3l7 3v5c0 4.5-3 8.2-7 10-4-1.8-7-5.5-7-10V6l7-3z"/><path d="M9 12l2 2 4-4"/></svg></span><div><strong>Trusted Brands</strong><small>Original &amp; Genuine Products</small></div></div>
+    <div class="benefit"><span class="benefit-icon"><svg viewBox="0 0 24 24"><path d="M2 6h11v10H2z"/><path d="M13 9h4l3 3v4h-7"/><circle cx="6.5" cy="17.5" r="1.8"/><circle cx="16.5" cy="17.5" r="1.8"/></svg></span><div><strong>Fast Delivery</strong><small>Across Kashmir &amp; India</small></div></div>
+    <div class="benefit"><span class="benefit-icon"><svg viewBox="0 0 24 24"><path d="M4 14v-2a8 8 0 0116 0v2"/><rect x="3" y="14" width="4" height="6" rx="1.5"/><rect x="17" y="14" width="4" height="6" rx="1.5"/><path d="M19 20c0 1.5-2 2-5 2"/></svg></span><div><strong>Expert Support</strong><small>Pre &amp; Post Sales Assistance</small></div></div>
+    <div class="benefit"><span class="benefit-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9l2.1 2.1M17 17l2.1 2.1M4.9 19.1L7 17M17 7l2.1-2.1"/></svg></span><div><strong>Installation Services</strong><small>Professional Setup</small></div></div>
+  </section>
+
+  <section class="section" id="categories">
+    <div class="section-head">
+      <div><span class="section-kicker">Browse Store</span><h2>Shop by Category</h2><p>Find the security equipment you need.</p></div>
+      <a class="text-link" href="#featured">View products →</a>
+    </div>
+    <div class="category-grid">
+      <a class="category-tile" href="#featured" data-category-link="Cameras"><div class="category-art"><img data-art="dome" alt="Dome camera"></div><strong>CCTV Cameras</strong><small>Indoor & outdoor</small></a>
+      <a class="category-tile" href="#featured" data-category-link="Recording"><div class="category-art"><img data-art="recorder" alt="DVR recorder"></div><strong>DVR / NVR</strong><small>Recording systems</small></a>
+      <a class="category-tile" href="#featured" data-category-link="Networking"><div class="category-art"><img data-art="switch" alt="Network switch"></div><strong>Networking</strong><small>Switches & connectivity</small></a>
+      <a class="category-tile" href="#featured" data-category-link="Accessories"><div class="category-art"><img data-art="accessory" alt="Security accessory"></div><strong>Accessories</strong><small>Parts & essentials</small></a>
+      <a class="category-tile" href="services.html"><div class="category-art"><img data-art="bullet" alt="Camera installation"></div><strong>Installation</strong><small>Professional services</small></a>
+      <a class="category-tile" href="contact.html"><div class="category-art"><span style="font-size:43px">💬</span></div><strong>Need Help?</strong><small>Talk to our team</small></a>
+    </div>
+  </section>
+
+  <section class="section"><div class="row-box">
+    <div class="section-head"><div><span class="section-kicker">Top Offers</span><h2>Deals of the Day</h2></div><a class="text-link" href="#featured" data-filter-link="All">View all →</a></div>
+    <div class="h-row" id="rowDeals"></div>
+  </div></section>
+
+  <section class="section"><div class="row-box">
+    <div class="section-head"><div><span class="section-kicker">CCTV Range</span><h2>Best of Surveillance Cameras</h2></div><a class="text-link" href="#featured" data-filter-link="Cameras">View all →</a></div>
+    <div class="h-row" id="rowCameras"></div>
+  </div></section>
+
+  <section class="section"><div class="row-box">
+    <div class="section-head"><div><span class="section-kicker">Record & Store</span><h2>DVR, NVR &amp; Hard Disks</h2></div><a class="text-link" href="#featured" data-filter-link="Recording">View all →</a></div>
+    <div class="h-row" id="rowRecording"></div>
+  </div></section>
+
+  <section class="section"><div class="row-box">
+    <div class="section-head"><div><span class="section-kicker">Complete Your Setup</span><h2>Cables, Accessories &amp; Alarms</h2></div><a class="text-link" href="#featured" data-filter-link="Accessories">View all →</a></div>
+    <div class="h-row" id="rowAccess"></div>
+  </div></section>
+
+  <section class="section" id="featured">
+    <div class="section-head">
+      <div><span class="section-kicker">Store Collection</span><h2 id="featuredTitle">All Surveillance Products</h2><p>Explore popular security and surveillance essentials.</p></div>
+      <a class="text-link" href="order.html">Open order page →</a>
+    </div>
+    <div class="product-toolbar">
+      <div class="filter-pills" id="filterPills">
+        <button class="filter-btn active" data-filter="All">All Products</button>
+        <button class="filter-btn" data-filter="Cameras">Cameras</button>
+        <button class="filter-btn" data-filter="Recording">DVR / NVR</button>
+        <button class="filter-btn" data-filter="Networking">Networking</button>
+        <button class="filter-btn" data-filter="Accessories">Accessories</button>
+        <button class="filter-btn" data-filter="Storage">Hard Disks</button>
+        <button class="filter-btn" data-filter="Alarm &amp; Access">Alarm &amp; Access</button>
+      </div>
+      <div class="sort-group">
+        <select class="sort-select" id="priceSelect" aria-label="Filter by price">
+          <option value="all">Price: All</option><option value="u2">Under ₹2,000</option>
+          <option value="m">₹2,000 – ₹5,000</option><option value="o5">Above ₹5,000</option>
+        </select>
+        <select class="sort-select" id="ratingSelect" aria-label="Filter by rating">
+          <option value="0">Rating: All</option><option value="4">4★ &amp; above</option><option value="4.5">4.5★ &amp; above</option>
+        </select>
+        <select class="sort-select" id="sortSelect" aria-label="Sort products">
+          <option value="featured">Sort: Featured</option><option value="low">Price: Low to High</option>
+          <option value="high">Price: High to Low</option><option value="name">Name: A to Z</option>
+        </select>
+      </div>
+    </div>
+    <div class="product-grid" id="productGrid"></div>
+  </section>
+
+  <section class="promo">
+    <div><span class="section-kicker">Need a complete setup?</span><h2>Build your security system with our team.</h2><p>Tell us about your home, shop or office. We can help you understand the products and installation requirements.</p></div>
+    <a class="btn" href="contact.html">Request Assistance →</a>
+  </section>
+
+  <section class="section">
+    <div class="section-head"><div><span class="section-kicker">Our Brands</span><h2>Technology We Work With</h2><p>Ask us about product availability and compatible systems.</p></div></div>
+    <div class="brand-grid">
+      <a class="brand-tile" href="#featured" data-brand-link="HIKVISION">HIKVISION</a>
+      <a class="brand-tile" href="#featured" data-brand-link="CP PLUS">CP PLUS</a>
+      <a class="brand-tile" href="#featured" data-brand-link="PRAMA">PRAMA</a>
+      <a class="brand-tile" href="#featured" data-brand-link="AMCOM">AMCOM</a>
+      <a class="brand-tile" href="#featured" data-brand-link="All">ALL BRANDS</a>
+    </div>
+  </section>
+
+  <section class="store-info">
+    <div class="info-card"><span class="info-icon">🔍</span><h3>Choose the Right Product</h3><p>Not sure which camera or recorder you need? Share your requirements before ordering.</p></div>
+    <div class="info-card"><span class="info-icon">🛠️</span><h3>Installation & Setup</h3><p>Ask about installation, wiring, networking and system integration support.</p></div>
+    <div class="info-card"><span class="info-icon">🤝</span><h3>Personal Assistance</h3><p>Contact our team for product details, quotations and order-related questions.</p></div>
+  </section>
+</div>
+</main>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div><div class="footer-brand">JK SAFETY VISION</div><p>Your security shopping destination for surveillance, networking and integrated security solutions.</p></div>
+      <div><h3>Shop</h3><a href="#categories">All Categories</a><a href="#featured">Featured Products</a><a href="order.html">Order Inquiry</a></div>
+      <div><h3>Company</h3><a href="about.html">About Us</a><a href="services.html">Our Services</a></div>
+      <div><h3>Get in Touch</h3><a href="contact.html">Contact Us</a><a href="solutions.html">Solutions</a><a href="order.html">Place an Inquiry</a></div>
+    </div>
+    <div class="footer-bottom">©️ <span id="year"></span> JK Safety Vision. All rights reserved.<br>Product prices and availability are subject to confirmation.</div>
+  </div>
+</footer>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<!-- CONTACT POPUP -->
+<div class="contact-overlay" id="contactPopup" aria-hidden="true">
+  <div class="contact-popup" role="dialog" aria-modal="true" aria-labelledby="contactPopupTitle">
+    <button class="contact-close" id="contactClose" type="button" aria-label="Close">×</button>
+    <span class="section-kicker">JK Safety Vision</span>
+    <h2 id="contactPopupTitle">How can we help you?</h2>
+    <p>Product details, quotation, installation ya order assistance ke liye humse contact karein.</p>
+    <div class="contact-name">Amir Nisar · 98583 51143</div>
+    <div class="contact-popup-actions">
+      <a class="contact-call" href="tel:+919858351143">☎ Call Now</a>
+      <a class="contact-whatsapp" href="https://wa.me/919858351143" target="_blank" rel="noopener">WhatsApp</a>
+    </div>
+  </div>
+</div>
+
+<script>
+const IMAGE_FOLDER="images/";
+const IMAGE_EXT=".jpg";
+
+function svgArt(type){
+ const shapes={
+ dome:`<ellipse cx="210" cy="245" rx="115" ry="14" fill="#000" opacity=".1"/><path d="M105 110Q105 78 140 78H280Q315 78 315 110V140H105Z" fill="#e5d9d3" stroke="#82746f" stroke-width="5"/><path d="M100 140Q210 110 320 140L300 190Q210 225 120 190Z" fill="#c9bdb7" stroke="#82746f" stroke-width="5"/><path d="M120 170Q210 135 300 170Q290 235 210 240Q130 235 120 170Z" fill="#34383a" stroke="#82746f" stroke-width="5"/><circle cx="210" cy="185" r="28" fill="#15191b"/><circle cx="202" cy="177" r="8" fill="#9eafb2"/>`,
+ bullet:`<ellipse cx="210" cy="245" rx="125" ry="14" fill="#000" opacity=".1"/><path d="M75 110L125 78H285Q320 78 330 110V170Q320 200 285 200H125L75 165Z" fill="#e3d8d2" stroke="#82746f" stroke-width="5"/><path d="M325 110L370 125V155L325 170Z" fill="#4a4c4d" stroke="#82746f" stroke-width="4"/><circle cx="358" cy="140" r="20" fill="#171b1d"/><circle cx="360" cy="140" r="10" fill="#9eafb2"/><path d="M155 198V225H205L220 195" fill="#b9aaa3" stroke="#82746f" stroke-width="4"/>`,
+ recorder:`<ellipse cx="210" cy="245" rx="140" ry="15" fill="#000" opacity=".1"/><rect x="60" y="95" width="300" height="125" rx="12" fill="#55504e" stroke="#302d2c" stroke-width="5"/><circle cx="105" cy="155" r="8" fill="#d5b78d"/><circle cx="135" cy="155" r="5" fill="#a7b9a3"/><rect x="175" y="140" width="120" height="30" rx="4" fill="#202020" stroke="#aaa" stroke-width="2"/><text x="235" y="160" font-size="13" fill="#eee" text-anchor="middle">RECORDER</text>`,
+ switch:`<ellipse cx="210" cy="245" rx="130" ry="14" fill="#000" opacity=".1"/><path d="M70 105H330L350 125V205H90L70 185Z" fill="#d9cec8" stroke="#82746f" stroke-width="5"/><rect x="100" y="120" width="230" height="70" fill="#383b3b"/><g fill="#d7d1c9"><rect x="120" y="137" width="20" height="22"/><rect x="150" y="137" width="20" height="22"/><rect x="180" y="137" width="20" height="22"/><rect x="210" y="137" width="20" height="22"/><rect x="240" y="137" width="20" height="22"/><rect x="270" y="137" width="20" height="22"/></g>`,
+ accessory:`<ellipse cx="210" cy="245" rx="120" ry="14" fill="#000" opacity=".1"/><rect x="120" y="70" width="180" height="150" rx="18" fill="#d9cec8" stroke="#82746f" stroke-width="5"/><rect x="140" y="90" width="140" height="110" rx="12" fill="#383b3b"/><circle cx="210" cy="145" r="35" fill="#777"/>`,
+ ptz:`<ellipse cx="210" cy="250" rx="100" ry="13" fill="#000" opacity=".1"/><rect x="165" y="40" width="90" height="30" rx="7" fill="#d9cec8" stroke="#82746f" stroke-width="4"/><rect x="195" y="68" width="30" height="42" fill="#b9aaa3"/><circle cx="210" cy="170" r="65" fill="#d9cec8" stroke="#82746f" stroke-width="5"/><path d="M155 175Q210 115 265 175Q250 230 210 235Q170 230 155 175Z" fill="#34383a"/><circle cx="210" cy="190" r="22" fill="#15191b"/>`,
+ wifi:`<circle cx="210" cy="140" r="65" fill="#e5d9d3" stroke="#82746f" stroke-width="5"/><circle cx="210" cy="140" r="42" fill="#34383a"/><circle cx="210" cy="140" r="18" fill="#15191b"/><path d="M290 90Q320 110 290 130M310 75Q345 110 310 145" fill="none" stroke="#a87568" stroke-width="5" stroke-linecap="round"/>`,
+ ip:`<rect x="80" y="95" width="200" height="100" rx="50" fill="#e5d9d3" stroke="#82746f" stroke-width="5"/><rect x="270" y="105" width="45" height="80" rx="10" fill="#4a4c4d"/><circle cx="315" cy="145" r="25" fill="#171b1d"/><circle cx="318" cy="145" r="11" fill="#9eafb2"/>`,
+ hdd:`<rect x="95" y="70" width="230" height="165" rx="14" fill="#c9c1b9" stroke="#82746f" stroke-width="5"/><circle cx="195" cy="152" r="48" fill="#eee8e3" stroke="#82746f" stroke-width="4"/><circle cx="195" cy="152" r="10" fill="#777"/>`,
+ cable:`<ellipse cx="210" cy="170" rx="110" ry="62" fill="none" stroke="#383635" stroke-width="22"/><ellipse cx="210" cy="170" rx="80" ry="42" fill="none" stroke="#514c49" stroke-width="16"/><ellipse cx="210" cy="170" rx="110" ry="62" fill="none" stroke="#c99a83" stroke-width="3"/>`,
+ alarm:`<rect x="140" y="80" width="140" height="160" rx="18" fill="#eee5df" stroke="#82746f" stroke-width="5"/><circle cx="210" cy="135" r="34" fill="#b96b68" stroke="#82746f" stroke-width="4"/><circle cx="210" cy="135" r="14" fill="#f5d6cd"/><rect x="170" y="190" width="80" height="12" rx="3" fill="#c9c5bb"/>`
+ };
+ return "data:image/svg+xml;charset=UTF-8,"+encodeURIComponent(`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 300"><defs><linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#fffaf8"/><stop offset="1" stop-color="#eadbd5"/></linearGradient></defs><rect width="420" height="300" rx="20" fill="url(#bg)"/>${shapes[type]||shapes.accessory}</svg>`);
+}
+function productImage(type){
+  return "images/" + type + ".jpeg";
+}
+function imageFallback(img,type){
+ if(!img.dataset.fallback){img.dataset.fallback="1";img.src=svgArt(type)}
+ else img.onerror=null;
+}
+function setImage(img,type){
+  img.onerror=()=>imageFallback(img,type);
+  img.src=type.startsWith("camera") 
+    ? "images/"+type 
+    : productImage(type);
+}
+
+const products=[
+{ id:1,name:"Dome CCTV Camera",brand:"Security Camera",make:"Generic",category:"Cameras",image:"dome",price:1800,old:2200,discount:"18% OFF",rating:"4.5"},
+{ id:2,name:"Bullet CCTV Camera",brand:"Outdoor Surveillance",make:"Generic",category:"Cameras",image:"bullet",price:2200,old:2700,discount:"19% OFF",rating:"4.6"},
+{ id:3,name:"4 Channel DVR",brand:"Video Recorder",make:"Generic",category:"Recording",image:"recorder",price:4200,old:4800,discount:"12% OFF",rating:"4.4"}
+];et="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>JK Safety Vision | Security Store</title>
 <meta name="description" content="Shop CCTV cameras, DVR, NVR, networking and security products at JK Safety Vision.">
