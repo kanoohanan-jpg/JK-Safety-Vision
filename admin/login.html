@@ -263,11 +263,39 @@ input:focus {
 </div>
 
 <script>
-document.getElementById("loginForm").addEventListener("submit", function(e) {
+document.getElementById("loginForm").addEventListener("submit", async function(e) {
     e.preventDefault();
-    alert("Admin login will be activated after backend integration.");
+
+    const email = document.getElementById("email").value.trim();
+    const password = document.getElementById("password").value;
+
+    try {
+        const response = await fetch("/api/admin/login", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                email: email,
+                password: password
+            })
+        });
+
+        const data = await response.json();
+
+        if (response.ok && data.status === "success") {
+            sessionStorage.setItem("jksv_admin", JSON.stringify(data.admin));
+
+            window.location.href = "/admin/dashboard.html";
+        } else {
+            alert(data.detail || "Invalid email or password.");
+        }
+
+    } catch (error) {
+        console.error("Login error:", error);
+        alert("Unable to connect to the server.");
+    }
 });
 </script>
-
 </body>
 </html>
