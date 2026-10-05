@@ -1,11 +1,26 @@
+from pathlib import Path
+
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.responses import FileResponse
 from pydantic import BaseModel
 
 from backend.database import initialize_database, get_connection
 from backend.uploads import router as uploads_router
 from backend.auth import verify_password
 
+
+# =========================================================
+# PATHS
+# =========================================================
+
+BASE_DIR = Path(__file__).resolve().parent.parent
+ADMIN_DIR = BASE_DIR / "admin"
+
+
+# =========================================================
+# FASTAPI APP
+# =========================================================
 
 app = FastAPI(
     title="JK Safety Vision API",
@@ -18,7 +33,10 @@ initialize_database()
 app.include_router(uploads_router)
 
 
-# Website connection
+# =========================================================
+# WEBSITE CONNECTION
+# =========================================================
+
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],
@@ -27,6 +45,10 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+
+# =========================================================
+# CUSTOMER / API
+# =========================================================
 
 @app.get("/")
 def home():
@@ -46,7 +68,36 @@ def health():
 
 
 # =========================================================
-# ADMIN LOGIN
+# ADMIN PAGES
+# =========================================================
+
+@app.get("/admin")
+def admin_login_page():
+    return FileResponse(ADMIN_DIR / "login.html")
+
+
+@app.get("/admin/")
+def admin_login_page_slash():
+    return FileResponse(ADMIN_DIR / "login.html")
+
+
+@app.get("/admin/login.html")
+def admin_login_html():
+    return FileResponse(ADMIN_DIR / "login.html")
+
+
+@app.get("/admin/dashboard")
+def admin_dashboard_page():
+    return FileResponse(ADMIN_DIR / "dashboard.html")
+
+
+@app.get("/admin/dashboard.html")
+def admin_dashboard_html():
+    return FileResponse(ADMIN_DIR / "dashboard.html")
+
+
+# =========================================================
+# ADMIN LOGIN API
 # =========================================================
 
 class AdminLogin(BaseModel):
@@ -110,7 +161,9 @@ def get_products():
     connection = get_connection()
     cursor = connection.cursor()
 
-    cursor.execute("SELECT * FROM products ORDER BY id DESC")
+    cursor.execute(
+        "SELECT * FROM products ORDER BY id DESC"
+    )
 
     products = [
         dict(row)
