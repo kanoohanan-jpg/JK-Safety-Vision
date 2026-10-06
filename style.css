@@ -1886,3 +1886,426 @@ body {
   object-position: center !important;
   background: transparent !important;
 }
+/* =========================================================
+   JK SAFETY VISION — iOS STYLE GLASS EFFECT
+   GLASS ONLY — EXISTING COLOURS PRESERVED
+   HERO IS NOT TOUCHED
+   ========================================================= */
+
+/* ---------- GLOBAL GLASS SETTINGS ---------- */
+
+:root {
+    --ios-glass-border: rgba(255, 255, 255, 0.58);
+    --ios-glass-highlight: rgba(255, 255, 255, 0.72);
+    --ios-glass-shadow: 0 14px 45px rgba(20, 30, 40, 0.10);
+    --ios-glass-blur: blur(24px) saturate(170%);
+}
+
+
+/* =========================================================
+   NAVBAR — iOS FLOATING GLASS
+   ========================================================= */
+
+.navbar {
+    background: rgba(255, 255, 255, 0.58) !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.68) !important;
+
+    backdrop-filter: var(--ios-glass-blur);
+    -webkit-backdrop-filter: var(--ios-glass-blur);
+
+    box-shadow:
+        0 8px 35px rgba(15, 65, 115, 0.09),
+        inset 0 1px 0 var(--ios-glass-highlight);
+
+    background-clip: padding-box;
+}
+
+
+/* =========================================================
+   SERVICE / INDUSTRY / WHY / SOLUTION CARDS
+   ========================================================= */
+
+.service-card,
+.industry-card,
+.why-card,
+.solution-item {
+
+    /* Existing colour remains visible underneath */
+    background: rgba(255, 255, 255, 0.52) !important;
+
+    border: 1px solid var(--ios-glass-border);
+
+    backdrop-filter: var(--ios-glass-blur);
+    -webkit-backdrop-filter: var(--ios-glass-blur);
+
+    box-shadow:
+        0 14px 40px rgba(20, 30, 40, 0.09),
+        inset 0 1px 0 rgba(255, 255, 255, 0.82),
+        inset 0 -1px 0 rgba(255, 255, 255, 0.20);
+
+    background-clip: padding-box;
+
+    transition:
+        transform .35s cubic-bezier(.2,.8,.2,1),
+        box-shadow .35s ease,
+        background .35s ease,
+        border-color .35s ease;
+}
+
+
+/* ---------- iOS GLASS HIGHLIGHT ---------- */
+
+.service-card::before,
+.industry-card::before,
+.why-card::before,
+.solution-item::before {
+
+    content: "";
+
+    position: absolute;
+    inset: 0;
+
+    pointer-events: none;
+
+    border-radius: inherit;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(255,255,255,.42),
+            transparent 38%
+        );
+
+    opacity: .65;
+}
+
+
+/* Cards need relative positioning for glass highlight */
+
+.service-card,
+.industry-card,
+.why-card,
+.solution-item {
+    position: relative;
+    overflow: hidden;
+}
+
+
+/* ---------- GLASS HOVER ---------- */
+
+.service-card:hover,
+.industry-card:hover,
+.why-card:hover,
+.solution-item:hover {
+
+    background: rgba(255, 255, 255, 0.62) !important;
+
+    box-shadow:
+        0 20px 50px rgba(20, 30, 40, 0.13),
+        inset 0 1px 0 rgba(255,255,255,.92);
+
+    transform: translateY(-6px);
+}
+
+
+/* =========================================================
+   CONTACT CARDS
+   ========================================================= */
+
+.contact-item {
+
+    background: rgba(255, 255, 255, 0.48) !important;
+
+    border: 1px solid rgba(255, 255, 255, 0.65);
+
+    backdrop-filter: blur(24px) saturate(170%);
+    -webkit-backdrop-filter: blur(24px) saturate(170%);
+
+    box-shadow:
+        0 14px 40px rgba(20, 30, 40, 0.10),
+        inset 0 1px 0 rgba(255,255,255,.82);
+
+    transition:
+        transform .3s ease,
+        background .3s ease,
+        box-shadow .3s ease;
+}
+
+.contact-item:hover {
+
+    background: rgba(255,255,255,.60) !important;
+
+    box-shadow:
+        0 20px 50px rgba(20, 30, 40, 0.14);
+
+    transform: translateY(-6px);
+}
+
+
+/* =========================================================
+   SERVICE MODAL — DEEP iOS GLASS
+   ========================================================= */
+
+.service-modal {
+
+    background: rgba(7, 15, 23, 0.66) !important;
+
+    backdrop-filter: blur(14px) saturate(140%);
+    -webkit-backdrop-filter: blur(14px) saturate(140%);
+}
+
+
+.service-modal-box {
+
+    background: rgba(255,255,255,.68) !important;
+
+    border: 1px solid rgba(255,255,255,.72);
+
+    border-radius: 24px;
+
+    backdrop-filter:
+        blur(32px)
+        saturate(180%);
+
+    -webkit-backdrop-filter:
+        blur(32px)
+        saturate(180%);
+
+    box-shadow:
+        0 30px 90px rgba(0,0,0,.28),
+        inset 0 1px 0 rgba(255,255,255,.85);
+}
+
+
+/* =========================================================
+   MODAL INNER CARDS
+   ========================================================= */
+
+.modal-item-card,
+.contact-popup-item {
+
+    background: rgba(255,255,255,.42) !important;
+
+    border: 1px solid rgba(255,255,255,.58);
+
+    backdrop-filter: blur(20px) saturate(160%);
+    -webkit-backdrop-filter: blur(20px) saturate(160%);
+
+    box-shadow:
+        inset 0 1px 0 rgba(255,255,255,.65),
+        0 8px 25px rgba(20,30,40,.06);
+
+    border-radius: 14px;
+}
+
+
+/* =========================================================
+   CONTACT POPUP — iOS GLASS
+   ========================================================= */
+
+.contact-popup-overlay {
+
+    background: rgba(6, 13, 20, 0.62) !important;
+
+    backdrop-filter: blur(14px) saturate(150%);
+    -webkit-backdrop-filter: blur(14px) saturate(150%);
+}
+
+
+.contact-popup-box {
+
+    background: rgba(255,255,255,.68) !important;
+
+    border-radius: 24px;
+
+    border: 1px solid rgba(255,255,255,.72);
+
+    backdrop-filter:
+        blur(32px)
+        saturate(180%);
+
+    -webkit-backdrop-filter:
+        blur(32px)
+        saturate(180%);
+
+    box-shadow:
+        0 30px 90px rgba(0,0,0,.28),
+        inset 0 1px 0 rgba(255,255,255,.88);
+}
+
+
+/* =========================================================
+   CONTACT POPUP CLOSE BUTTON
+   ========================================================= */
+
+.contact-popup-close,
+.service-modal-close {
+
+    background: rgba(255,255,255,.42) !important;
+
+    border: 1px solid rgba(255,255,255,.62);
+
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+
+    box-shadow:
+        inset 0 1px 0 rgba(255,255,255,.75),
+        0 5px 18px rgba(20,30,40,.08);
+
+    border-radius: 12px;
+
+    transition:
+        transform .25s ease,
+        background .25s ease,
+        box-shadow .25s ease;
+}
+
+.contact-popup-close:hover,
+.service-modal-close:hover {
+
+    transform: scale(1.05);
+
+    box-shadow:
+        0 10px 25px rgba(20,30,40,.14);
+}
+
+
+/* =========================================================
+   CORPORATE BOTTOM — GLASS COLUMNS
+   ========================================================= */
+
+.corporate-column,
+.corporate-contact,
+.corporate-brand-block {
+
+    position: relative;
+}
+
+
+/* =========================================================
+   FOOTER — SUBTLE GLASS SURFACE
+   Existing footer colour remains underneath
+   ========================================================= */
+
+.footer {
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(255,255,255,.08),
+            rgba(255,255,255,.025)
+        ),
+        #0b3d75 !important;
+
+    backdrop-filter: blur(18px) saturate(160%);
+    -webkit-backdrop-filter: blur(18px) saturate(160%);
+
+    border-top: 1px solid rgba(255,255,255,.18);
+}
+
+
+/* =========================================================
+   GLASS BUTTON FEEL
+   Does NOT change button colours
+   ========================================================= */
+
+.service-open-btn,
+.contact-action a,
+.contact-popup-call {
+
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+
+    box-shadow:
+        inset 0 1px 0 rgba(255,255,255,.25),
+        0 8px 20px rgba(20,30,40,.08);
+
+    transition:
+        transform .25s ease,
+        box-shadow .25s ease,
+        filter .25s ease;
+}
+
+.service-open-btn:hover,
+.contact-action a:hover,
+.contact-popup-call:hover {
+
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 12px 28px rgba(20,30,40,.14),
+        inset 0 1px 0 rgba(255,255,255,.32);
+}
+
+
+/* =========================================================
+   iOS GLASS — SECTION DEPTH
+   NO COLOUR REPLACEMENT
+   ========================================================= */
+
+.services,
+.solutions,
+.industries,
+.why-us,
+.about,
+.contact,
+.corporate-bottom {
+
+    position: relative;
+}
+
+
+/* =========================================================
+   MOBILE GLASS
+   ========================================================= */
+
+@media (max-width: 700px) {
+
+    .navbar {
+        backdrop-filter: blur(22px) saturate(165%);
+        -webkit-backdrop-filter: blur(22px) saturate(165%);
+    }
+
+    .service-card,
+    .industry-card,
+    .why-card,
+    .solution-item,
+    .contact-item {
+
+        backdrop-filter: blur(18px) saturate(160%);
+        -webkit-backdrop-filter: blur(18px) saturate(160%);
+
+        box-shadow:
+            0 10px 28px rgba(20,30,40,.08),
+            inset 0 1px 0 rgba(255,255,255,.78);
+    }
+
+    .service-modal-box,
+    .contact-popup-box {
+
+        border-radius: 20px;
+
+        backdrop-filter:
+            blur(25px)
+            saturate(170%);
+
+        -webkit-backdrop-filter:
+            blur(25px)
+            saturate(170%);
+    }
+}
+
+
+/* =========================================================
+   SAFETY — HERO REMAINS UNTOUCHED
+   ========================================================= */
+
+/*
+   HERO CSS intentionally excluded.
+   No .hero-slider
+   No .hero-slide
+   No #heroProductImage
+   No .hero-visual
+   No hero colours
+   No hero image changes
+*/
