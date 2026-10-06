@@ -2309,4 +2309,424 @@ body {
    No hero colours
    No hero image changes
 */
+/* =========================================================
+   JK SAFETY VISION — HOME ECOMMERCE COLOUR SYSTEM
+   BLUE + YELLOW / FLIPKART-STYLE
+   HERO UNTOUCHED
+   ========================================================= */
 
+/* ---------- MAIN HOME BACKGROUND ---------- */
+
+body {
+    background: #f5f7fa !important;
+    color: #17212b;
+}
+
+
+/* ---------- MAIN SECTIONS ---------- */
+
+.services,
+.industries,
+.about,
+.corporate-bottom {
+    background: #ffffff !important;
+}
+
+.solutions,
+.why-us {
+    background: #f3f7fb !important;
+}
+
+
+/* ---------- NAVBAR ---------- */
+
+.navbar {
+    background: rgba(255, 255, 255, 0.94) !important;
+    border-bottom: 1px solid #e1e8ef !important;
+
+    box-shadow:
+        0 4px 18px rgba(15, 65, 115, 0.08) !important;
+
+    backdrop-filter: blur(18px) saturate(150%);
+    -webkit-backdrop-filter: blur(18px) saturate(150%);
+}
+
+.nav-logo {
+    color: #17212b !important;
+}
+
+.nav-logo span {
+    color: #1769aa !important;
+}
+
+.nav-links a {
+    color: #28333d !important;
+}
+
+.nav-links a:hover {
+    color: #1769aa !important;
+}
+
+
+/* ---------- SECTION HEADINGS ---------- */
+
+.section-label,
+.about-label {
+    color: #1769aa !important;
+}
+
+.section-heading h2,
+.contact-heading h2,
+.about-content h2 {
+    color: #17212b;
+}
+
+.section-heading h2 span,
+.about-content h2 span {
+    color: #1769aa !important;
+}
+
+.section-heading p {
+    color: #65717d;
+}
+
+
+/* =========================================================
+   PRODUCT / SERVICE CARDS
+   ========================================================= */
+
+.service-card,
+.industry-card,
+.why-card,
+.solution-item {
+
+    background: #ffffff !important;
+
+    border: 1px solid #e1e8ef !important;
+
+    box-shadow:
+        0 5px 18px rgba(15, 65, 115, 0.07) !important;
+
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+
+    transition:
+        transform .25s ease,
+        box-shadow .25s ease,
+        border-color .25s ease;
+}
+
+
+/* Blue + yellow identity */
+
+.service-card,
+.why-card {
+    border-top: 3px solid #f7c600 !important;
+}
+
+.industry-card {
+    border-bottom: 3px solid #f7c600 !important;
+}
+
+
+/* Card headings */
+
+.service-card h3,
+.industry-card h3,
+.why-card h3,
+.solution-item h3 {
+    color: #17212b !important;
+}
+
+
+/* Card labels */
+
+.service-card > span,
+.industry-card > span,
+.why-card > strong,
+.solution-item > strong {
+    color: #1769aa !important;
+}
+
+
+/* Card text */
+
+.service-card p,
+.industry-card p,
+.why-card p,
+.solution-item p {
+    color: #65717d !important;
+}
+
+
+/* ---------- CARD HOVER ---------- */
+
+.service-card:hover,
+.industry-card:hover,
+.why-card:hover,
+.solution-item:hover {
+
+    background: #ffffff !important;
+
+    border-color: #f7c600 !important;
+
+    box-shadow:
+        0 12px 30px rgba(15, 65, 115, 0.13) !important;
+
+    transform: translateY(-5px);
+}
+
+
+/* =========================================================
+   SERVICE BUTTONS
+   ========================================================= */
+
+.service-open-btn {
+
+    color: #1769aa !important;
+
+    border-bottom: 2px solid #f7c600 !important;
+
+    background: transparent !important;
+
+    box-shadow: none !important;
+}
+
+.service-open-btn:hover {
+    color: #0b3d75 !important;
+}
+
+
+/* =========================================================
+   SOLUTIONS
+   ========================================================= */
+
+.solution-item > strong {
+    color: #1769aa !important;
+}
+
+
+/* =========================================================
+   CONTACT SECTION
+   ========================================================= */
+
+.contact {
+
+    background:
+        linear-gradient(
+            135deg,
+            #0756a5 0%,
+            #1769aa 100%
+        ) !important;
+
+    color: #ffffff !important;
+}
+
+.contact .section-label {
+    color: #ffda33 !important;
+}
+
+.contact-heading h2 {
+    color: #ffffff !important;
+}
+
+.contact-heading h2 span {
+    color: #ffda33 !important;
+}
+
+.contact-heading p {
+    color: rgba(255,255,255,.82) !important;
+}
+
+
+/* ---------- CONTACT CARDS ---------- */
+
+.contact-item {
+
+    background: #ffffff !important;
+
+    border: 1px solid #f7c600 !important;
+
+    box-shadow:
+        0 8px 25px rgba(0,0,0,.10) !important;
+
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+}
+
+.contact-item > span {
+    color: #1769aa !important;
+}
+
+.contact-item h3 {
+    color: #17212b !important;
+}
+
+.contact-item small {
+    color: #65717d !important;
+}
+
+
+/* ---------- CONTACT CTA ---------- */
+
+.contact-action a,
+.contact-popup-call {
+
+    background: #f7c600 !important;
+
+    color: #17212b !important;
+
+    border-radius: 4px;
+
+    box-shadow:
+        0 5px 15px rgba(0,0,0,.12);
+}
+
+.contact-action a:hover,
+.contact-popup-call:hover {
+
+    background: #ffda33 !important;
+
+    color: #17212b !important;
+
+    transform: translateY(-2px);
+}
+
+
+/* =========================================================
+   POPUPS
+   ========================================================= */
+
+.service-modal-box,
+.contact-popup-box {
+
+    background: rgba(255,255,255,.96) !important;
+
+    border: 1px solid #dce6f0 !important;
+
+    box-shadow:
+        0 25px 70px rgba(0,0,0,.22) !important;
+
+    backdrop-filter: blur(24px) saturate(160%);
+    -webkit-backdrop-filter: blur(24px) saturate(160%);
+
+    border-radius: 14px;
+}
+
+.service-modal-label,
+.contact-popup-label {
+    color: #1769aa !important;
+}
+
+.modal-brand-section > h3 {
+    border-left-color: #f7c600 !important;
+}
+
+.modal-item-card,
+.contact-popup-item {
+
+    background: #f4f8fc !important;
+
+    border: 1px solid #dce6f0 !important;
+}
+
+.modal-item-card h4,
+.contact-popup-item strong {
+    color: #17212b !important;
+}
+
+.modal-item-card p,
+.contact-popup-item small {
+    color: #65717d !important;
+}
+
+
+/* =========================================================
+   CORPORATE BOTTOM
+   ========================================================= */
+
+.corporate-bottom {
+    background: #ffffff !important;
+}
+
+.corporate-logo,
+.corporate-column h3,
+.corporate-contact h3 {
+    color: #1769aa !important;
+}
+
+.corporate-column li {
+    color: #46515b !important;
+    border-bottom-color: #e1e8ef !important;
+}
+
+.corporate-contact a {
+    color: #1769aa !important;
+}
+
+
+/* =========================================================
+   FOOTER
+   ========================================================= */
+
+.footer {
+
+    background: #07376b !important;
+
+    color: #ffffff !important;
+
+    border-top: 3px solid #f7c600 !important;
+}
+
+.footer-logo {
+    color: #ffffff !important;
+}
+
+.footer-logo span {
+    color: #ffda33 !important;
+}
+
+.footer p,
+.footer-copy {
+    color: rgba(255,255,255,.72) !important;
+}
+
+
+/* =========================================================
+   SMALL GLASS TOUCH
+   ========================================================= */
+
+.service-card,
+.industry-card,
+.why-card,
+.solution-item,
+.contact-item {
+
+    background-clip: padding-box;
+
+    position: relative;
+}
+
+
+/* ---------- MOBILE ---------- */
+
+@media (max-width: 700px) {
+
+    .service-card,
+    .industry-card,
+    .why-card,
+    .solution-item,
+    .contact-item {
+
+        box-shadow:
+            0 5px 16px rgba(15,65,115,.07) !important;
+    }
+
+    .service-card:hover,
+    .industry-card:hover,
+    .why-card:hover,
+    .solution-item:hover {
+
+        transform: translateY(-3px);
+    }
+}
