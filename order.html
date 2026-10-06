@@ -400,675 +400,707 @@ window.addEventListener("storage",event=>{
 });
 renderCart();
 })();
-renderCart();
-})();
+</script>
+<script>
+/* =========================================================
+   JK SAFETY VISION — ORDER PAGE
+   AMAZON / FLIPKART STYLE PRODUCT SUGGESTIONS
+   ========================================================= */
 
-/* 🔴 PASTE MY CODE BELOW THIS LINE */
+(function(){
+
+"use strict";
+
+const ORDER_CART_KEY = "jkSV_cart";
 
 
 /* =========================================================
-   JK SAFETY VISION — ORDER PAGE EXTRA CATALOG
+   RECOMMENDED PRODUCTS
    ========================================================= */
 
-const extraOrderProducts = [
+const recommendedProducts = [
+
   {
     id:1001,
-    brand:"HIKVISION",
     name:"Hikvision Dome Camera 2MP",
-    cat:"CCTV Cameras",
+    brand:"HIKVISION",
+    category:"CCTV Camera",
     price:1850,
-    spec:["2MP","IR Night Vision"],
-    image:"dome"
+    image:"dome.jpeg"
   },
+
   {
     id:1002,
-    brand:"CP PLUS",
     name:"CP Plus Dome Camera 4MP",
-    cat:"CCTV Cameras",
+    brand:"CP PLUS",
+    category:"CCTV Camera",
     price:2600,
-    spec:["4MP","IR Night Vision"],
-    image:"dome"
+    image:"dome.jpeg"
   },
+
   {
     id:1003,
-    brand:"SECUREYE",
     name:"Secureye Dome Camera 5MP",
-    cat:"CCTV Cameras",
+    brand:"SECUREYE",
+    category:"CCTV Camera",
     price:2900,
-    spec:["5MP","IR Night Vision"],
-    image:"dome"
+    image:"dome.jpeg"
   },
+
   {
     id:1004,
-    brand:"HIKVISION",
     name:"Hikvision Bullet Camera 2MP",
-    cat:"CCTV Cameras",
+    brand:"HIKVISION",
+    category:"CCTV Camera",
     price:2000,
-    spec:["2MP","IR Night Vision"],
-    image:"bullet"
+    image:"bullet.jpeg"
   },
+
   {
     id:1005,
-    brand:"CP PLUS",
     name:"CP Plus Bullet Camera 4MP",
-    cat:"CCTV Cameras",
+    brand:"CP PLUS",
+    category:"CCTV Camera",
     price:2900,
-    spec:["4MP","IR Night Vision"],
-    image:"bullet"
+    image:"bullet.jpeg"
   },
+
   {
     id:1006,
-    brand:"SECUREYE",
     name:"Secureye Bullet Camera 5MP",
-    cat:"CCTV Cameras",
+    brand:"SECUREYE",
+    category:"CCTV Camera",
     price:3100,
-    spec:["5MP","IR Night Vision"],
-    image:"bullet"
+    image:"bullet.jpeg"
   },
+
   {
     id:1007,
-    brand:"HIKVISION",
     name:"Hikvision PTZ Speed Dome 4MP",
-    cat:"CCTV Cameras",
+    brand:"HIKVISION",
+    category:"PTZ Camera",
     price:27500,
-    spec:["4MP","PTZ"],
-    image:"ptz"
+    image:"ptz.jpeg"
   },
+
   {
     id:1008,
-    brand:"CP PLUS",
     name:"CP Plus PTZ Speed Dome 8MP",
-    cat:"CCTV Cameras",
+    brand:"CP PLUS",
+    category:"PTZ Camera",
     price:24500,
-    spec:["8MP","PTZ"],
-    image:"ptz"
+    image:"ptz.jpeg"
   },
+
   {
     id:1009,
-    brand:"SECUREYE",
     name:"Secureye Wi-Fi Indoor Camera",
-    cat:"CCTV Cameras",
+    brand:"SECUREYE",
+    category:"Wi-Fi Camera",
     price:1700,
-    spec:["Wi-Fi","Indoor"],
-    image:"wifi"
+    image:"wifi.jpeg"
   },
+
   {
     id:1010,
-    brand:"CP PLUS",
     name:"CP Plus Wi-Fi Outdoor Camera",
-    cat:"CCTV Cameras",
+    brand:"CP PLUS",
+    category:"Wi-Fi Camera",
     price:3200,
-    spec:["Wi-Fi","Outdoor"],
-    image:"wifi"
+    image:"wifi.jpeg"
   },
 
   {
     id:1011,
-    brand:"HIKVISION",
     name:"Hikvision 4 Channel DVR",
-    cat:"DVR",
+    brand:"HIKVISION",
+    category:"DVR",
     price:3900,
-    spec:["4 Channel","DVR"],
-    image:"recorder"
+    image:"recorder.jpeg"
   },
+
   {
     id:1012,
-    brand:"HIKVISION",
     name:"Hikvision 8 Channel DVR",
-    cat:"DVR",
+    brand:"HIKVISION",
+    category:"DVR",
     price:5900,
-    spec:["8 Channel","DVR"],
-    image:"recorder"
+    image:"recorder.jpeg"
   },
+
   {
     id:1013,
-    brand:"CP PLUS",
     name:"CP Plus 16 Channel DVR",
-    cat:"DVR",
+    brand:"CP PLUS",
+    category:"DVR",
     price:9500,
-    spec:["16 Channel","DVR"],
-    image:"recorder"
+    image:"recorder.jpeg"
   },
+
   {
     id:1014,
-    brand:"HIKVISION",
     name:"Hikvision 4 Channel NVR",
-    cat:"NVR",
+    brand:"HIKVISION",
+    category:"NVR",
     price:4200,
-    spec:["4 Channel","NVR"],
-    image:"recorder"
+    image:"recorder.jpeg"
   },
+
   {
     id:1015,
-    brand:"HIKVISION",
     name:"Hikvision 8 Channel NVR",
-    cat:"NVR",
+    brand:"HIKVISION",
+    category:"NVR",
     price:6800,
-    spec:["8 Channel","NVR"],
-    image:"recorder"
+    image:"recorder.jpeg"
   },
+
   {
     id:1016,
-    brand:"CP PLUS",
-    name:"CP Plus 16 Channel NVR",
-    cat:"NVR",
-    price:11800,
-    spec:["16 Channel","NVR"],
-    image:"recorder"
+    name:"Surveillance Hard Disk 1TB",
+    brand:"Surveillance",
+    category:"Storage",
+    price:4200,
+    image:"hdd.jpeg"
   },
 
   {
     id:1017,
-    brand:"Generic",
-    name:"Surveillance Hard Disk 1TB",
-    cat:"Storage",
-    price:4200,
-    spec:["1TB","Surveillance HDD"],
-    image:"hdd"
+    name:"Surveillance Hard Disk 2TB",
+    brand:"Surveillance",
+    category:"Storage",
+    price:5200,
+    image:"hdd.jpeg"
   },
+
   {
     id:1018,
-    brand:"Generic",
-    name:"Surveillance Hard Disk 2TB",
-    cat:"Storage",
-    price:5200,
-    spec:["2TB","Surveillance HDD"],
-    image:"hdd"
+    name:"Surveillance Hard Disk 4TB",
+    brand:"Surveillance",
+    category:"Storage",
+    price:8200,
+    image:"hdd.jpeg"
   },
+
   {
     id:1019,
-    brand:"Generic",
-    name:"Surveillance Hard Disk 4TB",
-    cat:"Storage",
-    price:8200,
-    spec:["4TB","Surveillance HDD"],
-    image:"hdd"
+    name:"Surveillance Hard Disk 8TB",
+    brand:"Surveillance",
+    category:"Storage",
+    price:17500,
+    image:"hdd.jpeg"
   },
+
   {
     id:1020,
-    brand:"Generic",
-    name:"Surveillance Hard Disk 8TB",
-    cat:"Storage",
-    price:17500,
-    spec:["8TB","Surveillance HDD"],
-    image:"hdd"
+    name:"4 Port PoE Switch",
+    brand:"HIKVISION",
+    category:"Networking",
+    price:2200,
+    image:"switch.jpeg"
   },
 
   {
     id:1021,
-    brand:"HIKVISION",
-    name:"4 Port PoE Switch",
-    cat:"Networking",
-    price:2200,
-    spec:["4 Port","PoE"],
-    image:"switch"
+    name:"8 Port PoE Switch",
+    brand:"CP PLUS",
+    category:"Networking",
+    price:3500,
+    image:"switch.jpeg"
   },
+
   {
     id:1022,
-    brand:"CP PLUS",
-    name:"8 Port PoE Switch",
-    cat:"Networking",
-    price:3500,
-    spec:["8 Port","PoE"],
-    image:"switch"
+    name:"16 Port PoE Switch",
+    brand:"HIKVISION",
+    category:"Networking",
+    price:7800,
+    image:"switch.jpeg"
   },
+
   {
     id:1023,
-    brand:"HIKVISION",
-    name:"16 Port PoE Switch",
-    cat:"Networking",
-    price:7800,
-    spec:["16 Port","PoE"],
-    image:"switch"
+    name:"3+1 CCTV Cable 90m",
+    brand:"Generic",
+    category:"CCTV Cable",
+    price:1400,
+    image:"cable.jpeg"
   },
 
   {
     id:1024,
+    name:"3+1 CCTV Cable 180m",
     brand:"Generic",
-    name:"3+1 CCTV Cable 90m",
-    cat:"Accessories",
-    price:1400,
-    spec:["90 Meter","CCTV Cable"],
-    image:"cable"
+    category:"CCTV Cable",
+    price:2600,
+    image:"cable.jpeg"
   },
+
   {
     id:1025,
+    name:"CAT6 Network Cable",
     brand:"Generic",
-    name:"3+1 CCTV Cable 180m",
-    cat:"Accessories",
-    price:2600,
-    spec:["180 Meter","CCTV Cable"],
-    image:"cable"
+    category:"Networking",
+    price:3200,
+    image:"cable.jpeg"
   },
+
   {
     id:1026,
+    name:"4 Port CCTV SMPS",
     brand:"Generic",
-    name:"CAT6 Network Cable",
-    cat:"Accessories",
-    price:3200,
-    spec:["CAT6","Network Cable"],
-    image:"cable"
+    category:"Power Supply",
+    price:1100,
+    image:"accessory.jpeg"
   },
+
   {
     id:1027,
+    name:"8 Port CCTV SMPS",
     brand:"Generic",
-    name:"Fiber Optic Cable",
-    cat:"Accessories",
-    price:2200,
-    spec:["Fiber","Optic Cable"],
-    image:"cable"
+    category:"Power Supply",
+    price:1700,
+    image:"accessory.jpeg"
   },
 
   {
     id:1028,
+    name:"2U Network Rack",
     brand:"Generic",
-    name:"4 Port CCTV SMPS",
-    cat:"Accessories",
-    price:1100,
-    spec:["4 Port","Power Supply"],
-    image:"accessory"
+    category:"Network Rack",
+    price:1600,
+    image:"accessory.jpeg"
   },
+
   {
     id:1029,
+    name:"4U Network Rack",
     brand:"Generic",
-    name:"8 Port CCTV SMPS",
-    cat:"Accessories",
-    price:1700,
-    spec:["8 Port","Power Supply"],
-    image:"accessory"
+    category:"Network Rack",
+    price:2800,
+    image:"accessory.jpeg"
   },
+
   {
     id:1030,
-    brand:"Generic",
-    name:"BNC Connector Pack",
-    cat:"Accessories",
-    price:280,
-    spec:["BNC","Connector Pack"],
-    image:"accessory"
+    name:"Biometric Fingerprint Device",
+    brand:"SECUREYE",
+    category:"Access Control",
+    price:5200,
+    image:"alarm.jpeg"
   },
 
   {
     id:1031,
-    brand:"Generic",
-    name:"2U Network Rack",
-    cat:"Accessories",
-    price:1600,
-    spec:["2U","Network Rack"],
-    image:"accessory"
+    name:"Face Recognition Access Control",
+    brand:"HIKVISION",
+    category:"Access Control",
+    price:14500,
+    image:"alarm.jpeg"
   },
+
   {
     id:1032,
+    name:"RFID Access Control",
     brand:"Generic",
-    name:"4U Network Rack",
-    cat:"Accessories",
-    price:2800,
-    spec:["4U","Network Rack"],
-    image:"accessory"
+    category:"Access Control",
+    price:3800,
+    image:"alarm.jpeg"
   },
 
   {
     id:1033,
-    brand:"SECUREYE",
-    name:"Biometric Fingerprint Device",
-    cat:"Alarm & Access",
-    price:5200,
-    spec:["Fingerprint","Biometric"],
-    image:"alarm"
-  },
-  {
-    id:1034,
-    brand:"HIKVISION",
-    name:"Face Recognition Access Control",
-    cat:"Alarm & Access",
-    price:14500,
-    spec:["Face Recognition","Access Control"],
-    image:"alarm"
-  },
-  {
-    id:1035,
-    brand:"Generic",
-    name:"RFID Access Control",
-    cat:"Alarm & Access",
-    price:3800,
-    spec:["RFID","Access Control"],
-    image:"alarm"
-  },
-  {
-    id:1036,
-    brand:"Generic",
     name:"Video Door Phone",
-    cat:"Alarm & Access",
+    brand:"Generic",
+    category:"Access Control",
     price:6500,
-    spec:["Video","Door Phone"],
-    image:"alarm"
+    image:"alarm.jpeg"
   }
+
 ];
 
 
-/* Add only if not already present */
-
-extraOrderProducts.forEach(product => {
-
-  const exists =
-    productsData.some(
-      p => Number(p.id) === Number(product.id)
-    );
-
-  if(!exists){
-    productsData.push(product);
-  }
-
-});
-
-
 /* =========================================================
-   AMAZON / FLIPKART STYLE RECOMMENDATIONS
+   RECOMMENDATION CSS
    ========================================================= */
 
-const recommendationBox =
-  document.createElement("section");
+const style=document.createElement("style");
 
-recommendationBox.className =
-  "order-recommendations";
-
-recommendationBox.innerHTML = `
-
-<style>
+style.textContent=`
 
 .order-recommendations{
-  margin:28px 0;
-  padding:20px;
-  background:#fffdfc;
-  border:1px solid #f0dfe0;
-  border-radius:18px;
-  box-shadow:0 12px 30px rgba(109,81,84,.09);
+  margin:30px 0;
+  padding:22px;
+  background:#fff;
+  border:1px solid #dce6f0;
+  border-radius:13px;
+  box-shadow:0 12px 35px rgba(10,48,88,.09);
 }
 
-.order-recommendations h2{
+.order-recommendations-header{
+  margin-bottom:18px;
+}
+
+.order-recommendations-header h2{
   margin:0;
-  color:#44383a;
   font-size:22px;
+  color:#07376b;
 }
 
-.order-recommendations-sub{
-  margin:5px 0 18px;
-  color:#88777a;
+.order-recommendations-header p{
+  margin:5px 0 0;
   font-size:12px;
+  color:#65717d;
 }
 
-.order-recommend-grid{
+.order-recommendations-grid{
   display:flex;
   gap:14px;
   overflow-x:auto;
-  padding-bottom:6px;
+  padding-bottom:8px;
+  scrollbar-width:thin;
 }
 
-.order-recommend-card{
+.order-recommendation-card{
   flex:0 0 190px;
-  border:1px solid #f0dfe0;
-  border-radius:14px;
   background:#fff;
+  border:1px solid #dce6f0;
+  border-radius:10px;
   padding:10px;
   transition:.2s;
 }
 
-.order-recommend-card:hover{
+.order-recommendation-card:hover{
   transform:translateY(-3px);
-  box-shadow:0 10px 24px rgba(109,81,84,.12);
+  box-shadow:0 10px 25px rgba(10,48,88,.12);
 }
 
-.order-recommend-image{
+.order-recommendation-image{
+  width:100%;
   height:125px;
-  border-radius:10px;
-  background:#f8e9e5;
+  background:#f5f8fc;
+  border-radius:8px;
   display:flex;
   align-items:center;
   justify-content:center;
   overflow:hidden;
 }
 
-.order-recommend-image img{
+.order-recommendation-image img{
   width:100%;
   height:100%;
   object-fit:contain;
 }
 
-.order-recommend-brand{
+.order-recommendation-brand{
   margin-top:9px;
   font-size:9px;
-  font-weight:800;
-  letter-spacing:1px;
-  color:#a87568;
+  font-weight:900;
+  letter-spacing:.7px;
+  color:#0756a5;
 }
 
-.order-recommend-name{
-  margin:5px 0;
-  color:#44383a;
+.order-recommendation-name{
+  margin-top:5px;
+  min-height:36px;
   font-size:13px;
-  font-weight:700;
+  font-weight:800;
   line-height:1.35;
+  color:#17212b;
 }
 
-.order-recommend-spec{
-  min-height:30px;
-  color:#88777a;
+.order-recommendation-category{
+  margin-top:4px;
   font-size:10px;
+  color:#65717d;
 }
 
-.order-recommend-price{
-  margin:7px 0;
-  color:#6d5154;
+.order-recommendation-price{
+  margin:8px 0;
   font-size:16px;
+  font-weight:900;
+  color:#0756a5;
+}
+
+.order-recommendation-btn{
+  width:100%;
+  padding:9px;
+  border:0;
+  border-radius:6px;
+  background:#ffd21f;
+  color:#07376b;
+  font-size:11px;
   font-weight:900;
 }
 
-.order-recommend-btn{
-  width:100%;
-  padding:8px;
-  border:1px solid #c99a83;
-  border-radius:8px;
-  background:#fff;
-  color:#6d5154;
-  font-size:11px;
-  font-weight:800;
-  cursor:pointer;
+.order-recommendation-btn:hover{
+  background:#e6b900;
 }
 
-.order-recommend-btn:hover{
-  background:#c99a83;
-  color:#fff;
+@media(max-width:600px){
+
+  .order-recommendation-card{
+    flex-basis:165px;
+  }
+
 }
 
-</style>
-
-<h2>You May Also Like</h2>
-
-<div class="order-recommendations-sub">
-  Popular products and useful accessories for your security setup.
-</div>
-
-<div class="order-recommend-grid"
-     id="orderRecommendationGrid">
-</div>
 `;
 
 
-/* Put recommendations above the inquiry section */
+document.head.appendChild(style);
 
-const inquiry =
-  document.getElementById("inquiry");
 
-if(inquiry){
+/* =========================================================
+   CREATE SECTION
+   ========================================================= */
 
-  inquiry.parentNode.insertBefore(
-    recommendationBox,
-    inquiry
+const section=document.createElement("section");
+
+section.className="order-recommendations";
+
+section.innerHTML=`
+
+<div class="order-recommendations-header">
+
+  <h2>You May Also Like</h2>
+
+  <p>
+    Popular products and useful additions
+    for your security setup.
+  </p>
+
+</div>
+
+<div
+  class="order-recommendations-grid"
+  id="orderRecommendationsGrid">
+</div>
+
+`;
+
+
+/* =========================================================
+   PLACE ABOVE FOOTER
+   ========================================================= */
+
+const footer=document.querySelector("footer");
+
+if(footer){
+
+  footer.parentNode.insertBefore(
+    section,
+    footer
   );
 
 }
 
 
 /* =========================================================
-   RENDER RECOMMENDATIONS
+   IMAGE PATH
    ========================================================= */
 
-function renderOrderRecommendations(){
+function recommendationImage(product){
 
-  const grid =
-    document.getElementById(
-      "orderRecommendationGrid"
-    );
+  const image=product.image || "";
 
-  if(!grid) return;
+  if(
+    image.startsWith("http://") ||
+    image.startsWith("https://") ||
+    image.startsWith("data:")
+  ){
 
+    return image;
 
-  const recommended = [
+  }
 
-    ...productsData.filter(
-      p => p.cat === "CCTV Cameras"
-    ).slice(0,5),
+  if(image.startsWith("images/")){
 
-    ...productsData.filter(
-      p => p.cat === "DVR"
-    ).slice(0,2),
+    return image;
 
-    ...productsData.filter(
-      p => p.cat === "NVR"
-    ).slice(0,2),
+  }
 
-    ...productsData.filter(
-      p => p.cat === "Storage"
-    ).slice(0,2),
-
-    ...productsData.filter(
-      p => p.cat === "Networking"
-    ).slice(0,2),
-
-    ...productsData.filter(
-      p => p.cat === "Accessories"
-    ).slice(0,2)
-
-  ];
-
-
-  const unique =
-    [...new Map(
-      recommended.map(
-        p => [p.id,p]
-      )
-    ).values()]
-    .slice(0,14);
-
-
-  grid.innerHTML =
-    unique.map(product => `
-
-      <article class="order-recommend-card">
-
-        <div class="order-recommend-image">
-
-          <img
-            src="${productImage(product.image)}"
-            alt="${product.name}"
-            loading="lazy"
-          >
-
-        </div>
-
-        <div class="order-recommend-brand">
-          ${product.brand}
-        </div>
-
-        <div class="order-recommend-name">
-          ${product.name}
-        </div>
-
-        <div class="order-recommend-spec">
-          ${(product.spec || []).slice(0,2).join(" · ")}
-        </div>
-
-        <div class="order-recommend-price">
-          ${money(product.price)}
-        </div>
-
-        <button
-          class="order-recommend-btn"
-          type="button"
-          data-add-recommend="${product.id}"
-        >
-          🛒 Add to Cart
-        </button>
-
-      </article>
-
-    `).join("");
+  return "images/"+image;
 
 }
 
 
 /* =========================================================
-   RECOMMENDATION → CART
+   RENDER PRODUCTS
    ========================================================= */
 
-recommendationBox.addEventListener(
+const grid=
+document.getElementById(
+  "orderRecommendationsGrid"
+);
+
+if(grid){
+
+  grid.innerHTML=
+  recommendedProducts
+  .slice(0,16)
+  .map(product=>`
+
+    <article class="order-recommendation-card">
+
+      <div class="order-recommendation-image">
+
+        <img
+          src="${recommendationImage(product)}"
+          alt="${product.name}"
+          loading="lazy"
+        >
+
+      </div>
+
+      <div class="order-recommendation-brand">
+        ${product.brand}
+      </div>
+
+      <div class="order-recommendation-name">
+        ${product.name}
+      </div>
+
+      <div class="order-recommendation-category">
+        ${product.category}
+      </div>
+
+      <div class="order-recommendation-price">
+        ₹${Number(product.price).toLocaleString("en-IN")}
+      </div>
+
+      <button
+        type="button"
+        class="order-recommendation-btn"
+        data-recommend-id="${product.id}"
+      >
+        🛒 Add to Cart
+      </button>
+
+    </article>
+
+  `)
+  .join("");
+
+}
+
+
+/* =========================================================
+   ADD RECOMMENDED PRODUCT TO SAME CART
+   ========================================================= */
+
+section.addEventListener(
   "click",
-  event => {
+  function(event){
 
-    const button =
-      event.target.closest(
-        "[data-add-recommend]"
+    const button=
+    event.target.closest(
+      "[data-recommend-id]"
+    );
+
+    if(!button)return;
+
+
+    const id=
+    Number(
+      button.dataset.recommendId
+    );
+
+
+    const product=
+    recommendedProducts.find(
+      item=>item.id===id
+    );
+
+
+    if(!product)return;
+
+
+    let cart=[];
+
+    try{
+
+      const saved=
+      JSON.parse(
+        localStorage.getItem(
+          ORDER_CART_KEY
+        )
       );
 
-    if(!button) return;
+      if(Array.isArray(saved)){
+        cart=saved;
+      }
+
+    }catch(error){
+
+      cart=[];
+
+    }
 
 
-    const id =
-      Number(
-        button.dataset.addRecommend
+    const existing=
+    cart.find(
+      item=>String(item.id)===String(product.id)
+    );
+
+
+    if(existing){
+
+      existing.quantity=
+      (Number(existing.quantity)||0)+1;
+
+    }else{
+
+      cart.push({
+
+        id:product.id,
+
+        name:product.name,
+
+        price:product.price,
+
+        image:product.image,
+
+        category:product.category,
+
+        quantity:1
+
+      });
+
+    }
+
+
+    try{
+
+      localStorage.setItem(
+        ORDER_CART_KEY,
+        JSON.stringify(cart)
       );
 
 
-    const product =
-      productsData.find(
-        p => Number(p.id) === id
+      button.textContent="✓ Added";
+
+
+      setTimeout(
+        ()=>{
+          location.reload();
+        },
+        500
       );
 
 
-    if(!product) return;
+    }catch(error){
 
-
-    cart[id] =
-      Math.min(
-        99,
-        Number(cart[id] || 0) + 1
+      alert(
+        "Product could not be added to cart."
       );
 
-
-    renderCart();
-
-
-    button.textContent =
-      "✓ Added";
-
-
-    setTimeout(() => {
-
-      button.textContent =
-        "🛒 Add to Cart";
-
-    },1200);
+    }
 
   }
 );
 
-
-/* Refresh product list + recommendations */
-
-renderProducts();
-renderOrderRecommendations();
-
-
-/* 🔴 PASTE END */
+})();
 </script>
 </body>
 </html>
