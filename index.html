@@ -1672,5 +1672,801 @@ document.addEventListener("keydown",event=>{if(event.key==="Escape")closeContact
 renderRows();
 renderProducts();
 </script>
+<script>
+/* JK Safety Vision — Catalog + Search + Advertise Add-on */
+/* Does NOT touch the Hero */
+
+(function(){
+
+const B={
+  H:"HIKVISION",
+  C:"CP PLUS",
+  S:"SECUREYE",
+  A:"AMCOM",
+  P:"PRAMA",
+  G:"Generic"
+};
+
+const T={
+  H:"Hikvision",
+  C:"CP Plus",
+  S:"Secureye",
+  A:"Amcom",
+  P:"Prama"
+};
+
+const K={
+  C:"Cameras",
+  R:"Recording",
+  N:"Networking",
+  A:"Accessories",
+  S:"Storage",
+  L:"Alarm & Access"
+};
+
+const LBL={
+  Cameras:"Security Camera",
+  Recording:"Video Recorder",
+  Networking:"Networking",
+  Accessories:"Accessory",
+  Storage:"Storage",
+  "Alarm & Access":"Access Control"
+};
+
+const KW={
+  Cameras:"cctv camera",
+  Recording:"recorder dvr nvr xvr",
+  Storage:"hdd hard disk",
+  Networking:"network poe switch",
+  "Alarm & Access":"alarm access control",
+  Accessories:"accessory cable rack"
+};
+
+
+/* =========================================================
+   EXTRA PRODUCT CATALOG
+   ========================================================= */
+
+const DATA=`Dome Camera 2MP (DS-2CE56D0T-IRPF)|H|C|dome|1850|18|46
+Dome Camera 4MP|C|C|dome|2600|18|45
+Dome Camera 5MP|S|C|dome|2900|17|44
+Dome Camera 8MP 4K|H|C|dome|5200|17|46
+Bullet Camera 2MP (DS-2CE16D0T-IRPF)|H|C|bullet|2000|19|46
+Bullet Camera 4MP|C|C|bullet|2900|18|45
+Bullet Camera 5MP|S|C|bullet|3100|17|44
+Bullet Camera 8MP 4K|C|C|bullet|5600|16|45
+IR Bullet Camera Long Range|A|C|bullet|2800|20|43
+Varifocal Bullet Camera|P|C|bullet|3800|19|44
+Varifocal Dome Camera|A|C|dome|3600|19|43
+PTZ Speed Dome 2MP|P|C|ptz|7800|20|44
+PTZ Speed Dome 4MP|H|C|ptz|27500|15|47
+PTZ Speed Dome 8MP|C|C|ptz|24500|14|45
+Wi-Fi Indoor Camera|S|C|wifi|1700|19|43
+Wi-Fi Outdoor Camera|C|C|wifi|3200|18|44
+Smart Wi-Fi PT Camera|H|C|wifi|3400|17|45
+IP Dome Camera 2MP|H|C|ip|3300|17|46
+IP Bullet Camera 2MP|H|C|ip|3200|17|46
+IP Varifocal Camera|C|C|ip|6200|16|45
+Fisheye Camera 360°|H|C|dome|11500|14|44
+ColorVu Full-Color Camera 4MP|H|C|bullet|9500|15|47
+Low-Light Camera|C|C|bullet|4200|18|45
+AI Human/Vehicle Detection Camera|H|C|ip|8200|15|46
+ANPR Camera|H|C|bullet|38000|10|44
+4G Solar PT Camera|S|C|wifi|7200|19|43
+4G Security Camera|C|C|wifi|5800|17|43
+Solar Security Camera|S|C|wifi|6400|17|43
+Doorbell Camera|C|C|wifi|3200|18|44
+4 Channel DVR|H|R|recorder|3900|12|45
+8 Channel DVR|H|R|recorder|5900|12|46
+16 Channel DVR|C|R|recorder|9500|11|45
+32 Channel DVR|H|R|recorder|21500|10|44
+4 Channel NVR|H|R|recorder|4200|12|45
+8 Channel NVR|H|R|recorder|6800|12|46
+16 Channel NVR|C|R|recorder|11800|11|45
+32 Channel NVR|H|R|recorder|22500|10|45
+4 Channel XVR|S|R|recorder|3500|13|43
+8 Channel XVR|C|R|recorder|5800|13|45
+16 Channel XVR|A|R|recorder|8800|12|43
+32 Channel XVR|P|R|recorder|18500|11|43
+Surveillance Hard Disk 3TB|G|S|hdd|6800|12|45
+Surveillance Hard Disk 4TB|G|S|hdd|8200|12|46
+Surveillance Hard Disk 6TB|G|S|hdd|12800|11|46
+Surveillance Hard Disk 8TB|G|S|hdd|17500|10|46
+Surveillance Hard Disk 10TB|G|S|hdd|22500|10|46
+Surveillance Hard Disk 12TB|G|S|hdd|26500|9|45
+Surveillance Hard Disk 14TB|G|S|hdd|31500|9|45
+Surveillance Hard Disk 16TB+|G|S|hdd|38500|8|45
+Camera MicroSD Card|G|S|hdd|650|19|44
+2U Network Rack|G|A|accessory|1600|16|43
+4U Network Rack|G|A|accessory|2800|16|44
+6U Network Rack|G|A|accessory|3800|15|44
+9U Network Rack|G|A|accessory|5200|15|44
+12U Network Rack|G|A|accessory|7000|14|45
+Wall-Mount Network Rack|G|A|accessory|4200|14|44
+Floor-Standing Server/Network Rack|G|A|accessory|14500|12|44
+4-Port PoE Switch|H|N|switch|2200|16|44
+8-Port PoE Switch|C|N|switch|3500|16|45
+16-Port PoE Switch|H|N|switch|7800|14|45
+24-Port PoE Switch|S|N|switch|12500|13|44
+Gigabit Network Switch|G|N|switch|1200|15|44
+Managed PoE Switch|G|N|switch|16500|12|44
+Unmanaged PoE Switch|G|N|switch|4200|14|44
+PoE Injector|G|N|switch|650|19|43
+PoE Extender|G|N|switch|1100|18|43
+Network Patch Panel|G|N|switch|1200|16|44
+3+1 CCTV Cable (180 m)|G|A|cable|2600|17|44
+Coaxial CCTV Cable|G|A|cable|1700|17|43
+CAT5e Cable|G|A|cable|1900|16|43
+CAT6 Cable|G|A|cable|3200|16|44
+CAT6 Outdoor Cable|G|A|cable|4200|15|44
+CCTV Power Cable|G|A|cable|650|18|43
+HDMI Cable|G|A|cable|350|20|43
+Fiber Optic Cable|G|A|cable|2200|15|43
+Fiber Patch Cord|G|A|cable|250|20|43
+4-Port SMPS|G|A|accessory|1100|18|43
+8-Port SMPS|G|A|accessory|1700|17|44
+16-Port SMPS|G|A|accessory|2900|15|44
+BNC Connector|G|A|accessory|20|20|42
+DC Connector|G|A|accessory|20|20|42
+Dome Camera Bracket|G|A|accessory|180|20|43
+Bullet Camera Bracket|G|A|accessory|160|20|43
+PTZ Mount|G|A|accessory|650|18|43
+CCTV Pole Mount|G|A|accessory|750|17|43
+HDMI/VGA Adapter|G|A|accessory|450|18|43
+Network Patch Cord|G|A|accessory|180|20|43
+RJ45 Connector|G|A|accessory|15|20|42
+RJ45 Connector Pack|G|A|accessory|280|20|43
+Keystone Jack|G|A|accessory|120|20|43
+Cable Clips|G|A|accessory|90|20|42
+Cable Ties|G|A|accessory|110|20|43
+CCTV Surge Protector|G|A|accessory|950|17|43
+NVR Rack Shelf|G|A|accessory|750|17|43
+Cable Management Panel|G|A|accessory|650|16|43
+Rack PDU|G|A|accessory|1800|15|44
+Network Cabinet Fan|G|A|accessory|1100|16|43
+Wired Alarm Panel|G|L|alarm|3200|17|43
+Door Magnetic Sensor|G|L|alarm|350|22|43
+PIR Motion Sensor|G|L|alarm|650|19|44
+Outdoor Siren|G|L|alarm|1100|17|43
+Indoor Siren|G|L|alarm|550|18|43
+Emergency Button|G|L|alarm|450|18|43
+Biometric Fingerprint Device|S|L|alarm|5200|17|44
+Face Recognition Access Control|H|L|alarm|14500|13|45
+RFID Access Control|G|L|alarm|3800|16|44
+RFID Card|G|L|alarm|25|20|43
+RFID Key Fob|G|L|alarm|45|20|43
+Exit Button|G|L|alarm|220|18|43
+Door Lock / EM Lock|G|L|alarm|2600|16|44
+Access Control Power Supply|G|L|alarm|1300|15|43
+Video Door Phone|G|L|alarm|6500|15|44
+Smart Doorbell|G|L|alarm|3500|16|43`;
+
+
+/* =========================================================
+   ADD PRODUCTS
+   ========================================================= */
+
+let nextId=Math.max(...products.map(p=>p.id));
+
+DATA.split("\n").forEach(line=>{
+  const r=line.split("|");
+  const m=r[1];
+  const cat=K[r[2]];
+  const price=Number(r[4]);
+  const d=Number(r[5]);
+
+  products.push({
+    id:++nextId,
+    name:(m==="G"?"":T[m]+" ")+r[0],
+    brand:m==="G"?LBL[cat]:B[m],
+    make:B[m],
+    category:cat,
+    image:r[3],
+    photo:r[3],
+    price:price,
+    old:Math.round(price/(1-d/100)/5)*5,
+    discount:d+"% OFF",
+    rating:(Number(r[6])/10).toFixed(1)
+  });
+});
+
+
+/* =========================================================
+   HOME PRODUCT ROWS
+   ========================================================= */
+
+window.renderRows=function(){
+
+  const rows={
+    rowDeals:products.filter(p=>parseInt(p.discount)>=19),
+
+    rowCameras:products.filter(
+      p=>p.category==="Cameras"
+    ),
+
+    rowRecording:products.filter(
+      p=>p.category==="Recording" || p.category==="Storage"
+    ),
+
+    rowAccess:products.filter(
+      p=>p.category==="Accessories" ||
+         p.category==="Alarm & Access"
+    )
+  };
+
+  Object.keys(rows).forEach(id=>{
+    const el=document.getElementById(id);
+
+    if(el){
+      el.innerHTML=rows[id]
+        .slice(0,16)
+        .map(cardHTML)
+        .join("");
+    }
+  });
+};
+
+
+/* =========================================================
+   SEARCH + FILTER
+   ========================================================= */
+
+window.renderProducts=function(){
+
+  const sort=document.getElementById("sortSelect").value;
+  const price=document.getElementById("priceSelect").value;
+  const minRating=Number(
+    document.getElementById("ratingSelect").value
+  );
+
+  const terms=searchTerm
+    .split(/\s+/)
+    .filter(Boolean);
+
+  let list=products.filter(p=>{
+
+    if(
+      activeFilter!=="All" &&
+      p.category!==activeFilter
+    ) return false;
+
+    if(
+      activeBrand!=="All" &&
+      p.make!==activeBrand
+    ) return false;
+
+    if(
+      activeType!=="All" &&
+      p.image!==activeType
+    ) return false;
+
+    if(
+      price==="u2" &&
+      !(p.price<2000)
+    ) return false;
+
+    if(
+      price==="m" &&
+      !(p.price>=2000 && p.price<=5000)
+    ) return false;
+
+    if(
+      price==="o5" &&
+      !(p.price>5000)
+    ) return false;
+
+    if(
+      Number(p.rating)<minRating
+    ) return false;
+
+    const hay=(
+      p.name+" "+
+      p.brand+" "+
+      p.make+" "+
+      p.category+" "+
+      (KW[p.category]||"")
+    ).toLowerCase();
+
+    return terms.every(t=>hay.includes(t));
+  });
+
+
+  if(sort==="low"){
+    list.sort((a,b)=>a.price-b.price);
+  }
+
+  if(sort==="high"){
+    list.sort((a,b)=>b.price-a.price);
+  }
+
+  if(sort==="name"){
+    list.sort((a,b)=>a.name.localeCompare(b.name));
+  }
+
+
+  const grid=document.getElementById("productGrid");
+
+  if(grid){
+
+    grid.innerHTML=list.length
+      ?list.map(cardHTML).join("")
+      :'<div class="no-products">No products found. Try another search, brand or category.</div>';
+
+  }
+};
+
+
+/* =========================================================
+   SEARCH EVENTS
+   ========================================================= */
+
+const input=document.getElementById("searchInput");
+
+if(input){
+
+  input.addEventListener("input",()=>{
+    searchTerm=input.value.trim().toLowerCase();
+    renderProducts();
+  });
+
+}
+
+
+const searchForm=document.getElementById("searchForm");
+
+if(searchForm){
+
+  searchForm.addEventListener("submit",event=>{
+
+    event.preventDefault();
+
+    searchTerm=input.value.trim().toLowerCase();
+
+    setBrand("All");
+    setFilter("All");
+
+    renderProducts();
+
+  });
+
+}
+
+
+["sortSelect","priceSelect","ratingSelect"]
+.forEach(id=>{
+
+  const el=document.getElementById(id);
+
+  if(el){
+    el.addEventListener(
+      "change",
+      ()=>renderProducts()
+    );
+  }
+
+});
+
+
+/* =========================================================
+   SECUREYE BRAND BUTTON
+   ========================================================= */
+
+const pill=document.querySelector(
+  '#brandPills [data-brand="PRAMA"]'
+);
+
+if(
+  pill &&
+  !document.querySelector(
+    '#brandPills [data-brand="SECUREYE"]'
+  )
+){
+
+  pill.insertAdjacentHTML(
+    "afterend",
+    '<button class="filter-btn" type="button" data-brand="SECUREYE">SECUREYE</button>'
+  );
+
+}
+
+
+/* =========================================================
+   SECUREYE BRAND TILE
+   ========================================================= */
+
+const tile=document.querySelector(
+  '.brand-tile[data-brand-link="AMCOM"]'
+);
+
+if(
+  tile &&
+  !document.querySelector(
+    '.brand-tile[data-brand-link="SECUREYE"]'
+  )
+){
+
+  tile.insertAdjacentHTML(
+    "afterend",
+    '<a class="brand-tile" href="#featured" data-brand-link="SECUREYE">SECUREYE</a>'
+  );
+
+  if(tile.nextElementSibling){
+
+    tile.nextElementSibling.addEventListener(
+      "click",
+      ()=>{
+        setBrand("SECUREYE");
+      }
+    );
+
+  }
+
+}
+
+
+/* =========================================================
+   INTERNAL PROMOTIONAL SECTION
+   ========================================================= */
+
+const css=document.createElement("style");
+
+css.textContent=`
+
+.ad-head{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  margin-bottom:12px;
+  font-size:12px;
+  color:#88777a;
+}
+
+.ad-label{
+  padding:3px 8px;
+  border-radius:5px;
+  background:#6d5154;
+  color:#fff8f6;
+  font-size:10px;
+  font-weight:800;
+  letter-spacing:1px;
+  text-transform:uppercase;
+}
+
+.ad-grid{
+  display:grid;
+  grid-template-columns:2fr 1fr 1fr;
+  gap:12px;
+}
+
+.ad-card{
+  position:relative;
+  display:flex;
+  flex-direction:column;
+  justify-content:flex-end;
+  min-height:150px;
+  padding:18px;
+  overflow:hidden;
+  border:1px solid #f0dfe0;
+  border-radius:14px;
+  background:#fffdfc;
+  color:#44383a;
+  transition:.2s;
+  text-decoration:none;
+}
+
+.ad-card:hover{
+  transform:translateY(-3px);
+  box-shadow:var(--shadow);
+}
+
+.ad-card small{
+  font-size:10px;
+  font-weight:800;
+  letter-spacing:1.2px;
+  text-transform:uppercase;
+  opacity:.8;
+}
+
+.ad-card h3{
+  margin:6px 0;
+  font-size:16px;
+  line-height:1.25;
+}
+
+.ad-card p{
+  margin:0 0 10px;
+  font-size:11px;
+  line-height:1.5;
+  opacity:.85;
+}
+
+.ad-cta{
+  font-size:12px;
+  color:#a87568;
+}
+
+.ad-tag{
+  position:absolute;
+  top:10px;
+  right:10px;
+  padding:2px 6px;
+  border-radius:4px;
+  background:#f8e9e5;
+  color:#6d5154;
+  font-size:9px;
+  font-weight:800;
+}
+
+.ad-main{
+  grid-row:span 2;
+  min-height:312px;
+  background:#f8e9e5;
+  border-color:#c99a83;
+}
+
+.ad-main h3{
+  font-size:clamp(22px,3vw,32px);
+}
+
+.ad-main p{
+  font-size:13px;
+}
+
+.ad-main .ad-cta{
+  display:inline-block;
+  align-self:flex-start;
+  padding:9px 16px;
+  border-radius:8px;
+  background:#c99a83;
+  color:#fffdfc;
+}
+
+.ad-b2{
+  background:#fff8f6;
+  border-color:#c99a83;
+}
+
+.ad-b3{
+  background:#f8e9e5;
+  border-color:#f0dfe0;
+}
+
+.ad-b5{
+  background:#6d5154;
+  border-color:#6d5154;
+  color:#fffdfc;
+}
+
+.ad-b5 .ad-cta{
+  color:#fffdfc;
+}
+
+.ad-strip{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:10px;
+  flex-wrap:wrap;
+  margin-top:12px;
+  padding:12px 16px;
+  border:1px dashed #c99a83;
+  border-radius:12px;
+  background:#fffdfc;
+  font-size:12px;
+}
+
+.ad-strip a{
+  color:#a87568;
+  font-weight:800;
+}
+
+@media(max-width:650px){
+
+  .ad-grid{
+    grid-template-columns:1fr 1fr;
+  }
+
+  .ad-main{
+    grid-column:1/-1;
+    grid-row:auto;
+    min-height:190px;
+  }
+
+  .ad-card{
+    min-height:130px;
+    padding:14px;
+  }
+
+  .ad-card h3{
+    font-size:14px;
+  }
+
+}
+`;
+
+document.head.appendChild(css);
+
+
+/* =========================================================
+   CREATE AD SECTION
+   ========================================================= */
+
+const ads=document.createElement("section");
+
+ads.className="section ad-section";
+ads.id="advertise";
+ads.setAttribute(
+  "aria-label",
+  "Featured offers"
+);
+
+ads.innerHTML=`
+
+<div class="ad-head">
+  <span class="ad-label">Featured</span>
+  <span>Featured brands &amp; collections</span>
+</div>
+
+<div class="ad-grid">
+
+  <a
+    class="ad-card ad-main"
+    href="#featured"
+    data-brand-link="HIKVISION"
+  >
+    <span class="ad-tag">Offer</span>
+    <small>Featured Brand</small>
+    <h3>HIKVISION CCTV Range</h3>
+    <p>
+      Dome, bullet, PTZ, IP and ColorVu cameras
+      with matching DVR / NVR recorders.
+    </p>
+    <b class="ad-cta">Shop now →</b>
+  </a>
+
+
+  <a
+    class="ad-card ad-b2"
+    href="#featured"
+    data-brand-link="CP PLUS"
+  >
+    <span class="ad-tag">Offer</span>
+    <small>CP PLUS</small>
+    <h3>Cameras &amp; Recorders</h3>
+    <b class="ad-cta">View range →</b>
+  </a>
+
+
+  <a
+    class="ad-card ad-b3"
+    href="#featured"
+    data-filter-link="Storage"
+  >
+    <span class="ad-tag">Offer</span>
+    <small>Storage</small>
+    <h3>Surveillance Hard Disks</h3>
+    <p>1TB to 16TB+</p>
+    <b class="ad-cta">Shop disks →</b>
+  </a>
+
+
+  <a
+    class="ad-card"
+    href="#featured"
+    data-filter-link="Alarm &amp; Access"
+  >
+    <span class="ad-tag">Offer</span>
+    <small>Security</small>
+    <h3>Alarm &amp; Access Control</h3>
+    <b class="ad-cta">Explore →</b>
+  </a>
+
+
+  <a
+    class="ad-card ad-b5"
+    href="#featured"
+    data-brand-link="SECUREYE"
+  >
+    <span class="ad-tag">Offer</span>
+    <small>SECUREYE</small>
+    <h3>Wi-Fi &amp; 4G Cameras</h3>
+    <b class="ad-cta">Shop now →</b>
+  </a>
+
+</div>
+
+
+<div class="ad-strip">
+
+  <span>
+    📢 Want to advertise your brand here?
+    · Indicative price · Confirm before order
+  </span>
+
+  <a href="contact.html">
+    Contact us →
+  </a>
+
+</div>
+`;
+
+
+/* Insert before Categories */
+
+const categories=document.getElementById("categories");
+
+if(categories){
+  categories.insertAdjacentElement(
+    "beforebegin",
+    ads
+  );
+}
+
+
+/* Advertisement buttons */
+
+ads.addEventListener("click",event=>{
+
+  const b=event.target.closest(
+    "[data-brand-link]"
+  );
+
+  const f=event.target.closest(
+    "[data-filter-link]"
+  );
+
+  if(b){
+
+    event.preventDefault();
+
+    setBrand(
+      b.dataset.brandLink
+    );
+
+    location.hash="featured";
+
+  }
+  else if(f){
+
+    event.preventDefault();
+
+    setBrand("All");
+
+    setFilter(
+      f.dataset.filterLink
+    );
+
+    location.hash="featured";
+
+  }
+
+});
+
+
+/* Contact popup */
+
+const contactAd=ads.querySelector(
+  'a[href="contact.html"]'
+);
+
+if(contactAd){
+
+  contactAd.addEventListener(
+    "click",
+    openContactPopup
+  );
+
+}
+
+
+/* =========================================================
+   FINAL RENDER
+   ========================================================= */
+
+renderRows();
+renderProducts();
+
+})();
+</script>
 </body>
 </html>
