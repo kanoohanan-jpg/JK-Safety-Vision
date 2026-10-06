@@ -8,18 +8,24 @@
 
 <style>
 :root{
-  --gold:#c99a35;
-  --gold-light:#e5c477;
-  --gold-dark:#9e7421;
+  --blue:#0756a5;
+  --blue-dark:#07376b;
+  --blue-light:#eaf4ff;
+  --yellow:#ffd21f;
+  --yellow-dark:#e6b900;
+
   --ink:#17212b;
   --muted:#65717d;
   --white:#ffffff;
-  --soft:#f7f8fa;
-  --line:#e8e9eb;
-  --dark:#101923;
-  --shadow:0 18px 45px rgba(20,30,40,.09);
-  --glass-white:rgba(255,252,245,.68);
-  --glass-border:rgba(255,255,255,.8);
+  --soft:#f5f8fc;
+  --line:#dce6f0;
+
+  --dark:#07376b;
+
+  --shadow:0 18px 45px rgba(7,55,107,.09);
+
+  --glass-white:rgba(255,255,255,.94);
+  --glass-border:rgba(220,230,240,.95);
   --glass-blur:blur(18px) saturate(160%);
 }
 
@@ -37,16 +43,21 @@ body{
   font-family:Arial,Helvetica,sans-serif;
   color:var(--ink);
   background:
-    radial-gradient(circle at 18% 22%,rgba(255,255,255,.9) 0 2px,transparent 3px),
-    radial-gradient(circle at 75% 65%,rgba(190,170,130,.16) 0 1.5px,transparent 3px),
-    repeating-linear-gradient(
-      135deg,
-      rgba(150,130,95,.075) 0,
-      rgba(150,130,95,.075) 1px,
-      transparent 1px,
-      transparent 4px
+    radial-gradient(
+      circle at 10% 10%,
+      rgba(255,210,31,.10),
+      transparent 28%
     ),
-    linear-gradient(135deg,#f8f5ee,#eee8dc);
+    radial-gradient(
+      circle at 85% 75%,
+      rgba(7,86,165,.06),
+      transparent 30%
+    ),
+    linear-gradient(
+      135deg,
+      #f8fbff,
+      #edf4fc
+    );
   background-attachment:fixed;
   line-height:1.6;
   overflow-x:hidden;
@@ -73,9 +84,10 @@ button{
 
 a:focus-visible,
 button:focus-visible{
-  outline:2px solid var(--gold-dark);
+  outline:2px solid var(--blue);
   outline-offset:3px;
 }
+
 
 /* =========================================================
    HEADER
@@ -90,22 +102,26 @@ header{
   justify-content:space-between;
   align-items:center;
   gap:20px;
-  background:rgba(248,245,238,.78);
-  border-bottom:1px solid rgba(255,255,255,.8);
-  box-shadow:0 8px 35px rgba(0,0,0,.06);
+
+  background:rgba(255,255,255,.94);
+  border-bottom:3px solid var(--yellow);
+
+  box-shadow:
+    0 8px 35px rgba(7,55,107,.08);
+
   backdrop-filter:blur(28px) saturate(180%);
   -webkit-backdrop-filter:blur(28px) saturate(180%);
 }
 
 .logo{
-  color:var(--ink);
+  color:var(--blue-dark);
   font-size:21px;
   font-weight:900;
   letter-spacing:1px;
 }
 
 .logo span{
-  color:var(--gold-dark);
+  color:var(--blue);
 }
 
 .header-right{
@@ -116,9 +132,14 @@ header{
 
 .header-link,
 .cart-link{
-  color:var(--gold-dark);
+  color:var(--blue);
   font-size:12px;
   font-weight:800;
+}
+
+.header-link:hover,
+.cart-link:hover{
+  color:var(--blue-dark);
 }
 
 .cart-count{
@@ -126,12 +147,15 @@ header{
   min-width:18px;
   margin-left:4px;
   padding:1px 5px;
-  background:var(--gold-dark);
+
+  background:var(--blue);
   color:#fff;
+
   border-radius:20px;
   font-size:10px;
   text-align:center;
 }
+
 
 /* =========================================================
    MAIN
@@ -145,11 +169,16 @@ header{
 
 .back-link{
   display:inline-block;
-  color:var(--gold-dark);
+  color:var(--blue);
   font-size:12px;
   font-weight:800;
   margin-bottom:22px;
 }
+
+.back-link:hover{
+  color:var(--blue-dark);
+}
+
 
 /* =========================================================
    PRODUCT HERO
@@ -165,37 +194,67 @@ header{
 .product-photo{
   min-height:430px;
   padding:30px;
+
   display:flex;
   align-items:center;
   justify-content:center;
+
   position:relative;
   overflow:hidden;
-  background:rgba(255,252,245,.72);
+
+  background:rgba(255,255,255,.94);
+
   border:1px solid var(--glass-border);
   border-radius:20px;
-  box-shadow:var(--shadow),inset 0 1px 0 #fff;
+
+  box-shadow:
+    var(--shadow),
+    inset 0 1px 0 #fff;
+
   backdrop-filter:var(--glass-blur);
   -webkit-backdrop-filter:var(--glass-blur);
+}
+
+.product-photo::after{
+  content:"";
+  position:absolute;
+  width:220px;
+  height:220px;
+  right:-90px;
+  bottom:-110px;
+
+  background:rgba(255,210,31,.08);
+
+  border-radius:50%;
+  pointer-events:none;
 }
 
 .product-photo img{
   width:100%;
   max-height:370px;
   object-fit:contain;
+  position:relative;
+  z-index:1;
 }
 
 .photo-label{
   position:absolute;
   top:18px;
   left:18px;
+
   padding:7px 12px;
-  background:rgba(201,154,53,.13);
-  color:var(--gold-dark);
-  border:1px solid rgba(201,154,53,.3);
+
+  background:rgba(255,210,31,.18);
+  color:var(--blue);
+
+  border:1px solid rgba(255,210,31,.7);
   border-radius:30px;
+
   font-size:10px;
   font-weight:800;
   letter-spacing:1px;
+
+  z-index:2;
 }
 
 .product-info{
@@ -203,7 +262,7 @@ header{
 }
 
 .category{
-  color:var(--gold-dark);
+  color:var(--blue);
   font-size:11px;
   font-weight:800;
   letter-spacing:3px;
@@ -212,10 +271,12 @@ header{
 
 h1{
   margin:10px 0 5px;
+
   font-size:clamp(30px,4vw,46px);
   line-height:1.12;
   letter-spacing:-1.5px;
-  color:var(--ink);
+
+  color:var(--blue-dark);
 }
 
 .brand{
@@ -226,7 +287,8 @@ h1{
 
 .rating{
   margin:15px 0;
-  color:var(--gold-dark);
+
+  color:var(--blue);
   font-size:14px;
   font-weight:800;
 }
@@ -239,7 +301,7 @@ h1{
 }
 
 .price{
-  color:var(--gold-dark);
+  color:var(--blue);
   font-size:32px;
   font-weight:900;
   margin:15px 0 5px;
@@ -255,19 +317,23 @@ h1{
 
 .discount{
   display:inline-block;
+
   margin-left:9px;
   padding:3px 9px;
-  background:rgba(201,154,53,.13);
-  color:var(--gold-dark);
-  border:1px solid rgba(201,154,53,.3);
+
+  background:rgba(255,210,31,.18);
+  color:var(--blue-dark);
+
+  border:1px solid rgba(255,210,31,.7);
   border-radius:30px;
+
   font-size:11px;
   font-weight:800;
   vertical-align:middle;
 }
 
 .stock{
-  color:#52764d;
+  color:#27834b;
   font-size:12px;
   font-weight:700;
   margin-top:10px;
@@ -288,7 +354,7 @@ h1{
 }
 
 .qty-label{
-  color:var(--gold-dark);
+  color:var(--blue);
   font-size:11px;
   font-weight:800;
   letter-spacing:1px;
@@ -297,29 +363,35 @@ h1{
 .qty-box{
   display:inline-flex;
   align-items:center;
-  background:rgba(255,255,255,.65);
-  border:1px solid rgba(201,154,53,.3);
+
+  background:#fff;
+
+  border:1px solid #c8dcef;
   border-radius:5px;
+
   overflow:hidden;
 }
 
 .qty-box button{
   width:38px;
   height:38px;
+
   background:transparent;
   border:0;
-  color:var(--gold-dark);
+
+  color:var(--blue);
   font-size:18px;
   font-weight:800;
 }
 
 .qty-box button:hover{
-  background:rgba(201,154,53,.13);
+  background:var(--blue-light);
 }
 
 .qty-box output{
   min-width:40px;
   text-align:center;
+
   color:var(--ink);
   font-size:14px;
   font-weight:800;
@@ -335,17 +407,23 @@ h1{
 .action-btn{
   min-height:48px;
   padding:13px 23px;
+
   border-radius:5px;
   cursor:pointer;
+
   font-size:12px;
   font-weight:800;
   letter-spacing:.5px;
-  transition:transform .25s ease,background .25s ease,box-shadow .25s ease;
+
+  transition:
+    transform .25s ease,
+    background .25s ease,
+    box-shadow .25s ease;
 }
 
 .action-btn:hover{
   transform:translateY(-3px);
-  box-shadow:0 10px 22px rgba(20,30,40,.12);
+  box-shadow:0 10px 22px rgba(7,55,107,.14);
 }
 
 .action-btn:disabled{
@@ -357,34 +435,38 @@ h1{
 
 .add-btn{
   color:#fff;
-  background:var(--gold-dark);
-  border:1px solid var(--gold-dark);
+  background:var(--blue);
+  border:1px solid var(--blue);
 }
 
 .add-btn:hover{
-  background:var(--gold);
+  background:var(--blue-dark);
 }
 
 .buy-btn{
-  color:#fff;
-  background:var(--dark);
-  border:1px solid var(--dark);
+  color:var(--blue-dark);
+  background:var(--yellow);
+  border:1px solid var(--yellow);
 }
 
 .buy-btn:hover{
-  background:#263747;
+  background:var(--yellow-dark);
 }
 
 .trust-row{
   display:flex;
   flex-wrap:wrap;
   gap:15px;
+
   margin-top:23px;
   padding-top:18px;
-  border-top:1px solid rgba(158,116,33,.2);
+
+  border-top:1px solid #dce6f0;
+
   color:var(--muted);
   font-size:11px;
 }
+
 
 /* =========================================================
    INFORMATION AREA
@@ -397,10 +479,16 @@ h1{
 .info-section{
   margin-top:18px;
   padding:28px;
-  background:rgba(255,252,245,.78);
+
+  background:rgba(255,255,255,.94);
+
   border:1px solid var(--glass-border);
   border-radius:18px;
-  box-shadow:var(--shadow),inset 0 1px 0 #fff;
+
+  box-shadow:
+    var(--shadow),
+    inset 0 1px 0 #fff;
+
   backdrop-filter:var(--glass-blur);
   -webkit-backdrop-filter:var(--glass-blur);
 }
@@ -414,7 +502,7 @@ h1{
 }
 
 .section-kicker{
-  color:var(--gold-dark);
+  color:var(--blue);
   font-size:10px;
   font-weight:800;
   letter-spacing:3px;
@@ -422,7 +510,7 @@ h1{
 }
 
 .info-section h2{
-  color:var(--ink);
+  color:var(--blue-dark);
   font-size:clamp(24px,3vw,32px);
   line-height:1.2;
 }
@@ -434,6 +522,7 @@ h1{
   margin-bottom:18px;
 }
 
+
 /* =========================================================
    OVERVIEW
    ========================================================= */
@@ -444,16 +533,19 @@ h1{
   gap:20px;
 }
 
-.overview-text{
+.overview-text,
+.info-side{
   padding:20px;
-  background:rgba(255,255,255,.68);
+
+  background:#f8fbff;
+
   border:1px solid var(--line);
   border-radius:12px;
 }
 
 .overview-text h3,
 .info-side h3{
-  color:var(--gold-dark);
+  color:var(--blue);
   font-size:14px;
   margin-bottom:9px;
 }
@@ -462,13 +554,6 @@ h1{
   color:var(--muted);
   font-size:13px;
   line-height:1.85;
-}
-
-.info-side{
-  padding:20px;
-  background:rgba(255,255,255,.68);
-  border:1px solid var(--line);
-  border-radius:12px;
 }
 
 .quick-facts{
@@ -480,8 +565,11 @@ h1{
   display:flex;
   justify-content:space-between;
   gap:15px;
+
   padding:9px 0;
+
   border-bottom:1px solid var(--line);
+
   font-size:12px;
 }
 
@@ -498,6 +586,7 @@ h1{
   text-align:right;
 }
 
+
 /* =========================================================
    FEATURES
    ========================================================= */
@@ -510,27 +599,45 @@ h1{
 
 .feature-card{
   padding:18px;
-  background:rgba(255,255,255,.68);
+
+  background:#f8fbff;
+
   border:1px solid var(--line);
   border-radius:12px;
+
+  transition:
+    transform .2s ease,
+    box-shadow .2s ease,
+    border-color .2s ease;
+}
+
+.feature-card:hover{
+  transform:translateY(-3px);
+  border-color:#b9d3eb;
+  box-shadow:0 10px 25px rgba(7,55,107,.08);
 }
 
 .feature-icon{
   width:34px;
   height:34px;
+
   display:flex;
   align-items:center;
   justify-content:center;
+
   margin-bottom:10px;
-  background:rgba(201,154,53,.12);
-  color:var(--gold-dark);
+
+  background:rgba(255,210,31,.22);
+  color:var(--blue-dark);
+
   border-radius:50%;
+
   font-size:15px;
 }
 
 .feature-card strong{
   display:block;
-  color:var(--ink);
+  color:var(--blue-dark);
   font-size:12px;
   margin-bottom:5px;
 }
@@ -540,6 +647,7 @@ h1{
   font-size:11px;
   line-height:1.6;
 }
+
 
 /* =========================================================
    SPECIFICATIONS
@@ -553,14 +661,18 @@ h1{
 
 .spec-item{
   padding:15px 17px;
-  background:rgba(255,255,255,.68);
+
+  background:#f8fbff;
+
   border:1px solid var(--line);
   border-radius:10px;
 }
 
 .spec-item strong{
   display:block;
-  color:var(--gold-dark);
+
+  color:var(--blue);
+
   font-size:10px;
   letter-spacing:.4px;
   margin-bottom:4px;
@@ -571,6 +683,7 @@ h1{
   font-size:12px;
   line-height:1.5;
 }
+
 
 /* =========================================================
    APPLICATIONS
@@ -584,14 +697,23 @@ h1{
 
 .application-card{
   padding:18px;
-  background:rgba(255,255,255,.68);
+
+  background:#f8fbff;
+
   border:1px solid var(--line);
   border-radius:12px;
+
+  transition:.2s;
+}
+
+.application-card:hover{
+  transform:translateY(-3px);
+  box-shadow:0 10px 25px rgba(7,55,107,.08);
 }
 
 .application-card strong{
   display:block;
-  color:var(--ink);
+  color:var(--blue-dark);
   font-size:13px;
   margin-bottom:5px;
 }
@@ -601,6 +723,7 @@ h1{
   font-size:11px;
   line-height:1.6;
 }
+
 
 /* =========================================================
    INSTALLATION / COMPATIBILITY
@@ -614,13 +737,15 @@ h1{
 
 .install-card{
   padding:20px;
-  background:rgba(255,255,255,.68);
+
+  background:#f8fbff;
+
   border:1px solid var(--line);
   border-radius:12px;
 }
 
 .install-card h3{
-  color:var(--gold-dark);
+  color:var(--blue);
   font-size:14px;
   margin-bottom:9px;
 }
@@ -634,10 +759,13 @@ h1{
 .install-list{
   margin-top:10px;
   padding-left:18px;
+
   color:var(--muted);
+
   font-size:12px;
   line-height:1.8;
 }
+
 
 /* =========================================================
    INCLUDED
@@ -651,14 +779,16 @@ h1{
 
 .included-card{
   padding:17px;
-  background:rgba(255,255,255,.68);
+
+  background:#f8fbff;
+
   border:1px solid var(--line);
   border-radius:10px;
 }
 
 .included-card strong{
   display:block;
-  color:var(--ink);
+  color:var(--blue-dark);
   font-size:12px;
   margin-bottom:4px;
 }
@@ -668,21 +798,25 @@ h1{
   font-size:11px;
 }
 
+
 /* =========================================================
    IMPORTANT NOTE
    ========================================================= */
 
 .notice-box{
   padding:20px;
-  background:rgba(201,154,53,.08);
-  border:1px solid rgba(201,154,53,.25);
-  border-left:4px solid var(--gold-dark);
+
+  background:rgba(255,210,31,.10);
+
+  border:1px solid rgba(255,210,31,.55);
+  border-left:4px solid var(--yellow-dark);
+
   border-radius:10px;
 }
 
 .notice-box strong{
   display:block;
-  color:var(--gold-dark);
+  color:var(--blue-dark);
   font-size:13px;
   margin-bottom:7px;
 }
@@ -692,6 +826,7 @@ h1{
   font-size:12px;
   line-height:1.8;
 }
+
 
 /* =========================================================
    REVIEWS
@@ -707,14 +842,18 @@ h1{
 .rating-big{
   padding:20px;
   text-align:center;
-  background:rgba(255,255,255,.68);
+
+  background:#f8fbff;
+
   border:1px solid var(--line);
   border-radius:12px;
 }
 
 .rating-big strong{
   display:block;
-  color:var(--gold-dark);
+
+  color:var(--blue);
+
   font-size:30px;
   line-height:1;
 }
@@ -722,24 +861,29 @@ h1{
 .rating-big span{
   display:block;
   margin-top:7px;
+
   color:var(--muted);
   font-size:11px;
 }
 
 .review-card{
   padding:20px;
-  background:rgba(255,255,255,.68);
+
+  background:#f8fbff;
+
   border:1px solid var(--line);
   border-radius:10px;
+
   color:var(--muted);
   font-size:12px;
 }
 
 .review-card strong{
   display:block;
-  color:var(--ink);
+  color:var(--blue-dark);
   margin-bottom:7px;
 }
+
 
 /* =========================================================
    RELATED PRODUCTS
@@ -748,10 +892,16 @@ h1{
 .related-section{
   margin-top:18px;
   padding:28px;
-  background:rgba(255,252,245,.78);
+
+  background:rgba(255,255,255,.94);
+
   border:1px solid var(--glass-border);
   border-radius:18px;
-  box-shadow:var(--shadow),inset 0 1px 0 #fff;
+
+  box-shadow:
+    var(--shadow),
+    inset 0 1px 0 #fff;
+
   backdrop-filter:var(--glass-blur);
   -webkit-backdrop-filter:var(--glass-blur);
 }
@@ -761,7 +911,7 @@ h1{
 }
 
 .related-header h2{
-  color:var(--ink);
+  color:var(--blue-dark);
   font-size:clamp(24px,3vw,32px);
 }
 
@@ -781,26 +931,35 @@ h1{
 
 .related-card{
   flex:0 0 205px;
-  background:rgba(255,255,255,.8);
+
+  background:#fff;
+
   border:1px solid var(--line);
   border-radius:12px;
+
   padding:11px;
+
   transition:.2s;
 }
 
 .related-card:hover{
   transform:translateY(-3px);
-  box-shadow:0 12px 28px rgba(20,30,40,.11);
+  box-shadow:0 12px 28px rgba(7,55,107,.11);
+  border-color:#b9d3eb;
 }
 
 .related-image{
   width:100%;
   height:135px;
+
   display:flex;
   align-items:center;
   justify-content:center;
+
   overflow:hidden;
-  background:#f7f8fa;
+
+  background:#f5f8fc;
+
   border-radius:9px;
 }
 
@@ -812,7 +971,9 @@ h1{
 
 .related-brand{
   margin-top:9px;
-  color:var(--gold-dark);
+
+  color:var(--blue);
+
   font-size:9px;
   font-weight:900;
   letter-spacing:.7px;
@@ -821,7 +982,9 @@ h1{
 .related-name{
   min-height:36px;
   margin-top:5px;
+
   color:var(--ink);
+
   font-size:12px;
   font-weight:800;
   line-height:1.4;
@@ -835,7 +998,9 @@ h1{
 
 .related-price{
   margin:8px 0;
-  color:var(--gold-dark);
+
+  color:var(--blue);
+
   font-size:15px;
   font-weight:900;
 }
@@ -848,62 +1013,100 @@ h1{
 .related-btn{
   flex:1;
   min-height:34px;
+
   border-radius:5px;
-  border:1px solid var(--gold-dark);
-  background:var(--gold-dark);
+
+  border:1px solid var(--blue);
+
+  background:var(--blue);
   color:#fff;
+
   font-size:9px;
   font-weight:900;
+
+  transition:.2s;
+}
+
+.related-btn:hover{
+  background:var(--blue-dark);
 }
 
 .related-view{
   background:transparent;
-  color:var(--gold-dark);
+  color:var(--blue);
 }
 
+.related-view:hover{
+  background:var(--blue-light);
+  color:var(--blue-dark);
+}
+
+
 /* =========================================================
-   NOT FOUND / TOAST / FOOTER
+   NOT FOUND
    ========================================================= */
 
 .not-found{
   grid-column:1/-1;
+
   padding:40px 20px;
   text-align:center;
-  background:rgba(255,252,245,.72);
+
+  background:rgba(255,255,255,.94);
+
   border:1px solid var(--glass-border);
   border-radius:18px;
-  box-shadow:var(--shadow),inset 0 1px 0 #fff;
+
+  box-shadow:
+    var(--shadow),
+    inset 0 1px 0 #fff;
 }
 
 .not-found h2{
-  color:var(--ink);
+  color:var(--blue-dark);
   font-size:24px;
   margin-bottom:12px;
 }
 
 .not-found a{
-  color:var(--gold-dark);
+  color:var(--blue);
   font-weight:800;
 }
+
+
+/* =========================================================
+   TOAST
+   ========================================================= */
 
 .toast{
   position:fixed;
   left:50%;
   bottom:28px;
   z-index:50;
+
   max-width:90%;
+
   padding:13px 22px;
-  background:var(--dark);
+
+  background:var(--blue-dark);
   color:#fff;
-  border-left:4px solid var(--gold);
+
+  border-left:4px solid var(--yellow);
   border-radius:6px;
-  box-shadow:0 14px 35px rgba(20,30,40,.25);
+
+  box-shadow:0 14px 35px rgba(7,55,107,.25);
+
   font-size:13px;
   font-weight:700;
+
   opacity:0;
   pointer-events:none;
+
   transform:translate(-50%,20px);
-  transition:opacity .3s ease,transform .3s ease;
+
+  transition:
+    opacity .3s ease,
+    transform .3s ease;
 }
 
 .toast.show{
@@ -911,24 +1114,34 @@ h1{
   transform:translate(-50%,0);
 }
 
+
+/* =========================================================
+   FOOTER
+   ========================================================= */
+
 footer{
   margin-top:20px;
+
   padding:35px 7%;
+
   text-align:center;
   color:#fff;
-  background:var(--dark);
-  border-top:4px solid var(--gold-light);
+
+  background:var(--blue-dark);
+
+  border-top:4px solid var(--yellow);
 }
 
 .footer-logo{
   color:#fff;
+
   font-size:18px;
   font-weight:900;
   letter-spacing:1px;
 }
 
 .footer-logo span{
-  color:var(--gold-light);
+  color:var(--yellow);
 }
 
 footer p{
@@ -936,6 +1149,7 @@ footer p{
   font-size:11px;
   margin-top:9px;
 }
+
 
 /* =========================================================
    RESPONSIVE
@@ -964,6 +1178,7 @@ footer p{
   }
 
 }
+
 
 @media(max-width:750px){
 
@@ -1020,6 +1235,7 @@ footer p{
 
 }
 
+
 @media(max-width:560px){
 
   .header-link{
@@ -1054,6 +1270,7 @@ footer p{
 
 }
 
+
 @media(max-width:380px){
 
   .header-right{
@@ -1065,6 +1282,7 @@ footer p{
   }
 
 }
+
 
 @media(prefers-reduced-motion:reduce){
 
@@ -1080,23 +1298,42 @@ footer p{
 <body>
 
 <header>
-  <a class="logo" href="index.html">JK SAFETY <span>VISION</span></a>
+
+  <a class="logo" href="index.html">
+    JK SAFETY <span>VISION</span>
+  </a>
 
   <div class="header-right">
-    <a class="cart-link" href="order.html" aria-label="View cart">
-      CART<span class="cart-count" id="cartCount">0</span>
+
+    <a
+      class="cart-link"
+      href="order.html"
+      aria-label="View cart"
+    >
+      CART<span
+        class="cart-count"
+        id="cartCount"
+      >0</span>
     </a>
 
-    <a class="header-link" href="index.html">
+    <a
+      class="header-link"
+      href="index.html"
+    >
       ← BACK TO HOME
     </a>
+
   </div>
+
 </header>
 
 
 <main class="container">
 
-  <a class="back-link" href="index.html">
+  <a
+    class="back-link"
+    href="index.html"
+  >
     ← CONTINUE SHOPPING
   </a>
 
@@ -1105,7 +1342,10 @@ footer p{
        PRODUCT MAIN AREA
        ===================================================== -->
 
-  <div class="product-layout" id="productLayout">
+  <div
+    class="product-layout"
+    id="productLayout"
+  >
 
     <div class="product-photo">
 
@@ -1162,6 +1402,7 @@ footer p{
         to confirm the exact model, technical specifications,
         compatibility, installation and final quotation.
       </p>
+
 
       <div class="qty-row">
 
@@ -1222,9 +1463,17 @@ footer p{
 
       <div class="trust-row">
 
-        <span>✓ Product consultation</span>
-        <span>✓ Installation inquiry</span>
-        <span>✓ Quotation support</span>
+        <span>
+          ✓ Product consultation
+        </span>
+
+        <span>
+          ✓ Installation inquiry
+        </span>
+
+        <span>
+          ✓ Quotation support
+        </span>
 
       </div>
 
@@ -1247,6 +1496,7 @@ footer p{
       <div class="info-heading">
 
         <div>
+
           <div class="section-kicker">
             PRODUCT INFORMATION
           </div>
@@ -1254,6 +1504,7 @@ footer p{
           <h2>
             Product Overview
           </h2>
+
         </div>
 
       </div>
@@ -1467,6 +1718,7 @@ footer p{
       <div class="application-grid">
 
         <div class="application-card">
+
           <strong>
             Residential
           </strong>
@@ -1475,10 +1727,12 @@ footer p{
             Homes, entrances, parking areas and other private
             security environments.
           </span>
+
         </div>
 
 
         <div class="application-card">
+
           <strong>
             Commercial
           </strong>
@@ -1487,10 +1741,12 @@ footer p{
             Shops, offices, warehouses and business premises
             requiring monitored security.
           </span>
+
         </div>
 
 
         <div class="application-card">
+
           <strong>
             Institutional
           </strong>
@@ -1499,10 +1755,12 @@ footer p{
             Schools, offices, facilities and controlled-access
             environments where applicable.
           </span>
+
         </div>
 
 
         <div class="application-card">
+
           <strong>
             Custom Installation
           </strong>
@@ -1511,6 +1769,7 @@ footer p{
             Larger installations can be planned around the
             required cameras, recorders, networking and accessories.
           </span>
+
         </div>
 
       </div>
@@ -1518,7 +1777,7 @@ footer p{
     </section>
 
 
-    <!-- INSTALLATION AND COMPATIBILITY -->
+    <!-- INSTALLATION -->
 
     <section class="info-section">
 
@@ -1723,6 +1982,7 @@ footer p{
         Reviews & Ratings
       </h2>
 
+
       <div class="review-summary">
 
         <div class="rating-big">
@@ -1754,9 +2014,7 @@ footer p{
     </section>
 
 
-    <!-- =====================================================
-         RELATED PRODUCTS
-         ===================================================== -->
+    <!-- RELATED PRODUCTS -->
 
     <section class="related-section">
 
@@ -1823,11 +2081,6 @@ footer p{
 
 "use strict";
 
-
-/* =========================================================
-   BASIC PRODUCT / CART SYSTEM
-   ========================================================= */
-
 const CART_KEY = "jkSV_cart";
 const MAX_QTY = 99;
 
@@ -1844,22 +2097,20 @@ const productId =
     window.location.search
   ).get("id");
 
-
 const product =
   window.getJKSVProductById
     ? window.getJKSVProductById(productId)
     : products.find(
         item =>
-          String(item.id) === String(productId)
+          String(item.id) ===
+          String(productId)
       );
-
 
 const money =
   value =>
     "₹" +
     Number(value || 0)
       .toLocaleString("en-IN");
-
 
 const stars =
   rating => {
@@ -1993,7 +2244,6 @@ function addSpec(
   item.className =
     "spec-item";
 
-
   const title =
     document.createElement(
       "strong"
@@ -2001,7 +2251,6 @@ function addSpec(
 
   title.textContent =
     label;
-
 
   const detail =
     document.createElement(
@@ -2011,12 +2260,10 @@ function addSpec(
   detail.textContent =
     value;
 
-
   item.append(
     title,
     detail
   );
-
 
   grid.appendChild(
     item
@@ -2037,9 +2284,7 @@ function setProductImage(){
   image.alt =
     product.name;
 
-
   const imageNames = [];
-
 
   if(product.photo){
 
@@ -2048,7 +2293,6 @@ function setProductImage(){
     );
 
   }
-
 
   if(
     product.image &&
@@ -2061,15 +2305,12 @@ function setProductImage(){
 
   }
 
-
   let imageIndex = 0;
-
 
   image.onerror =
     function(){
 
       imageIndex++;
-
 
       if(
         imageIndex <
@@ -2085,18 +2326,15 @@ function setProductImage(){
 
       }
 
-
       image.onerror = null;
-
 
       image.src =
         "data:image/svg+xml;utf8," +
         encodeURIComponent(
-          '<svg xmlns="http://www.w3.org/2000/svg" width="400" height="300" viewBox="0 0 400 300"><rect width="400" height="300" fill="#f7f8fa"/><text x="200" y="155" text-anchor="middle" font-family="Arial" font-size="16" font-weight="700" fill="#9e7421">Image not available</text></svg>'
+          '<svg xmlns="http://www.w3.org/2000/svg" width="400" height="300" viewBox="0 0 400 300"><rect width="400" height="300" fill="#f5f8fc"/><text x="200" y="155" text-anchor="middle" font-family="Arial" font-size="16" font-weight="700" fill="#0756a5">Image not available</text></svg>'
         );
 
     };
-
 
   if(imageNames.length){
 
@@ -2126,26 +2364,22 @@ function renderProduct(){
       ? product.make
       : product.brand;
 
-
   document.title =
     product.name +
     " | JK Safety Vision";
 
-
   $("productName").textContent =
     product.name;
 
-
   $("productBrand").textContent =
     maker || "";
-
 
   $("productCategory").textContent =
     product.category ||
     "Security Product";
 
 
-  /* Rating */
+  /* RATING */
 
   const rating =
     $("productRating");
@@ -2153,7 +2387,6 @@ function renderProduct(){
   rating.textContent =
     stars(product.rating) +
     " ";
-
 
   const ratingNote =
     document.createElement(
@@ -2166,20 +2399,18 @@ function renderProduct(){
     ) +
     " / 5 (sample listing)";
 
-
   rating.appendChild(
     ratingNote
   );
 
 
-  /* Price */
+  /* PRICE */
 
   const price =
     $("productPrice");
 
   price.textContent =
     money(product.price);
-
 
   if(
     Number(product.old) >
@@ -2197,7 +2428,6 @@ function renderProduct(){
     oldPrice.textContent =
       money(product.old);
 
-
     price.appendChild(
       oldPrice
     );
@@ -2211,7 +2441,6 @@ function renderProduct(){
     discount.className =
       "discount";
 
-
     discount.textContent =
       Math.round(
         (
@@ -2223,7 +2452,6 @@ function renderProduct(){
       ) +
       "% OFF";
 
-
     price.appendChild(
       discount
     );
@@ -2234,9 +2462,7 @@ function renderProduct(){
   setProductImage();
 
 
-  /* =====================================================
-     QUICK FACTS
-     ===================================================== */
+  /* QUICK FACTS */
 
   $("quickProduct").textContent =
     product.name || "—";
@@ -2261,13 +2487,10 @@ function renderProduct(){
       : "Product category information is displayed from the catalogue.";
 
 
-  /* =====================================================
-     OVERVIEW
-     ===================================================== */
+  /* OVERVIEW */
 
   const overview =
     $("productOverviewText");
-
 
   if(product.description){
 
@@ -2293,22 +2516,18 @@ function renderProduct(){
   }
 
 
-  /* =====================================================
-     SPECIFICATIONS
-     ===================================================== */
+  /* SPECIFICATIONS */
 
   const grid =
     $("specifications");
 
   grid.textContent = "";
 
-
   addSpec(
     grid,
     "PRODUCT",
     product.name
   );
-
 
   addSpec(
     grid,
@@ -2317,7 +2536,6 @@ function renderProduct(){
       "Not specified"
   );
 
-
   addSpec(
     grid,
     "BRAND / TYPE",
@@ -2325,13 +2543,11 @@ function renderProduct(){
       "To be confirmed"
   );
 
-
   addSpec(
     grid,
     "LISTED PRICE",
     money(product.price)
   );
-
 
   addSpec(
     grid,
@@ -2392,7 +2608,6 @@ function renderNotFound(){
   document.title =
     "Product not found | JK Safety Vision";
 
-
   const box =
     document.createElement(
       "div"
@@ -2400,7 +2615,6 @@ function renderNotFound(){
 
   box.className =
     "not-found";
-
 
   const heading =
     document.createElement(
@@ -2410,7 +2624,6 @@ function renderNotFound(){
   heading.textContent =
     "Product not found.";
 
-
   const message =
     document.createElement(
       "p"
@@ -2418,7 +2631,6 @@ function renderNotFound(){
 
   message.textContent =
     "This product may have been moved or is unavailable.";
-
 
   const link =
     document.createElement(
@@ -2431,19 +2643,16 @@ function renderNotFound(){
   link.textContent =
     "Return to Home";
 
-
   box.append(
     heading,
     message,
     link
   );
 
-
   $("productLayout")
     .replaceChildren(
       box
     );
-
 
   document.querySelector(
     ".product-information"
@@ -2459,7 +2668,6 @@ function renderNotFound(){
 
 let quantity = 1;
 
-
 function setQuantity(value){
 
   quantity =
@@ -2470,7 +2678,6 @@ function setQuantity(value){
         Number(value) || 1
       )
     );
-
 
   $("qtyValue").textContent =
     quantity;
@@ -2489,10 +2696,8 @@ function addSelectedProduct(
   if(!product)
     return;
 
-
   const cart =
     readCart();
-
 
   const existing =
     cart.find(
@@ -2500,7 +2705,6 @@ function addSelectedProduct(
         String(item.id) ===
         String(product.id)
     );
-
 
   if(existing){
 
@@ -2594,16 +2798,13 @@ function getRelatedProducts(){
   if(!Array.isArray(products))
     return [];
 
-
   const currentId =
     String(product.id);
-
 
   const currentCategory =
     String(
       product.category || ""
     ).toLowerCase();
-
 
   const currentBrand =
     String(
@@ -2626,12 +2827,10 @@ function getRelatedProducts(){
 
         let score = 0;
 
-
         const category =
           String(
             item.category || ""
           ).toLowerCase();
-
 
         const brand =
           String(
@@ -2720,7 +2919,6 @@ function relatedImage(
     item.image ||
     "";
 
-
   if(
     /^https?:\/\//i.test(
       value
@@ -2737,7 +2935,6 @@ function relatedImage(
 
   }
 
-
   if(
     value.startsWith(
       "images/"
@@ -2747,7 +2944,6 @@ function relatedImage(
     return value;
 
   }
-
 
   return (
     "images/" +
@@ -2767,10 +2963,8 @@ function renderRelated(){
   const grid =
     $("relatedProductsGrid");
 
-
   if(!grid)
     return;
-
 
   const related =
     getRelatedProducts();
@@ -2814,7 +3008,7 @@ function renderRelated(){
                   src="${image}"
                   alt="${item.name || "Product"}"
                   loading="lazy"
-                  onerror="this.onerror=null;this.src='data:image/svg+xml;charset=UTF-8,'+encodeURIComponent('<svg xmlns=&quot;http://www.w3.org/2000/svg&quot; width=&quot;300&quot; height=&quot;220&quot;><rect width=&quot;100%&quot; height=&quot;100%&quot; fill=&quot;#f7f8fa&quot;/><text x=&quot;50%&quot; y=&quot;50%&quot; dominant-baseline=&quot;middle&quot; text-anchor=&quot;middle&quot; font-family=&quot;Arial&quot; font-size=&quot;13&quot; fill=&quot;#9e7421&quot;>Product image</text></svg>')"
+                  onerror="this.onerror=null;this.src='data:image/svg+xml;charset=UTF-8,'+encodeURIComponent('<svg xmlns=&quot;http://www.w3.org/2000/svg&quot; width=&quot;300&quot; height=&quot;220&quot;><rect width=&quot;100%&quot; height=&quot;100%&quot; fill=&quot;#f5f8fc&quot;/><text x=&quot;50%&quot; y=&quot;50%&quot; dominant-baseline=&quot;middle&quot; text-anchor=&quot;middle&quot; font-family=&quot;Arial&quot; font-size=&quot;13&quot; fill=&quot;#0756a5&quot;>Product image</text></svg>')"
                 >
 
               </div>
@@ -2916,11 +3110,9 @@ $("relatedProductsGrid")
         const id =
           viewButton.dataset.viewId;
 
-
         window.location.href =
           "product.html?id=" +
           encodeURIComponent(id);
-
 
         return;
 
