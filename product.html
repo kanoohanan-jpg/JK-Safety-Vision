@@ -3,444 +3,3142 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Product details from JK Safety Vision - CCTV, recorders, networking and accessories.">
+<meta name="description" content="Detailed product information from JK Safety Vision - CCTV, recorders, networking and security accessories.">
 <title>Product Details | JK Safety Vision</title>
 
 <style>
-:root{--gold:#c99a35;--gold-light:#e5c477;--gold-dark:#9e7421;--ink:#17212b;--muted:#65717d;--white:#ffffff;--soft:#f7f8fa;--line:#e8e9eb;--dark:#101923;--shadow:0 18px 45px rgba(20,30,40,.09);--glass-white:rgba(255,252,245,.68);--glass-border:rgba(255,255,255,.8);--glass-blur:blur(18px) saturate(160%)}
-*{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
-body{font-family:Arial,Helvetica,sans-serif;color:var(--ink);background:radial-gradient(circle at 18% 22%,rgba(255,255,255,.9) 0 2px,transparent 3px),radial-gradient(circle at 75% 65%,rgba(190,170,130,.16) 0 1.5px,transparent 3px),repeating-linear-gradient(135deg,rgba(150,130,95,.075) 0,rgba(150,130,95,.075) 1px,transparent 1px,transparent 4px),linear-gradient(135deg,#f8f5ee,#eee8dc);background-attachment:fixed;line-height:1.6;overflow-x:hidden;min-height:100vh;display:flex;flex-direction:column}
-a{color:inherit;text-decoration:none}
-button{font:inherit}
-a:focus-visible,button:focus-visible{outline:2px solid var(--gold-dark);outline-offset:3px}
-header{position:relative;z-index:5;min-height:82px;padding:15px 7%;display:flex;justify-content:space-between;align-items:center;gap:20px;background:rgba(248,245,238,.78);border-bottom:1px solid rgba(255,255,255,.8);box-shadow:0 8px 35px rgba(0,0,0,.06);backdrop-filter:blur(28px) saturate(180%);-webkit-backdrop-filter:blur(28px) saturate(180%)}
-.logo{color:var(--ink);font-size:21px;font-weight:900;letter-spacing:1px}
-.logo span{color:var(--gold-dark)}
-.header-right{display:flex;align-items:center;gap:18px}
-.header-link,.cart-link{color:var(--gold-dark);font-size:12px;font-weight:800}
-.cart-count{display:inline-block;min-width:18px;margin-left:4px;padding:1px 5px;background:var(--gold-dark);color:#fff;border-radius:20px;font-size:10px;text-align:center}
-.container{width:min(1150px,88%);margin:45px auto 70px;flex:1}
-.back-link{display:inline-block;color:var(--gold-dark);font-size:12px;font-weight:800;margin-bottom:25px}
-.product-layout{display:grid;grid-template-columns:1.05fr .95fr;gap:45px;align-items:start}
-.product-photo{min-height:430px;padding:30px;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;background:rgba(255,252,245,.72);border:1px solid var(--glass-border);border-radius:20px;box-shadow:var(--shadow),inset 0 1px 0 #fff;backdrop-filter:var(--glass-blur);-webkit-backdrop-filter:var(--glass-blur)}
-.product-photo img{width:100%;max-height:370px;object-fit:contain}
-.photo-label{position:absolute;top:18px;left:18px;padding:7px 12px;background:rgba(201,154,53,.13);color:var(--gold-dark);border:1px solid rgba(201,154,53,.3);border-radius:30px;font-size:10px;font-weight:800;letter-spacing:1px}
-.product-info{padding:12px 0}
-.category{color:var(--gold-dark);font-size:11px;font-weight:800;letter-spacing:3px;text-transform:uppercase}
-h1{margin:12px 0 5px;font-size:clamp(30px,4vw,46px);line-height:1.12;letter-spacing:-1.5px;color:var(--ink)}
-.brand{color:var(--muted);font-size:13px;margin-top:10px}
-.rating{margin:17px 0;color:var(--gold-dark);font-size:14px;font-weight:800}
-.rating span{color:var(--muted);font-size:12px;font-weight:400;margin-left:7px}
-.price{color:var(--gold-dark);font-size:32px;font-weight:900;margin:17px 0 5px}
-.old-price{color:#929292;font-size:16px;font-weight:400;text-decoration:line-through;margin-left:9px}
-.discount{display:inline-block;margin-left:9px;padding:3px 9px;background:rgba(201,154,53,.13);color:var(--gold-dark);border:1px solid rgba(201,154,53,.3);border-radius:30px;font-size:11px;font-weight:800;vertical-align:middle}
-.stock{color:#52764d;font-size:12px;font-weight:700;margin-top:12px}
-.description{color:var(--muted);font-size:14px;line-height:1.85;margin:20px 0}
-.qty-row{display:flex;align-items:center;gap:14px;margin-top:22px}
-.qty-label{color:var(--gold-dark);font-size:11px;font-weight:800;letter-spacing:1px}
-.qty-box{display:inline-flex;align-items:center;background:rgba(255,255,255,.65);border:1px solid rgba(201,154,53,.3);border-radius:5px;overflow:hidden}
-.qty-box button{width:38px;height:38px;background:transparent;border:0;color:var(--gold-dark);font-size:18px;font-weight:800;cursor:pointer}
-.qty-box button:hover{background:rgba(201,154,53,.13)}
-.qty-box output{min-width:40px;text-align:center;color:var(--ink);font-size:14px;font-weight:800}
-.actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:25px}
-.action-btn{min-height:48px;padding:13px 23px;border-radius:5px;cursor:pointer;font-size:12px;font-weight:800;letter-spacing:.5px;transition:transform .25s ease,background .25s ease,box-shadow .25s ease}
-.action-btn:hover{transform:translateY(-3px);box-shadow:0 10px 22px rgba(20,30,40,.12)}
-.action-btn:disabled{opacity:.6;cursor:not-allowed;transform:none;box-shadow:none}
-.add-btn{color:#fff;background:var(--gold-dark);border:1px solid var(--gold-dark)}
-.add-btn:hover{background:var(--gold)}
-.buy-btn{color:#fff;background:var(--dark);border:1px solid var(--dark)}
-.buy-btn:hover{background:#263747}
-.trust-row{display:flex;flex-wrap:wrap;gap:18px;margin-top:25px;padding-top:20px;border-top:1px solid rgba(158,116,33,.2);color:var(--muted);font-size:11px}
-.details-section{margin-top:50px;padding:35px;background:rgba(255,252,245,.72);border:1px solid var(--glass-border);border-radius:18px;box-shadow:var(--shadow),inset 0 1px 0 #fff;backdrop-filter:var(--glass-blur);-webkit-backdrop-filter:var(--glass-blur)}
-.section-kicker{color:var(--gold-dark);font-size:10px;font-weight:800;letter-spacing:3px;margin-bottom:8px}
-.details-section h2{color:var(--ink);font-size:clamp(25px,3vw,34px);margin-bottom:22px}
-.spec-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:13px}
-.spec-item{padding:17px;background:rgba(255,255,255,.65);border:1px solid rgba(201,154,53,.16);border-radius:10px}
-.spec-item strong{display:block;color:var(--gold-dark);font-size:11px;margin-bottom:5px}
-.spec-item span{color:var(--ink);font-size:13px}
-.review-card{padding:20px;background:rgba(255,255,255,.65);border:1px solid var(--line);border-radius:10px;color:var(--muted);font-size:13px}
-.review-card strong{display:block;color:var(--ink);margin-bottom:7px}
-.not-found{grid-column:1/-1;padding:40px 20px;text-align:center;background:rgba(255,252,245,.72);border:1px solid var(--glass-border);border-radius:18px;box-shadow:var(--shadow),inset 0 1px 0 #fff}
-.not-found h2{color:var(--ink);font-size:24px;margin-bottom:12px}
-.not-found a{color:var(--gold-dark);font-weight:800}
-.toast{position:fixed;left:50%;bottom:28px;z-index:50;max-width:90%;padding:13px 22px;background:var(--dark);color:#fff;border-left:4px solid var(--gold);border-radius:6px;box-shadow:0 14px 35px rgba(20,30,40,.25);font-size:13px;font-weight:700;opacity:0;pointer-events:none;transform:translate(-50%,20px);transition:opacity .3s ease,transform .3s ease}
-.toast.show{opacity:1;transform:translate(-50%,0)}
-footer{padding:35px 7%;text-align:center;color:#fff;background:var(--dark)}
-.footer-logo{color:#fff;font-size:18px;font-weight:900;letter-spacing:1px}
-.footer-logo span{color:var(--gold-light)}
-footer p{color:rgba(255,255,255,.65);font-size:11px;margin-top:9px}
-@media(max-width:750px){header{padding:15px 6%}.logo{font-size:18px}.header-right{gap:12px}.container{width:88%;margin:28px auto 50px}.product-layout{grid-template-columns:1fr;gap:25px}.product-photo{min-height:300px;padding:22px}.product-photo img{max-height:260px}.product-info{padding:0}h1{font-size:32px}.details-section{padding:23px;margin-top:30px}.spec-grid{grid-template-columns:1fr}}
-@media(max-width:380px){.actions{flex-direction:column}.action-btn{width:100%}}
-@media(prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
-/* WHITE + BLUE + YELLOW THEME */
 :root{
-  --gold:#0756a5;
-  --gold-light:#ffd21f;
-  --gold-dark:#0756a5;
+  --gold:#c99a35;
+  --gold-light:#e5c477;
+  --gold-dark:#9e7421;
   --ink:#17212b;
   --muted:#65717d;
-  --white:#fff;
-  --soft:#f5f8fc;
-  --line:#dce6f0;
-  --dark:#07376b;
-  --shadow:0 18px 45px rgba(7,55,107,.09);
-  --glass-white:rgba(255,255,255,.9);
-  --glass-border:rgba(220,230,240,.9);
+  --white:#ffffff;
+  --soft:#f7f8fa;
+  --line:#e8e9eb;
+  --dark:#101923;
+  --shadow:0 18px 45px rgba(20,30,40,.09);
+  --glass-white:rgba(255,252,245,.68);
+  --glass-border:rgba(255,255,255,.8);
   --glass-blur:blur(18px) saturate(160%);
 }
-body{
-  background:radial-gradient(circle at 10% 10%,rgba(255,210,31,.10),transparent 28%),linear-gradient(135deg,#f8fbff,#edf4fc);
-  background-attachment:fixed;
+
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
 }
-header{background:rgba(255,255,255,.92);border-bottom:3px solid #ffd21f}
-.logo span{color:#0756a5}
-.header-link,.cart-link,.back-link{color:#0756a5}
-.cart-count{background:#0756a5}
-.product-photo,.details-section,.not-found{background:rgba(255,255,255,.94);border-color:#dce6f0}
-.photo-label,.discount{background:rgba(255,210,31,.18);color:#0756a5;border-color:rgba(255,210,31,.65)}
-.stock{color:#27834b}
-.qty-box{background:#fff;border-color:#c8dcef}
-.qty-box button{color:#0756a5}
-.qty-box button:hover{background:#eaf4ff}
-.add-btn{background:#0756a5;border-color:#0756a5}
-.add-btn:hover{background:#07376b}
-.buy-btn{background:#07376b;border-color:#07376b}
-.buy-btn:hover{background:#0756a5}
-.spec-item{background:#f8fbff;border-color:#dce6f0}
-.spec-item strong,.rating,.price,.section-kicker{color:#0756a5}
-.trust-row{border-top-color:#dce6f0}
-footer{background:#07376b;border-top:4px solid #ffd21f}
-.footer-logo span{color:#ffd21f}
-.toast{background:#07376b;border-left-color:#ffd21f}
+
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+  font-family:Arial,Helvetica,sans-serif;
+  color:var(--ink);
+  background:
+    radial-gradient(circle at 18% 22%,rgba(255,255,255,.9) 0 2px,transparent 3px),
+    radial-gradient(circle at 75% 65%,rgba(190,170,130,.16) 0 1.5px,transparent 3px),
+    repeating-linear-gradient(
+      135deg,
+      rgba(150,130,95,.075) 0,
+      rgba(150,130,95,.075) 1px,
+      transparent 1px,
+      transparent 4px
+    ),
+    linear-gradient(135deg,#f8f5ee,#eee8dc);
+  background-attachment:fixed;
+  line-height:1.6;
+  overflow-x:hidden;
+  min-height:100vh;
+  display:flex;
+  flex-direction:column;
+}
+
+a{
+  color:inherit;
+  text-decoration:none;
+}
+
+button,
+input,
+textarea,
+select{
+  font:inherit;
+}
+
+button{
+  cursor:pointer;
+}
+
+a:focus-visible,
+button:focus-visible{
+  outline:2px solid var(--gold-dark);
+  outline-offset:3px;
+}
+
+/* =========================================================
+   HEADER
+   ========================================================= */
+
+header{
+  position:relative;
+  z-index:5;
+  min-height:82px;
+  padding:15px 7%;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:20px;
+  background:rgba(248,245,238,.78);
+  border-bottom:1px solid rgba(255,255,255,.8);
+  box-shadow:0 8px 35px rgba(0,0,0,.06);
+  backdrop-filter:blur(28px) saturate(180%);
+  -webkit-backdrop-filter:blur(28px) saturate(180%);
+}
+
+.logo{
+  color:var(--ink);
+  font-size:21px;
+  font-weight:900;
+  letter-spacing:1px;
+}
+
+.logo span{
+  color:var(--gold-dark);
+}
+
+.header-right{
+  display:flex;
+  align-items:center;
+  gap:18px;
+}
+
+.header-link,
+.cart-link{
+  color:var(--gold-dark);
+  font-size:12px;
+  font-weight:800;
+}
+
+.cart-count{
+  display:inline-block;
+  min-width:18px;
+  margin-left:4px;
+  padding:1px 5px;
+  background:var(--gold-dark);
+  color:#fff;
+  border-radius:20px;
+  font-size:10px;
+  text-align:center;
+}
+
+/* =========================================================
+   MAIN
+   ========================================================= */
+
+.container{
+  width:min(1150px,88%);
+  margin:38px auto 70px;
+  flex:1;
+}
+
+.back-link{
+  display:inline-block;
+  color:var(--gold-dark);
+  font-size:12px;
+  font-weight:800;
+  margin-bottom:22px;
+}
+
+/* =========================================================
+   PRODUCT HERO
+   ========================================================= */
+
+.product-layout{
+  display:grid;
+  grid-template-columns:1.05fr .95fr;
+  gap:38px;
+  align-items:start;
+}
+
+.product-photo{
+  min-height:430px;
+  padding:30px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  position:relative;
+  overflow:hidden;
+  background:rgba(255,252,245,.72);
+  border:1px solid var(--glass-border);
+  border-radius:20px;
+  box-shadow:var(--shadow),inset 0 1px 0 #fff;
+  backdrop-filter:var(--glass-blur);
+  -webkit-backdrop-filter:var(--glass-blur);
+}
+
+.product-photo img{
+  width:100%;
+  max-height:370px;
+  object-fit:contain;
+}
+
+.photo-label{
+  position:absolute;
+  top:18px;
+  left:18px;
+  padding:7px 12px;
+  background:rgba(201,154,53,.13);
+  color:var(--gold-dark);
+  border:1px solid rgba(201,154,53,.3);
+  border-radius:30px;
+  font-size:10px;
+  font-weight:800;
+  letter-spacing:1px;
+}
+
+.product-info{
+  padding:8px 0;
+}
+
+.category{
+  color:var(--gold-dark);
+  font-size:11px;
+  font-weight:800;
+  letter-spacing:3px;
+  text-transform:uppercase;
+}
+
+h1{
+  margin:10px 0 5px;
+  font-size:clamp(30px,4vw,46px);
+  line-height:1.12;
+  letter-spacing:-1.5px;
+  color:var(--ink);
+}
+
+.brand{
+  color:var(--muted);
+  font-size:13px;
+  margin-top:10px;
+}
+
+.rating{
+  margin:15px 0;
+  color:var(--gold-dark);
+  font-size:14px;
+  font-weight:800;
+}
+
+.rating span{
+  color:var(--muted);
+  font-size:12px;
+  font-weight:400;
+  margin-left:7px;
+}
+
+.price{
+  color:var(--gold-dark);
+  font-size:32px;
+  font-weight:900;
+  margin:15px 0 5px;
+}
+
+.old-price{
+  color:#929292;
+  font-size:16px;
+  font-weight:400;
+  text-decoration:line-through;
+  margin-left:9px;
+}
+
+.discount{
+  display:inline-block;
+  margin-left:9px;
+  padding:3px 9px;
+  background:rgba(201,154,53,.13);
+  color:var(--gold-dark);
+  border:1px solid rgba(201,154,53,.3);
+  border-radius:30px;
+  font-size:11px;
+  font-weight:800;
+  vertical-align:middle;
+}
+
+.stock{
+  color:#52764d;
+  font-size:12px;
+  font-weight:700;
+  margin-top:10px;
+}
+
+.description{
+  color:var(--muted);
+  font-size:14px;
+  line-height:1.8;
+  margin:17px 0;
+}
+
+.qty-row{
+  display:flex;
+  align-items:center;
+  gap:14px;
+  margin-top:20px;
+}
+
+.qty-label{
+  color:var(--gold-dark);
+  font-size:11px;
+  font-weight:800;
+  letter-spacing:1px;
+}
+
+.qty-box{
+  display:inline-flex;
+  align-items:center;
+  background:rgba(255,255,255,.65);
+  border:1px solid rgba(201,154,53,.3);
+  border-radius:5px;
+  overflow:hidden;
+}
+
+.qty-box button{
+  width:38px;
+  height:38px;
+  background:transparent;
+  border:0;
+  color:var(--gold-dark);
+  font-size:18px;
+  font-weight:800;
+}
+
+.qty-box button:hover{
+  background:rgba(201,154,53,.13);
+}
+
+.qty-box output{
+  min-width:40px;
+  text-align:center;
+  color:var(--ink);
+  font-size:14px;
+  font-weight:800;
+}
+
+.actions{
+  display:flex;
+  flex-wrap:wrap;
+  gap:12px;
+  margin-top:22px;
+}
+
+.action-btn{
+  min-height:48px;
+  padding:13px 23px;
+  border-radius:5px;
+  cursor:pointer;
+  font-size:12px;
+  font-weight:800;
+  letter-spacing:.5px;
+  transition:transform .25s ease,background .25s ease,box-shadow .25s ease;
+}
+
+.action-btn:hover{
+  transform:translateY(-3px);
+  box-shadow:0 10px 22px rgba(20,30,40,.12);
+}
+
+.action-btn:disabled{
+  opacity:.6;
+  cursor:not-allowed;
+  transform:none;
+  box-shadow:none;
+}
+
+.add-btn{
+  color:#fff;
+  background:var(--gold-dark);
+  border:1px solid var(--gold-dark);
+}
+
+.add-btn:hover{
+  background:var(--gold);
+}
+
+.buy-btn{
+  color:#fff;
+  background:var(--dark);
+  border:1px solid var(--dark);
+}
+
+.buy-btn:hover{
+  background:#263747;
+}
+
+.trust-row{
+  display:flex;
+  flex-wrap:wrap;
+  gap:15px;
+  margin-top:23px;
+  padding-top:18px;
+  border-top:1px solid rgba(158,116,33,.2);
+  color:var(--muted);
+  font-size:11px;
+}
+
+/* =========================================================
+   INFORMATION AREA
+   ========================================================= */
+
+.product-information{
+  margin-top:28px;
+}
+
+.info-section{
+  margin-top:18px;
+  padding:28px;
+  background:rgba(255,252,245,.78);
+  border:1px solid var(--glass-border);
+  border-radius:18px;
+  box-shadow:var(--shadow),inset 0 1px 0 #fff;
+  backdrop-filter:var(--glass-blur);
+  -webkit-backdrop-filter:var(--glass-blur);
+}
+
+.info-heading{
+  display:flex;
+  align-items:flex-start;
+  justify-content:space-between;
+  gap:20px;
+  margin-bottom:18px;
+}
+
+.section-kicker{
+  color:var(--gold-dark);
+  font-size:10px;
+  font-weight:800;
+  letter-spacing:3px;
+  margin-bottom:6px;
+}
+
+.info-section h2{
+  color:var(--ink);
+  font-size:clamp(24px,3vw,32px);
+  line-height:1.2;
+}
+
+.info-intro{
+  color:var(--muted);
+  font-size:13px;
+  line-height:1.8;
+  margin-bottom:18px;
+}
+
+/* =========================================================
+   OVERVIEW
+   ========================================================= */
+
+.overview-box{
+  display:grid;
+  grid-template-columns:1.4fr .8fr;
+  gap:20px;
+}
+
+.overview-text{
+  padding:20px;
+  background:rgba(255,255,255,.68);
+  border:1px solid var(--line);
+  border-radius:12px;
+}
+
+.overview-text h3,
+.info-side h3{
+  color:var(--gold-dark);
+  font-size:14px;
+  margin-bottom:9px;
+}
+
+.overview-text p{
+  color:var(--muted);
+  font-size:13px;
+  line-height:1.85;
+}
+
+.info-side{
+  padding:20px;
+  background:rgba(255,255,255,.68);
+  border:1px solid var(--line);
+  border-radius:12px;
+}
+
+.quick-facts{
+  display:grid;
+  gap:10px;
+}
+
+.quick-fact{
+  display:flex;
+  justify-content:space-between;
+  gap:15px;
+  padding:9px 0;
+  border-bottom:1px solid var(--line);
+  font-size:12px;
+}
+
+.quick-fact:last-child{
+  border-bottom:0;
+}
+
+.quick-fact span{
+  color:var(--muted);
+}
+
+.quick-fact strong{
+  color:var(--ink);
+  text-align:right;
+}
+
+/* =========================================================
+   FEATURES
+   ========================================================= */
+
+.feature-grid{
+  display:grid;
+  grid-template-columns:repeat(4,minmax(0,1fr));
+  gap:12px;
+}
+
+.feature-card{
+  padding:18px;
+  background:rgba(255,255,255,.68);
+  border:1px solid var(--line);
+  border-radius:12px;
+}
+
+.feature-icon{
+  width:34px;
+  height:34px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  margin-bottom:10px;
+  background:rgba(201,154,53,.12);
+  color:var(--gold-dark);
+  border-radius:50%;
+  font-size:15px;
+}
+
+.feature-card strong{
+  display:block;
+  color:var(--ink);
+  font-size:12px;
+  margin-bottom:5px;
+}
+
+.feature-card span{
+  color:var(--muted);
+  font-size:11px;
+  line-height:1.6;
+}
+
+/* =========================================================
+   SPECIFICATIONS
+   ========================================================= */
+
+.spec-grid{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:11px;
+}
+
+.spec-item{
+  padding:15px 17px;
+  background:rgba(255,255,255,.68);
+  border:1px solid var(--line);
+  border-radius:10px;
+}
+
+.spec-item strong{
+  display:block;
+  color:var(--gold-dark);
+  font-size:10px;
+  letter-spacing:.4px;
+  margin-bottom:4px;
+}
+
+.spec-item span{
+  color:var(--ink);
+  font-size:12px;
+  line-height:1.5;
+}
+
+/* =========================================================
+   APPLICATIONS
+   ========================================================= */
+
+.application-grid{
+  display:grid;
+  grid-template-columns:repeat(4,minmax(0,1fr));
+  gap:12px;
+}
+
+.application-card{
+  padding:18px;
+  background:rgba(255,255,255,.68);
+  border:1px solid var(--line);
+  border-radius:12px;
+}
+
+.application-card strong{
+  display:block;
+  color:var(--ink);
+  font-size:13px;
+  margin-bottom:5px;
+}
+
+.application-card span{
+  color:var(--muted);
+  font-size:11px;
+  line-height:1.6;
+}
+
+/* =========================================================
+   INSTALLATION / COMPATIBILITY
+   ========================================================= */
+
+.install-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:15px;
+}
+
+.install-card{
+  padding:20px;
+  background:rgba(255,255,255,.68);
+  border:1px solid var(--line);
+  border-radius:12px;
+}
+
+.install-card h3{
+  color:var(--gold-dark);
+  font-size:14px;
+  margin-bottom:9px;
+}
+
+.install-card p{
+  color:var(--muted);
+  font-size:12px;
+  line-height:1.8;
+}
+
+.install-list{
+  margin-top:10px;
+  padding-left:18px;
+  color:var(--muted);
+  font-size:12px;
+  line-height:1.8;
+}
+
+/* =========================================================
+   INCLUDED
+   ========================================================= */
+
+.included-grid{
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:12px;
+}
+
+.included-card{
+  padding:17px;
+  background:rgba(255,255,255,.68);
+  border:1px solid var(--line);
+  border-radius:10px;
+}
+
+.included-card strong{
+  display:block;
+  color:var(--ink);
+  font-size:12px;
+  margin-bottom:4px;
+}
+
+.included-card span{
+  color:var(--muted);
+  font-size:11px;
+}
+
+/* =========================================================
+   IMPORTANT NOTE
+   ========================================================= */
+
+.notice-box{
+  padding:20px;
+  background:rgba(201,154,53,.08);
+  border:1px solid rgba(201,154,53,.25);
+  border-left:4px solid var(--gold-dark);
+  border-radius:10px;
+}
+
+.notice-box strong{
+  display:block;
+  color:var(--gold-dark);
+  font-size:13px;
+  margin-bottom:7px;
+}
+
+.notice-box p{
+  color:var(--muted);
+  font-size:12px;
+  line-height:1.8;
+}
+
+/* =========================================================
+   REVIEWS
+   ========================================================= */
+
+.review-summary{
+  display:grid;
+  grid-template-columns:180px 1fr;
+  gap:20px;
+  margin-bottom:16px;
+}
+
+.rating-big{
+  padding:20px;
+  text-align:center;
+  background:rgba(255,255,255,.68);
+  border:1px solid var(--line);
+  border-radius:12px;
+}
+
+.rating-big strong{
+  display:block;
+  color:var(--gold-dark);
+  font-size:30px;
+  line-height:1;
+}
+
+.rating-big span{
+  display:block;
+  margin-top:7px;
+  color:var(--muted);
+  font-size:11px;
+}
+
+.review-card{
+  padding:20px;
+  background:rgba(255,255,255,.68);
+  border:1px solid var(--line);
+  border-radius:10px;
+  color:var(--muted);
+  font-size:12px;
+}
+
+.review-card strong{
+  display:block;
+  color:var(--ink);
+  margin-bottom:7px;
+}
+
+/* =========================================================
+   RELATED PRODUCTS
+   ========================================================= */
+
+.related-section{
+  margin-top:18px;
+  padding:28px;
+  background:rgba(255,252,245,.78);
+  border:1px solid var(--glass-border);
+  border-radius:18px;
+  box-shadow:var(--shadow),inset 0 1px 0 #fff;
+  backdrop-filter:var(--glass-blur);
+  -webkit-backdrop-filter:var(--glass-blur);
+}
+
+.related-header{
+  margin-bottom:18px;
+}
+
+.related-header h2{
+  color:var(--ink);
+  font-size:clamp(24px,3vw,32px);
+}
+
+.related-header p{
+  color:var(--muted);
+  font-size:12px;
+  margin-top:5px;
+}
+
+.related-grid{
+  display:flex;
+  gap:14px;
+  overflow-x:auto;
+  padding-bottom:8px;
+  scrollbar-width:thin;
+}
+
+.related-card{
+  flex:0 0 205px;
+  background:rgba(255,255,255,.8);
+  border:1px solid var(--line);
+  border-radius:12px;
+  padding:11px;
+  transition:.2s;
+}
+
+.related-card:hover{
+  transform:translateY(-3px);
+  box-shadow:0 12px 28px rgba(20,30,40,.11);
+}
+
+.related-image{
+  width:100%;
+  height:135px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  overflow:hidden;
+  background:#f7f8fa;
+  border-radius:9px;
+}
+
+.related-image img{
+  width:100%;
+  height:100%;
+  object-fit:contain;
+}
+
+.related-brand{
+  margin-top:9px;
+  color:var(--gold-dark);
+  font-size:9px;
+  font-weight:900;
+  letter-spacing:.7px;
+}
+
+.related-name{
+  min-height:36px;
+  margin-top:5px;
+  color:var(--ink);
+  font-size:12px;
+  font-weight:800;
+  line-height:1.4;
+}
+
+.related-category{
+  margin-top:4px;
+  color:var(--muted);
+  font-size:10px;
+}
+
+.related-price{
+  margin:8px 0;
+  color:var(--gold-dark);
+  font-size:15px;
+  font-weight:900;
+}
+
+.related-actions{
+  display:flex;
+  gap:6px;
+}
+
+.related-btn{
+  flex:1;
+  min-height:34px;
+  border-radius:5px;
+  border:1px solid var(--gold-dark);
+  background:var(--gold-dark);
+  color:#fff;
+  font-size:9px;
+  font-weight:900;
+}
+
+.related-view{
+  background:transparent;
+  color:var(--gold-dark);
+}
+
+/* =========================================================
+   NOT FOUND / TOAST / FOOTER
+   ========================================================= */
+
+.not-found{
+  grid-column:1/-1;
+  padding:40px 20px;
+  text-align:center;
+  background:rgba(255,252,245,.72);
+  border:1px solid var(--glass-border);
+  border-radius:18px;
+  box-shadow:var(--shadow),inset 0 1px 0 #fff;
+}
+
+.not-found h2{
+  color:var(--ink);
+  font-size:24px;
+  margin-bottom:12px;
+}
+
+.not-found a{
+  color:var(--gold-dark);
+  font-weight:800;
+}
+
+.toast{
+  position:fixed;
+  left:50%;
+  bottom:28px;
+  z-index:50;
+  max-width:90%;
+  padding:13px 22px;
+  background:var(--dark);
+  color:#fff;
+  border-left:4px solid var(--gold);
+  border-radius:6px;
+  box-shadow:0 14px 35px rgba(20,30,40,.25);
+  font-size:13px;
+  font-weight:700;
+  opacity:0;
+  pointer-events:none;
+  transform:translate(-50%,20px);
+  transition:opacity .3s ease,transform .3s ease;
+}
+
+.toast.show{
+  opacity:1;
+  transform:translate(-50%,0);
+}
+
+footer{
+  margin-top:20px;
+  padding:35px 7%;
+  text-align:center;
+  color:#fff;
+  background:var(--dark);
+  border-top:4px solid var(--gold-light);
+}
+
+.footer-logo{
+  color:#fff;
+  font-size:18px;
+  font-weight:900;
+  letter-spacing:1px;
+}
+
+.footer-logo span{
+  color:var(--gold-light);
+}
+
+footer p{
+  color:rgba(255,255,255,.65);
+  font-size:11px;
+  margin-top:9px;
+}
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media(max-width:900px){
+
+  .product-layout{
+    grid-template-columns:1fr;
+  }
+
+  .overview-box{
+    grid-template-columns:1fr;
+  }
+
+  .feature-grid{
+    grid-template-columns:repeat(2,minmax(0,1fr));
+  }
+
+  .application-grid{
+    grid-template-columns:repeat(2,minmax(0,1fr));
+  }
+
+  .included-grid{
+    grid-template-columns:repeat(2,minmax(0,1fr));
+  }
+
+}
+
+@media(max-width:750px){
+
+  header{
+    padding:15px 6%;
+  }
+
+  .logo{
+    font-size:18px;
+  }
+
+  .header-right{
+    gap:12px;
+  }
+
+  .container{
+    width:90%;
+    margin:28px auto 50px;
+  }
+
+  .product-photo{
+    min-height:300px;
+    padding:22px;
+  }
+
+  .product-photo img{
+    max-height:260px;
+  }
+
+  .product-info{
+    padding:0;
+  }
+
+  h1{
+    font-size:32px;
+  }
+
+  .info-section,
+  .related-section{
+    padding:21px;
+  }
+
+  .spec-grid{
+    grid-template-columns:1fr;
+  }
+
+  .install-grid{
+    grid-template-columns:1fr;
+  }
+
+  .review-summary{
+    grid-template-columns:1fr;
+  }
+
+}
+
+@media(max-width:560px){
+
+  .header-link{
+    font-size:10px;
+  }
+
+  .cart-link{
+    font-size:10px;
+  }
+
+  .feature-grid,
+  .application-grid,
+  .included-grid{
+    grid-template-columns:1fr;
+  }
+
+  .actions{
+    flex-direction:column;
+  }
+
+  .action-btn{
+    width:100%;
+  }
+
+  .info-heading{
+    display:block;
+  }
+
+  .related-card{
+    flex-basis:175px;
+  }
+
+}
+
+@media(max-width:380px){
+
+  .header-right{
+    gap:8px;
+  }
+
+  .header-link{
+    display:none;
+  }
+
+}
+
+@media(prefers-reduced-motion:reduce){
+
+  *{
+    transition:none!important;
+    scroll-behavior:auto!important;
+  }
+
+}
 </style>
 </head>
 
 <body>
+
 <header>
   <a class="logo" href="index.html">JK SAFETY <span>VISION</span></a>
+
   <div class="header-right">
-    <a class="cart-link" href="order.html" aria-label="View cart">CART<span class="cart-count" id="cartCount">0</span></a>
-    <a class="header-link" href="index.html">← BACK TO HOME</a>
+    <a class="cart-link" href="order.html" aria-label="View cart">
+      CART<span class="cart-count" id="cartCount">0</span>
+    </a>
+
+    <a class="header-link" href="index.html">
+      ← BACK TO HOME
+    </a>
   </div>
 </header>
 
+
 <main class="container">
-  <a class="back-link" href="index.html">← CONTINUE SHOPPING</a>
+
+  <a class="back-link" href="index.html">
+    ← CONTINUE SHOPPING
+  </a>
+
+
+  <!-- =====================================================
+       PRODUCT MAIN AREA
+       ===================================================== -->
 
   <div class="product-layout" id="productLayout">
+
     <div class="product-photo">
-      <span class="photo-label">PRODUCT IMAGE</span>
-      <img id="productImage" src="" alt="Product image">
+
+      <span class="photo-label">
+        PRODUCT IMAGE
+      </span>
+
+      <img
+        id="productImage"
+        src=""
+        alt="Product image"
+      >
+
     </div>
 
-    <div class="product-info">
-      <div class="category" id="productCategory">SECURITY PRODUCT</div>
-      <h1 id="productName">Product Name</h1>
-      <div class="brand" id="productBrand"></div>
-      <div class="rating" id="productRating">★★★★★ <span>Product rating</span></div>
-      <div class="price" id="productPrice"></div>
-      <div class="stock">● Available for inquiry</div>
 
-      <p class="description">Explore this product from JK Safety Vision. Contact our team to confirm the exact model, technical specifications, compatibility, installation and final quotation.</p>
+    <div class="product-info">
+
+      <div
+        class="category"
+        id="productCategory"
+      >
+        SECURITY PRODUCT
+      </div>
+
+      <h1 id="productName">
+        Product Name
+      </h1>
+
+      <div
+        class="brand"
+        id="productBrand"
+      ></div>
+
+      <div
+        class="rating"
+        id="productRating"
+      >
+        ★★★★★
+        <span>Product rating</span>
+      </div>
+
+      <div
+        class="price"
+        id="productPrice"
+      ></div>
+
+      <div class="stock">
+        ● Available for inquiry
+      </div>
+
+      <p class="description">
+        Explore this product from JK Safety Vision. Contact our team
+        to confirm the exact model, technical specifications,
+        compatibility, installation and final quotation.
+      </p>
 
       <div class="qty-row">
-        <span class="qty-label">QUANTITY</span>
+
+        <span class="qty-label">
+          QUANTITY
+        </span>
+
         <div class="qty-box">
-          <button type="button" id="qtyMinus" aria-label="Decrease quantity">−</button>
-          <output id="qtyValue" aria-live="polite">1</output>
-          <button type="button" id="qtyPlus" aria-label="Increase quantity">+</button>
+
+          <button
+            type="button"
+            id="qtyMinus"
+            aria-label="Decrease quantity"
+          >
+            −
+          </button>
+
+          <output
+            id="qtyValue"
+            aria-live="polite"
+          >
+            1
+          </output>
+
+          <button
+            type="button"
+            id="qtyPlus"
+            aria-label="Increase quantity"
+          >
+            +
+          </button>
+
         </div>
+
       </div>
+
 
       <div class="actions">
-        <button type="button" class="action-btn add-btn" id="addToCart">ADD TO CART</button>
-        <button type="button" class="action-btn buy-btn" id="buyNow">BUY NOW</button>
+
+        <button
+          type="button"
+          class="action-btn add-btn"
+          id="addToCart"
+        >
+          ADD TO CART
+        </button>
+
+        <button
+          type="button"
+          class="action-btn buy-btn"
+          id="buyNow"
+        >
+          BUY NOW
+        </button>
+
       </div>
 
+
       <div class="trust-row">
+
         <span>✓ Product consultation</span>
         <span>✓ Installation inquiry</span>
         <span>✓ Quotation support</span>
+
       </div>
+
     </div>
+
   </div>
 
-  <section class="details-section" id="specSection">
-    <div class="section-kicker">TECHNICAL INFORMATION</div>
-    <h2>Product Specifications</h2>
-    <div class="spec-grid" id="specifications"></div>
-  </section>
 
-  <section class="details-section" id="reviewSection">
-    <div class="section-kicker">CUSTOMER FEEDBACK</div>
-    <h2>Reviews &amp; Ratings</h2>
-    <div class="review-card">
-      <strong>Customer reviews</strong>
-      Reviews will be displayed here once verified customer feedback is available.
-    </div>
-  </section>
+  <!-- =====================================================
+       PRODUCT INFORMATION
+       ===================================================== -->
+
+  <div class="product-information">
+
+
+    <!-- PRODUCT OVERVIEW -->
+
+    <section class="info-section">
+
+      <div class="info-heading">
+
+        <div>
+          <div class="section-kicker">
+            PRODUCT INFORMATION
+          </div>
+
+          <h2>
+            Product Overview
+          </h2>
+        </div>
+
+      </div>
+
+
+      <div class="overview-box">
+
+        <div class="overview-text">
+
+          <h3>
+            About This Product
+          </h3>
+
+          <p id="productOverviewText">
+            This product is part of the JK Safety Vision security
+            and surveillance catalogue. Product information,
+            brand, category and available technical specifications
+            are displayed from the current product catalogue.
+            Please contact our team before purchase if you need
+            confirmation of model compatibility, installation
+            requirements or final quotation.
+          </p>
+
+        </div>
+
+
+        <div class="info-side">
+
+          <h3>
+            Quick Product Facts
+          </h3>
+
+          <div class="quick-facts">
+
+            <div class="quick-fact">
+              <span>Product</span>
+              <strong id="quickProduct">—</strong>
+            </div>
+
+            <div class="quick-fact">
+              <span>Category</span>
+              <strong id="quickCategory">—</strong>
+            </div>
+
+            <div class="quick-fact">
+              <span>Brand / Type</span>
+              <strong id="quickBrand">—</strong>
+            </div>
+
+            <div class="quick-fact">
+              <span>Price</span>
+              <strong id="quickPrice">—</strong>
+            </div>
+
+            <div class="quick-fact">
+              <span>Availability</span>
+              <strong>Inquiry</strong>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- KEY FEATURES -->
+
+    <section class="info-section">
+
+      <div class="section-kicker">
+        PRODUCT HIGHLIGHTS
+      </div>
+
+      <h2>
+        Key Features
+      </h2>
+
+      <p class="info-intro">
+        Important product highlights and practical considerations
+        for selecting this product for your security setup.
+      </p>
+
+
+      <div class="feature-grid">
+
+        <div class="feature-card">
+
+          <div class="feature-icon">
+            ✓
+          </div>
+
+          <strong>
+            Security Application
+          </strong>
+
+          <span>
+            Designed for use within security, surveillance or
+            access-control installations depending on the product category.
+          </span>
+
+        </div>
+
+
+        <div class="feature-card">
+
+          <div class="feature-icon">
+            ◆
+          </div>
+
+          <strong>
+            Product Category
+          </strong>
+
+          <span id="featureCategory">
+            Product category information is displayed from the catalogue.
+          </span>
+
+        </div>
+
+
+        <div class="feature-card">
+
+          <div class="feature-icon">
+            ⚙
+          </div>
+
+          <strong>
+            Installation Support
+          </strong>
+
+          <span>
+            JK Safety Vision can help confirm installation requirements
+            and suitable supporting equipment before quotation.
+          </span>
+
+        </div>
+
+
+        <div class="feature-card">
+
+          <div class="feature-icon">
+            ★
+          </div>
+
+          <strong>
+            Product Consultation
+          </strong>
+
+          <span>
+            Confirm the exact model, specifications, compatibility and
+            final commercial quotation with our team.
+          </span>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- TECHNICAL SPECIFICATIONS -->
+
+    <section
+      class="info-section"
+      id="specSection"
+    >
+
+      <div class="section-kicker">
+        TECHNICAL INFORMATION
+      </div>
+
+      <h2>
+        Technical Specifications
+      </h2>
+
+      <p class="info-intro">
+        The specifications below are generated from the product
+        catalogue. Additional model-specific specifications are
+        shown whenever they are available in the product data.
+      </p>
+
+      <div
+        class="spec-grid"
+        id="specifications"
+      ></div>
+
+    </section>
+
+
+    <!-- APPLICATIONS -->
+
+    <section class="info-section">
+
+      <div class="section-kicker">
+        WHERE IT CAN BE USED
+      </div>
+
+      <h2>
+        Recommended Applications
+      </h2>
+
+      <p class="info-intro">
+        The final application depends on the exact model,
+        installation environment and system requirements.
+      </p>
+
+
+      <div class="application-grid">
+
+        <div class="application-card">
+          <strong>
+            Residential
+          </strong>
+
+          <span>
+            Homes, entrances, parking areas and other private
+            security environments.
+          </span>
+        </div>
+
+
+        <div class="application-card">
+          <strong>
+            Commercial
+          </strong>
+
+          <span>
+            Shops, offices, warehouses and business premises
+            requiring monitored security.
+          </span>
+        </div>
+
+
+        <div class="application-card">
+          <strong>
+            Institutional
+          </strong>
+
+          <span>
+            Schools, offices, facilities and controlled-access
+            environments where applicable.
+          </span>
+        </div>
+
+
+        <div class="application-card">
+          <strong>
+            Custom Installation
+          </strong>
+
+          <span>
+            Larger installations can be planned around the
+            required cameras, recorders, networking and accessories.
+          </span>
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- INSTALLATION AND COMPATIBILITY -->
+
+    <section class="info-section">
+
+      <div class="section-kicker">
+        INSTALLATION SUPPORT
+      </div>
+
+      <h2>
+        Compatibility & Installation
+      </h2>
+
+      <p class="info-intro">
+        Before ordering, it is recommended to confirm compatibility
+        with the existing or planned surveillance system.
+      </p>
+
+
+      <div class="install-grid">
+
+        <div class="install-card">
+
+          <h3>
+            Compatibility
+          </h3>
+
+          <p>
+            Compatibility depends on the product type, brand,
+            recorder, network architecture, power requirements,
+            cabling and other connected equipment.
+          </p>
+
+          <ul class="install-list">
+
+            <li>
+              Confirm exact product/model before purchase.
+            </li>
+
+            <li>
+              Check required power and connectivity.
+            </li>
+
+            <li>
+              Confirm recorder/network compatibility where applicable.
+            </li>
+
+            <li>
+              Confirm installation environment and mounting requirements.
+            </li>
+
+          </ul>
+
+        </div>
+
+
+        <div class="install-card">
+
+          <h3>
+            Installation
+          </h3>
+
+          <p>
+            JK Safety Vision can assist with installation-related
+            planning and product selection. Final installation
+            requirements depend on the site and selected model.
+          </p>
+
+          <ul class="install-list">
+
+            <li>
+              Site requirements may vary.
+            </li>
+
+            <li>
+              Cabling and power accessories may be required.
+            </li>
+
+            <li>
+              Additional recorder/storage equipment may be needed.
+            </li>
+
+            <li>
+              Professional installation can be discussed with the team.
+            </li>
+
+          </ul>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- WHAT'S INCLUDED -->
+
+    <section class="info-section">
+
+      <div class="section-kicker">
+        PACKAGE INFORMATION
+      </div>
+
+      <h2>
+        What's Included
+      </h2>
+
+      <p class="info-intro">
+        Package contents can vary by product and exact model.
+        Confirm the final package contents with our team before ordering.
+      </p>
+
+
+      <div class="included-grid">
+
+        <div class="included-card">
+
+          <strong>
+            Main Product
+          </strong>
+
+          <span>
+            Selected product/model as listed.
+          </span>
+
+        </div>
+
+
+        <div class="included-card">
+
+          <strong>
+            Accessories
+          </strong>
+
+          <span>
+            Included accessories depend on the exact model/package.
+          </span>
+
+        </div>
+
+
+        <div class="included-card">
+
+          <strong>
+            Documentation
+          </strong>
+
+          <span>
+            Product documentation may be supplied where applicable.
+          </span>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- IMPORTANT INFORMATION -->
+
+    <section class="info-section">
+
+      <div class="section-kicker">
+        BEFORE YOU ORDER
+      </div>
+
+      <h2>
+        Important Information
+      </h2>
+
+
+      <div class="notice-box">
+
+        <strong>
+          Please confirm the exact model before purchase.
+        </strong>
+
+        <p>
+          Product images and catalogue information are provided
+          for product identification and selection. Exact model
+          specifications, availability, installation requirements,
+          delivery, taxes and final quotation may vary. Contact
+          JK Safety Vision for confirmation before placing a final
+          commercial order.
+        </p>
+
+      </div>
+
+    </section>
+
+
+    <!-- REVIEWS -->
+
+    <section
+      class="info-section"
+      id="reviewSection"
+    >
+
+      <div class="section-kicker">
+        CUSTOMER FEEDBACK
+      </div>
+
+      <h2>
+        Reviews & Ratings
+      </h2>
+
+      <div class="review-summary">
+
+        <div class="rating-big">
+
+          <strong id="ratingBig">
+            —
+          </strong>
+
+          <span>
+            Current catalogue rating
+          </span>
+
+        </div>
+
+
+        <div class="review-card">
+
+          <strong>
+            Customer reviews
+          </strong>
+
+          Reviews will be displayed here once verified customer
+          feedback becomes available.
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         RELATED PRODUCTS
+         ===================================================== -->
+
+    <section class="related-section">
+
+      <div class="related-header">
+
+        <div class="section-kicker">
+          COMPLETE YOUR SECURITY SETUP
+        </div>
+
+        <h2>
+          You May Also Like
+        </h2>
+
+        <p>
+          Explore other products that may be useful with your
+          security and surveillance setup.
+        </p>
+
+      </div>
+
+
+      <div
+        class="related-grid"
+        id="relatedProductsGrid"
+      ></div>
+
+    </section>
+
+
+  </div>
+
 </main>
 
+
 <footer>
-  <div class="footer-logo">JK SAFETY <span>VISION</span></div>
-  <p>Security • Surveillance • Technology</p>
-  <p>© JK Safety Vision. All rights reserved.</p>
+
+  <div class="footer-logo">
+    JK SAFETY <span>VISION</span>
+  </div>
+
+  <p>
+    Security • Surveillance • Technology
+  </p>
+
+  <p>
+    ©️ JK Safety Vision. All rights reserved.
+  </p>
+
 </footer>
 
-<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<div
+  class="toast"
+  id="toast"
+  role="status"
+  aria-live="polite"
+></div>
+
 
 <script src="products.js?v=3"></script>
+
 <script>
 (function(){
+
 "use strict";
+
+
+/* =========================================================
+   BASIC PRODUCT / CART SYSTEM
+   ========================================================= */
 
 const CART_KEY = "jkSV_cart";
 const MAX_QTY = 99;
-const products = Array.isArray(window.PRODUCTS) ? window.PRODUCTS : [];
-const $ = id => document.getElementById(id);
 
-const productId = new URLSearchParams(window.location.search).get("id");
+const products =
+  Array.isArray(window.PRODUCTS)
+    ? window.PRODUCTS
+    : [];
 
-const product = window.getJKSVProductById
-  ? window.getJKSVProductById(productId)
-  : products.find(item => String(item.id) === String(productId));
+const $ = id =>
+  document.getElementById(id);
 
-const money = value => "₹" + Number(value || 0).toLocaleString("en-IN");
+const productId =
+  new URLSearchParams(
+    window.location.search
+  ).get("id");
 
-const stars = rating => {
-  const n = Math.max(0, Math.min(5, Math.round(Number(rating) || 0)));
-  return "★".repeat(n) + "☆".repeat(5 - n);
-};
+
+const product =
+  window.getJKSVProductById
+    ? window.getJKSVProductById(productId)
+    : products.find(
+        item =>
+          String(item.id) === String(productId)
+      );
+
+
+const money =
+  value =>
+    "₹" +
+    Number(value || 0)
+      .toLocaleString("en-IN");
+
+
+const stars =
+  rating => {
+
+    const n =
+      Math.max(
+        0,
+        Math.min(
+          5,
+          Math.round(
+            Number(rating) || 0
+          )
+        )
+      );
+
+    return (
+      "★".repeat(n) +
+      "☆".repeat(5 - n)
+    );
+
+  };
+
+
+/* =========================================================
+   CART
+   ========================================================= */
 
 function readCart(){
+
   try{
-    const data = JSON.parse(localStorage.getItem(CART_KEY));
-    return Array.isArray(data) ? data : [];
+
+    const data =
+      JSON.parse(
+        localStorage.getItem(
+          CART_KEY
+        )
+      );
+
+    return Array.isArray(data)
+      ? data
+      : [];
+
   }catch(error){
+
     return [];
+
   }
+
 }
+
 
 function writeCart(cart){
+
   try{
-    localStorage.setItem(CART_KEY, JSON.stringify(cart));
+
+    localStorage.setItem(
+      CART_KEY,
+      JSON.stringify(cart)
+    );
+
     return true;
+
   }catch(error){
+
     return false;
+
   }
+
 }
 
+
 function updateCartCount(){
-  $("cartCount").textContent = readCart().reduce(
-    (sum, item) => sum + (Number(item.quantity) || 0), 0
-  );
+
+  $("cartCount").textContent =
+    readCart().reduce(
+      (sum,item) =>
+        sum +
+        (Number(item.quantity) || 0),
+      0
+    );
+
 }
+
 
 let toastTimer;
 
+
 function showToast(message){
-  const toast = $("toast");
-  toast.textContent = message;
-  toast.classList.add("show");
-  clearTimeout(toastTimer);
-  toastTimer = setTimeout(() => toast.classList.remove("show"), 2600);
+
+  const toast =
+    $("toast");
+
+  toast.textContent =
+    message;
+
+  toast.classList.add(
+    "show"
+  );
+
+  clearTimeout(
+    toastTimer
+  );
+
+  toastTimer =
+    setTimeout(
+      () =>
+        toast.classList.remove(
+          "show"
+        ),
+      2600
+    );
+
 }
 
-function addSpec(grid, label, value){
-  const item = document.createElement("div");
-  item.className = "spec-item";
 
-  const title = document.createElement("strong");
-  title.textContent = label;
+/* =========================================================
+   SPECIFICATIONS
+   ========================================================= */
 
-  const detail = document.createElement("span");
-  detail.textContent = value;
+function addSpec(
+  grid,
+  label,
+  value
+){
 
-  item.append(title, detail);
-  grid.appendChild(item);
+  const item =
+    document.createElement(
+      "div"
+    );
+
+  item.className =
+    "spec-item";
+
+
+  const title =
+    document.createElement(
+      "strong"
+    );
+
+  title.textContent =
+    label;
+
+
+  const detail =
+    document.createElement(
+      "span"
+    );
+
+  detail.textContent =
+    value;
+
+
+  item.append(
+    title,
+    detail
+  );
+
+
+  grid.appendChild(
+    item
+  );
+
 }
 
-function renderProduct(){
-  const maker = product.make && product.make !== "Generic"
-    ? product.make
-    : product.brand;
 
-  document.title = product.name + " | JK Safety Vision";
-  $("productName").textContent = product.name;
-  $("productBrand").textContent = maker || "";
-  $("productCategory").textContent = product.category || "Security Product";
+/* =========================================================
+   IMAGE HANDLING
+   ========================================================= */
 
-  const rating = $("productRating");
-  rating.textContent = stars(product.rating) + " ";
+function setProductImage(){
 
-  const ratingNote = document.createElement("span");
-  ratingNote.textContent = (Number(product.rating) || 0) + " / 5 (sample listing)";
-  rating.appendChild(ratingNote);
+  const image =
+    $("productImage");
 
-  const price = $("productPrice");
-  price.textContent = money(product.price);
+  image.alt =
+    product.name;
 
-  if(Number(product.old) > Number(product.price)){
-    const oldPrice = document.createElement("span");
-    oldPrice.className = "old-price";
-    oldPrice.textContent = money(product.old);
-    price.appendChild(oldPrice);
-
-    const discount = document.createElement("span");
-    discount.className = "discount";
-    discount.textContent = Math.round(
-      (1 - Number(product.price) / Number(product.old)) * 100
-    ) + "% OFF";
-    price.appendChild(discount);
-  }
-
-  const image = $("productImage");
-  image.alt = product.name;
 
   const imageNames = [];
-  if(product.photo) imageNames.push(product.photo);
-  if(product.image && product.image !== product.photo) imageNames.push(product.image);
+
+
+  if(product.photo){
+
+    imageNames.push(
+      product.photo
+    );
+
+  }
+
+
+  if(
+    product.image &&
+    product.image !== product.photo
+  ){
+
+    imageNames.push(
+      product.image
+    );
+
+  }
+
 
   let imageIndex = 0;
 
-  image.onerror = function(){
-    imageIndex++;
 
-    if(imageIndex < imageNames.length){
-      image.src = "images/" + imageNames[imageIndex] + ".jpg";
-      return;
-    }
+  image.onerror =
+    function(){
 
-    image.onerror = null;
-    image.src = "data:image/svg+xml;utf8," + encodeURIComponent(
-      '<svg xmlns="http://www.w3.org/2000/svg" width="400" height="300" viewBox="0 0 400 300"><rect width="400" height="300" fill="#f7f8fa"/><text x="200" y="155" text-anchor="middle" font-family="Arial" font-size="16" font-weight="700" fill="#9e7421">Image not available</text></svg>'
-    );
-  };
+      imageIndex++;
+
+
+      if(
+        imageIndex <
+        imageNames.length
+      ){
+
+        image.src =
+          "images/" +
+          imageNames[imageIndex] +
+          ".jpg";
+
+        return;
+
+      }
+
+
+      image.onerror = null;
+
+
+      image.src =
+        "data:image/svg+xml;utf8," +
+        encodeURIComponent(
+          '<svg xmlns="http://www.w3.org/2000/svg" width="400" height="300" viewBox="0 0 400 300"><rect width="400" height="300" fill="#f7f8fa"/><text x="200" y="155" text-anchor="middle" font-family="Arial" font-size="16" font-weight="700" fill="#9e7421">Image not available</text></svg>'
+        );
+
+    };
+
 
   if(imageNames.length){
-    image.src = "images/" + imageNames[0] + ".jpg";
+
+    image.src =
+      "images/" +
+      imageNames[0] +
+      ".jpg";
+
   }else{
+
     image.onerror();
+
   }
 
-  const grid = $("specifications");
+}
+
+
+/* =========================================================
+   PRODUCT RENDER
+   ========================================================= */
+
+function renderProduct(){
+
+  const maker =
+    product.make &&
+    product.make !== "Generic"
+      ? product.make
+      : product.brand;
+
+
+  document.title =
+    product.name +
+    " | JK Safety Vision";
+
+
+  $("productName").textContent =
+    product.name;
+
+
+  $("productBrand").textContent =
+    maker || "";
+
+
+  $("productCategory").textContent =
+    product.category ||
+    "Security Product";
+
+
+  /* Rating */
+
+  const rating =
+    $("productRating");
+
+  rating.textContent =
+    stars(product.rating) +
+    " ";
+
+
+  const ratingNote =
+    document.createElement(
+      "span"
+    );
+
+  ratingNote.textContent =
+    (
+      Number(product.rating) || 0
+    ) +
+    " / 5 (sample listing)";
+
+
+  rating.appendChild(
+    ratingNote
+  );
+
+
+  /* Price */
+
+  const price =
+    $("productPrice");
+
+  price.textContent =
+    money(product.price);
+
+
+  if(
+    Number(product.old) >
+    Number(product.price)
+  ){
+
+    const oldPrice =
+      document.createElement(
+        "span"
+      );
+
+    oldPrice.className =
+      "old-price";
+
+    oldPrice.textContent =
+      money(product.old);
+
+
+    price.appendChild(
+      oldPrice
+    );
+
+
+    const discount =
+      document.createElement(
+        "span"
+      );
+
+    discount.className =
+      "discount";
+
+
+    discount.textContent =
+      Math.round(
+        (
+          1 -
+          Number(product.price) /
+          Number(product.old)
+        ) *
+        100
+      ) +
+      "% OFF";
+
+
+    price.appendChild(
+      discount
+    );
+
+  }
+
+
+  setProductImage();
+
+
+  /* =====================================================
+     QUICK FACTS
+     ===================================================== */
+
+  $("quickProduct").textContent =
+    product.name || "—";
+
+  $("quickCategory").textContent =
+    product.category ||
+    "Security Product";
+
+  $("quickBrand").textContent =
+    maker ||
+    "To be confirmed";
+
+  $("quickPrice").textContent =
+    money(product.price);
+
+
+  $("featureCategory").textContent =
+    product.category
+      ? "Suitable equipment within the " +
+        product.category +
+        " category."
+      : "Product category information is displayed from the catalogue.";
+
+
+  /* =====================================================
+     OVERVIEW
+     ===================================================== */
+
+  const overview =
+    $("productOverviewText");
+
+
+  if(product.description){
+
+    overview.textContent =
+      product.description;
+
+  }else{
+
+    overview.textContent =
+      product.name +
+      " is listed under the " +
+      (
+        product.category ||
+        "security product"
+      ) +
+      " category in the JK Safety Vision catalogue. " +
+      "The product is intended to be selected according to " +
+      "the installation environment, system requirements and " +
+      "required compatibility. Contact our team to confirm " +
+      "the exact model, technical specifications, availability " +
+      "and final quotation before purchase.";
+
+  }
+
+
+  /* =====================================================
+     SPECIFICATIONS
+     ===================================================== */
+
+  const grid =
+    $("specifications");
+
   grid.textContent = "";
 
-  addSpec(grid, "PRODUCT", product.name);
-  addSpec(grid, "CATEGORY", product.category || "Not specified");
-  addSpec(grid, "BRAND / TYPE", maker || "To be confirmed");
-  addSpec(grid, "LISTED PRICE", money(product.price));
-  addSpec(grid, "RATING", (Number(product.rating) || 0) + " / 5 (sample listing)");
 
-  if(product.specs && typeof product.specs === "object"){
-    Object.entries(product.specs).forEach(([label, value]) => {
-      addSpec(grid, label, String(value));
-    });
+  addSpec(
+    grid,
+    "PRODUCT",
+    product.name
+  );
+
+
+  addSpec(
+    grid,
+    "CATEGORY",
+    product.category ||
+      "Not specified"
+  );
+
+
+  addSpec(
+    grid,
+    "BRAND / TYPE",
+    maker ||
+      "To be confirmed"
+  );
+
+
+  addSpec(
+    grid,
+    "LISTED PRICE",
+    money(product.price)
+  );
+
+
+  addSpec(
+    grid,
+    "RATING",
+    (
+      Number(product.rating) || 0
+    ) +
+    " / 5 (sample listing)"
+  );
+
+
+  if(
+    product.specs &&
+    typeof product.specs ===
+      "object"
+  ){
+
+    Object.entries(
+      product.specs
+    ).forEach(
+      ([label,value]) => {
+
+        addSpec(
+          grid,
+          label,
+          String(value)
+        );
+
+      }
+    );
+
   }else{
-    addSpec(grid, "TECHNICAL DETAILS", "Confirm exact model specifications with our team.");
+
+    addSpec(
+      grid,
+      "TECHNICAL DETAILS",
+      "Confirm exact model specifications with our team."
+    );
+
   }
+
+
+  $("ratingBig").textContent =
+    (
+      Number(product.rating) || 0
+    ) +
+    " / 5";
+
 }
+
+
+/* =========================================================
+   NOT FOUND
+   ========================================================= */
 
 function renderNotFound(){
-  document.title = "Product not found | JK Safety Vision";
 
-  const box = document.createElement("div");
-  box.className = "not-found";
+  document.title =
+    "Product not found | JK Safety Vision";
 
-  const heading = document.createElement("h2");
-  heading.textContent = "Product not found.";
 
-  const message = document.createElement("p");
-  message.textContent = "This product may have been moved or is unavailable.";
+  const box =
+    document.createElement(
+      "div"
+    );
 
-  const link = document.createElement("a");
-  link.href = "index.html";
-  link.textContent = "Return to Home";
+  box.className =
+    "not-found";
 
-  box.append(heading, message, link);
-  $("productLayout").replaceChildren(box);
 
-  $("specSection").style.display = "none";
-  $("reviewSection").style.display = "none";
+  const heading =
+    document.createElement(
+      "h2"
+    );
+
+  heading.textContent =
+    "Product not found.";
+
+
+  const message =
+    document.createElement(
+      "p"
+    );
+
+  message.textContent =
+    "This product may have been moved or is unavailable.";
+
+
+  const link =
+    document.createElement(
+      "a"
+    );
+
+  link.href =
+    "index.html";
+
+  link.textContent =
+    "Return to Home";
+
+
+  box.append(
+    heading,
+    message,
+    link
+  );
+
+
+  $("productLayout")
+    .replaceChildren(
+      box
+    );
+
+
+  document.querySelector(
+    ".product-information"
+  ).style.display =
+    "none";
+
 }
+
+
+/* =========================================================
+   QUANTITY
+   ========================================================= */
 
 let quantity = 1;
 
+
 function setQuantity(value){
-  quantity = Math.max(1, Math.min(MAX_QTY, Number(value) || 1));
-  $("qtyValue").textContent = quantity;
+
+  quantity =
+    Math.max(
+      1,
+      Math.min(
+        MAX_QTY,
+        Number(value) || 1
+      )
+    );
+
+
+  $("qtyValue").textContent =
+    quantity;
+
 }
 
-function addSelectedProduct(goToCart){
-  if(!product) return;
 
-  const cart = readCart();
+/* =========================================================
+   ADD PRODUCT TO CART
+   ========================================================= */
 
-  // FIX: Compare IDs as strings so number/text IDs both work.
-  const existing = cart.find(item =>
-    String(item.id) === String(product.id)
-  );
+function addSelectedProduct(
+  goToCart
+){
+
+  if(!product)
+    return;
+
+
+  const cart =
+    readCart();
+
+
+  const existing =
+    cart.find(
+      item =>
+        String(item.id) ===
+        String(product.id)
+    );
+
 
   if(existing){
-    existing.quantity = Math.min(
-      MAX_QTY,
-      (Number(existing.quantity) || 0) + quantity
-    );
-    existing.price = product.price;
+
+    existing.quantity =
+      Math.min(
+        MAX_QTY,
+        (
+          Number(
+            existing.quantity
+          ) || 0
+        ) +
+        quantity
+      );
+
+    existing.price =
+      product.price;
+
   }else{
+
     cart.push({
-      id: product.id,
-      name: product.name,
-      price: product.price,
-      image: product.image || product.photo || "",
-      quantity: quantity
+
+      id:
+        product.id,
+
+      name:
+        product.name,
+
+      price:
+        product.price,
+
+      image:
+        product.image ||
+        product.photo ||
+        "",
+
+      category:
+        product.category ||
+        "",
+
+      quantity:
+        quantity
+
     });
+
   }
 
+
   if(!writeCart(cart)){
-    showToast("Could not save the cart. Please enable browser storage and try again.");
+
+    showToast(
+      "Could not save the cart. Please enable browser storage and try again."
+    );
+
     return;
+
   }
+
 
   updateCartCount();
 
+
   if(goToCart){
-    $("buyNow").disabled = true;
-    $("addToCart").disabled = true;
-    window.location.href = "order.html";
+
+    $("buyNow").disabled =
+      true;
+
+    $("addToCart").disabled =
+      true;
+
+    window.location.href =
+      "order.html";
+
   }else{
-    showToast(product.name + " added to cart!");
+
+    showToast(
+      product.name +
+      " added to cart!"
+    );
+
   }
+
 }
+
+
+/* =========================================================
+   RELATED PRODUCTS
+   ========================================================= */
+
+function getRelatedProducts(){
+
+  if(!Array.isArray(products))
+    return [];
+
+
+  const currentId =
+    String(product.id);
+
+
+  const currentCategory =
+    String(
+      product.category || ""
+    ).toLowerCase();
+
+
+  const currentBrand =
+    String(
+      product.brand ||
+      product.make ||
+      ""
+    ).toLowerCase();
+
+
+  return products
+
+    .filter(
+      item =>
+        String(item.id) !==
+        currentId
+    )
+
+    .map(
+      item => {
+
+        let score = 0;
+
+
+        const category =
+          String(
+            item.category || ""
+          ).toLowerCase();
+
+
+        const brand =
+          String(
+            item.brand ||
+            item.make ||
+            ""
+          ).toLowerCase();
+
+
+        if(
+          category &&
+          category ===
+          currentCategory
+        ){
+
+          score += 5;
+
+        }
+
+
+        if(
+          brand &&
+          brand ===
+          currentBrand
+        ){
+
+          score += 3;
+
+        }
+
+
+        if(
+          currentCategory &&
+          (
+            category.includes(
+              currentCategory
+            ) ||
+            currentCategory.includes(
+              category
+            )
+          )
+        ){
+
+          score += 2;
+
+        }
+
+
+        return {
+          item,
+          score
+        };
+
+      }
+    )
+
+    .sort(
+      (a,b) =>
+        b.score -
+        a.score
+    )
+
+    .slice(
+      0,
+      10
+    )
+
+    .map(
+      entry =>
+        entry.item
+    );
+
+}
+
+
+/* =========================================================
+   RELATED IMAGE
+   ========================================================= */
+
+function relatedImage(
+  item
+){
+
+  const value =
+    item.photo ||
+    item.image ||
+    "";
+
+
+  if(
+    /^https?:\/\//i.test(
+      value
+    ) ||
+    value.startsWith(
+      "data:"
+    ) ||
+    value.startsWith(
+      "/"
+    )
+  ){
+
+    return value;
+
+  }
+
+
+  if(
+    value.startsWith(
+      "images/"
+    )
+  ){
+
+    return value;
+
+  }
+
+
+  return (
+    "images/" +
+    value +
+    ".jpg"
+  );
+
+}
+
+
+/* =========================================================
+   RENDER RELATED
+   ========================================================= */
+
+function renderRelated(){
+
+  const grid =
+    $("relatedProductsGrid");
+
+
+  if(!grid)
+    return;
+
+
+  const related =
+    getRelatedProducts();
+
+
+  if(!related.length){
+
+    grid.innerHTML = `
+      <div class="review-card">
+        More related products will appear here as the catalogue grows.
+      </div>
+    `;
+
+    return;
+
+  }
+
+
+  grid.innerHTML =
+    related
+      .map(
+        item => {
+
+          const image =
+            relatedImage(
+              item
+            );
+
+
+          return `
+
+            <article
+              class="related-card"
+            >
+
+              <div
+                class="related-image"
+              >
+
+                <img
+                  src="${image}"
+                  alt="${item.name || "Product"}"
+                  loading="lazy"
+                  onerror="this.onerror=null;this.src='data:image/svg+xml;charset=UTF-8,'+encodeURIComponent('<svg xmlns=&quot;http://www.w3.org/2000/svg&quot; width=&quot;300&quot; height=&quot;220&quot;><rect width=&quot;100%&quot; height=&quot;100%&quot; fill=&quot;#f7f8fa&quot;/><text x=&quot;50%&quot; y=&quot;50%&quot; dominant-baseline=&quot;middle&quot; text-anchor=&quot;middle&quot; font-family=&quot;Arial&quot; font-size=&quot;13&quot; fill=&quot;#9e7421&quot;>Product image</text></svg>')"
+                >
+
+              </div>
+
+
+              <div
+                class="related-brand"
+              >
+                ${
+                  item.brand ||
+                  item.make ||
+                  "JK SAFETY VISION"
+                }
+              </div>
+
+
+              <div
+                class="related-name"
+              >
+                ${
+                  item.name ||
+                  "Security Product"
+                }
+              </div>
+
+
+              <div
+                class="related-category"
+              >
+                ${
+                  item.category ||
+                  "Security Product"
+                }
+              </div>
+
+
+              <div
+                class="related-price"
+              >
+                ${
+                  money(
+                    item.price
+                  )
+                }
+              </div>
+
+
+              <div
+                class="related-actions"
+              >
+
+                <button
+                  type="button"
+                  class="related-btn related-view"
+                  data-view-id="${item.id}"
+                >
+                  VIEW
+                </button>
+
+
+                <button
+                  type="button"
+                  class="related-btn"
+                  data-related-id="${item.id}"
+                >
+                  ADD TO CART
+                </button>
+
+              </div>
+
+            </article>
+
+          `;
+
+        }
+      )
+      .join("");
+
+}
+
+
+/* =========================================================
+   RELATED PRODUCT CLICK ACTIONS
+   ========================================================= */
+
+$("relatedProductsGrid")
+  .addEventListener(
+    "click",
+    function(event){
+
+      const viewButton =
+        event.target.closest(
+          "[data-view-id]"
+        );
+
+
+      if(viewButton){
+
+        const id =
+          viewButton.dataset.viewId;
+
+
+        window.location.href =
+          "product.html?id=" +
+          encodeURIComponent(id);
+
+
+        return;
+
+      }
+
+
+      const addButton =
+        event.target.closest(
+          "[data-related-id]"
+        );
+
+
+      if(!addButton)
+        return;
+
+
+      const id =
+        addButton.dataset.relatedId;
+
+
+      const selected =
+        products.find(
+          item =>
+            String(item.id) ===
+            String(id)
+        );
+
+
+      if(!selected)
+        return;
+
+
+      const cart =
+        readCart();
+
+
+      const existing =
+        cart.find(
+          item =>
+            String(item.id) ===
+            String(selected.id)
+        );
+
+
+      if(existing){
+
+        existing.quantity =
+          Math.min(
+            MAX_QTY,
+            (
+              Number(
+                existing.quantity
+              ) || 0
+            ) + 1
+          );
+
+      }else{
+
+        cart.push({
+
+          id:
+            selected.id,
+
+          name:
+            selected.name,
+
+          price:
+            selected.price,
+
+          image:
+            selected.image ||
+            selected.photo ||
+            "",
+
+          category:
+            selected.category ||
+            "",
+
+          quantity:
+            1
+
+        });
+
+      }
+
+
+      if(
+        writeCart(cart)
+      ){
+
+        updateCartCount();
+
+        addButton.textContent =
+          "✓ ADDED";
+
+        setTimeout(
+          () => {
+
+            addButton.textContent =
+              "ADD TO CART";
+
+          },
+          1200
+        );
+
+        showToast(
+          selected.name +
+          " added to cart!"
+        );
+
+      }
+
+    }
+  );
+
+
+/* =========================================================
+   INITIALIZE
+   ========================================================= */
 
 updateCartCount();
 
+
 if(product){
+
   renderProduct();
+
+  renderRelated();
+
   setQuantity(1);
 
-  $("qtyMinus").addEventListener("click", () => setQuantity(quantity - 1));
-  $("qtyPlus").addEventListener("click", () => setQuantity(quantity + 1));
-  $("addToCart").addEventListener("click", () => addSelectedProduct(false));
-  $("buyNow").addEventListener("click", () => addSelectedProduct(true));
+
+  $("qtyMinus")
+    .addEventListener(
+      "click",
+      () =>
+        setQuantity(
+          quantity - 1
+        )
+    );
+
+
+  $("qtyPlus")
+    .addEventListener(
+      "click",
+      () =>
+        setQuantity(
+          quantity + 1
+        )
+    );
+
+
+  $("addToCart")
+    .addEventListener(
+      "click",
+      () =>
+        addSelectedProduct(
+          false
+        )
+    );
+
+
+  $("buyNow")
+    .addEventListener(
+      "click",
+      () =>
+        addSelectedProduct(
+          true
+        )
+    );
+
 }else{
+
   renderNotFound();
+
 }
 
-window.addEventListener("storage", event => {
-  if(event.key === CART_KEY) updateCartCount();
-});
 
-window.addEventListener("pageshow", event => {
-  if(event.persisted){
-    updateCartCount();
-    if($("buyNow")) $("buyNow").disabled = false;
-    if($("addToCart")) $("addToCart").disabled = false;
+window.addEventListener(
+  "storage",
+  event => {
+
+    if(
+      event.key ===
+      CART_KEY
+    ){
+
+      updateCartCount();
+
+    }
+
   }
-});
+);
+
+
+window.addEventListener(
+  "pageshow",
+  event => {
+
+    if(event.persisted){
+
+      updateCartCount();
+
+      if($("buyNow"))
+        $("buyNow").disabled =
+          false;
+
+      if($("addToCart"))
+        $("addToCart").disabled =
+          false;
+
+    }
+
+  }
+);
 
 })();
 </script>
+
 </body>
 </html>
