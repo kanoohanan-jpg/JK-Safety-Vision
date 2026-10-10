@@ -6,9 +6,9 @@
   --lg-ink: #292722;
   --lg-bronze: #a9783f;
   --lg-gold: #d4b078;
-  --lg-glass: rgba(255, 252, 246, .68);
-  --lg-line: rgba(119, 91, 53, .17);
-  --lg-shadow: 0 14px 38px rgba(66, 49, 27, .10), inset 0 1px 0 rgba(255,255,255,.8);
+  --lg-glass: rgba(35, 32, 29, .48);
+  --lg-line: rgba(255, 255, 255, .24);
+  --lg-shadow: 0 14px 38px rgba(35, 24, 13, .16), inset 0 1px 0 rgba(255,255,255,.52);
 }
 
 html { scroll-behavior: smooth; }
@@ -28,8 +28,8 @@ body {
   width: min( calc(100% - 24px), 1440px );
   border: 1px solid rgba(255,255,255,.78);
   border-radius: 24px;
-  background: rgba(255,250,241,.72);
-  -webkit-backdrop-filter: blur(24px) saturate(165%);
+  background: rgba(255,250,241,.62);
+  -webkit-backdrop-filter: blur(28px) saturate(175%);
   backdrop-filter: blur(24px) saturate(165%);
   box-shadow: var(--lg-shadow);
 }
@@ -122,15 +122,24 @@ button, .btn, .brand-pill, .category-chip, .filter-chip, .hero-dot,
   transform: translateX(0);
 }
 
-/* Hero glass frame — does not change image fit/position */
-.hero {
-  isolation: isolate;
+/* HERO SAFETY: keep existing camera size, placement and slider untouched.
+   Only remove the unwanted frame; glass styling is applied to other UI surfaces. */
+.hero > .hero-visual {
+  border: 0 !important;
+  outline: 0 !important;
+  box-shadow: none !important;
+  background: transparent !important;
 }
-.hero-visual {
-  border: 1px solid rgba(255,255,255,.72);
-  border-radius: 30px;
-  overflow: hidden;
-  box-shadow: 0 20px 52px rgba(47,37,22,.15), inset 0 1px 0 rgba(255,255,255,.7);
+.hero > .hero-visual::before,
+.hero > .hero-visual::after {
+  content: none !important;
+  display: none !important;
+}
+#heroProductImage {
+  border: 0 !important;
+  outline: 0 !important;
+  box-shadow: none !important;
+  background: transparent !important;
 }
 .hero-dots button, .hero-dot {
   border: 1px solid rgba(255,255,255,.8);
@@ -145,9 +154,9 @@ button, .btn, .brand-pill, .category-chip, .filter-chip, .hero-dot,
 /* Product surfaces */
 .product-card, .category-card, .brand-tile, .info-card, .benefit-card,
 .promo-card, .product-row-card {
-  border: 1px solid rgba(255,255,255,.78) !important;
+  border: 1px solid rgba(255,255,255,.72) !important;
   border-radius: 22px !important;
-  background: rgba(255,252,246,.70) !important;
+  background: rgba(255,250,241,.58) !important;
   -webkit-backdrop-filter: blur(18px) saturate(145%);
   backdrop-filter: blur(18px) saturate(145%);
   box-shadow: 0 8px 24px rgba(64,47,25,.075), inset 0 1px 0 rgba(255,255,255,.82);
@@ -207,53 +216,36 @@ footer, .site-footer {
   .store-header { top: 4px; width: calc(100% - 12px); margin-top: 4px; border-radius: 19px; }
   .product-card, .category-card, .brand-tile, .info-card, .benefit-card { border-radius: 18px !important; }
 }
-/* Fix: remove unwanted box around hero camera */
-#heroProduct,
-#heroProductImage,
-.hero-visual {
-  outline: none !important;
-  box-shadow: none !important;
-}
 
-#heroProduct {
-  border: none !important;
-  background: transparent !important;
-}
 
-#heroProductImage {
-  border: none !important;
-  background: transparent !important;
+/* Extra liquid-glass sheen and smooth pill press feedback */
+.store-header, .search-wrap, .product-card, .category-card, .brand-tile,
+.info-card, .benefit-card, .promo-card, .toast, #toast, .contact-popup,
+.modal, .popup, .cart-panel, .dropdown-panel {
+  position: relative;
 }
-/* Remove unwanted hero camera box */
-.hero-visual {
-    border: none !important;
-    outline: none !important;
-    box-shadow: none !important;
-    background: transparent !important;
+.product-card, .category-card, .brand-tile, .info-card, .benefit-card, .promo-card {
+  overflow: hidden;
 }
-
-.hero-visual::before,
-.hero-visual::after {
-    content: none !important;
-    display: none !important;
+.product-card::before, .category-card::before, .brand-tile::before,
+.info-card::before, .benefit-card::before, .promo-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  background: linear-gradient(135deg, rgba(255,255,255,.34), transparent 38%, rgba(198,151,88,.07));
+  opacity: .9;
 }
-
-#heroProductImage {
-    border: none !important;
-    outline: none !important;
-    box-shadow: none !important;
-    background: transparent !important;
+.btn, button, .brand-pill, .category-chip, .filter-chip, .nav-link,
+.header-action, .add-cart, .wishlist-btn, .product-action, .sort-btn, .filter-btn {
+  -webkit-backdrop-filter: blur(16px) saturate(160%);
+  backdrop-filter: blur(16px) saturate(160%);
+  touch-action: manipulation;
 }
-/* Remove only the unwanted hero frame */
-.hero > .hero-visual {
-  border: 0 !important;
-  outline: 0 !important;
-  box-shadow: none !important;
-  background: transparent !important;
-}
-
-.hero > .hero-visual::before,
-.hero > .hero-visual::after {
-  content: none !important;
-  display: none !important;
+@media (prefers-reduced-motion: no-preference) {
+  .btn:active, button:active, .brand-pill:active, .category-chip:active,
+  .filter-chip:active, .nav-link:active, .header-action:active,
+  .add-cart:active, .wishlist-btn:active, .product-action:active,
+  .sort-btn:active, .filter-btn:active { transition-duration: .08s; }
 }
