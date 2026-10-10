@@ -1537,7 +1537,7 @@ function renderProducts(){
  if(sort==="name")list.sort((a,b)=>a.name.localeCompare(b.name));
  const grid=document.getElementById("productGrid");
  grid.innerHTML=list.length?list.map(cardHTML).join(""):'<div class="no-products">No products found. Try another search, brand or category.</div>';
- grid.querySelectorAll(".inline-ad").forEach(ad => ad.remove());
+ 
 }
 function setFilter(filter,type,label){
  activeFilter=filter;activeType=type||"All";
