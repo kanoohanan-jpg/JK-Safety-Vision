@@ -244,3 +244,16 @@ footer, .site-footer {
     box-shadow: none !important;
     background: transparent !important;
 }
+/* Remove only the unwanted hero frame */
+.hero > .hero-visual {
+  border: 0 !important;
+  outline: 0 !important;
+  box-shadow: none !important;
+  background: transparent !important;
+}
+
+.hero > .hero-visual::before,
+.hero > .hero-visual::after {
+  content: none !important;
+  display: none !important;
+}
