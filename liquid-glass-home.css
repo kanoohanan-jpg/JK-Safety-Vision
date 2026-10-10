@@ -249,3 +249,91 @@ footer, .site-footer {
   .add-cart:active, .wishlist-btn:active, .product-action:active,
   .sort-btn:active, .filter-btn:active { transition-duration: .08s; }
 }
+/* JK SAFETY VISION — LIQUID GLASS FINISH */
+
+/* Header glass */
+.store-header,
+.header-main,
+.brand-bar,
+.cat-strip,
+.benefits,
+.category-grid,
+.category-tile {
+  background: rgba(255, 250, 241, 0.48) !important;
+  -webkit-backdrop-filter: blur(22px) saturate(165%);
+  backdrop-filter: blur(22px) saturate(165%);
+  border: 1px solid rgba(255, 255, 255, 0.62);
+  box-shadow:
+    0 12px 32px rgba(55, 39, 23, 0.09),
+    inset 0 1px 0 rgba(255, 255, 255, 0.75);
+}
+
+/* Rounded glass surfaces */
+.store-header,
+.header-main,
+.brand-bar,
+.cat-strip,
+.benefits,
+.category-grid {
+  border-radius: 22px;
+}
+
+/* Search glass */
+.search-wrap,
+.search-box,
+.search-form {
+  background: rgba(255, 255, 255, 0.52) !important;
+  -webkit-backdrop-filter: blur(18px);
+  backdrop-filter: blur(18px);
+  border: 1px solid rgba(255, 255, 255, 0.75);
+  border-radius: 999px;
+}
+
+/* Pill buttons */
+button,
+.btn,
+.brand-pill,
+.wishlist-link,
+.cart-link {
+  transition:
+    transform 220ms ease,
+    box-shadow 220ms ease,
+    background 220ms ease;
+}
+
+button:active,
+.btn:active,
+.brand-pill:active {
+  transform: scale(0.96);
+}
+
+/* Product cards — glass finish */
+.product-card,
+.product-row-card,
+.info-card,
+.promo {
+  background: rgba(255, 255, 255, 0.48) !important;
+  -webkit-backdrop-filter: blur(20px) saturate(150%);
+  backdrop-filter: blur(20px) saturate(150%);
+  border: 1px solid rgba(255, 255, 255, 0.68);
+  border-radius: 22px;
+  box-shadow:
+    0 10px 30px rgba(55, 39, 23, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.75);
+}
+
+/* Keep hero camera layout untouched */
+.hero,
+.hero-visual,
+#heroProductImage {
+  /* Intentionally no layout, size or position changes */
+}
+
+/* Reduced motion accessibility */
+@media (prefers-reduced-motion: reduce) {
+  button,
+  .btn,
+  .brand-pill {
+    transition: none !important;
+  }
+}
