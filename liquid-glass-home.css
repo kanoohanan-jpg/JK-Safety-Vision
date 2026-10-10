@@ -224,3 +224,23 @@ footer, .site-footer {
   border: none !important;
   background: transparent !important;
 }
+/* Remove unwanted hero camera box */
+.hero-visual {
+    border: none !important;
+    outline: none !important;
+    box-shadow: none !important;
+    background: transparent !important;
+}
+
+.hero-visual::before,
+.hero-visual::after {
+    content: none !important;
+    display: none !important;
+}
+
+#heroProductImage {
+    border: none !important;
+    outline: none !important;
+    box-shadow: none !important;
+    background: transparent !important;
+}
