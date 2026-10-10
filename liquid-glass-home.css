@@ -207,3 +207,20 @@ footer, .site-footer {
   .store-header { top: 4px; width: calc(100% - 12px); margin-top: 4px; border-radius: 19px; }
   .product-card, .category-card, .brand-tile, .info-card, .benefit-card { border-radius: 18px !important; }
 }
+/* Fix: remove unwanted box around hero camera */
+#heroProduct,
+#heroProductImage,
+.hero-visual {
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+#heroProduct {
+  border: none !important;
+  background: transparent !important;
+}
+
+#heroProductImage {
+  border: none !important;
+  background: transparent !important;
+}
