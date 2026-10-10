@@ -1537,7 +1537,26 @@ function renderProducts(){
  if(sort==="name")list.sort((a,b)=>a.name.localeCompare(b.name));
  const grid=document.getElementById("productGrid");
  grid.innerHTML=list.length?list.map(cardHTML).join(""):'<div class="no-products">No products found. Try another search, brand or category.</div>';
- 
+ if (list.length > 4) {
+  const cards = list.map(cardHTML);
+  const output = [];
+
+  cards.forEach((card, index) => {
+    output.push(card);
+
+    if ((index + 1) % 4 === 0 && index < cards.length - 1) {
+      output.push(`
+        <div class="inline-ad">
+          <span class="ad-label">ADVERTISEMENT</span>
+          <h3>Promote Your Brand</h3>
+          <p>Featured offers and security solutions</p>
+        </div>
+      `);
+    }
+  });
+
+  grid.innerHTML = output.join("");
+}
 }
 function setFilter(filter,type,label){
  activeFilter=filter;activeType=type||"All";
