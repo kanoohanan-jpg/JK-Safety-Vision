@@ -323,11 +323,8 @@ button:active,
 }
 
 /* Keep hero camera layout untouched */
-.hero,
-.hero-visual,
-#heroProductImage {
-  /* Intentionally no layout, size or position changes */
-}
+
+
 
 /* Reduced motion accessibility */
 @media (prefers-reduced-motion: reduce) {
