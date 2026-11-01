@@ -2309,4 +2309,15 @@ body {
    No hero colours
    No hero image changes
 */
+html {
+  scroll-behavior: smooth;
+}
 
+body {
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+}
+
+* {
+  -webkit-tap-highlight-color: transparent;
+}
